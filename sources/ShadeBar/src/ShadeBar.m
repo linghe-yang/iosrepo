@@ -52,19 +52,7 @@
 @implementation ShadeManager
 - (instancetype)init {
     if((self=[super init])) {
-        dlopen("/System/Library/PrivateFrameworks/FrontBoardServices.framework/FrontBoardServices",RTLD_LAZY);
         self.orientation=UIInterfaceOrientationPortrait;
-        Class observer=NSClassFromString(@"FBSOrientationObserver");
-        if(observer && [observer instancesRespondToSelector:@selector(setHandler:)]) {
-            self.orientationObserver=[[observer alloc] init];
-            __weak typeof(self) weak=self;
-            [self.orientationObserver setHandler:^(FBSOrientationUpdate *update) {
-                NSInteger orientation=update.orientation;
-                dispatch_async(dispatch_get_main_queue(),^{ [weak changeOrientation:orientation]; });
-            }];
-            if([self.orientationObserver respondsToSelector:@selector(activeInterfaceOrientation)])
-                [self changeOrientation:self.orientationObserver.activeInterfaceOrientation];
-        }
         int token;
         __weak typeof(self) weak=self;
         notify_register_dispatch(SBChanged,&token,dispatch_get_main_queue(),^(int t){ [weak reload]; });
@@ -72,6 +60,15 @@
         [self reload];
     }
     return self;
+}
+- (void)prepareOrientation {
+        if(self.orientationObserver) return;
+        dlopen("/System/Library/PrivateFrameworks/FrontBoardServices.framework/FrontBoardServices",RTLD_LAZY);
+        Class observer=NSClassFromString(@"FBSOrientationObserver");
+        if(observer && [observer instancesRespondToSelector:@selector(activeInterfaceOrientation)]) {
+            self.orientationObserver=[[observer alloc] init];
+            [self changeOrientation:self.orientationObserver.activeInterfaceOrientation];
+        }
 }
 - (CGSize)canvasSize {
     CGSize s=UIScreen.mainScreen.fixedCoordinateSpace.bounds.size;
@@ -112,7 +109,8 @@
     if(orientation<1 || orientation>4 || orientation==self.orientation) return;
     self.orientation=orientation;
     // A gesture belongs to its starting orientation; rotation cancels it.
-    for(UIView *v in [self.window.handles arrayByAddingObject:self.window.bar])
+    NSArray *views=self.window.bar?[self.window.handles arrayByAddingObject:self.window.bar]:@[];
+    for(UIView *v in views)
         for(UIGestureRecognizer *g in v.gestureRecognizers) { g.enabled=NO; g.enabled=YES; }
     self.rect=SBFrame(self.settings,UIInterfaceOrientationIsLandscape(orientation),self.canvasSize);
     [self layout];
@@ -122,6 +120,7 @@
     [self.timer invalidate]; self.timer=nil;
     if(!SBBool(self.settings,@"enabled",NO)) { self.window.hidden=YES; return; }
     [self createWindow];
+    [self prepareOrientation];
     self.window.editing=SBBool(self.settings,@"editing",YES);
     self.window.passthrough=SBBool(self.settings,@"passthrough",YES);
     self.window.bar.backgroundColor=[SBColor(self.settings) colorWithAlphaComponent:fmax(0,fmin(1,SBNumber(self.settings,@"opacity",1)))];
@@ -135,6 +134,9 @@
     [NSRunLoop.mainRunLoop addTimer:self.timer forMode:NSRunLoopCommonModes];
 }
 - (void)tick {
+    // Poll the direction instead of passing a block to FBSOrientationObserver.
+    // beta1 crashed inside setHandler: while retaining that block on iPadOS 16.1.
+    if(self.orientationObserver) [self changeOrientation:self.orientationObserver.activeInterfaceOrientation];
     BOOL locked=YES; // Fail closed if the lock-state API is unavailable.
     Class lockClass=NSClassFromString(@"SBLockScreenManager");
     if([lockClass respondsToSelector:@selector(sharedInstance)]) {
@@ -198,11 +200,16 @@
 @end
 
 static ShadeManager *manager;
-__attribute__((constructor)) static void ShadeStart(void) {
+__attribute__((visibility("default"))) int ShadeRendererStart(void) {
     @autoreleasepool {
-        if(![NSBundle.mainBundle.bundleIdentifier isEqual:@"com.apple.springboard"]) return;
-        [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification *note) {
+        if(![NSBundle.mainBundle.bundleIdentifier isEqual:@"com.apple.springboard"] || !NSThread.isMainThread) return 0;
+        @try {
             if(!manager) manager=[ShadeManager new];
-        }];
+            return 1;
+        } @catch(NSException *exception) {
+            NSString *message=[NSString stringWithFormat:@"%@\n%@\n%@",exception.name,exception.reason,exception.callStackSymbols];
+            [message writeToFile:@"/var/mobile/Library/ShadeBar/renderer-error.txt" atomically:YES encoding:NSUTF8StringEncoding error:nil];
+            SBWrite(@{@"enabled":@NO});return 0;
+        }
     }
 }

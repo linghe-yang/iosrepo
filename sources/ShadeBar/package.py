@@ -10,17 +10,23 @@ import struct
 import tarfile
 
 ROOT=Path(__file__).resolve().parent
-VERSION='0.1.0~beta1'
+VERSION='0.2.0~beta1'
 
-def signature_check(data):
+def signature_check(data,expected_subtype=2,expected_kind=6):
     magic,cpu,subtype,kind,ncmds=struct.unpack_from('<5I',data)
-    assert magic==0xfeedfacf and cpu==0x100000c and (subtype&0xffffff)==2
-    assert kind==6  # MH_DYLIB
-    position=32; signature=None; paths=[]
+    assert magic==0xfeedfacf and cpu==0x100000c and (subtype&0xffffff)==expected_subtype
+    assert kind==expected_kind
+    position=32; signature=None; paths=[]; sections=[]; uuid=None
     for _ in range(ncmds):
         cmd,size=struct.unpack_from('<II',data,position)
         assert size>=8
         if cmd==0x1d: signature=struct.unpack_from('<II',data,position+8)
+        if cmd==0x1b: uuid=data[position+8:position+24].hex()
+        if cmd==0x19:
+            count=struct.unpack_from('<I',data,position+64)[0]
+            for index in range(count):
+                section=position+72+index*80
+                sections.append(data[section:section+16].split(b'\0')[0].decode())
         if cmd==0xc:
             offset=struct.unpack_from('<I',data,position+8)[0]
             paths.append(data[position+offset:data.index(b'\0',position+offset,position+size)].decode())
@@ -44,7 +50,8 @@ def signature_check(data):
         verified+=pages
     assert verified
     assert all(p.startswith(('/usr/lib/','/System/Library/')) for p in paths)
-    return {'architecture':'arm64e (allemande converted)','code_pages_verified':verified,'dependencies':paths,'sha256':hashlib.sha256(data).hexdigest()}
+    assert uuid
+    return {'architecture':'arm64e native' if expected_subtype==2 else 'arm64','cpu_subtype':hex(subtype),'uuid':uuid,'sections':sections,'code_pages_verified':verified,'dependencies':paths,'sha256':hashlib.sha256(data).hexdigest()}
 
 def archive(files):
     raw=io.BytesIO()
@@ -60,36 +67,49 @@ def archive(files):
     return gzip.compress(raw.getvalue(),mtime=0)
 
 def main():
-    dylib=(ROOT/'build/ShadeBar.dylib').read_bytes()
-    prefs=(ROOT/'build/ShadePreferences').read_bytes()
-    checks={'tweak':signature_check(dylib),'preferences':signature_check(prefs)}
+    dylib=(ROOT/'build/ShadeBootstrap.dylib').read_bytes()
+    renderer=(ROOT/'build/ShadeRenderer.dylib').read_bytes()
+    app=(ROOT/'build/ShadeBarApp').read_bytes()
+    checks={'bootstrap':signature_check(dylib),'renderer':signature_check(renderer),'app':signature_check(app,0,2)}
+    assert not any(s.startswith('__objc') or s=='__cfstring' for s in checks['bootstrap']['sections'])
+    assert not any('UIKit' in p or 'libobjc' in p for p in checks['bootstrap']['dependencies'])
+    assert not any(s in checks['renderer']['sections'] for s in ('__mod_init_func','__init_offsets'))
+    assert b'setHandler:\0' not in renderer, 'Old crashing orientation callback is still linked'
+    assert checks['bootstrap']['cpu_subtype']=='0x80000002'
+    assert checks['renderer']['cpu_subtype']=='0x80000002'
     plist=lambda d:plistlib.dumps(d,sort_keys=True)
     base='./var/jb/Library/'
+    appbase='./var/jb/Applications/ShadeBar.app/'
+    info={'CFBundleExecutable':'ShadeBarApp','CFBundleIdentifier':'com.linghe.shadebar.app','CFBundleName':'ShadeBar','CFBundleDisplayName':'ShadeBar','CFBundlePackageType':'APPL','CFBundleVersion':'2','CFBundleShortVersionString':'0.2.0','MinimumOSVersion':'16.0','LSRequiresIPhoneOS':True,'UIDeviceFamily':[1,2],'UISupportedInterfaceOrientations':['UIInterfaceOrientationPortrait','UIInterfaceOrientationPortraitUpsideDown','UIInterfaceOrientationLandscapeLeft','UIInterfaceOrientationLandscapeRight'],'UILaunchScreen':{},'CFBundleDevelopmentRegion':'en','CFBundleIcons':{'CFBundlePrimaryIcon':{'CFBundleIconFiles':['Icon-120','Icon-180']}},'CFBundleIcons~ipad':{'CFBundlePrimaryIcon':{'CFBundleIconFiles':['Icon-76','Icon-152','Icon-167']}}}
     files={
-      base+'MobileSubstrate/DynamicLibraries/ShadeBar.dylib':(dylib,0o755),
-      base+'MobileSubstrate/DynamicLibraries/ShadeBar.plist':(plist({'Filter':{'Bundles':['com.apple.springboard']}}),0o644),
-      base+'PreferenceBundles/ShadePreferences.bundle/ShadePreferences':(prefs,0o755),
-      base+'PreferenceBundles/ShadePreferences.bundle/Info.plist':(plist({'CFBundleExecutable':'ShadePreferences','CFBundleIdentifier':'com.linghe.shadebar.preferences','CFBundleName':'ShadeBar','CFBundlePackageType':'BNDL','CFBundleVersion':'1','CFBundleShortVersionString':'0.1.0','NSPrincipalClass':'ShadePreferencesController','MinimumOSVersion':'16.0'}),0o644),
-      base+'PreferenceLoader/Preferences/ShadeBar.plist':(plist({'entry':{'bundle':'ShadePreferences','cell':'PSLinkCell','detail':'ShadePreferencesController','isController':True,'label':'ShadeBar'}}),0o644)
+      base+'MobileSubstrate/DynamicLibraries/ShadeBootstrap.dylib':(dylib,0o755),
+      base+'MobileSubstrate/DynamicLibraries/ShadeBootstrap.plist':(plist({'Filter':{'Bundles':['com.apple.springboard']}}),0o644),
+      appbase+'ShadeBarApp':(app,0o755),
+      appbase+'Info.plist':(plist(info),0o644),
+      appbase+'Frameworks/ShadeRenderer.dylib':(renderer,0o755)
     }
+    for icon in sorted((ROOT/'resources').glob('Icon-*.png')): files[appbase+icon.name]=(icon.read_bytes(),0o644)
+    assert len([name for name in files if name.endswith('.png')])==6
     control=f'''Package: com.linghe.shadebar
 Name: ShadeBar (Beta)
 Version: {VERSION}
 Architecture: iphoneos-arm64
-Description: Adjustable screen cover with a foreground app allowlist. iOS 16 arm64e test build.
+Description: Desktop app with adjustable overlay and foreground app allowlist. Manual start after respring.
 Maintainer: Local Build
 Author: Local Build
 Section: Tweaks
-Depends: mobilesubstrate, preferenceloader, firmware (>= 16.0), firmware (<< 17.0)
+Depends: mobilesubstrate, firmware (>= 16.0), firmware (<< 17.0)
 Installed-Size: {math.ceil(sum(len(x[0]) for x in files.values())/1024)}
 '''.encode()
     out=bytearray(b'!<arch>\n')
-    for name,content in [('debian-binary',b'2.0\n'),('control.tar.gz',archive({'./control':(control,0o644)})),('data.tar.gz',archive(files))]:
+    scripts={'./control':(control,0o644)}
+    for name in ('postinst','prerm'): scripts['./'+name]=((ROOT/'resources'/name).read_bytes().replace(b'\r\n',b'\n'),0o755)
+    for name,content in [('debian-binary',b'2.0\n'),('control.tar.gz',archive(scripts)),('data.tar.gz',archive(files))]:
         out.extend(f'{name:<16}{0:<12}{0:<6}{0:<6}{"100644":<8}{len(content):<10}`\n'.encode()); out.extend(content)
         if len(content)%2: out.extend(b'\n')
     path=ROOT/'packages'/f'com.linghe.shadebar_{VERSION}_iphoneos-arm64.deb'
     path.parent.mkdir(exist_ok=True); path.write_bytes(out)
-    manifest={'package':path.name,'version':VERSION,'sha256':hashlib.sha256(out).hexdigest(),'bytes':len(out),'device_tested':False,'binaries':checks,'payloads':sorted(files),'sources':{p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted((ROOT/'src').glob('*'))},'limits':['No physical-device execution or UIKit rendering verification.','Uses Theos-documented allemande ABI conversion; live arm64e compatibility remains unverified.','Focused foreground application only, not every visible split-screen app.','Foreground polling interval 0.2 seconds; lock screen intentionally hidden.']}
+    manifest={'package':path.name,'version':VERSION,'sha256':hashlib.sha256(out).hexdigest(),'bytes':len(out),'device_tested':False,'binaries':checks,'payloads':sorted(files),'sources':{p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted((ROOT/'src').glob('*'))},'limits':['beta1 device crash confirmed in ShadeManager init -> FBSOrientationObserver setHandler: -> objc_msgSend. Callback registration removed.','Native Clang 23 + Apple ld64 956.6 arm64e build; no ABI converter. New build still needs physical-device validation.','Desktop app and manual renderer loading are separate. Overlay does not automatically start after respring.','Focused foreground application only; polling interval 0.2 seconds; lock screen hidden.']}
     (ROOT/'build/package_manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8')
     print('PASS: signed arm64e binaries, dependencies, rootless payload; built',path.name,len(out),'bytes')
 

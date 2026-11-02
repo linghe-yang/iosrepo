@@ -1,0 +1,47 @@
+{
+  "llvm": [
+    {
+      "name": "clang-23",
+      "file": "clang-23_23.1.5~++20261028083854+a738f2737189-1~exp1~20261028203912.92_amd64.deb",
+      "sha256": "0d656824ad918f02e81593e0c1369f3ba69f83c3ff7f95e4ce74a9f4e1e322a1",
+      "url": "https://apt.llvm.org/noble/pool/main/l/llvm-toolchain-23/clang-23_23.1.5~++20261028083854+a738f2737189-1~exp1~20261028203912.92_amd64.deb"
+    },
+    {
+      "name": "libclang-common-23-dev",
+      "file": "libclang-common-23-dev_23.1.5~++20261028083854+a738f2737189-1~exp1~20261028203912.92_amd64.deb",
+      "sha256": "50c8f6d1b16418065ed4c522ffe535592560339a58f0fce9e240f0504a91ec41",
+      "url": "https://apt.llvm.org/noble/pool/main/l/llvm-toolchain-23/libclang-common-23-dev_23.1.5~++20261028083854+a738f2737189-1~exp1~20261028203912.92_amd64.deb"
+    },
+    {
+      "name": "libclang-cpp23",
+      "file": "libclang-cpp23_23.1.5~++20261028083854+a738f2737189-1~exp1~20261028203912.92_amd64.deb",
+      "sha256": "203d9a397a439d7d6b77cecd56761b8cdb5e311d3be77204b945778d54ef1cbe",
+      "url": "https://apt.llvm.org/noble/pool/main/l/llvm-toolchain-23/libclang-cpp23_23.1.5~++20261028083854+a738f2737189-1~exp1~20261028203912.92_amd64.deb"
+    },
+    {
+      "name": "libclang1-23",
+      "file": "libclang1-23_23.1.5~++20261028083854+a738f2737189-1~exp1~20261028203912.92_amd64.deb",
+      "sha256": "785eb7955c6054545349159f578b21dfbb6ffad2e1b6a22668a68433bbd3a098",
+      "url": "https://apt.llvm.org/noble/pool/main/l/llvm-toolchain-23/libclang1-23_23.1.5~++20261028083854+a738f2737189-1~exp1~20261028203912.92_amd64.deb"
+    },
+    {
+      "name": "libllvm23",
+      "file": "libllvm23_23.1.5~++20261028083854+a738f2737189-1~exp1~20261028203912.92_amd64.deb",
+      "sha256": "3ac14e55c6349f3d7bf7ebc5fc6f753404c9fc592339306c1ddaa5683ca228a5",
+      "url": "https://apt.llvm.org/noble/pool/main/l/llvm-toolchain-23/libllvm23_23.1.5~++20261028083854+a738f2737189-1~exp1~20261028203912.92_amd64.deb"
+    },
+    {
+      "name": "lld-23",
+      "file": "lld-23_23.1.5~++20261028083854+a738f2737189-1~exp1~20261028203912.92_amd64.deb",
+      "sha256": "c92b6c6a2c0bdca837d910bed86f2318902ed9434d1412043a99a5f3dd836c20",
+      "url": "https://apt.llvm.org/noble/pool/main/l/llvm-toolchain-23/lld-23_23.1.5~++20261028083854+a738f2737189-1~exp1~20261028203912.92_amd64.deb"
+    }
+  ],
+  "cmake": {
+    "file": "cmake-4.4.4-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+    "url": "https://files.pythonhosted.org/packages/7e/d5/664ea06d01864f25d6067f09fa218404e4d588edd5e495135ac91429fecb/cmake-4.4.4-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+    "sha256": "f773a0544c66370408f451acd487c2c643b0dfebb48c5d64f3638bc1bb820238"
+  },
+  "cctools_revision": "904de2a71d4da6a9b30d2efaf912a10ddc7d9ddb",
+  "dispatch_revision": "2078b9d4a2853b8b07a61e3d460e9dfd9d3c3454"
+}

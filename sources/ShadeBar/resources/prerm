@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+if [ "$1" = "remove" ]; then
+    if [ -x /var/jb/usr/bin/uicache ]; then
+        /var/jb/usr/bin/uicache -u /var/jb/Applications/ShadeBar.app || true
+    elif command -v uicache >/dev/null 2>&1; then
+        uicache -u /var/jb/Applications/ShadeBar.app || true
+    fi
+fi
+exit 0

@@ -1,84 +1,76 @@
-ShadeBar / 遮挡条 0.1.0~beta1
+ShadeBar / 遮挡条 0.2.0~beta1
 
-这是全新开发的独立插件。目标测试设备为 iPad mini 6、iPadOS 16.1、Dopamine Rootless。
-源码：src/；安装包：packages/；打包清单及哈希：build/package_manifest.json。
-它不依赖 OverlayIOSTOOL，也不修改其文件。
+本版本针对 iPad mini 6 / iPadOS 16.1 / Dopamine，包含带桌面图标的独立 App。
+应用名单、颜色、不透明度、位置、宽高和编辑开关全部在桌面 ShadeBar App 内配置。
+不再依赖 PreferenceLoader，也不再安装旧版系统设置面板。
 
-使用步骤
-1. 安装 Rootless DEB，确保 PreferenceLoader 可用，重新加载 SpringBoard。
-2. 打开系统“设置 → ShadeBar”，打开“启用遮挡条”。首次安装默认关闭。
-3. 开启“编辑模式”，返回主屏幕或指定应用。拖动遮挡条移动，拖动四边/四角蓝色手柄调整宽高。
-4. 点击“锁定”隐藏手柄。再次编辑时返回系统设置打开编辑模式。
-5. 颜色选择器、HEX 色值和不透明度在设置页调整。不透明度 0 为透明，1 为完全遮挡。
-6. 横屏/竖屏的位置与尺寸分别保存，也可以在设置里按屏幕百分比输入。
-7. 可选择“锁定后允许触摸穿透”；关闭后，遮挡条本身会挡住触摸，条外不应影响操作。
-8. 如果透明后找不到遮挡条，打开编辑模式即可看到蓝色手柄；也可重置横竖屏位置。
+已确认的旧版故障
+用户提供的 SpringBoard-2026-11-02-143918.ips 显示：
+SpringBoard 在 14:39:16 启动，在 14:39:17 主线程发生 EXC_BAD_ACCESS / SIGBUS。
+调用链：ShadeManager init → FBSOrientationObserver setHandler: → objc_msgSend。
+这证明旧版的屏幕方向回调注册路径触发崩溃；日志本身不足以单独证明所有底层 ABI 细节。
+原始日志包含设备诊断信息，不随软件源发布。
+
+本次修复
+1. 移除 setHandler: 方向回调注册，改为在现有刷新周期读取当前界面方向。
+2. 改用 Clang 23 + Apple ld64 956.6 直接生成 arm64e 原生二进制；不再使用 allemande 转换。
+3. SpringBoard 启动时仅加载一个 C 组件，无 Objective-C 类、常量字符串和 UIKit 依赖。
+4. 完整遮挡层放在 App 包内，仅在用户从 App 手动启用时加载；每次重载后默认关闭。
+5. 加载前记录状态，未完成的加载会在 App 中提示；不会在下一次重载时自动重复加载。
+6. App 可导出自己的启动状态和初始化错误，便于继续定位；不导出完整设备日志或应用名单。
+
+安装与首次检查
+1. 在安全模式下卸载旧版 ShadeBar。安装本版本后，重新加载 SpringBoard。
+2. 在桌面找到“ShadeBar”图标并打开，先检查 App 能否正常进入。
+3. 启动组件会在 SpringBoard 启动后约 5 秒就绪；App 显示“等待启用”后再打开启用开关。
+4. 首次可关闭“仅在指定应用显示”，开启编辑模式，然后回到主屏幕观察遮挡条。
+5. 拖动遮挡条移动，拖动四边/四角蓝色手柄分别调整宽高，点“锁定”结束编辑。
+6. 再次编辑、换颜色、改不透明度或重置位置，都在桌面 App 中操作。
+7. 横竖屏的位置与尺寸分别保存，App 中也可按屏幕百分比输入。
 
 应用名单
-“仅在指定应用显示”关闭：所有常规前台界面均可显示，锁屏除外。
-打开：只在名单中的应用处于前台时显示；名单为空时不显示。
-“选择应用”自动列出应用，也支持手动添加 com.example.app 格式的包标识。
-名单中提供“主屏幕”选项。应用退到后台后不再因为它仍在运行而保持显示。
-第一版按系统报告的前台/焦点应用判断，不取分屏中所有可见应用的并集。
-当前轮询间隔 0.2 秒，切换显示可能有短暂延迟，暂不保证系统转场全过程无残留。
-若无法获取前台应用，名单模式按不显示处理；若无法读取锁屏状态，也按不显示处理。
+开启“仅在指定应用显示”后，在“选择应用”勾选允许显示的应用。
+名单支持名称/包标识搜索；缺少应用时可点右上角 + 手动添加包标识。
+空名单不显示；应用退到后台不保持显示；可单独选中“主屏幕”。
+分屏按系统报告的前台/焦点应用判断，不取所有可见应用的并集。
+显示与方向刷新周期约 0.2 秒，转场时可能有短暂延迟。锁屏时隐藏。
+每次重载 SpringBoard 后，都需要重新打开 App 手动启用遮挡层。
 
 语言
-默认英文；系统首选语言为 zh-Hans 或旧标识 zh-CN/zh-SG 时使用简体中文。
-更改系统语言后，请退出设置并重新加载 SpringBoard。
+默认英文；系统首选语言为简体中文时使用中文。
+更改系统语言后退出并重开 App；遮挡层语言更新需重新加载 SpringBoard 后再次启用。
 
-开发与构建
-Objective-C + C，SpringBoard 单进程注入，原生 Preferences 设置页。
-无联网代码、广告或账号要求。设置通过本机 CFPreferences 和 Darwin 通知同步。
-浮层采用固定屏幕坐标、FrontBoard 屏幕方向观察器和手动坐标变换。
-仅在启用时启动前台应用轮询。锁屏隐藏，停用后停止轮询。
+诊断
+App 右上角“诊断”可分享 ShadeBar-diagnostics.json，内容仅限本插件的状态和错误。
+如果仍进入安全模式，请先卸载 ShadeBar 并重新加载 SpringBoard，然后提供新崩溃日志：
+设置 → 隐私与安全性 → 分析与改进 → 分析数据 → 同一时间的 SpringBoard-*.ips。
+图标由安装脚本调用 uicache 注册；若桌面暂未出现，先重新加载 SpringBoard。
 
-当前构建使用 Theos 推荐的 Linux iOS 工具链及 allemande 转换 arm64e ABI。
-链接器会提示旧 ABI 警告；build.sh 在链接后运行转换器，再重新签名。
-转换是 Theos 文档列出的方案，但其成功不等于已证明真机兼容。
-本包只有 arm64e 切片，面向 A12 及更新设备；不是所有 Rootless 设备的通用包。
-不依赖系统级 oldabi 插件。
+本地验证
+已通过：原生 arm64e ABI 标记、代码签名页哈希、旧回调不存在、启动组件无 ObjC/UIKit
+依赖、遮挡层无自动构造入口、App/iPad/横竖屏及图标声明、安装脚本、DEB 实际解包，
+以及 32 种显示规则组合、5 万组移动/尺寸/旋转边界测试。
+尚未完成新版真机验证：App 启动、方向读取、跨应用显示、触摸穿透和系统特殊界面。
+这些检查不能代替真实 iPad 上的加载和显示测试，不能据此保证所有安全模式问题已消失。
 
-Linux / WSL 构建命令（需要 Python 3.12+、git、g++、cc）：
+源码和构建
+src/App.m：桌面设置 App；src/Bootstrap.c：最小启动组件；src/ShadeBar.m：遮挡层。
+src/Geometry.c：几何与显示规则；旧 Preferences 文件仅保留作历史参考，不参与构建。
+build.sh 使用原生 arm64e 工具链；package.py 生成 DEB。
+工具版本固定在 native-tools.lock.json；编译工具与 SDK 不随 iosrepo 发布。
+
+在 Linux / WSL x86_64 上，需要 Python 3.12+、git、系统 clang/clang++、cc、make、dpkg-deb：
   python3 bootstrap.py
   bash build.sh
   python3 package.py
+  python3 tests/verify_release.py
 
-bootstrap.py 将编译工具下载到 tools/，固定版本与压缩包 SHA256，不进行系统安装。
-请在 WSL/Linux 内运行 bootstrap.py，避免 Windows Git 把 SDK 符号链接变成文本文件。
-工具及 SDK 不包含在 iosrepo 源码副本中。
+bootstrap.py 将工具放在 tools/ 并在项目内构建 Apple 链接器，不安装系统软件。
+make_icons.py 使用 Pillow 根据资源中的几何图案重建 PNG 图标；现成 PNG 已包含在源码中。
+build/package_manifest.json、build/release_verification.json 记录本次构建和校验；
+iosrepo 的源码副本中，两个清单直接位于 sources/ShadeBar/ 下。
 
-验证记录
-已经完成：
-- 两个 Objective-C 组件编译、arm64e ABI 转换和 ad-hoc 签名。
-- 32 种启用/锁屏/应用名单规则组合，以及前后台切换、未知前台应用等逻辑测试。
-- 5 万组移动、尺寸调整、横竖屏尺寸约束测试，启用 AddressSanitizer/UndefinedBehaviorSanitizer。
-- 安装包中的二进制架构、所有代码签名页哈希和依赖检查。
-- 实际 dpkg-deb 成功读取、列出和解包 DEB；文件路径、权限和控制信息符合 Rootless 布局。
-
-iosrepo 内的源码副本另附 package_manifest.json，记录本次二进制与源码哈希。
-
-尚未完成：
-- 真实 iOS 的 dyld 加载、arm64e 指针认证和私有系统接口执行。
-- SpringBoard 跨应用置顶、触摸穿透、设置页显示以及旋转手势的真机验证。
-- 分屏焦点切换、控制中心、通知中心、系统弹窗及游戏转场测试。
-
-建议的真机测试
-先停用旧的 OverlayIOSTOOL 浮层，避免两个浮层互相干扰。
-在“设置 → ShadeBar”启用，先用主屏幕测试移动、四边/四角调整、锁定和穿透。
-分别旋转到两种横屏及竖屏，再测试设置中的颜色、不透明度和重置。
-打开“仅在指定应用显示”，先选一个应用（例如 Safari），在它与未选应用间切换。
-测试空名单、添加/移除应用、退出应用、锁屏解锁、重新加载 SpringBoard 后的设置保留。
-如出现黑屏/崩溃或安全模式，先移除 ShadeBar 并重新加载 SpringBoard，再提供崩溃日志。
-
-发布
-已准备的 DEB 可加入本地 iosrepo/debs/，用 tools/update_repo.py 重建并校验源索引。
-以 Beta 名称发布，源中的其他插件可以保留。远端推送由用户自行执行。
-
-技术参考（只参考接口声明和用法，本项目包含独立实现的插件源码）：
-https://theos.dev/docs/rootless
-https://theos.dev/docs/arm64e-deployment
-https://github.com/theos/headers
-https://github.com/Lessica/TrollSpeed
-https://github.com/kenn2305/ToolOverlayIOS
-https://github.com/p0358/allemande
+软件源
+故障版 0.1.0~beta1 从活动软件源移除，移入 retired/ 留存，不再作为可安装版本推荐。
+新包：debs/com.linghe.shadebar_0.2.0~beta1_iphoneos-arm64.deb。
+由用户自行推送本地 iosrepo，等待 Pages 部署后在 Sileo 刷新软件源。

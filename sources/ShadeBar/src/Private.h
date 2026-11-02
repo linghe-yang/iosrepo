@@ -16,6 +16,5 @@
 @end
 @interface FBSOrientationObserver : NSObject
 @property(nonatomic,readonly) NSInteger activeInterfaceOrientation;
-- (void)setHandler:(void (^)(FBSOrientationUpdate *))handler;
 - (void)invalidate;
 @end

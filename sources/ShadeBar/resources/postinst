@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+if [ "$1" = "configure" ]; then
+    if [ -x /var/jb/usr/bin/uicache ]; then
+        /var/jb/usr/bin/uicache -p /var/jb/Applications/ShadeBar.app || true
+    elif command -v uicache >/dev/null 2>&1; then
+        uicache -p /var/jb/Applications/ShadeBar.app || true
+    fi
+    echo 'ShadeBar: reload SpringBoard, then open the ShadeBar home-screen app.'
+fi
+exit 0

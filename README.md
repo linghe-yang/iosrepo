@@ -26,7 +26,7 @@ https://linghe-yang.github.io/iosrepo/
 | `com.gamegod.igg.roothide` | Roothide，`iphoneos-arm64e` | `0.8.9.5+noads1` |
 | `com.vietanh.overlayiostool` | 传统越狱，`iphoneos-arm` | `5.8.12+lang1`；保留 `5.8.12` |
 | `com.vietanh.overlayiostool` | Rootless，`iphoneos-arm64` | `5.8.12+lang1`；保留 `5.8.12` |
-| `com.linghe.shadebar` | Rootless，iOS 16，A12+ / `arm64e` 二进制 | `0.1.0~beta1` |
+| `com.linghe.shadebar` | Rootless，iOS 16，A12+；桌面 App + 原生 arm64e 组件 | `0.2.0~beta1` |
 | `ai.akemi.appsyncunified` | 官方原版镜像，Rootless / `iphoneos-arm64` | `116.0` |
 
 上述 iGameGod 包基于官方 0.8.9.5 制作，是本地去广告测试包，并非官方发布。原作者信息和软件包依赖保留在 DEB 中。
@@ -43,17 +43,19 @@ OverlayIOSTOOL 来自本地提供的两个 5.8.12 DEB，作者标注为 Viet Anh
 
 安装 Rootless 双语版 `5.8.12+lang1` 后，重新加载 SpringBoard 并打开 Overlay Tool（简体中文下为“图片浮层”），选择图片测试悬浮显示、拖动和缩放。切换系统首选语言后，需要退出 App 并重新加载 SpringBoard，使 App 和悬浮插件重新读取语言。只有在设备启用越狱及插件注入后，跨应用浮层才有相应运行环境。
 
-## ShadeBar 遮挡条测试版
+## ShadeBar 桌面 App 与遮挡条测试版
 
-独立开发的遮挡条插件，目标设备为 iPad mini 6 / iPadOS 16.1 / Dopamine。支持拖动、四边及四角调整宽高、颜色选择器、HEX 色值、不透明度、触摸穿透，以及横竖屏分别保存位置和尺寸。默认英文，简体中文系统显示中文。
+`0.2.0~beta1` 包含桌面 **ShadeBar** App，应用名单、颜色、不透明度、位置、宽高和编辑开关均在 App 内设置；不再使用旧版系统设置面板。目标设备为 iPad mini 6 / iPadOS 16.1 / Dopamine。
 
-安装后重新加载 SpringBoard，打开 **设置 → ShadeBar**，启用遮挡条并打开编辑模式。拖动蓝色手柄调整尺寸，点击“锁定”结束编辑；需要再次编辑时返回设置开启编辑模式。首次安装默认关闭。建议先停用旧浮层，以免同时显示。
+旧版 `0.1.0~beta1` 已有真机崩溃报告：启动时在 `ShadeManager init → FBSOrientationObserver setHandler: → objc_msgSend` 路径发生 `EXC_BAD_ACCESS / SIGBUS`。新版移除该方向回调，并改用 Clang 23 + Apple ld64 956.6 直接生成原生 arm64e 二进制。故障版移至 `retired/` 留存，不再列入活动软件源。
 
-打开“仅在指定应用显示”，再通过“选择应用”选择名单。名单按当前前台/焦点应用判断，空名单不显示；退到后台的应用不保持遮挡条。名单功能关闭时显示于常规前台界面。锁屏隐藏；分屏按系统报告的焦点应用判断，切换显示可能有约 0.2 秒延迟。
+安装后重新加载 SpringBoard，打开桌面 ShadeBar App。启动组件约 5 秒后就绪；先确认 App 正常，再手动启用遮挡层。每次重新加载 SpringBoard 后，遮挡层均保持关闭，避免自动重复执行上次失败的加载。App 可导出本插件的启动状态和初始化错误。
 
-已完成编译、Theos 文档所列的 arm64e ABI 转换、签名页校验、32 种显示规则组合和 5 万组几何操作测试，以及实际 DEB 解包检查。**尚未真机验证**：系统浮层置顶、触摸穿透、设置界面、实际旋转与 arm64e 加载仍需设备测试。控制中心、通知中心及特殊系统界面不保证覆盖。本包是 `Beta`，不代表所有 Rootless 设备均兼容。
+支持拖动、四边/四角调整宽高、颜色选择器、HEX 色值、不透明度、触摸穿透、横竖屏分别保存位置。应用名单支持搜索和手动添加包标识；打开“仅在指定应用显示”后按前台/焦点应用判断，空名单不显示。锁屏隐藏，显示和方向更新可能有约 0.2 秒延迟。
 
-完整独立源码、构建脚本及使用说明位于 `sources/ShadeBar/`；编译工具和 SDK 不随软件源发布。安装包在 `debs/com.linghe.shadebar_0.1.0~beta1_iphoneos-arm64.deb`。
+已通过构建、原生 ABI 标记及签名页校验、旧回调不存在与启动隔离检查、App/iPad/图标元数据检查、脚本语法和 DEB 解包，以及核心几何与显示规则测试。**新版仍待真机验证**，不能据此保证所有安全模式问题已解决，或覆盖所有系统特殊界面。
+
+使用说明和完整源码：`sources/ShadeBar/README.txt`。安装包：`debs/com.linghe.shadebar_0.2.0~beta1_iphoneos-arm64.deb`。编译工具、SDK 和用户原始崩溃日志不随软件源发布。
 
 ## AppSync Unified 官方原版镜像
 

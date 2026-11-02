@@ -1,0 +1,10 @@
+{
+  "native_abi_and_signatures_passed": true,
+  "bootstrap_has_no_objc_classes_or_renderer_dependency": true,
+  "renderer_has_no_constructor_or_setHandler_callback": true,
+  "app_icons_ipad_and_orientation_metadata_passed": true,
+  "preferences_bundle_removed": true,
+  "installation_scripts_passed": true,
+  "code_pages_verified": 68,
+  "device_tested": false
+}

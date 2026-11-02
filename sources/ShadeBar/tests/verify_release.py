@@ -14,6 +14,9 @@ from package import signature_check
 
 def main():
     manifest=json.loads((ROOT/'build/package_manifest.json').read_text())
+    for name,expected in manifest['sources'].items():
+        source=(ROOT/name).read_text(encoding='utf-8-sig').encode('utf-8')
+        assert hashlib.sha256(source).hexdigest()==expected, f'Source changed after packaging: {name}'
     package=(ROOT/'packages'/manifest['package']).read_bytes()
     assert hashlib.sha256(package).hexdigest()==manifest['sha256']
     assert package.startswith(b'!<arch>\n')
@@ -48,6 +51,17 @@ def main():
     assert not any('UIKit' in p or 'ShadeRenderer' in p or 'libobjc' in p for p in boot['dependencies'])
     assert not {'__mod_init_func','__init_offsets'}.intersection(render['sections'])
     assert b'setHandler:\0' not in payload[app+'Frameworks/ShadeRenderer.dylib']
+    renderer_bytes=payload[app+'Frameworks/ShadeRenderer.dylib']
+    assert b'FBSOrientationObserver\0' not in renderer_bytes
+    assert b'_isWindowServerHostingManaged\0' not in renderer_bytes
+    assert b'_isSystemWindow\0' not in renderer_bytes
+    assert b'initWithWindowScene:\0' in renderer_bytes
+    assert b'resize:\0' not in renderer_bytes and b'finish\0' not in renderer_bytes
+    for data in (payload[path+'ShadeBootstrap.dylib'],renderer_bytes,payload[app+'ShadeBarApp']):
+        assert b'/var/mobile/Library/ShadeBar/settings.plist\0' in data
+    app_bytes=payload[app+'ShadeBarApp']
+    assert b'UISlider\0' in app_bytes and b'ShadeProfileSettings\0' in app_bytes
+    assert b'profile.%@.%@\0' in app_bytes and b'profile.%@.%@\0' in renderer_bytes
     assert not any('Preferences.framework' in p for p in application['dependencies'])
     assert not any('PreferenceBundles/' in p or 'PreferenceLoader/' in p for p in payload)
     for script in ('postinst','prerm'):
@@ -55,7 +69,9 @@ def main():
         assert data.startswith(b'#!/bin/sh\n') and b'\r' not in data
         assert modes[('control.tar.gz','./'+script)]==0o755
         assert b'/var/jb/Applications/ShadeBar.app' in data
-    result={'native_abi_and_signatures_passed':True,'bootstrap_has_no_objc_classes_or_renderer_dependency':True,'renderer_has_no_constructor_or_setHandler_callback':True,'app_icons_ipad_and_orientation_metadata_passed':True,'preferences_bundle_removed':True,'installation_scripts_passed':True,'code_pages_verified':sum(x['code_pages_verified'] for x in (boot,render,application)),'device_tested':False}
+    result={'native_abi_and_signatures_passed':True,'bootstrap_has_no_objc_classes_or_renderer_dependency':True,'renderer_has_no_constructor_or_setHandler_callback':True,'scene_window_creation_present':True,'unmanaged_window_override_removed':True,'on_screen_resize_controls_removed':True,'all_three_binaries_use_shared_settings_path':True,'app_icons_ipad_and_orientation_metadata_passed':True,'preferences_bundle_removed':True,'installation_scripts_passed':True,'code_pages_verified':sum(x['code_pages_verified'] for x in (boot,render,application)),'device_tested':False}
+    result['per_application_profile_ui_and_shared_key_format_present']=True
+    result['percentage_sliders_present']=True
     (ROOT/'build/release_verification.json').write_text(json.dumps(result,indent=2))
     print('PASS: native ABI, isolated startup, removed crashing callback, desktop icons, iPad orientations, scripts, signed package')
 

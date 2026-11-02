@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <time.h>
+#include "Store.h"
 
 #define DIRECTORY "/var/mobile/Library/ShadeBar"
 #define GUARD DIRECTORY "/loading.guard"
@@ -33,14 +34,20 @@ static void status(const char *state,const char *detail) {
     CFRelease(dict);for(int i=0;i<3;i++){CFRelease(keys[i]);CFRelease(values[i]);}
 }
 static void enabled(int value) {
-    CFStringRef domain=string("com.linghe.shadebar"),key=string("enabled");
-    CFPreferencesSetValue(key,value?kCFBooleanTrue:kCFBooleanFalse,domain,kCFPreferencesCurrentUser,kCFPreferencesAnyHost);
-    CFPreferencesSynchronize(domain,kCFPreferencesCurrentUser,kCFPreferencesAnyHost);
-    CFRelease(domain);CFRelease(key);
+    CFStringRef key=string("enabled");
+    const void *val=value?kCFBooleanTrue:kCFBooleanFalse;
+    CFDictionaryRef changes=CFDictionaryCreate(NULL,(const void **)&key,&val,1,&kCFTypeDictionaryKeyCallBacks,&kCFTypeDictionaryValueCallBacks);
+    SBStoreWrite(changes);CFRelease(changes);CFRelease(key);
 }
 static void start(void *unused) {
     if(starting) return;
-    if(renderer_ready) {status("running","Renderer already loaded; settings notification applies changes.");return;}
+    unlink(DIRECTORY "/renderer-error.txt");
+    // Explicit retries also reload settings if an earlier notification was missed.
+    if(renderer_ready) {
+        int (*entry)(void)=dlsym(renderer,"ShadeRendererStart");
+        if(entry && entry()) status("running","Renderer reloaded settings after a manual request.");
+        return;
+    }
     starting=1;
     status("loading","Loading the renderer after a manual request.");
     int fd=open(GUARD,O_WRONLY|O_CREAT|O_TRUNC,0600);
@@ -58,6 +65,8 @@ static void requested(CFNotificationCenterRef center,void *observer,CFStringRef 
 }
 static void setup(void *unused) {
     mkdir(DIRECTORY,0700);
+    unlink(DIRECTORY "/display.plist");
+    unlink(DIRECTORY "/last-target.plist");
     enabled(0); // Never restore the previous enabled flag during SpringBoard startup.
     status(access(GUARD,F_OK)==0?"guarded":"ready","Desktop app must explicitly start the overlay after each SpringBoard launch.");
     CFStringRef name=string("com.linghe.shadebar.start");

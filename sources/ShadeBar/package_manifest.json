@@ -1,14 +1,14 @@
 {
-  "package": "com.linghe.shadebar_0.2.0~beta1_iphoneos-arm64.deb",
-  "version": "0.2.0~beta1",
-  "sha256": "7beb086a29328728ce1cfd6abf082221b0fd886bb0af44ab44064ee55180e543",
-  "bytes": 70382,
+  "package": "com.linghe.shadebar_0.3.0~beta1_iphoneos-arm64.deb",
+  "version": "0.3.0~beta1",
+  "sha256": "61852b1c79b0f356021f14a96f53df53c59b9b903e2fe89e099f49237e51b738",
+  "bytes": 83758,
   "device_tested": false,
   "binaries": {
     "bootstrap": {
       "architecture": "arm64e native",
       "cpu_subtype": "0x80000002",
-      "uuid": "3904a189f6b8363a9d7a5c429257d440",
+      "uuid": "ebb57a80795f3bd09d95791bb7752618",
       "sections": [
         "__text",
         "__auth_stubs",
@@ -19,26 +19,26 @@
         "__got",
         "__bss"
       ],
-      "code_pages_verified": 13,
+      "code_pages_verified": 14,
       "dependencies": [
         "/usr/lib/libSystem.B.dylib",
         "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation"
       ],
-      "sha256": "d6ec2fdd8ad697bfae7648936aab2d27c328856e76cb7003f89a258f508721e2"
+      "sha256": "be90ac2013396de042dc6b62b55f46c9cf142cd76d6af75eda7c71b5b0f4785b"
     },
     "renderer": {
       "architecture": "arm64e native",
       "cpu_subtype": "0x80000002",
-      "uuid": "d51b000c863d3825a63918bc496a835c",
+      "uuid": "326181f46bff33a6834851626834279d",
       "sections": [
         "__text",
         "__auth_stubs",
         "__objc_methlist",
         "__gcc_except_tab",
         "__const",
-        "__cstring",
         "__objc_methname",
         "__objc_classname",
+        "__cstring",
         "__objc_methtype",
         "__ustring",
         "__unwind_info",
@@ -47,22 +47,20 @@
         "__const",
         "__cfstring",
         "__objc_classlist",
-        "__objc_protolist",
         "__objc_imageinfo",
-        "__objc_intobj",
         "__objc_arraydata",
-        "__objc_arrayobj",
         "__objc_dictobj",
+        "__objc_doubleobj",
+        "__objc_intobj",
         "__objc_const",
         "__objc_selrefs",
         "__objc_classrefs",
         "__objc_superrefs",
         "__objc_ivar",
         "__objc_data",
-        "__data",
         "__bss"
       ],
-      "code_pages_verified": 25,
+      "code_pages_verified": 26,
       "dependencies": [
         "/usr/lib/libSystem.B.dylib",
         "/usr/lib/libobjc.A.dylib",
@@ -72,23 +70,23 @@
         "/System/Library/Frameworks/QuartzCore.framework/QuartzCore",
         "/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics"
       ],
-      "sha256": "6f2234110bdf84be25167d61d21cc740615e68a2fbfc77594c4b22fc5e0ecb6a"
+      "sha256": "7f136bfcf24e8f1d97ee060387480214c895a7d0e67e035c504881a8cdeb2c95"
     },
     "app": {
       "architecture": "arm64",
       "cpu_subtype": "0x0",
-      "uuid": "6382638b462d38a48323309bd6036509",
+      "uuid": "cc22fd44542a3ec18a4d76f9f603c6d5",
       "sections": [
         "__text",
         "__stubs",
         "__objc_methlist",
         "__gcc_except_tab",
-        "__const",
-        "__cstring",
         "__objc_methname",
+        "__cstring",
         "__ustring",
         "__objc_classname",
         "__objc_methtype",
+        "__const",
         "__unwind_info",
         "__got",
         "__const",
@@ -97,9 +95,9 @@
         "__objc_protolist",
         "__objc_imageinfo",
         "__objc_arraydata",
-        "__objc_arrayobj",
-        "__objc_doubleobj",
         "__objc_dictobj",
+        "__objc_doubleobj",
+        "__objc_intobj",
         "__objc_const",
         "__objc_selrefs",
         "__objc_classrefs",
@@ -108,7 +106,7 @@
         "__objc_data",
         "__data"
       ],
-      "code_pages_verified": 30,
+      "code_pages_verified": 37,
       "dependencies": [
         "/usr/lib/libSystem.B.dylib",
         "/usr/lib/libobjc.A.dylib",
@@ -117,7 +115,7 @@
         "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
         "/System/Library/Frameworks/QuartzCore.framework/QuartzCore"
       ],
-      "sha256": "14a55403a0c61ec359093326d457b36f7efe8a1f8702fcda6198d61aad1a70ce"
+      "sha256": "298da60ed86a34b278e30471c30584957fdb63131ff8de7d0182847378088f60"
     }
   },
   "payloads": [
@@ -133,21 +131,29 @@
     "./var/jb/Library/MobileSubstrate/DynamicLibraries/ShadeBootstrap.dylib",
     "./var/jb/Library/MobileSubstrate/DynamicLibraries/ShadeBootstrap.plist"
   ],
+  "source_hash_format": "UTF-8, LF newlines, no BOM",
   "sources": {
-    "src/App.m": "a0abeaaa4b95ebcebf29e76c24fd4bd6207fd5eee3a4137cea5741231b7b42d4",
-    "src/Bootstrap.c": "2cb337888a1c379ded19483714e8726df17b98b8582a1179e9368eb64501db77",
-    "src/Common.h": "40feb5dc5d001e85bfd63d2a2cc401e4a278390d4c3f1ffebf9947f4a0d86170",
-    "src/Geometry.c": "fe25e08f37b5a20ff8d20406e9f0b5e8926c05f56a187e3f9221c5fdbc150a89",
-    "src/Geometry.h": "51fc4d2f0cdbaf5fb53e923ac7b826bebbb5fb4d674362c6bfc9f5859fd0c859",
+    "src/App.m": "db9b9193e36fa67e1642d4fd3c4ddde356c3097f67f6c9b92b9e30a0273f92dc",
+    "src/Bootstrap.c": "76e90afb4ec78ca74c16b43a9cc731bcd5d6bd73801efbfda8bae3fa45914532",
+    "src/Common.h": "b6e600a8085bd33b9bf7474d536b08ada83a8cb6e7c54ad2fe06d721fc6f83f9",
+    "src/Geometry.c": "0c842f8539224f06beecc763a822c59b643ca1ca047dfa11011acba4aeb31abc",
+    "src/Geometry.h": "aae710cf8105f0483a7cbac2959fd3be78690d2149eb6fa95ed464c6595505ab",
     "src/Preferences.h": "525f74f77324769483fbe7758e1c95b6975f4823d56791d546027f79d398a233",
-    "src/Private.h": "91e79bc2e1da49a5eb4bcf46ca303641bb3acfd5eeec1e18f8b3161dc153d0ff",
-    "src/ShadeBar.m": "f83e50e66a852bed3b710c3e0f01d2b70523dfff85a8467ce3b77c95c326999e",
-    "src/ShadePreferences.m": "c7993cd2f6c4f562df4cf48d192cb91d9564f13524c2dedb82e48b7415521a48"
+    "src/Private.h": "cef3d92ff0c7feb943386149c4ba3cb7e98389ab0c0865177a7671e4be8124ad",
+    "src/ProfileUI.h": "35cdf4b337b3085c76f01ff4eaeaa28e3b659abadb7d2ed79ecc45be3e899a5c",
+    "src/ProfileUI.m": "7cac51bfbf49e4bf8c4afeebad504892089927462a7f8431bb484053467341d6",
+    "src/ShadeBar.m": "0a7e45f62f6227b94ff7e49257f38cdc24d1affbbe44c6b3338db7f629d9b3a8",
+    "src/ShadePreferences.m": "c7993cd2f6c4f562df4cf48d192cb91d9564f13524c2dedb82e48b7415521a48",
+    "src/Store.h": "359e32d08493fdc1e70eb663a530e26693785291ebbe0a322a7071fb5f5b498d"
   },
   "limits": [
     "beta1 device crash confirmed in ShadeManager init -> FBSOrientationObserver setHandler: -> objc_msgSend. Callback registration removed.",
     "Native Clang 23 + Apple ld64 956.6 arm64e build; no ABI converter. New build still needs physical-device validation.",
     "Desktop app and manual renderer loading are separate. Overlay does not automatically start after respring.",
-    "Focused foreground application only; polling interval 0.2 seconds; lock screen hidden."
+    "Focused foreground application only; polling interval 0.2 seconds; lock screen and settings app hidden.",
+    "0.2.0 device feedback: desktop app opened but overlay was absent even without app filtering; exact device-side cause remains unconfirmed.",
+    "0.3.0 adds scene association, default window hosting, shared settings and display diagnostics; physical-device verification is still required.",
+    "Each app has an independent profile: 1-120 percent width/height, color/opacity, and separate portrait/landscape centers.",
+    "Dragging changes position only and may move the bar fully off screen; the app reset centers both orientations without changing size or appearance."
   ]
 }

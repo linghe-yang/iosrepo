@@ -8,7 +8,7 @@
   "app_icons_ipad_and_orientation_metadata_passed": true,
   "preferences_bundle_removed": true,
   "installation_scripts_passed": true,
-  "code_pages_verified": 90,
+  "code_pages_verified": 94,
   "device_tested": false,
   "per_application_profile_ui_and_shared_key_format_present": true,
   "percentage_sliders_present": true,
@@ -16,5 +16,6 @@
   "app_switcher_visibility_detection_present": true,
   "on_screen_resize_handles_removed": true,
   "floating_icon_quick_panel_and_pinch_gesture_present": true,
-  "desktop_overlay_options_present": true
+  "desktop_overlay_options_present": true,
+  "device_orientation_and_independent_panel_coordinates_present": true
 }

@@ -33,15 +33,18 @@ int main(void) {
     assert(!SBOverlayVisibility(1,0,0,0,1).window);
     assert(fabs(SBPinchOpacity(.5,.7)-.8)<1e-9);
     assert(fabs(SBPinchOpacity(.5,1.3)-.2)<1e-9);
-    assert(SBPinchOpacity(.5,1)==.5 && SBPinchOpacity(1,.1)==1 && SBPinchOpacity(0,2)==0);
-    assert(SBPinchOpacity(.5,NAN)==.5 && SBPinchOpacity(.5,100)==0);
+    assert(SBPinchOpacity(.5,1)==.5 && SBPinchOpacity(1,.1)==1 && SBPinchOpacity(0,2)==.1);
+    assert(SBPinchOpacity(.5,NAN)==.5 && SBPinchOpacity(.5,100)==.1);
+    assert(SBOpacity(0)==.1 && SBOpacity(-1)==.1 && SBOpacity(2)==1 && SBOpacity(NAN)==1);
+    assert(SBPinchOpacity(0,.8)>.1 && SBPinchOpacity(.1,.8)>.1); // Old zero profiles recover.
     for(int i=0;i<1000;i++) {
-        double start=i/999.;
+        double start=.1+.9*i/999.;
         assert(SBPinchOpacity(start,.6)>=start && SBPinchOpacity(start,1.4)<=start);
     }
     for(int i=0;i<2;i++) {
         double w=i?1133:744,h=i?744:1133;
-        assert(SBIconCoordinate(-4,w)==40 && SBIconCoordinate(8,w)==w-40);
+        assert(SBIconCoordinate(-4,w)==1 && SBIconCoordinate(8,w)==w-1);
+        assert(SBIconCoordinate(0,w)-12==-11 && SBIconCoordinate(1,w)+12==w+11);
         assert(SBIconCoordinate(.88,w)>40 && SBIconCoordinate(.2,h)>40);
     }
     for(int bits=0;bits<16;bits++) {
@@ -57,10 +60,21 @@ int main(void) {
     const SBPoint expected[4][4]={
         {{0,0},{744,0},{0,1133},{744,1133}},
         {{744,1133},{0,1133},{744,0},{0,0}},
-        {{0,1133},{0,0},{744,1133},{744,0}},
-        {{744,0},{744,1133},{0,0},{0,1133}}
+        {{744,0},{744,1133},{0,0},{0,1133}},
+        {{0,1133},{0,0},{744,1133},{744,0}}
     };
     for(int orientation=1;orientation<=4;orientation++) {
+        // Device home edge: bottom, top, right, left. Text's down axis must
+        // point with gravity in fixed portrait coordinates, never opposite it.
+        const SBPoint gravity[]={{0,1},{0,-1},{-1,0},{1,0}};
+        SBPoint o=SBPointInFixedScreen((SBPoint){0,0},orientation,744,1133);
+        SBPoint down=SBPointInFixedScreen((SBPoint){0,1},orientation,744,1133);
+        assert(down.x-o.x==gravity[orientation-1].x && down.y-o.y==gravity[orientation-1].y);
+        for(int app=1;app<=4;app++) {
+            assert(SBPanelOrientation(orientation,0,app)==orientation);
+            for(int flat=5;flat<=6;flat++) assert(SBPanelOrientation(flat,orientation,app)==orientation);
+            assert(SBPanelOrientation(0,0,app)==app);
+        }
         double w=orientation>=3?1133:744,h=orientation>=3?744:1133;
         for(int corner=0;corner<4;corner++) {
             SBPoint p=SBPointInFixedScreen((SBPoint){corner&1?w:0,corner&2?h:0},orientation,744,1133);

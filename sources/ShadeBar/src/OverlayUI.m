@@ -64,7 +64,7 @@
         for(NSUInteger i=0;i<fields.count;i++) {
             NSString *key=fields[i];self.labels[key]=[self label:names[i]];
             UISlider *slider=[UISlider new];slider.accessibilityIdentifier=key;slider.accessibilityLabel=names[i];
-            slider.minimumValue=i<2?1:0;slider.maximumValue=i<2?120:i==2?100:255;
+            slider.minimumValue=i<2?1:i==2?10:0;slider.maximumValue=i<2?120:i==2?100:255;
             [slider addTarget:self action:@selector(slide:) forControlEvents:UIControlEventValueChanged];
             [slider addTarget:self action:@selector(finishSlider:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside|UIControlEventTouchCancel];
             self.sliders[key]=slider;[self addSubview:slider];

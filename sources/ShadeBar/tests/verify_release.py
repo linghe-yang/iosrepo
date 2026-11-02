@@ -61,6 +61,8 @@ def main():
     assert b'resize:\0' not in renderer_bytes and b'finish\0' not in renderer_bytes
     for symbol in (b'ShadeFloatingIcon\0',b'ShadeQuickPanel\0',b'pinch:\0',b'openPanel\0',b'closePanel\0',b'moveIcon:\0'):
         assert symbol in renderer_bytes
+    for symbol in (b'beginGeneratingDeviceOrientationNotifications\0',b'endGeneratingDeviceOrientationNotifications\0',b'rootPoint:orientation:\0'):
+        assert symbol in renderer_bytes
     for data in (payload[path+'ShadeBootstrap.dylib'],renderer_bytes,payload[app+'ShadeBarApp']):
         assert b'/var/mobile/Library/ShadeBar/settings.plist\0' in data
     app_bytes=payload[app+'ShadeBarApp']
@@ -84,6 +86,7 @@ def main():
     result['on_screen_resize_handles_removed']=result.pop('on_screen_resize_controls_removed')
     result['floating_icon_quick_panel_and_pinch_gesture_present']=True
     result['desktop_overlay_options_present']=True
+    result['device_orientation_and_independent_panel_coordinates_present']=True
     (ROOT/'build/release_verification.json').write_text(json.dumps(result,indent=2))
     print('PASS: native ABI, isolated startup, removed crashing callback, desktop icons, iPad orientations, scripts, signed package')
 

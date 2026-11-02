@@ -42,7 +42,7 @@
     if(section==0) return SBT(@"Enable ShadeBar controls whether this app is handled. Show shade bar only hides/restores the rectangle. Interaction allows dragging and pinch-to-adjust opacity; when off, bar touches pass through. The floating icon can still open quick settings.",@"启用 ShadeBar 决定是否处理此应用；“显示遮挡条”仅控制矩形。开启交互可拖动、双指调节不透明度；关闭后触摸穿透遮挡条。悬浮图标仍可打开快捷设置。");
     section--;
     if(section==0) return SBT(@"Width and height: 1–120% of the current screen. 100% × 20% spans the screen horizontally. Rotation recalculates the size using the new screen dimensions; excess area is allowed off screen.",@"宽高均为当前屏幕的 1–120%。100% × 20% 表示横跨屏幕的条。旋转后按新屏幕尺寸重新计算，允许部分超出屏幕。");
-    if(section==1) return SBT(@"Saved automatically for this app only. Width, height, color and opacity are shared between its portrait and landscape views. Zero opacity is invisible.",@"自动保存，仅影响此应用。此应用的横竖屏共用宽高比例、颜色和不透明度。不透明度为 0 时不可见。");
+    if(section==1) return SBT(@"Saved automatically for this app only. Portrait and landscape share size, color and opacity. Opacity is limited to 10–100%; use Show shade bar to hide it.",@"自动保存，仅影响此应用。横竖屏共用尺寸、颜色和不透明度。不透明度范围为 10–100%；需要隐藏时请关闭“显示遮挡条”。");
     return [NSString stringWithFormat:@"%@\n%@",SBT(@"Drag the bar freely, including completely off screen. Portrait and landscape remember their positions separately. Reset centers both without changing size or appearance.",@"遮挡条可自由拖动，包括完全拖出屏幕。横竖屏分别记住位置。重置使两种方向都居中，保留尺寸与外观。"),self.bundle];
 }
 - (CGFloat)tableView:(UITableView *)table heightForRowAtIndexPath:(NSIndexPath *)index {return index.section==1 || (index.section==2 && index.row==2)?86:UITableViewAutomaticDimension;}
@@ -55,7 +55,7 @@
     [cell.contentView addSubview:label];
     UISlider *slider=[[UISlider alloc] initWithFrame:CGRectMake(16,38,width,32)];
     slider.autoresizingMask=UIViewAutoresizingFlexibleWidth;
-    slider.minimumValue=[field isEqual:@"opacity"]?0:1;
+    slider.minimumValue=[field isEqual:@"opacity"]?10:1;
     slider.maximumValue=[field isEqual:@"opacity"]?100:120;
     slider.value=100*SBNumber(self.profile,field,[field isEqual:@"width"]?.8:[field isEqual:@"height"]?.2:1);
     slider.accessibilityIdentifier=field;slider.accessibilityLabel=title;

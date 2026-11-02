@@ -3,8 +3,9 @@
 SBPoint SBPointInFixedScreen(SBPoint p,int orientation,double w,double h) {
     switch(orientation) {
         case 2: return (SBPoint){w-p.x,h-p.y};
-        case 3: return (SBPoint){p.y,h-p.x};
-        case 4: return (SBPoint){w-p.y,p.x};
+        // UIInterfaceOrientationLandscapeRight=3: device home edge is on the right.
+        case 3: return (SBPoint){w-p.y,p.x};
+        case 4: return (SBPoint){p.y,h-p.x};
         default: return p;
     }
 }

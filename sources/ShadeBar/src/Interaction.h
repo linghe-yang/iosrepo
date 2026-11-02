@@ -14,12 +14,23 @@ static inline int SBOverlayHit(SBOverlayState s,bool inBar,bool inIcon,bool inPa
     return s.barHit&&inBar?SBHitBar:SBHitNone;
 }
 /* Inward pinch raises opacity; outward stretch lowers it. Never changes visibility. */
+static inline double SBOpacity(double value) {
+    return isfinite(value)?fmax(.1,fmin(1,value)):1;
+}
 static inline double SBPinchOpacity(double initial,double scale) {
-    double base=isfinite(initial)?fmax(0,fmin(1,initial)):1;
-    return isfinite(scale)?fmax(0,fmin(1,base+1-fmax(0,scale))):base;
+    double base=SBOpacity(initial);
+    return isfinite(scale)?SBOpacity(base+1-fmax(0,scale)):base;
 }
 static inline double SBIconCoordinate(double fraction,double length) {
     if(!isfinite(length)||length<=0) return 0;
     if(!isfinite(fraction)) fraction=.5;
-    double inset=fmin(40,length/2);return fmax(inset,fmin(length-inset,fraction*length));
+    // 24-point icon: its center may approach 1 point from an edge (11 points outside).
+    double inset=fmin(1,length/2);return fmax(inset,fmin(length-inset,fraction*length));
+}
+static inline int SBPanelOrientation(int device,int previous,int interfaceOrientation) {
+    // UIKit's device and interface constants have the same physical numeric mapping;
+    // the landscape *names* are opposite. Face up/down must not invent a direction.
+    if(device>=1 && device<=4) return device;
+    if(previous>=1 && previous<=4) return previous;
+    return interfaceOrientation>=1 && interfaceOrientation<=4?interfaceOrientation:1;
 }

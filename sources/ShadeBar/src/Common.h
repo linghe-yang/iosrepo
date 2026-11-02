@@ -44,12 +44,14 @@ static inline NSDictionary *SBProfile(NSDictionary *settings,NSString *bundle) {
         id value=settings[SBProfileKey(bundle,field)];
         if(value) profile[field]=value;
     }
+    // Normalize old zero-opacity profiles on read, including gesture cancellation restores.
+    profile[@"opacity"]=@(SBOpacity(SBNumber(profile,@"opacity",1)));
     return profile;
 }
 static inline BOOL SBWriteProfile(NSString *bundle,NSDictionary *changes) {
     if(!bundle.length) return NO;
     NSMutableDictionary *flat=[NSMutableDictionary new];
-    for(NSString *field in changes) flat[SBProfileKey(bundle,field)]=changes[field];
+    for(NSString *field in changes) flat[SBProfileKey(bundle,field)]=[field isEqual:@"opacity"]?@(SBOpacity(SBNumber(changes,field,1))):changes[field];
     // Flat keys let the shared-store lock merge unrelated app/field edits safely.
     return SBWrite(flat);
 }

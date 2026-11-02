@@ -27,6 +27,7 @@ https://linghe-yang.github.io/iosrepo/
 | `com.vietanh.overlayiostool` | 传统越狱，`iphoneos-arm` | `5.8.12+lang1`；保留 `5.8.12` |
 | `com.vietanh.overlayiostool` | Rootless，`iphoneos-arm64` | `5.8.12+lang1`；保留 `5.8.12` |
 | `com.linghe.shadebar` | Rootless，iOS 16，A12+ / `arm64e` 二进制 | `0.1.0~beta1` |
+| `ai.akemi.appsyncunified` | 官方原版镜像，Rootless / `iphoneos-arm64` | `116.0` |
 
 上述 iGameGod 包基于官方 0.8.9.5 制作，是本地去广告测试包，并非官方发布。原作者信息和软件包依赖保留在 DEB 中。
 
@@ -53,6 +54,31 @@ OverlayIOSTOOL 来自本地提供的两个 5.8.12 DEB，作者标注为 Viet Anh
 已完成编译、Theos 文档所列的 arm64e ABI 转换、签名页校验、32 种显示规则组合和 5 万组几何操作测试，以及实际 DEB 解包检查。**尚未真机验证**：系统浮层置顶、触摸穿透、设置界面、实际旋转与 arm64e 加载仍需设备测试。控制中心、通知中心及特殊系统界面不保证覆盖。本包是 `Beta`，不代表所有 Rootless 设备均兼容。
 
 完整独立源码、构建脚本及使用说明位于 `sources/ShadeBar/`；编译工具和 SDK 不随软件源发布。安装包在 `debs/com.linghe.shadebar_0.1.0~beta1_iphoneos-arm64.deb`。
+
+## AppSync Unified 官方原版镜像
+
+本源收录作者 [GitHub Release 116.0](https://github.com/akemin-dayo/AppSync/releases/tag/116.0) 发布的 Rootless DEB，适用于普通版 Dopamine 等兼容的 Rootless 越狱环境。针对 iPad mini 6 / iPadOS 16.1，应使用此 `iphoneos-arm64` 版本。本次没有加入 Rootful 或 RootHide 专用包，不代表本包适用于这些环境。
+
+安装包文件名、包标识、版本、作者、依赖、安装脚本和二进制均保留原样；没有重新打包、修改签名或替换载荷。下载后比对本地镜像，文件大小为 49,472 字节，SHA-256 为：
+
+```text
+2bdaac72a6d1b006309b7dd28f51b1e3d351d3d8758fc9f08ca670f1d71eb382
+```
+
+安装依赖为 `mobilesubstrate (>= 0.9.5100)` 和系统版本 `5.0` 至 `18.2`；这是原包声明的依赖范围，不代表 Rootless 环境支持所有这些旧系统。Rootless 环境还需要 **ElleKit 1.1 或更新版本**，原包通过 `Conflicts: ellekit (< 1.1)` 排除旧版本。依赖继续由设备已有的越狱基础源提供，本源没有镜像整个越狱环境。安装时不要忽略依赖或强制覆盖冲突。
+
+上传本目录全部变更并完成 GitHub Pages 部署后，Sileo / Zebra 将从本源的 `debs/` 下载 AppSync，无需从已失效的 Karen 软件源取得 DEB。原包中的 `Homepage`、`Depiction` 仍指向 `cydia.akemi.ai`；软件详情页可能打不开，但不影响本源索引指定的本地 DEB 下载。
+
+原项目以 **GPL-3.0-or-later** 授权。对应提交的完整源码归档、原始版权声明、GPLv3 全文、上游说明和来源校验记录随本源一同提供：
+
+- [源码归档](sources/AppSyncUnified/AppSync-235aca6cddfbdc9fa87fcb5b2aec2df37ed6d65a.tar.gz)
+- [镜像说明](sources/AppSyncUnified/README.txt)
+- [原始版权与授权声明](sources/AppSyncUnified/LICENSE) · [GPLv3 全文](sources/AppSyncUnified/COPYING)
+- [下载来源与 SHA-256 记录](sources/AppSyncUnified/provenance.json)
+
+这是个人源对官方原版文件的镜像，不是作者官方源。发布时请同时上传 `sources/AppSyncUnified/`，让安装包和对应源码、许可副本一起可供下载。源码提交依据官方 DEB 文件名确定，未进行可复现构建验证。
+
+本地已检查 DEB 结构、Rootless `/var/jb` 安装路径、实际控制信息、原文件一致性及索引校验；尚未在真实 iPad 上安装运行。AppSync 需要越狱和插件注入处于启用状态。若安装后未生效，可按作者说明进行用户空间重启；整机重启后需重新进入越狱。
 
 ## 更新软件源
 

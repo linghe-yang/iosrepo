@@ -1,0 +1,81 @@
+{
+  "package": "ai.akemi.appsyncunified",
+  "version": "116.0",
+  "architecture": "iphoneos-arm64",
+  "license": "GPL-3.0-or-later",
+  "upstream_project": "https://github.com/akemin-dayo/AppSync",
+  "upstream_release": "https://github.com/akemin-dayo/AppSync/releases/tag/116.0",
+  "upstream_commit": "235aca6cddfbdc9fa87fcb5b2aec2df37ed6d65a",
+  "downloaded_date": "2026-11-02",
+  "deb": {
+    "filename": "debs/ai.akemi.appsyncunified_116.0_iphoneos-arm64.akemi-git-235aca6cddfbdc9fa87fcb5b2aec2df37ed6d65a.deb",
+    "upstream_url": "https://github.com/akemin-dayo/AppSync/releases/download/116.0/ai.akemi.appsyncunified_116.0_iphoneos-arm64.akemi-git-235aca6cddfbdc9fa87fcb5b2aec2df37ed6d65a.deb",
+    "bytes": 49472,
+    "sha256": "2bdaac72a6d1b006309b7dd28f51b1e3d351d3d8758fc9f08ca670f1d71eb382",
+    "unmodified": true
+  },
+  "source": {
+    "filename": "sources/AppSyncUnified/AppSync-235aca6cddfbdc9fa87fcb5b2aec2df37ed6d65a.tar.gz",
+    "upstream_url": "https://codeload.github.com/akemin-dayo/AppSync/tar.gz/235aca6cddfbdc9fa87fcb5b2aec2df37ed6d65a",
+    "bytes": 46674,
+    "sha256": "f816f6e63dc2f8852855f4bce3e047487a2876f92484ae1fc90caf9dd6eea1e7"
+  },
+  "license_files": {
+    "LICENSE": {
+      "source": "AppSync-235aca6cddfbdc9fa87fcb5b2aec2df37ed6d65a/LICENSE",
+      "sha256": "0e997d3d1a47e006e77b90ce4fd1e913a8263c871bfd73050dd4cbd99623e767"
+    },
+    "COPYING": {
+      "source": "https://raw.githubusercontent.com/spdx/license-list-data/main/text/GPL-3.0-or-later.txt",
+      "sha256": "fb981668c18a279e285fc4d83fba1e836cc84dd4daa73c9697d3cfd2d8aca6e0"
+    }
+  },
+  "depends": "firmware (>= 5.0), mobilesubstrate (>= 0.9.5100), firmware (<= 18.2)",
+  "ellekit_minimum_for_rootless": "1.1",
+  "payloads": [
+    {
+      "path": "var/jb/Library/LaunchDaemons/ai.akemi.asu_inject.plist",
+      "bytes": 508,
+      "sha256": "7a2c6e0cdf08b90d55e551362731da4c788bd988eb294d8d76b12e0d06fa4cf6"
+    },
+    {
+      "path": "var/jb/Library/MobileSubstrate/DynamicLibraries/AppSyncUnified-FrontBoard.dylib",
+      "bytes": 231168,
+      "sha256": "b87fc59f3f05c4656f25487f390baf14ba827ed5d98534e2678a61d6d154ac25"
+    },
+    {
+      "path": "var/jb/Library/MobileSubstrate/DynamicLibraries/AppSyncUnified-FrontBoard.plist",
+      "bytes": 356,
+      "sha256": "6d3ddf89add8f55b6f76be878d5db6aa742470cd6c2635acff53669c2ef2162c"
+    },
+    {
+      "path": "var/jb/Library/MobileSubstrate/DynamicLibraries/AppSyncUnified-installd.dylib",
+      "bytes": 234800,
+      "sha256": "53e24d02429f92db5fb96673bf6ee09d7da643d54160d1d314e698bf503cc97c"
+    },
+    {
+      "path": "var/jb/Library/MobileSubstrate/DynamicLibraries/AppSyncUnified-installd.plist",
+      "bytes": 299,
+      "sha256": "009f939f5351d51fdc49177d68d6e8afcac303f0a7705a975f9adb9db5c4a189"
+    },
+    {
+      "path": "var/jb/usr/bin/asu_inject",
+      "bytes": 199648,
+      "sha256": "fbf2617a92db2520b47fb80ad8596ac6bda90b03b75df338ee2df111de41c1b1"
+    }
+  ],
+  "validation": {
+    "deb_ar_and_tar_readable": true,
+    "rootless_payload_prefix": "/var/jb/",
+    "source_version_matches": true,
+    "mirror_bytes_equal_download": true,
+    "maintainer_scripts_executed_on_host": false,
+    "device_tested": false
+  },
+  "notes": [
+    "Official original DEB mirrored without repacking or patching.",
+    "Source commit is identified by the upstream asset filename; no reproducible rebuild was attempted.",
+    "Original Homepage and Depiction fields still refer to the unavailable upstream repository.",
+    "Existing jailbreak bootstrap must supply dependencies; this is not a self-contained dependency mirror."
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "passed": true,
+  "behavior": {
+    "locale_parser_cases": 21,
+    "image_language_scenarios": [
+      {
+        "variant": "rootful",
+        "binary": "OverlayIOSTOOLApp",
+        "language": "zh-Hans-CN",
+        "empty_preferences": false,
+        "result": "zh-Hans",
+        "translated_literals": 16
+      },
+      {
+        "variant": "rootful",
+        "binary": "OverlayIOSTOOLApp",
+        "language": "en-US",
+        "empty_preferences": false,
+        "result": "en",
+        "translated_literals": 16
+      },
+      {
+        "variant": "rootful",
+        "binary": "OverlayIOSTOOLApp",
+        "language": "zh-Hant-TW",
+        "empty_preferences": false,
+        "result": "en",
+        "translated_literals": 16
+      },
+      {
+        "variant": "rootful",
+        "binary": "OverlayIOSTOOLApp",
+        "language": "vi-VN",
+        "empty_preferences": false,
+        "result": "en",
+        "translated_literals": 16
+      },
+      {
+        "variant": "rootful",
+        "binary": "OverlayIOSTOOLApp",
+        "language": null,
+        "empty_preferences": false,
+        "result": "en",
+        "translated_literals": 16
+      },
+      {
+        "variant": "rootful",
+        "binary": "OverlayIOSTOOLApp",
+        "language": "zh-Hans",
+        "empty_preferences": true,
+        "result": "en",
+        "translated_literals": 16
+      },
+      {
+        "variant": "rootful",
+        "binary": "OverlayIOSTOOL.dylib",
+        "language": "zh-Hans-CN",
+        "empty_preferences": false,
+        "result": "zh-Hans",
+        "translated_literals": 12
+      },
+      {
+        "variant": "rootful",
+        "binary": "OverlayIOSTOOL.dylib",
+        "language": "en-US",
+        "empty_preferences": false,
+        "result": "en",
+        "translated_literals": 12
+      },
+      {
+        "variant": "rootful",
+        "binary": "OverlayIOSTOOL.dylib",
+        "language": "zh-Hant-TW",
+        "empty_preferences": false,
+        "result": "en",
+        "translated_literals": 12
+      },
+      {
+        "variant": "rootful",
+        "binary": "OverlayIOSTOOL.dylib",
+        "language": "vi-VN",
+        "empty_preferences": false,
+        "result": "en",
+        "translated_literals": 12
+      },
+      {
+        "variant": "rootful",
+        "binary": "OverlayIOSTOOL.dylib",
+        "language": null,
+        "empty_preferences": false,
+        "result": "en",
+        "translated_literals": 12
+      },
+      {
+        "variant": "rootful",
+        "binary": "OverlayIOSTOOL.dylib",
+        "language": "zh-Hans",
+        "empty_preferences": true,
+        "result": "en",
+        "translated_literals": 12
+      },
+      {
+        "variant": "rootless",
+        "binary": "OverlayIOSTOOLApp",
+        "language": "zh-Hans-CN",
+        "empty_preferences": false,
+        "result": "zh-Hans",
+        "translated_literals": 16
+      },
+      {
+        "variant": "rootless",
+        "binary": "OverlayIOSTOOLApp",
+        "language": "en-US",
+        "empty_preferences": false,
+        "result": "en",
+        "translated_literals": 16
+      },
+      {
+        "variant": "rootless",
+        "binary": "OverlayIOSTOOLApp",
+        "language": "zh-Hant-TW",
+        "empty_preferences": false,
+        "result": "en",
+        "translated_literals": 16
+      },
+      {
+        "variant": "rootless",
+        "binary": "OverlayIOSTOOLApp",
+        "language": "vi-VN",
+        "empty_preferences": false,
+        "result": "en",
+        "translated_literals": 16
+      },
+      {
+        "variant": "rootless",
+        "binary": "OverlayIOSTOOLApp",
+        "language": null,
+        "empty_preferences": false,
+        "result": "en",
+        "translated_literals": 16
+      },
+      {
+        "variant": "rootless",
+        "binary": "OverlayIOSTOOLApp",
+        "language": "zh-Hans",
+        "empty_preferences": true,
+        "result": "en",
+        "translated_literals": 16
+      },
+      {
+        "variant": "rootless",
+        "binary": "OverlayIOSTOOL.dylib",
+        "language": "zh-Hans-CN",
+        "empty_preferences": false,
+        "result": "zh-Hans",
+        "translated_literals": 12
+      },
+      {
+        "variant": "rootless",
+        "binary": "OverlayIOSTOOL.dylib",
+        "language": "en-US",
+        "empty_preferences": false,
+        "result": "en",
+        "translated_literals": 12
+      },
+      {
+        "variant": "rootless",
+        "binary": "OverlayIOSTOOL.dylib",
+        "language": "zh-Hant-TW",
+        "empty_preferences": false,
+        "result": "en",
+        "translated_literals": 12
+      },
+      {
+        "variant": "rootless",
+        "binary": "OverlayIOSTOOL.dylib",
+        "language": "vi-VN",
+        "empty_preferences": false,
+        "result": "en",
+        "translated_literals": 12
+      },
+      {
+        "variant": "rootless",
+        "binary": "OverlayIOSTOOL.dylib",
+        "language": null,
+        "empty_preferences": false,
+        "result": "en",
+        "translated_literals": 12
+      },
+      {
+        "variant": "rootless",
+        "binary": "OverlayIOSTOOL.dylib",
+        "language": "zh-Hans",
+        "empty_preferences": true,
+        "result": "en",
+        "translated_literals": 12
+      }
+    ],
+    "all_translations_exercised": 24,
+    "unknown_image_and_protection_failure_checks": 8
+  },
+  "packages": [
+    {
+      "variant": "rootful",
+      "code_pages_verified": 86,
+      "host_text_sections_unchanged": true,
+      "scripts_and_original_metadata_preserved": true,
+      "localized_privacy_resources": 3
+    },
+    {
+      "variant": "rootless",
+      "code_pages_verified": 86,
+      "host_text_sections_unchanged": true,
+      "scripts_and_original_metadata_preserved": true,
+      "localized_privacy_resources": 3
+    }
+  ],
+  "device_tested": false,
+  "limits": "ARM64 routines execute under simulation; actual UIKit rendering and live iOS dyld/CF APIs require device validation"
+}

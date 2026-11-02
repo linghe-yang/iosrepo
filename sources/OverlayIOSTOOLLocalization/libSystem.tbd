@@ -1,0 +1,8 @@
+--- !tapi-tbd
+tbd-version: 4
+targets: [ arm64-ios ]
+install-name: '/usr/lib/libSystem.B.dylib'
+exports:
+  - targets: [ arm64-ios ]
+    symbols: [ __dyld_register_func_for_add_image, _mprotect, _getpagesize, dyld_stub_binder ]
+...

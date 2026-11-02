@@ -1,0 +1,118 @@
+{
+  "version": "5.8.12+lang1",
+  "device_tested": false,
+  "component": {
+    "translations": 24,
+    "whitelisted_uuids": [
+      "2233b9e5a6b33311bc696ed0e8b3fe79",
+      "64498fd74cd83bb7b9308f26771f6e13",
+      "78d3f9e6c61c320ca8f2b9fbd412b8ba",
+      "876529bb588833759738816cf4d7c337"
+    ],
+    "component_sha256": "a8a2a17b4b82ed6c06cd605cd042738d4dc621341c376785e960f8f7c39858ec",
+    "bytes": 68992,
+    "target": "ARM64 iOS 14.0+",
+    "language_policy": "first preferred language zh-Hans or legacy zh-CN/SG => Simplified Chinese; otherwise English",
+    "method": "Whitelisted image CFString UI literals only; preserve original class pointers; no global UIKit hooks"
+  },
+  "packages": [
+    {
+      "variant": "rootful",
+      "source": "originals\\OverlayIOSTOOL_5.8.12_rootful_arm64.deb",
+      "source_sha256": "4ccb476440b6a1dd6a72c0acb41b1db6e8b17dd5ceee4ec854fb1dce1ed166a6",
+      "output": "localized\\OverlayIOSTOOL_5.8.12+lang1_rootful_iphoneos-arm.deb",
+      "output_sha256": "821d25ba4fbac93acd957b03be6d03b692e4355a24b248d5a9fa87c6e1e07fbc",
+      "bytes": 56934,
+      "changed_payloads": [
+        "./Applications/OverlayIOSTOOLApp.app/Info.plist",
+        "./Applications/OverlayIOSTOOLApp.app/OverlayIOSTOOLApp",
+        "./Library/MobileSubstrate/DynamicLibraries/OverlayIOSTOOL.dylib"
+      ],
+      "added_payloads": [
+        "./Applications/OverlayIOSTOOLApp.app/OverlayIOSTOOLLocalization.dylib",
+        "./Library/MobileSubstrate/DynamicLibraries/OverlayIOSTOOLLocalization.dylib",
+        "./Applications/OverlayIOSTOOLApp.app/en.lproj/InfoPlist.strings",
+        "./Applications/OverlayIOSTOOLApp.app/zh-Hans.lproj/InfoPlist.strings",
+        "./Applications/OverlayIOSTOOLApp.app/zh-Hant.lproj/InfoPlist.strings"
+      ],
+      "app": {
+        "dependency": "@loader_path/OverlayIOSTOOLLocalization.dylib",
+        "command_offset": "0xc38",
+        "command_size": 72,
+        "original_sha256": "fdc59a910d5bbd06752e184824058a1ed0bfc9879a9a6d66776930192d3dabc3",
+        "modified_sha256": "4843b8019a2cde48e9cf382b135149fd2e761c4e6bb41e1bc8a5fb2b25073435",
+        "signatures": [
+          {
+            "algorithm": "sha256",
+            "pages": 26,
+            "info_plist_hash_updated": true
+          }
+        ]
+      },
+      "tweak": {
+        "dependency": "@loader_path/OverlayIOSTOOLLocalization.dylib",
+        "command_offset": "0xd10",
+        "command_size": 72,
+        "original_sha256": "a57e91003430ef9ea45db6a09a2091a799bdda2ec98030429720dc749b563b40",
+        "modified_sha256": "77d49af82bf88261aa5eb4aa6e124dcdc0ca23a0ad5989ce99976b9a747a3659",
+        "signatures": [
+          {
+            "algorithm": "sha256",
+            "pages": 26,
+            "info_plist_hash_updated": false
+          }
+        ]
+      }
+    },
+    {
+      "variant": "rootless",
+      "source": "originals\\OverlayIOSTOOL_5.8.12_rootless_arm64.deb",
+      "source_sha256": "62292c18bdb3025eed9e50eae5e98292e921bc47f6ffe45bebe1deda6a07a623",
+      "output": "localized\\OverlayIOSTOOL_5.8.12+lang1_rootless_iphoneos-arm64.deb",
+      "output_sha256": "21cd30ab925034a20bc579990b0e3bf7abd7d8ea942cf6e04a3b7028cc9f7722",
+      "bytes": 56946,
+      "changed_payloads": [
+        "./var/jb/Applications/OverlayIOSTOOLApp.app/Info.plist",
+        "./var/jb/Applications/OverlayIOSTOOLApp.app/OverlayIOSTOOLApp",
+        "./var/jb/Library/MobileSubstrate/DynamicLibraries/OverlayIOSTOOL.dylib"
+      ],
+      "added_payloads": [
+        "./var/jb/Applications/OverlayIOSTOOLApp.app/OverlayIOSTOOLLocalization.dylib",
+        "./var/jb/Library/MobileSubstrate/DynamicLibraries/OverlayIOSTOOLLocalization.dylib",
+        "./var/jb/Applications/OverlayIOSTOOLApp.app/en.lproj/InfoPlist.strings",
+        "./var/jb/Applications/OverlayIOSTOOLApp.app/zh-Hans.lproj/InfoPlist.strings",
+        "./var/jb/Applications/OverlayIOSTOOLApp.app/zh-Hant.lproj/InfoPlist.strings"
+      ],
+      "app": {
+        "dependency": "@loader_path/OverlayIOSTOOLLocalization.dylib",
+        "command_offset": "0xce8",
+        "command_size": 72,
+        "original_sha256": "bbde713c5f63f50764db8d657fdd7336146f09b7165755ce9f079f9e8f7e3d76",
+        "modified_sha256": "4b525f06f54d5bd8b8d579da64edaf93d0e5f6373e3b097852dfc0ac17730b95",
+        "signatures": [
+          {
+            "algorithm": "sha256",
+            "pages": 26,
+            "info_plist_hash_updated": true
+          }
+        ]
+      },
+      "tweak": {
+        "dependency": "@loader_path/OverlayIOSTOOLLocalization.dylib",
+        "command_offset": "0xd90",
+        "command_size": 72,
+        "original_sha256": "c17703500b36c9415b031a0c88522194a309b8eb846140959e1334f0138e6377",
+        "modified_sha256": "8ff1db741901476c9c1b0784b4eeebedf5e3ebcdef8185b984c388173fa3d0a0",
+        "signatures": [
+          {
+            "algorithm": "sha256",
+            "pages": 26,
+            "info_plist_hash_updated": false
+          }
+        ]
+      }
+    }
+  ],
+  "behavior": "English by default; Simplified Chinese for the primary zh-Hans/legacy zh-CN/SG language",
+  "activation": "Restart the app and reload SpringBoard after installing or changing the system language"
+}

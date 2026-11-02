@@ -1,0 +1,14 @@
+{
+  "translations": 24,
+  "whitelisted_uuids": [
+    "2233b9e5a6b33311bc696ed0e8b3fe79",
+    "64498fd74cd83bb7b9308f26771f6e13",
+    "78d3f9e6c61c320ca8f2b9fbd412b8ba",
+    "876529bb588833759738816cf4d7c337"
+  ],
+  "component_sha256": "a8a2a17b4b82ed6c06cd605cd042738d4dc621341c376785e960f8f7c39858ec",
+  "bytes": 68992,
+  "target": "ARM64 iOS 14.0+",
+  "language_policy": "first preferred language zh-Hans or legacy zh-CN/SG => Simplified Chinese; otherwise English",
+  "method": "Whitelisted image CFString UI literals only; preserve original class pointers; no global UIKit hooks"
+}

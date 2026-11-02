@@ -1,0 +1,58 @@
+{
+  "package": "com.linghe.shadebar_0.1.0~beta1_iphoneos-arm64.deb",
+  "version": "0.1.0~beta1",
+  "sha256": "2c5c078846e1104ee933869906e151f156a2d655a1b80058390bf9dc065b2279",
+  "bytes": 36946,
+  "device_tested": false,
+  "binaries": {
+    "tweak": {
+      "architecture": "arm64e (allemande converted)",
+      "code_pages_verified": 23,
+      "dependencies": [
+        "/System/Library/Frameworks/UIKit.framework/UIKit",
+        "/System/Library/Frameworks/Foundation.framework/Foundation",
+        "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
+        "/System/Library/Frameworks/QuartzCore.framework/QuartzCore",
+        "/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics",
+        "/usr/lib/libobjc.A.dylib",
+        "/usr/lib/libSystem.B.dylib"
+      ],
+      "sha256": "aa6cbd5b0aa21ea374e8f2bd1f7691599061a62972fa6e06817bbf261d6720ee"
+    },
+    "preferences": {
+      "architecture": "arm64e (allemande converted)",
+      "code_pages_verified": 22,
+      "dependencies": [
+        "/System/Library/Frameworks/UIKit.framework/UIKit",
+        "/System/Library/Frameworks/Foundation.framework/Foundation",
+        "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
+        "/System/Library/PrivateFrameworks/Preferences.framework/Preferences",
+        "/usr/lib/libobjc.A.dylib",
+        "/usr/lib/libSystem.B.dylib"
+      ],
+      "sha256": "b9b91e89808b2049b77bf11537d67b165024275ba3e41595895644865dda3ce6"
+    }
+  },
+  "payloads": [
+    "./var/jb/Library/MobileSubstrate/DynamicLibraries/ShadeBar.dylib",
+    "./var/jb/Library/MobileSubstrate/DynamicLibraries/ShadeBar.plist",
+    "./var/jb/Library/PreferenceBundles/ShadePreferences.bundle/Info.plist",
+    "./var/jb/Library/PreferenceBundles/ShadePreferences.bundle/ShadePreferences",
+    "./var/jb/Library/PreferenceLoader/Preferences/ShadeBar.plist"
+  ],
+  "sources": {
+    "src/Common.h": "40feb5dc5d001e85bfd63d2a2cc401e4a278390d4c3f1ffebf9947f4a0d86170",
+    "src/Geometry.c": "fe25e08f37b5a20ff8d20406e9f0b5e8926c05f56a187e3f9221c5fdbc150a89",
+    "src/Geometry.h": "51fc4d2f0cdbaf5fb53e923ac7b826bebbb5fb4d674362c6bfc9f5859fd0c859",
+    "src/Preferences.h": "525f74f77324769483fbe7758e1c95b6975f4823d56791d546027f79d398a233",
+    "src/Private.h": "60b2ec704e10c3ff0f53b459eeab8670c78a0a3ba5e5800ab5e0f4f9bfaaf0c2",
+    "src/ShadeBar.m": "00a21e1167e89ba7f9d7c8333edf712d29c9eb5d387ba4315572b0ac01614299",
+    "src/ShadePreferences.m": "c7993cd2f6c4f562df4cf48d192cb91d9564f13524c2dedb82e48b7415521a48"
+  },
+  "limits": [
+    "No physical-device execution or UIKit rendering verification.",
+    "Uses Theos-documented allemande ABI conversion; live arm64e compatibility remains unverified.",
+    "Focused foreground application only, not every visible split-screen app.",
+    "Foreground polling interval 0.2 seconds; lock screen intentionally hidden."
+  ]
+}

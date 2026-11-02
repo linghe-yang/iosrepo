@@ -1,0 +1,12 @@
+{
+  "core_tests_passed": true,
+  "visibility_combinations": 32,
+  "geometry_sequences": 50000,
+  "native_sanitizers": ["AddressSanitizer", "UndefinedBehaviorSanitizer"],
+  "objc_components_compiled": ["ShadeBar.dylib", "ShadePreferences"],
+  "arm64e_conversion": "allemande 43b2ca59ad3f6a55735b1f7b5cba8c34b55bd8f9",
+  "signature_code_pages_verified": 45,
+  "dpkg_info_contents_extract_passed": true,
+  "device_tested": false,
+  "limitations": "Core tests run natively on Linux. UIKit, dyld/arm64e loading, private APIs, actual cross-app visibility, touch routing, preferences UI and rotation require device tests."
+}

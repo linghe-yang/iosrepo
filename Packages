@@ -49,6 +49,23 @@ SHA1: 401003c18826a45e9fa742482a258e848e17ad8d
 SHA256: 398b73a144b5a1e73922cd38a171f7bb81a60b54d85b53a8393be3acffbc74e8
 SHA512: 049440c4392c8052668b6e2710a170dfb8183d64af86403760455effb6a76b286c2f40d2a110196f5a3dc3c036356987ec0d54cb87618e6d7dfccf0984cbb5ab
 
+Package: com.linghe.shadebar
+Name: ShadeBar (Beta)
+Version: 0.1.0~beta1
+Architecture: iphoneos-arm64
+Description: Adjustable screen cover with a foreground app allowlist. iOS 16 arm64e test build.
+Maintainer: Local Build
+Author: Local Build
+Section: Tweaks
+Depends: mobilesubstrate, preferenceloader, firmware (>= 16.0), firmware (<< 17.0)
+Installed-Size: 182
+Filename: ./debs/com.linghe.shadebar_0.1.0~beta1_iphoneos-arm64.deb
+Size: 36946
+MD5sum: 2b1a7e13c50a3787f71799c160a0eae9
+SHA1: a8fef306d08aaff082dea34b7cbe1666ee4d6ed7
+SHA256: 2c5c078846e1104ee933869906e151f156a2d655a1b80058390bf9dc065b2279
+SHA512: aa8690cc6a7ecdecf3a5a9e203c2de53972ce1588bd7aaee34b0e3842c8a6fc7467a0b0e3a40f5ef885256eac7a4a9fff042029f4ae057d0d4374a6f6c0ecf3c
+
 Package: com.vietanh.overlayiostool
 Name: OverlayIOSTOOL
 Depends: mobilesubstrate, firmware (>= 14.0), firmware (<< 17.0)

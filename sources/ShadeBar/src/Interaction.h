@@ -24,7 +24,7 @@ static inline double SBPinchOpacity(double initial,double scale) {
 static inline double SBIconCoordinate(double fraction,double length) {
     if(!isfinite(length)||length<=0) return 0;
     if(!isfinite(fraction)) fraction=.5;
-    // 24-point icon: its center may approach 1 point from an edge (11 points outside).
+    // 32-point icon: its center may approach 1 point from an edge (15 points outside).
     double inset=fmin(1,length/2);return fmax(inset,fmin(length-inset,fraction*length));
 }
 static inline int SBPanelOrientation(int device,int previous,int interfaceOrientation) {

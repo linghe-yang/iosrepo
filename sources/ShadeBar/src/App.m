@@ -208,7 +208,7 @@
 }
 - (void)exportDiagnostics {
     NSMutableDictionary *report=[NSMutableDictionary new];
-    report[@"version"]=@"0.5.1~beta1";
+    report[@"version"]=@"0.6.0~beta1";
     report[@"system"]=UIDevice.currentDevice.systemVersion;
     report[@"status"]=[NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/ShadeBar/status.plist"]?:@{};
     report[@"display"]=[NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/ShadeBar/display.plist"]?:@{};

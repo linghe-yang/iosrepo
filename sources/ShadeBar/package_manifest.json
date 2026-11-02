@@ -1,14 +1,14 @@
 {
-  "package": "com.linghe.shadebar_0.5.1~beta1_iphoneos-arm64.deb",
-  "version": "0.5.1~beta1",
-  "sha256": "eee44bcef490b53db88c7fac5847f54d73287b779e75ed131e11b2dd75001e94",
-  "bytes": 113862,
+  "package": "com.linghe.shadebar_0.6.0~beta1_iphoneos-arm64.deb",
+  "version": "0.6.0~beta1",
+  "sha256": "a6d42cb80c84140e8ed0ee7d08528e62ef90b04b9d8d789a25829b25d88f62c7",
+  "bytes": 145130,
   "device_tested": false,
   "binaries": {
     "bootstrap": {
       "architecture": "arm64e native",
       "cpu_subtype": "0x80000002",
-      "uuid": "ebb57a80795f3bd09d95791bb7752618",
+      "uuid": "ad0980ecf3f536a18047d85d04bb130a",
       "sections": [
         "__text",
         "__auth_stubs",
@@ -24,12 +24,12 @@
         "/usr/lib/libSystem.B.dylib",
         "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation"
       ],
-      "sha256": "04f37a4f25b1c6cbfc3d976e8581a7a9cd74fd5c48a789a44d17d0dfba20592c"
+      "sha256": "fe5e51b452ddc3c0628c70ba5ccbb9ef090aae1618369c34fa31990291994384"
     },
     "renderer": {
       "architecture": "arm64e native",
       "cpu_subtype": "0x80000002",
-      "uuid": "6fbf11c5ac5b3433b95ed3caa4809796",
+      "uuid": "054d9e0c23fb3a0a8e7bfd3f2bb2cbd4",
       "sections": [
         "__text",
         "__auth_stubs",
@@ -63,7 +63,7 @@
         "__data",
         "__bss"
       ],
-      "code_pages_verified": 39,
+      "code_pages_verified": 44,
       "dependencies": [
         "/usr/lib/libSystem.B.dylib",
         "/usr/lib/libobjc.A.dylib",
@@ -73,12 +73,12 @@
         "/System/Library/Frameworks/QuartzCore.framework/QuartzCore",
         "/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics"
       ],
-      "sha256": "a13b3209bbd6d9a18799b2adab5deb87377f34fc9a80f1d61b20ed9d0ae22ed5"
+      "sha256": "d522fae2c41b6012f3211a4b69a08365840ccc02903d1c6bd16643bfb8394ddf"
     },
     "app": {
       "architecture": "arm64",
       "cpu_subtype": "0x0",
-      "uuid": "fafb3fa46e5f3a32bc621e7c084dda9e",
+      "uuid": "c6a1d027d2ea3334aa10aea420997a7b",
       "sections": [
         "__text",
         "__stubs",
@@ -110,7 +110,7 @@
         "__objc_data",
         "__data"
       ],
-      "code_pages_verified": 41,
+      "code_pages_verified": 54,
       "dependencies": [
         "/usr/lib/libSystem.B.dylib",
         "/usr/lib/libobjc.A.dylib",
@@ -119,7 +119,7 @@
         "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
         "/System/Library/Frameworks/QuartzCore.framework/QuartzCore"
       ],
-      "sha256": "053738d51e16bb1556d6586c9ae6a3bbe715ac48178f39119ac2599a4ed60091"
+      "sha256": "b53de4ec1f1aa097be2506969793796abfe21a48ec52f4ec1bc13bdc905104d6"
     }
   },
   "payloads": [
@@ -137,21 +137,28 @@
   ],
   "source_hash_format": "UTF-8, LF newlines, no BOM",
   "sources": {
-    "src/App.m": "736e9e840b8307f81fe9807ed29616851179a2ee3dfca6b43f5c4ceb080139f6",
+    "src/App.m": "18d81fee23f0ce4b71b25eafb2c2bc33ba0c67dc89dc85fb0b796591af5a81aa",
     "src/Bootstrap.c": "76e90afb4ec78ca74c16b43a9cc731bcd5d6bd73801efbfda8bae3fa45914532",
-    "src/Common.h": "8c8f6faa4638758fef882f7ed28bd75f2cac6157ea317aea463aaf951bf4f12a",
+    "src/Common.h": "920b4c957fabfc61b2f35d50982a38fe84f29a2493b0984173a83bdfa8205db8",
     "src/Geometry.c": "ad1c7fcf171f5b83be1e67c39e6bc740bd11ed87174e70fe3d95dc716e174e05",
     "src/Geometry.h": "65a465765b6b5716e2436bb3273f4594736c42687060c04be2472c0f1ff8269b",
-    "src/Interaction.h": "da2cedb9217f583f4425b17b23e922a8cd908bb39f4cbb80c2c0817de2d60891",
+    "src/Interaction.h": "e25a2a456664cfadccd32e52c3c1229ba8faf6f0c70b3f1ad06914bc64df5ffb",
     "src/OverlayUI.h": "f4cbb434601a8c33209bab19738cdfadfe8d3eba86718ddae21ddab9bc6c48df",
     "src/OverlayUI.m": "6f2b8a604bda66a59b663f886ad1642223430f91bb1085c81e611cc31464fbe8",
     "src/Preferences.h": "525f74f77324769483fbe7758e1c95b6975f4823d56791d546027f79d398a233",
     "src/Private.h": "685844a27b9a3b5938c1377fd15029b76c57b969ef9bdee7f780824a1e745114",
     "src/ProfileUI.h": "35cdf4b337b3085c76f01ff4eaeaa28e3b659abadb7d2ed79ecc45be3e899a5c",
-    "src/ProfileUI.m": "e2b5f2ee6130e6cd9db210f78362fcf3d408c0f24649d18579634b4b290748ad",
-    "src/ShadeBar.m": "8e8b2ad06171bd280eefd8e55956e95422116f4ca2e6acc3e1705949a6b5ca1a",
+    "src/ProfileUI.m": "363afd073e6de3905d562d0d66eefa3138b721cbb3196c10c07d4a2fa4213be2",
+    "src/ShadeBar.m": "861a52bf8ce5686c157e527f9a7020fe74c76b63e63149f5b3b14cc7cd46ce98",
     "src/ShadePreferences.m": "c7993cd2f6c4f562df4cf48d192cb91d9564f13524c2dedb82e48b7415521a48",
-    "src/Store.h": "359e32d08493fdc1e70eb663a530e26693785291ebbe0a322a7071fb5f5b498d"
+    "src/Store.h": "fb0048d1132209039fd512c6dfe2875f38743d7bdb550ef368fe6f70cb34e2d4",
+    "src/StoreLimits.h": "ab64138e3226109a2da7bf5ddb32ec24f70ca7a71d379f712b4f8faba2ac8b31",
+    "src/TextLayout.h": "4f1ed7b1106fd49a336e4c90f64946ea02d1da9e91de6297680d1f5655382d82",
+    "src/TextModel.h": "3b951e96c2d516a9147d4de55603e0ee1869f3dcfab82fa2ec6000df27193e86",
+    "src/TextOverlay.h": "bf4679dcdfdc1b1b2e6cef5642aeaab6d64d17bf8df553ae0d8a14f5d52f710f",
+    "src/TextOverlay.m": "011243a1686b76cbd0638cbd8617ea94f89fe0d6cf688f04faef0d37c0a50e39",
+    "src/TextSettings.h": "b66433e4c9e16ceb5d6b39c81173097206b535b73cc0049ecfffde957131041a",
+    "src/TextSettings.m": "93c4bcbcd2ae5cee5588be3854c732c6cab991b19f12a991bee5a5f9f87b6ed7"
   },
   "limits": [
     "beta1 device crash confirmed in ShadeManager init -> FBSOrientationObserver setHandler: -> objc_msgSend. Callback registration removed.",
@@ -161,6 +168,8 @@
     "0.2.0 device feedback: desktop app opened but overlay was absent even without app filtering; exact device-side cause remains unconfirmed.",
     "User confirmed 0.3.0 works on device; 0.3.1 adds app-switcher hiding and needs device verification.",
     "0.4.0 adds searchable app icons and explicit per-app enable switches; icon availability and UI need device verification.",
+    "0.6.0 adds per-app text lines, per-line colors/sizes/fonts and fixed-point aligned clipping; multilingual UIKit shaping and font picker need device verification.",
+    "0.5.2 changes floating icon diameter to 32 points, with up to 15 points extending past an edge.",
     "0.5.1 fixes landscape transforms, adds gravity-oriented panel, 24-point partly offscreen icon, and a 10 percent opacity floor; physical-device validation pending.",
     "0.5.0 adds floating icon, modal quick settings, bar visibility/interaction controls and pinch opacity control; UIKit touch routing and pinch opacity updates still require device verification.",
     "Each app has an independent profile: 1-120 percent width/height, color/opacity, and separate portrait/landscape centers.",

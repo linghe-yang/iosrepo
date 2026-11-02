@@ -1,5 +1,7 @@
 #include "../src/Geometry.h"
 #include "../src/Interaction.h"
+#include "../src/TextLayout.h"
+#include "../src/StoreLimits.h"
 #include <assert.h>
 #include <math.h>
 #include <stdio.h>
@@ -9,6 +11,33 @@ static void valid(SBRect r) {
     assert(r.w>=.01&&r.h>=.01&&r.w<=1.2&&r.h<=1.2);
 }
 int main(void) {
+    // Multi-app text profiles beyond the old read limit remain readable; oversized
+    // writes must be rejected before replacing the last valid settings file.
+    assert(SBStoreSizeAllowed(1024*1024+1));
+    assert(SBStoreSizeAllowed(16*1024*1024));
+    assert(!SBStoreSizeAllowed(0) && !SBStoreSizeAllowed(16*1024*1024+1));
+    // Mixed font metrics: line heights and widths remain fixed across all nine alignments.
+    const SBTextMetric lines[]={{240,30},{60,18},{0,24}};
+    for(int horizontal=0;horizontal<3;horizontal++) for(int vertical=0;vertical<3;vertical++) {
+        SBRect large[3],small[3];
+        SBTextArrange(300,120,lines,3,7,horizontal,vertical,large);
+        SBTextArrange(40,20,lines,3,7,horizontal,vertical,small);
+        const double xLarge[]={0,30,60},xSmall[]={0,-100,-200};
+        const double yLarge[]={0,17,34},ySmall[]={0,-33,-66}; // Block height 86, including empty line.
+        assert(large[0].x==xLarge[horizontal] && small[0].x==xSmall[horizontal]);
+        assert(large[0].y==yLarge[vertical] && small[0].y==ySmall[vertical]);
+        for(int i=0;i<3;i++) {
+            assert(large[i].w==lines[i].width && small[i].w==lines[i].width);
+            assert(large[i].h==lines[i].height && small[i].h==lines[i].height);
+            if(i) assert(small[i].y-small[i-1].y-small[i-1].h==7);
+        }
+        // Moving the entire bar offscreen must also move its text offscreen.
+        if(horizontal==0) assert(-150+large[0].x==-150);
+    }
+    SBRect result[3];SBTextArrange(1,1,NULL,0,4,1,1,result);
+    assert(SBTextFontSize(0)==6 && SBTextFontSize(250)==200 && SBTextFontSize(NAN)==24);
+    assert(SBTextSpacing(-1)==0 && SBTextSpacing(200)==100 && SBTextSpacing(NAN)==4);
+    assert(SBTextAlignment(NAN)==1 && SBTextAlignment(-1)==1 && SBTextAlignment(2)==2);
     // Actual hit-routing policy used by ShadeWindow, including full-screen bars.
     for(int flags=0;flags<32;flags++) {
         bool eligible=flags&1,bar=flags&2,icon=flags&4,panel=flags&8,interactive=flags&16;
@@ -44,7 +73,7 @@ int main(void) {
     for(int i=0;i<2;i++) {
         double w=i?1133:744,h=i?744:1133;
         assert(SBIconCoordinate(-4,w)==1 && SBIconCoordinate(8,w)==w-1);
-        assert(SBIconCoordinate(0,w)-12==-11 && SBIconCoordinate(1,w)+12==w+11);
+        assert(SBIconCoordinate(0,w)-16==-15 && SBIconCoordinate(1,w)+16==w+15);
         assert(SBIconCoordinate(.88,w)>40 && SBIconCoordinate(.2,h)>40);
     }
     for(int bits=0;bits<16;bits++) {
@@ -132,5 +161,5 @@ int main(void) {
         SBRect center=SBCenteredRect(.5,.5,after.w,after.h);
         assert(fabs(center.x+center.w/2-.5)<1e-9 && fabs(center.y+center.h/2-.5)<1e-9);
     }
-    puts("PASS: 256 overlay hit routes; bar hiding, pass-through and icon recovery; pinch opacity bounds; 4 directions; 64 app policies; 50000 geometry cases");
+    puts("PASS: 9 fixed-size text alignments, overflow and spacing; 256 overlay hit routes; bar hiding, pass-through and icon recovery; pinch opacity bounds; 4 directions; 64 app policies; 50000 geometry cases");
 }

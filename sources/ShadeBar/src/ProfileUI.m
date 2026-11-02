@@ -1,5 +1,6 @@
 #import "Common.h"
 #import "ProfileUI.h"
+#import "TextSettings.h"
 
 @implementation ShadeProfileSettings
 - (instancetype)initWithBundle:(NSString *)bundle name:(NSString *)name {
@@ -33,12 +34,13 @@
 - (void)appWillResign:(NSNotification *)notification {[self flushPending];}
 - (void)viewWillDisappear:(BOOL)animated {[self flushPending];[super viewWillDisappear:animated];}
 - (void)dealloc {[[NSNotificationCenter defaultCenter] removeObserver:self];[self.saveTimer invalidate];}
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)table {return 4;}
-- (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section {return ((NSInteger[]){4,2,3,1})[section];}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)table {return 5;}
+- (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section {return ((NSInteger[]){4,2,3,1,1})[section];}
 - (NSString *)tableView:(UITableView *)table titleForHeaderInSection:(NSInteger)section {
-    return @[SBT(@"This application",@"此应用"),SBT(@"Rectangle size (%)",@"矩形尺寸（%）"),SBT(@"Color and opacity",@"颜色与不透明度"),SBT(@"Position",@"位置")][section];
+    return @[SBT(@"This application",@"此应用"),SBT(@"Rectangle size (%)",@"矩形尺寸（%）"),SBT(@"Color and opacity",@"颜色与不透明度"),SBT(@"Position",@"位置"),SBT(@"Text",@"文字")][section];
 }
 - (NSString *)tableView:(UITableView *)table titleForFooterInSection:(NSInteger)section {
+    if(section==4) return SBT(@"Each list item is one line with its own color, size and font. Configure text here in the app.",@"列表每项为一行，可单独设置颜色、字号和字体。文字选项只在此 App 中配置。");
     if(section==0) return SBT(@"Enable ShadeBar controls whether this app is handled. Show shade bar only hides/restores the rectangle. Interaction allows dragging and pinch-to-adjust opacity; when off, bar touches pass through. The floating icon can still open quick settings.",@"启用 ShadeBar 决定是否处理此应用；“显示遮挡条”仅控制矩形。开启交互可拖动、双指调节不透明度；关闭后触摸穿透遮挡条。悬浮图标仍可打开快捷设置。");
     section--;
     if(section==0) return SBT(@"Width and height: 1–120% of the current screen. 100% × 20% spans the screen horizontally. Rotation recalculates the size using the new screen dimensions; excess area is allowed off screen.",@"宽高均为当前屏幕的 1–120%。100% × 20% 表示横跨屏幕的条。旋转后按新屏幕尺寸重新计算，允许部分超出屏幕。");
@@ -94,6 +96,12 @@
     [self.tableView reloadData];
 }
 - (UITableViewCell *)tableView:(UITableView *)table cellForRowAtIndexPath:(NSIndexPath *)index {
+    if(index.section==4) {
+        UITableViewCell *cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
+        cell.textLabel.text=SBT(@"Configure bar text",@"配置遮挡条文字");
+        cell.detailTextLabel.text=[NSString stringWithFormat:@"%@ · %lu %@",SBBool(self.profile,@"textEnabled",NO)?SBT(@"On",@"已开启"):SBT(@"Off",@"已关闭"),(unsigned long)[self.profile[@"textLines"] count],SBT(@"lines",@"行")];
+        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;return cell;
+    }
     if(index.section==0) {
         UITableViewCell *cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
         NSArray *titles=@[SBT(@"Enable ShadeBar for this app",@"在此应用中启用 ShadeBar"),SBT(@"Show shade bar",@"显示遮挡条"),SBT(@"Allow bar interaction",@"允许遮挡条交互"),SBT(@"Show floating icon",@"显示悬浮图标")];
@@ -116,6 +124,10 @@
     return cell;
 }
 - (void)tableView:(UITableView *)table didSelectRowAtIndexPath:(NSIndexPath *)index {
+    if(index.section==4) {
+        [self flushPending];[table deselectRowAtIndexPath:index animated:YES];
+        [self.navigationController pushViewController:[[ShadeTextSettings alloc] initWithBundle:self.bundle] animated:YES];return;
+    }
     if(index.section==0) return;
     NSInteger section=index.section-1;
     [table deselectRowAtIndexPath:index animated:YES];

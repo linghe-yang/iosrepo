@@ -156,6 +156,40 @@ SHA1: 40853b34a66bd3572e63d5a7fa98eada0fc6e881
 SHA256: eee44bcef490b53db88c7fac5847f54d73287b779e75ed131e11b2dd75001e94
 SHA512: 7d6ad9059e16a994b96fb79bef073b0f4c744c03b904f3e76e7136809000230b363f167838e9af8eaaabb22801e1b601ccecd90e68900049bea5d41da364f3d8
 
+Package: com.linghe.shadebar
+Name: ShadeBar (Beta)
+Version: 0.5.2~beta1
+Architecture: iphoneos-arm64
+Description: Per-app shade bar: compact edge icon, upright quick settings and 10-100 percent opacity.
+Maintainer: Local Build
+Author: Local Build
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 16.0), firmware (<< 17.0)
+Installed-Size: 398
+Filename: ./debs/com.linghe.shadebar_0.5.2~beta1_iphoneos-arm64.deb
+Size: 113866
+MD5sum: 06232fcc1b1e859bf4d2f52f97763631
+SHA1: 719b181f28994bb3fc76b656d549963e11c7f05a
+SHA256: 996b5381df70874b8b7efc3989628c2fc151741ef49d10078159681b967eed6f
+SHA512: 423091da73dc8d8b9583ff31aa5818abd2467de11e393e38bbf276077e8c63b3491422c0c86f718b4054e450447b1cdd47986de972c80a624964f8b181fcd535
+
+Package: com.linghe.shadebar
+Name: ShadeBar (Beta)
+Version: 0.6.0~beta1
+Architecture: iphoneos-arm64
+Description: Per-app shade bar with styled multilingual text lines, fixed font sizes and alignment.
+Maintainer: Local Build
+Author: Local Build
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 16.0), firmware (<< 17.0)
+Installed-Size: 470
+Filename: ./debs/com.linghe.shadebar_0.6.0~beta1_iphoneos-arm64.deb
+Size: 145130
+MD5sum: cca2ad0889783a01725523b6cfd08a74
+SHA1: 49bdedce526a76e848f2cc6b21080cfd7907edb2
+SHA256: a6d42cb80c84140e8ed0ee7d08528e62ef90b04b9d8d789a25829b25d88f62c7
+SHA512: 4aad94db1132f34befab98abef01ed934bb97f71253ed666ce59c285595b08353f1bd1ea9a0016029a1077423bd819f806a16c09708cc7d5733a1fa2110ff4e9
+
 Package: com.vietanh.overlayiostool
 Name: OverlayIOSTOOL
 Depends: mobilesubstrate, firmware (>= 14.0), firmware (<< 17.0)

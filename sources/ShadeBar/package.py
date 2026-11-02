@@ -10,7 +10,7 @@ import struct
 import tarfile
 
 ROOT=Path(__file__).resolve().parent
-VERSION='0.5.1~beta1'
+VERSION='0.6.0~beta1'
 
 def signature_check(data,expected_subtype=2,expected_kind=6):
     magic,cpu,subtype,kind,ncmds=struct.unpack_from('<5I',data)
@@ -80,7 +80,7 @@ def main():
     plist=lambda d:plistlib.dumps(d,sort_keys=True)
     base='./var/jb/Library/'
     appbase='./var/jb/Applications/ShadeBar.app/'
-    info={'CFBundleExecutable':'ShadeBarApp','CFBundleIdentifier':'com.linghe.shadebar.app','CFBundleName':'ShadeBar','CFBundleDisplayName':'ShadeBar','CFBundlePackageType':'APPL','CFBundleVersion':'7','CFBundleShortVersionString':'0.5.1','MinimumOSVersion':'16.0','LSRequiresIPhoneOS':True,'UIDeviceFamily':[1,2],'UISupportedInterfaceOrientations':['UIInterfaceOrientationPortrait','UIInterfaceOrientationPortraitUpsideDown','UIInterfaceOrientationLandscapeLeft','UIInterfaceOrientationLandscapeRight'],'UILaunchScreen':{},'CFBundleDevelopmentRegion':'en','CFBundleIcons':{'CFBundlePrimaryIcon':{'CFBundleIconFiles':['Icon-120','Icon-180']}},'CFBundleIcons~ipad':{'CFBundlePrimaryIcon':{'CFBundleIconFiles':['Icon-76','Icon-152','Icon-167']}}}
+    info={'CFBundleExecutable':'ShadeBarApp','CFBundleIdentifier':'com.linghe.shadebar.app','CFBundleName':'ShadeBar','CFBundleDisplayName':'ShadeBar','CFBundlePackageType':'APPL','CFBundleVersion':'9','CFBundleShortVersionString':'0.6.0','MinimumOSVersion':'16.0','LSRequiresIPhoneOS':True,'UIDeviceFamily':[1,2],'UISupportedInterfaceOrientations':['UIInterfaceOrientationPortrait','UIInterfaceOrientationPortraitUpsideDown','UIInterfaceOrientationLandscapeLeft','UIInterfaceOrientationLandscapeRight'],'UILaunchScreen':{},'CFBundleDevelopmentRegion':'en','CFBundleIcons':{'CFBundlePrimaryIcon':{'CFBundleIconFiles':['Icon-120','Icon-180']}},'CFBundleIcons~ipad':{'CFBundlePrimaryIcon':{'CFBundleIconFiles':['Icon-76','Icon-152','Icon-167']}}}
     files={
       base+'MobileSubstrate/DynamicLibraries/ShadeBootstrap.dylib':(dylib,0o755),
       base+'MobileSubstrate/DynamicLibraries/ShadeBootstrap.plist':(plist({'Filter':{'Bundles':['com.apple.springboard']}}),0o644),
@@ -94,7 +94,7 @@ def main():
 Name: ShadeBar (Beta)
 Version: {VERSION}
 Architecture: iphoneos-arm64
-Description: Per-app shade bar: compact edge icon, upright quick settings and 10-100 percent opacity.
+Description: Per-app shade bar with styled multilingual text lines, fixed font sizes and alignment.
 Maintainer: Local Build
 Author: Local Build
 Section: Tweaks
@@ -109,7 +109,7 @@ Installed-Size: {math.ceil(sum(len(x[0]) for x in files.values())/1024)}
         if len(content)%2: out.extend(b'\n')
     path=ROOT/'packages'/f'com.linghe.shadebar_{VERSION}_iphoneos-arm64.deb'
     path.parent.mkdir(exist_ok=True); path.write_bytes(out)
-    manifest={'package':path.name,'version':VERSION,'sha256':hashlib.sha256(out).hexdigest(),'bytes':len(out),'device_tested':False,'binaries':checks,'payloads':sorted(files),'source_hash_format':'UTF-8, LF newlines, no BOM','sources':{p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_text(encoding='utf-8-sig').encode('utf-8')).hexdigest() for p in sorted((ROOT/'src').glob('*'))},'limits':['beta1 device crash confirmed in ShadeManager init -> FBSOrientationObserver setHandler: -> objc_msgSend. Callback registration removed.','Native Clang 23 + Apple ld64 956.6 arm64e build; no ABI converter. New build still needs physical-device validation.','Desktop app and manual renderer loading are separate. Overlay does not automatically start after respring.','Focused foreground application only; polling interval 0.2 seconds; lock screen, app switcher and settings app hidden.','0.2.0 device feedback: desktop app opened but overlay was absent even without app filtering; exact device-side cause remains unconfirmed.','User confirmed 0.3.0 works on device; 0.3.1 adds app-switcher hiding and needs device verification.','0.4.0 adds searchable app icons and explicit per-app enable switches; icon availability and UI need device verification.','0.5.1 fixes landscape transforms, adds gravity-oriented panel, 24-point partly offscreen icon, and a 10 percent opacity floor; physical-device validation pending.','0.5.0 adds floating icon, modal quick settings, bar visibility/interaction controls and pinch opacity control; UIKit touch routing and pinch opacity updates still require device verification.','Each app has an independent profile: 1-120 percent width/height, color/opacity, and separate portrait/landscape centers.','Dragging changes position only and may move the bar fully off screen; the app reset centers both orientations without changing size or appearance.']}
+    manifest={'package':path.name,'version':VERSION,'sha256':hashlib.sha256(out).hexdigest(),'bytes':len(out),'device_tested':False,'binaries':checks,'payloads':sorted(files),'source_hash_format':'UTF-8, LF newlines, no BOM','sources':{p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_text(encoding='utf-8-sig').encode('utf-8')).hexdigest() for p in sorted((ROOT/'src').glob('*'))},'limits':['beta1 device crash confirmed in ShadeManager init -> FBSOrientationObserver setHandler: -> objc_msgSend. Callback registration removed.','Native Clang 23 + Apple ld64 956.6 arm64e build; no ABI converter. New build still needs physical-device validation.','Desktop app and manual renderer loading are separate. Overlay does not automatically start after respring.','Focused foreground application only; polling interval 0.2 seconds; lock screen, app switcher and settings app hidden.','0.2.0 device feedback: desktop app opened but overlay was absent even without app filtering; exact device-side cause remains unconfirmed.','User confirmed 0.3.0 works on device; 0.3.1 adds app-switcher hiding and needs device verification.','0.4.0 adds searchable app icons and explicit per-app enable switches; icon availability and UI need device verification.','0.6.0 adds per-app text lines, per-line colors/sizes/fonts and fixed-point aligned clipping; multilingual UIKit shaping and font picker need device verification.','0.5.2 changes floating icon diameter to 32 points, with up to 15 points extending past an edge.','0.5.1 fixes landscape transforms, adds gravity-oriented panel, 24-point partly offscreen icon, and a 10 percent opacity floor; physical-device validation pending.','0.5.0 adds floating icon, modal quick settings, bar visibility/interaction controls and pinch opacity control; UIKit touch routing and pinch opacity updates still require device verification.','Each app has an independent profile: 1-120 percent width/height, color/opacity, and separate portrait/landscape centers.','Dragging changes position only and may move the bar fully off screen; the app reset centers both orientations without changing size or appearance.']}
     (ROOT/'build/package_manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8')
     print('PASS: signed arm64e binaries, dependencies, rootless payload; built',path.name,len(out),'bytes')
 

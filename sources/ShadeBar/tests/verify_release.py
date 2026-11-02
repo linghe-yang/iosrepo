@@ -70,6 +70,14 @@ def main():
     assert b'_applicationIconImageForBundleIdentifier:format:scale:\0' in app_bytes
     assert b'toggleApplication:\0' in app_bytes and b'iconForBundle:\0' in app_bytes
     assert b'toggleOverlayOption:\0' in app_bytes
+    for symbol in (b'ShadeTextSettings\0',b'ShadeTextLineSettings\0',b'UIFontPickerViewController\0',b'fontPickerViewControllerDidPickFont:\0'):
+        assert symbol in app_bytes
+    assert b'ShadeTextOverlay\0' in renderer_bytes
+    for data in (app_bytes,renderer_bytes):
+        for key in (b'textEnabled\0',b'textLines\0',b'textSpacing\0',b'textHorizontal\0',b'textVertical\0'):
+            assert key in data
+    for symbol in (b'setAdjustsFontSizeToFitWidth:\0',b'setLineBreakMode:\0',b'sizeThatFits:\0'):
+        assert symbol in renderer_bytes
     assert b'profile.%@.%@\0' in app_bytes and b'profile.%@.%@\0' in renderer_bytes
     assert not any('Preferences.framework' in p for p in application['dependencies'])
     assert not any('PreferenceBundles/' in p or 'PreferenceLoader/' in p for p in payload)
@@ -87,6 +95,7 @@ def main():
     result['floating_icon_quick_panel_and_pinch_gesture_present']=True
     result['desktop_overlay_options_present']=True
     result['device_orientation_and_independent_panel_coordinates_present']=True
+    result['text_settings_font_picker_and_renderer_present']=True
     (ROOT/'build/release_verification.json').write_text(json.dumps(result,indent=2))
     print('PASS: native ABI, isolated startup, removed crashing callback, desktop icons, iPad orientations, scripts, signed package')
 

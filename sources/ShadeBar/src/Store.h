@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <errno.h>
 #include <stdbool.h>
+#include "StoreLimits.h"
 #define SB_DIRECTORY "/var/mobile/Library/ShadeBar"
 #define SB_SETTINGS SB_DIRECTORY "/settings.plist"
 static inline CFStringRef SBString(const char *s) {
@@ -20,7 +21,7 @@ static inline CFDictionaryRef SBStoreCopy(void) {
     if(file) {
         if(fseek(file,0,SEEK_END)==0) {
             long length=ftell(file);
-            if(length>0 && length<1024*1024 && fseek(file,0,SEEK_SET)==0) {
+            if(length>0 && SBStoreSizeAllowed((size_t)length) && fseek(file,0,SEEK_SET)==0) {
                 UInt8 *buffer=malloc((size_t)length);
                 if(buffer) {
                     if(fread(buffer,1,(size_t)length,file)==(size_t)length) {
@@ -52,6 +53,8 @@ static inline Boolean SBStoreWrite(CFDictionaryRef changes) {
     int lock=open(SB_DIRECTORY "/settings.lock",O_CREAT|O_RDWR,0600);
     if(lock<0) return false;
     if(flock(lock,LOCK_EX)!=0) {close(lock);return false;}
+    struct stat existing;
+    if(stat(SB_SETTINGS,&existing)==0 && !SBStoreSizeAllowed((size_t)existing.st_size)) {flock(lock,LOCK_UN);close(lock);return false;}
     CFDictionaryRef old=SBStoreCopy();
     CFMutableDictionaryRef merged=CFDictionaryCreateMutableCopy(NULL,0,old);
     CFRelease(old);
@@ -59,7 +62,7 @@ static inline Boolean SBStoreWrite(CFDictionaryRef changes) {
     CFDataRef data=CFPropertyListCreateData(NULL,merged,kCFPropertyListBinaryFormat_v1_0,0,NULL);
     CFRelease(merged);
     Boolean success=false;
-    if(data) {
+    if(data && SBStoreSizeAllowed((size_t)CFDataGetLength(data))) {
         char path[]=SB_SETTINGS ".XXXXXX";
         int fd=mkstemp(path);
         if(fd>=0) {
@@ -74,7 +77,7 @@ static inline Boolean SBStoreWrite(CFDictionaryRef changes) {
             if(offset==count && syncResult==0 && rename(path,SB_SETTINGS)==0) success=true;
             if(!success) unlink(path);
         }
-        CFRelease(data);
     }
+    if(data) CFRelease(data);
     flock(lock,LOCK_UN);close(lock);return success;
 }

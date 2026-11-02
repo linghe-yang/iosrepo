@@ -1,6 +1,7 @@
 #import "Common.h"
 #import "Private.h"
 #import "OverlayUI.h"
+#import "TextOverlay.h"
 
 @interface ShadeWindow : UIWindow
 @property(nonatomic,strong) UIView *bar;
@@ -36,6 +37,7 @@
 @property(nonatomic,strong) ShadeWindow *window;
 @property(nonatomic,strong) ShadeController *controller;
 @property(nonatomic,strong) UIView *canvas,*panelCanvas;
+@property(nonatomic,strong) ShadeTextOverlay *textOverlay;
 @property(nonatomic,strong) NSDictionary *settings,*profile,*lastDisplay;
 @property(nonatomic,copy) NSString *activeBundle,*gestureBundle;
 @property(nonatomic,strong) NSTimer *timer;
@@ -105,6 +107,8 @@
     self.canvas=[UIView new];
     [self.controller.view addSubview:self.canvas];
     self.window.bar=[UIView new];
+    self.window.bar.clipsToBounds=YES;
+    self.textOverlay=[[ShadeTextOverlay alloc] initWithFrame:CGRectZero];[self.window.bar addSubview:self.textOverlay];
     self.window.bar.isAccessibilityElement=YES;
     self.window.bar.accessibilityLabel=SBT(@"Shade bar. Drag to move.",@"遮挡条，可拖动移动。");
     [self.canvas addSubview:self.window.bar];
@@ -112,7 +116,7 @@
     move.maximumNumberOfTouches=1;move.delegate=self;
     [self.window.bar addGestureRecognizer:move];
     UIPinchGestureRecognizer *pinch=[[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinch:)];pinch.delegate=self;[self.window.bar addGestureRecognizer:pinch];
-    self.window.icon=[[ShadeFloatingIcon alloc] initWithFrame:CGRectMake(0,0,24,24)];[self.canvas addSubview:self.window.icon];
+    self.window.icon=[[ShadeFloatingIcon alloc] initWithFrame:CGRectMake(0,0,32,32)];[self.canvas addSubview:self.window.icon];
     UIPanGestureRecognizer *iconMove=[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveIcon:)];iconMove.maximumNumberOfTouches=1;[self.window.icon addGestureRecognizer:iconMove];
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPanel)];[tap requireGestureRecognizerToFail:iconMove];[self.window.icon addGestureRecognizer:tap];
     // The panel follows physical orientation independently of an orientation-locked app.
@@ -186,6 +190,7 @@
 }
 - (void)applyProfile {
     self.window.bar.backgroundColor=[SBColor(self.profile) colorWithAlphaComponent:SBOpacity(SBNumber(self.profile,@"opacity",1))];
+    [self.textOverlay updateProfile:self.profile];
     if(!self.dragging && !self.pinching) self.rect=SBFrame(self.profile,UIInterfaceOrientationIsLandscape(self.orientation));
     self.window.bar.userInteractionEnabled=SBBool(self.profile,@"interactive",YES);
     if(self.panelOpen) [self.window.panel updateProfile:self.profile];
@@ -286,6 +291,7 @@
     self.rect=SBNormalizeRect(self.rect);
     SBRect r=SBPixelRect(self.rect,size.width,size.height);
     self.window.bar.bounds=CGRectMake(0,0,r.w,r.h);
+    self.textOverlay.frame=self.window.bar.bounds;
     self.window.bar.center=CGPointMake(r.x+r.w/2,r.y+r.h/2);
     if(!self.iconDragging) {
         NSString *prefix=UIInterfaceOrientationIsLandscape(self.orientation)?@"landscape":@"portrait";

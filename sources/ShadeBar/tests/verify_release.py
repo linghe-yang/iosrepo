@@ -59,12 +59,15 @@ def main():
     for selector in (b'isAnySwitcherVisible\0',b'isMainSwitcherVisible\0',b'appSwitcherVisible:\0'):
         assert selector in renderer_bytes
     assert b'resize:\0' not in renderer_bytes and b'finish\0' not in renderer_bytes
+    for symbol in (b'ShadeFloatingIcon\0',b'ShadeQuickPanel\0',b'pinch:\0',b'openPanel\0',b'closePanel\0',b'moveIcon:\0'):
+        assert symbol in renderer_bytes
     for data in (payload[path+'ShadeBootstrap.dylib'],renderer_bytes,payload[app+'ShadeBarApp']):
         assert b'/var/mobile/Library/ShadeBar/settings.plist\0' in data
     app_bytes=payload[app+'ShadeBarApp']
     assert b'UISlider\0' in app_bytes and b'ShadeProfileSettings\0' in app_bytes
     assert b'_applicationIconImageForBundleIdentifier:format:scale:\0' in app_bytes
     assert b'toggleApplication:\0' in app_bytes and b'iconForBundle:\0' in app_bytes
+    assert b'toggleOverlayOption:\0' in app_bytes
     assert b'profile.%@.%@\0' in app_bytes and b'profile.%@.%@\0' in renderer_bytes
     assert not any('Preferences.framework' in p for p in application['dependencies'])
     assert not any('PreferenceBundles/' in p or 'PreferenceLoader/' in p for p in payload)
@@ -78,6 +81,9 @@ def main():
     result['percentage_sliders_present']=True
     result['application_icons_and_per_app_switch_present']=True
     result['app_switcher_visibility_detection_present']=True
+    result['on_screen_resize_handles_removed']=result.pop('on_screen_resize_controls_removed')
+    result['floating_icon_quick_panel_and_pinch_gesture_present']=True
+    result['desktop_overlay_options_present']=True
     (ROOT/'build/release_verification.json').write_text(json.dumps(result,indent=2))
     print('PASS: native ABI, isolated startup, removed crashing callback, desktop icons, iPad orientations, scripts, signed package')
 

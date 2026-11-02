@@ -1,17 +1,25 @@
 #import "Common.h"
 #import "Private.h"
+#import "OverlayUI.h"
 
 @interface ShadeWindow : UIWindow
 @property(nonatomic,strong) UIView *bar;
+@property(nonatomic,strong) ShadeFloatingIcon *icon;
+@property(nonatomic,strong) UIControl *mask;
+@property(nonatomic,strong) ShadeQuickPanel *panel;
+@property(nonatomic) SBOverlayState overlayState;
 @end
 @implementation ShadeWindow
-// Keep UIKit's default window hosting; no unregistered unmanaged context.
-- (BOOL)canBecomeKeyWindow { return NO; }
-- (BOOL)_canBecomeKeyWindow { return NO; }
+- (BOOL)canBecomeKeyWindow {return NO;}
+- (BOOL)_canBecomeKeyWindow {return NO;}
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-    if(self.hidden || self.bar.hidden) return nil;
-    CGPoint p=[self.bar convertPoint:point fromView:self];
-    return [self.bar pointInside:p withEvent:event]?self.bar:nil;
+    if(self.hidden) return nil;
+    CGPoint bar=[self.bar convertPoint:point fromView:self],icon=[self.icon convertPoint:point fromView:self],panel=[self.panel convertPoint:point fromView:self];
+    int route=SBOverlayHit(self.overlayState,[self.bar pointInside:bar withEvent:event],[self.icon pointInside:icon withEvent:event],[self.panel pointInside:panel withEvent:event]);
+    if(route==SBHitPanel) return [self.panel hitTest:panel withEvent:event]?:self.panel;
+    if(route==SBHitMask) return self.mask;
+    if(route==SBHitIcon) return [self.icon hitTest:icon withEvent:event]?:self.icon;
+    return route==SBHitBar?self.bar:nil;
 }
 @end
 
@@ -24,7 +32,7 @@
 - (void)viewDidLayoutSubviews { [super viewDidLayoutSubviews]; if(self.layoutChanged) self.layoutChanged(); }
 @end
 
-@interface ShadeManager : NSObject
+@interface ShadeManager : NSObject <UIGestureRecognizerDelegate>
 @property(nonatomic,strong) ShadeWindow *window;
 @property(nonatomic,strong) ShadeController *controller;
 @property(nonatomic,strong) UIView *canvas;
@@ -35,7 +43,13 @@
 @property(nonatomic) SBRect rect,gestureStart;
 @property(nonatomic) NSInteger gestureOrientation;
 @property(nonatomic) int changeToken;
-@property(nonatomic) BOOL dragging;
+@property(nonatomic) BOOL dragging,iconDragging,pinching,panelOpen,eligible;
+@property(nonatomic) CGPoint iconStart;
+@property(nonatomic) NSInteger iconOrientation;
+@property(nonatomic) double pinchOpacityStart;
+@property(nonatomic,copy) NSString *iconBundle,*panelBundle,*pendingBundle;
+@property(nonatomic,strong) NSMutableDictionary *pendingChanges;
+@property(nonatomic,strong) NSTimer *saveTimer;
 @property(nonatomic,strong) NSString *orientationSource;
 - (void)reload;
 - (void)tick;
@@ -45,7 +59,7 @@
 @implementation ShadeManager
 - (instancetype)init {
     if((self=[super init])) {
-        self.orientation=UIInterfaceOrientationPortrait;
+        self.orientation=UIInterfaceOrientationPortrait;self.pendingChanges=[NSMutableDictionary new];
         __weak typeof(self) weak=self;
         int token;
         notify_register_dispatch(SBChanged,&token,dispatch_get_main_queue(),^(int t){ [weak reload]; });
@@ -93,16 +107,26 @@
     self.window.bar.accessibilityLabel=SBT(@"Shade bar. Drag to move.",@"遮挡条，可拖动移动。");
     [self.canvas addSubview:self.window.bar];
     UIPanGestureRecognizer *move=[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move:)];
-    move.maximumNumberOfTouches=1;
+    move.maximumNumberOfTouches=1;move.delegate=self;
     [self.window.bar addGestureRecognizer:move];
+    UIPinchGestureRecognizer *pinch=[[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinch:)];pinch.delegate=self;[self.window.bar addGestureRecognizer:pinch];
+    self.window.icon=[[ShadeFloatingIcon alloc] initWithFrame:CGRectMake(0,0,48,48)];[self.canvas addSubview:self.window.icon];
+    UIPanGestureRecognizer *iconMove=[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveIcon:)];iconMove.maximumNumberOfTouches=1;[self.window.icon addGestureRecognizer:iconMove];
+    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPanel)];[tap requireGestureRecognizerToFail:iconMove];[self.window.icon addGestureRecognizer:tap];
+    self.window.mask=[UIControl new];self.window.mask.backgroundColor=[UIColor colorWithWhite:0 alpha:.44];self.window.mask.hidden=YES;
+    self.window.mask.accessibilityLabel=SBT(@"Close quick settings",@"关闭快捷设置");self.window.mask.accessibilityTraits=UIAccessibilityTraitButton;
+    [self.window.mask addTarget:self action:@selector(closePanel) forControlEvents:UIControlEventTouchUpInside];[self.canvas addSubview:self.window.mask];
+    self.window.panel=[ShadeQuickPanel new];self.window.panel.hidden=YES;[self.canvas addSubview:self.window.panel];
     __weak typeof(self) weak=self;
     self.controller.layoutChanged=^{[weak layout];};
+    self.window.panel.change=^(NSDictionary *changes,BOOL finished){
+        if(weak.panelOpen && [weak.panelBundle isEqual:weak.activeBundle]) [weak stageChanges:changes finished:finished];
+    };
+    self.window.panel.dismiss=^{[weak closePanel];};
 }
 - (void)changeOrientation:(NSInteger)orientation {
     if(orientation<1 || orientation>4 || orientation==self.orientation) return;
-    // Cancel before changing coordinate systems; never save a partial rotated drag.
-    for(UIGestureRecognizer *g in self.window.bar.gestureRecognizers) {g.enabled=NO;g.enabled=YES;}
-    self.dragging=NO;
+    [self flushPending];[self cancelInteractions];
     self.orientation=orientation;
     self.rect=SBFrame(self.profile,UIInterfaceOrientationIsLandscape(orientation));
     [self layout];
@@ -119,20 +143,19 @@
 }
 - (void)reload {
     @try {
-        // A settings reset/disable wins over an unfinished drag, including a stale gesture.
-        if(self.dragging) {
-            for(UIGestureRecognizer *g in self.window.bar.gestureRecognizers) {g.enabled=NO;g.enabled=YES;}
-            self.dragging=NO;
-        }
         self.settings=SBRead();
         [self.timer invalidate]; self.timer=nil;
         if(!SBBool(self.settings,@"enabled",NO)) {
-            self.window.hidden=YES;
-            [self recordDisplay:@{@"reason":@"disabled",@"visible":@NO}];
-            return;
+            self.eligible=NO;[self closePanel];[self cancelInteractions];self.window.hidden=YES;
+            [self recordDisplay:@{@"reason":@"disabled",@"visible":@NO}];return;
         }
         [self createWindow];
-        if(self.activeBundle.length) self.profile=SBProfile(self.settings,self.activeBundle);
+        if(self.activeBundle.length) {
+            NSMutableDictionary *updated=[SBProfile(self.settings,self.activeBundle) mutableCopy];
+            if([self.pendingBundle isEqual:self.activeBundle]) [updated addEntriesFromDictionary:self.pendingChanges];
+            if(![updated isEqual:self.profile]) [self cancelInteractions];
+            self.profile=updated;
+        }
         [self applyProfile];
         [self layout]; [self updateDisplay];
         __weak typeof(self) weak=self;
@@ -142,7 +165,7 @@
     } @catch(NSException *exception) { [self stopWithException:exception]; }
 }
 - (void)stopWithException:(NSException *)exception {
-    self.window.hidden=YES;[self.timer invalidate];self.timer=nil;
+    self.eligible=NO;self.window.hidden=YES;[self.timer invalidate];self.timer=nil;[self.saveTimer invalidate];self.saveTimer=nil;
     NSString *message=[NSString stringWithFormat:@"%@\n%@\n%@",exception.name,exception.reason,exception.callStackSymbols];
     [message writeToFile:@"/var/mobile/Library/ShadeBar/renderer-error.txt" atomically:YES encoding:NSUTF8StringEncoding error:nil];
     [self recordDisplay:@{@"reason":@"error",@"visible":@NO,@"error":exception.reason?:exception.name}];
@@ -153,13 +176,14 @@
 }
 - (void)applyProfile {
     self.window.bar.backgroundColor=[SBColor(self.profile) colorWithAlphaComponent:fmax(0,fmin(1,SBNumber(self.profile,@"opacity",1)))];
-    if(!self.dragging) self.rect=SBFrame(self.profile,UIInterfaceOrientationIsLandscape(self.orientation));
+    if(!self.dragging && !self.pinching) self.rect=SBFrame(self.profile,UIInterfaceOrientationIsLandscape(self.orientation));
+    self.window.bar.userInteractionEnabled=SBBool(self.profile,@"interactive",YES);
+    if(self.panelOpen) [self.window.panel updateProfile:self.profile];
+    [self refreshLayers];
 }
 - (void)selectProfile:(NSString *)bundle {
     if(!bundle.length || [bundle isEqual:self.activeBundle]) return;
-    // An app switch must not persist an in-flight gesture into another app's profile.
-    for(UIGestureRecognizer *g in self.window.bar.gestureRecognizers) {g.enabled=NO;g.enabled=YES;}
-    self.dragging=NO;
+    [self flushPending];[self closePanel];[self cancelInteractions];
     self.activeBundle=bundle;
     self.profile=SBProfile(self.settings,bundle);
     [self applyProfile];
@@ -184,13 +208,6 @@
 }
 - (void)updateDisplay {
     BOOL switcherKnown=NO,switcherVisible=[self appSwitcherVisible:&switcherKnown];
-    if(switcherVisible) {
-        self.window.hidden=YES;
-        if(self.dragging) {
-            for(UIGestureRecognizer *g in self.window.bar.gestureRecognizers) {g.enabled=NO;g.enabled=YES;}
-            self.dragging=NO;
-        }
-    }
     UIApplication *application=UIApplication.sharedApplication;
     NSInteger orientation=0;
     if([application respondsToSelector:@selector(activeInterfaceOrientation)]) {
@@ -227,14 +244,17 @@
         [self changeOrientation:orientation];
     }
     BOOL show=SBVisible(enabled,locked,restricted,known,matched,switcherVisible) && !configuring;
+    self.eligible=show;
+    if(!show) {[self closePanel];[self cancelInteractions];}
+    if(self.panelOpen && !SBBool(self.profile,@"iconEnabled",YES)) [self closePanel];
     SBRect pixels=SBPixelRect(self.rect,self.canvasSize.width,self.canvasSize.height);
     BOOL offscreen=!CGRectIntersectsRect(CGRectMake(pixels.x,pixels.y,pixels.w,pixels.h),(CGRect){CGPointZero,self.canvasSize});
-    NSString *reason=!enabled?@"disabled":!lockKnown?@"lockUnknown":locked?@"locked":switcherVisible?@"switcher":configuring?@"configuring":!known?@"frontUnknown":restricted&&!matched?@"notSelected":SBNumber(self.profile,@"opacity",1)<=0?@"transparent":offscreen?@"offscreen":@"visible";
+    NSString *reason=!enabled?@"disabled":!lockKnown?@"lockUnknown":locked?@"locked":switcherVisible?@"switcher":configuring?@"configuring":!known?@"frontUnknown":restricted&&!matched?@"notSelected":!SBBool(self.profile,@"barVisible",YES)?@"barHidden":SBNumber(self.profile,@"opacity",1)<=0?@"transparent":offscreen?@"offscreen":@"visible";
     [self createWindow];
     self.window.windowLevel=100000;
-    self.window.hidden=!show;
+    [self refreshLayers];
     [self layout];
-    [self recordDisplay:@{@"reason":reason,@"visible":@(show),@"bundle":bundle?:@"",@"frontKnown":@(known),@"switcherVisible":@(switcherVisible),@"switcherKnown":@(switcherKnown),@"locked":@(locked),@"lockKnown":@(lockKnown),@"selected":@(matched),@"selectedCount":@(selected.count),@"restricted":@(restricted),@"orientation":@(self.orientation),@"orientationSource":self.orientationSource?:@"unknown",@"sceneAttached":@(self.window.windowScene!=nil),@"sceneState":@(self.window.windowScene?self.window.windowScene.activationState:-99),@"windowFrame":NSStringFromCGRect(self.window.frame),@"barFrame":NSStringFromCGRect(self.window.bar.frame)}];
+    [self recordDisplay:@{@"reason":reason,@"visible":@(self.window.overlayState.bar),@"iconVisible":@(self.window.overlayState.icon),@"panelOpen":@(self.panelOpen),@"interactive":@(SBBool(self.profile,@"interactive",YES)),@"bundle":bundle?:@"",@"frontKnown":@(known),@"switcherVisible":@(switcherVisible),@"switcherKnown":@(switcherKnown),@"locked":@(locked),@"lockKnown":@(lockKnown),@"selected":@(matched),@"selectedCount":@(selected.count),@"restricted":@(restricted),@"orientation":@(self.orientation),@"orientationSource":self.orientationSource?:@"unknown",@"sceneAttached":@(self.window.windowScene!=nil),@"sceneState":@(self.window.windowScene?self.window.windowScene.activationState:-99),@"windowFrame":NSStringFromCGRect(self.window.frame),@"barFrame":NSStringFromCGRect(self.window.bar.frame)}];
 }
 - (CGPoint)rootPoint:(SBPoint)p {
     CGSize fixed=UIScreen.mainScreen.fixedCoordinateSpace.bounds.size;
@@ -252,12 +272,117 @@
     self.canvas.transform=CGAffineTransformMake(x.x-origin.x,x.y-origin.y,y.x-origin.x,y.y-origin.y,0,0);
     self.rect=SBNormalizeRect(self.rect);
     SBRect r=SBPixelRect(self.rect,size.width,size.height);
-    self.window.bar.frame=CGRectMake(r.x,r.y,r.w,r.h);
+    self.window.bar.bounds=CGRectMake(0,0,r.w,r.h);
+    self.window.bar.center=CGPointMake(r.x+r.w/2,r.y+r.h/2);
+    if(!self.iconDragging) {
+        NSString *prefix=UIInterfaceOrientationIsLandscape(self.orientation)?@"landscape":@"portrait";
+        double cx=SBNumber(self.profile,[prefix stringByAppendingString:@".icon.cx"],.88),cy=SBNumber(self.profile,[prefix stringByAppendingString:@".icon.cy"],.2);
+        self.window.icon.center=CGPointMake(SBIconCoordinate(cx,size.width),SBIconCoordinate(cy,size.height));
+    }
+    self.window.mask.frame=(CGRect){CGPointZero,size};
+    CGFloat width=fmin(380,size.width-40),height=fmin(632,size.height-72);
+    self.window.panel.frame=CGRectMake((size.width-width)/2,(size.height-height)/2,width,height);
+}
+- (void)refreshLayers {
+    SBOverlayState state=SBOverlayVisibility(self.eligible,SBBool(self.profile,@"barVisible",YES),SBBool(self.profile,@"iconEnabled",YES),self.panelOpen,SBBool(self.profile,@"interactive",YES));
+    self.window.overlayState=state;
+    self.window.bar.hidden=!state.bar;self.window.icon.hidden=!state.icon;
+    self.window.mask.hidden=!state.panel;self.window.panel.hidden=!state.panel;self.window.hidden=!state.window;
+}
+- (void)cancelInteractions {
+    if(self.pinching && [self.gestureBundle isEqual:self.activeBundle]) {
+        NSMutableDictionary *restored=[self.profile mutableCopy];restored[@"opacity"]=@(self.pinchOpacityStart);self.profile=restored;
+    }
+    self.dragging=NO;self.iconDragging=NO;self.pinching=NO;
+    if(!self.window) return;
+    for(UIView *view in @[self.window.bar,self.window.icon]) for(UIGestureRecognizer *g in view.gestureRecognizers) {
+        if(![g isKindOfClass:UITapGestureRecognizer.class] && (g.state==UIGestureRecognizerStateBegan || g.state==UIGestureRecognizerStateChanged)) {g.enabled=NO;g.enabled=YES;}
+    }
+    [self.window.bar.layer removeAllAnimations];self.window.bar.transform=CGAffineTransformIdentity;self.window.bar.alpha=1;
+    self.rect=SBFrame(self.profile,UIInterfaceOrientationIsLandscape(self.orientation));
+    [self applyProfile];
+}
+- (BOOL)flushPending {
+    [self.saveTimer invalidate];self.saveTimer=nil;
+    if(!self.pendingChanges.count) return YES;
+    NSDictionary *changes=[self.pendingChanges copy];NSString *bundle=self.pendingBundle;
+    [self.pendingChanges removeAllObjects];self.pendingBundle=nil;
+    BOOL saved=SBWriteProfile(bundle,changes);self.settings=SBRead();
+    if(saved) return YES;
+    if([bundle isEqual:self.activeBundle]) {
+        self.profile=SBProfile(self.settings,bundle);[self applyProfile];[self layout];
+    }
+    [self.window.panel showSaveFailure];return NO;
+}
+- (void)stageChanges:(NSDictionary *)changes finished:(BOOL)finished {
+    if(!self.activeBundle.length) return;
+    if(self.pendingBundle && ![self.pendingBundle isEqual:self.activeBundle]) [self flushPending];
+    self.pendingBundle=self.activeBundle;[self.pendingChanges addEntriesFromDictionary:changes];
+    NSMutableDictionary *profile=[self.profile mutableCopy];[profile addEntriesFromDictionary:changes];self.profile=profile;
+    [self applyProfile];[self layout];
+    [self.saveTimer invalidate];self.saveTimer=nil;
+    if(finished) [self flushPending];
+    else {
+        __weak typeof(self) weak=self;
+        self.saveTimer=[NSTimer timerWithTimeInterval:.15 repeats:NO block:^(NSTimer *timer){[weak flushPending];}];
+        [NSRunLoop.mainRunLoop addTimer:self.saveTimer forMode:NSRunLoopCommonModes];
+    }
+}
+- (void)openPanel {
+    if(!self.eligible || !SBBool(self.profile,@"iconEnabled",YES)) return;
+    [self cancelInteractions];self.panelOpen=YES;self.panelBundle=self.activeBundle;
+    [self.window.panel updateProfile:self.profile];[self layout];[self refreshLayers];
+    UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification,self.window.panel);
+}
+- (void)closePanel {
+    if(!self.panelOpen) return;
+    [self flushPending];self.panelOpen=NO;self.panelBundle=nil;[self refreshLayers];
+    UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification,self.eligible?self.window.icon:nil);
+}
+- (void)moveIcon:(UIPanGestureRecognizer *)gesture {
+    if(!self.eligible || self.panelOpen) return;
+    if(gesture.state==UIGestureRecognizerStateBegan) {
+        self.iconDragging=YES;self.iconStart=self.window.icon.center;self.iconOrientation=self.orientation;self.iconBundle=self.activeBundle;
+    }
+    if(self.iconOrientation!=self.orientation || ![self.iconBundle isEqual:self.activeBundle]) return;
+    CGSize size=self.canvasSize;CGPoint translation=[gesture translationInView:self.canvas];
+    if(gesture.state==UIGestureRecognizerStateBegan || gesture.state==UIGestureRecognizerStateChanged || gesture.state==UIGestureRecognizerStateEnded) {
+        self.window.icon.center=CGPointMake(SBIconCoordinate((self.iconStart.x+translation.x)/size.width,size.width),SBIconCoordinate((self.iconStart.y+translation.y)/size.height,size.height));
+    }
+    if(gesture.state==UIGestureRecognizerStateEnded) {
+        self.iconDragging=NO;NSString *prefix=UIInterfaceOrientationIsLandscape(self.orientation)?@"landscape":@"portrait";
+        [self stageChanges:@{[prefix stringByAppendingString:@".icon.cx"]:@(self.window.icon.center.x/size.width),[prefix stringByAppendingString:@".icon.cy"]:@(self.window.icon.center.y/size.height)} finished:YES];
+    }
+    if(gesture.state==UIGestureRecognizerStateCancelled || gesture.state==UIGestureRecognizerStateFailed) {self.iconDragging=NO;[self layout];}
+}
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gesture shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)other {
+    return gesture.view==self.window.bar && other.view==self.window.bar;
+}
+- (void)pinch:(UIPinchGestureRecognizer *)gesture {
+    if(!self.eligible || self.panelOpen || !SBBool(self.profile,@"interactive",YES)) return;
+    if(gesture.state==UIGestureRecognizerStateBegan) {
+        [self flushPending];
+        self.pinching=YES;self.dragging=NO;self.gestureBundle=self.activeBundle;self.gestureOrientation=self.orientation;
+        self.pinchOpacityStart=fmax(0,fmin(1,SBNumber(self.profile,@"opacity",1)));
+    }
+    if(!self.pinching || ![self.gestureBundle isEqual:self.activeBundle] || self.gestureOrientation!=self.orientation) return;
+    if(gesture.state==UIGestureRecognizerStateBegan || gesture.state==UIGestureRecognizerStateChanged || gesture.state==UIGestureRecognizerStateEnded) {
+        double opacity=SBPinchOpacity(self.pinchOpacityStart,gesture.scale);
+        NSMutableDictionary *updated=[self.profile mutableCopy];updated[@"opacity"]=@(opacity);self.profile=updated;
+        [self applyProfile];
+        if(gesture.state==UIGestureRecognizerStateEnded) {
+            self.pinching=NO;[self stageChanges:@{@"opacity":@(opacity)} finished:YES];
+        }
+    } else if(gesture.state==UIGestureRecognizerStateCancelled || gesture.state==UIGestureRecognizerStateFailed) {
+        [self cancelInteractions];[self layout];
+    }
 }
 - (void)move:(UIPanGestureRecognizer *)gesture {
+    if(self.pinching || self.panelOpen || !self.eligible || !SBBool(self.profile,@"interactive",YES)) return;
     if(gesture.state==UIGestureRecognizerStateBegan) {
         self.dragging=YES;self.gestureStart=self.rect;self.gestureOrientation=self.orientation;self.gestureBundle=self.activeBundle;
     }
+    if(!self.dragging) return;
     if(self.gestureOrientation!=self.orientation || ![self.gestureBundle isEqual:self.activeBundle]) return;
     CGSize size=self.canvasSize;CGPoint p=[gesture translationInView:self.canvas];
     if(gesture.state==UIGestureRecognizerStateBegan || gesture.state==UIGestureRecognizerStateChanged || gesture.state==UIGestureRecognizerStateEnded) {
@@ -267,7 +392,7 @@
         self.dragging=NO;
         NSString *prefix=UIInterfaceOrientationIsLandscape(self.orientation)?@"landscape":@"portrait";
         // Drag changes position only; App-owned width/height must not be overwritten.
-        SBWriteProfile(self.gestureBundle,@{[prefix stringByAppendingString:@".cx"]:@(self.rect.x+self.rect.w/2),[prefix stringByAppendingString:@".cy"]:@(self.rect.y+self.rect.h/2)});
+        [self stageChanges:@{[prefix stringByAppendingString:@".cx"]:@(self.rect.x+self.rect.w/2),[prefix stringByAppendingString:@".cy"]:@(self.rect.y+self.rect.h/2)} finished:YES];
     }
     if(gesture.state==UIGestureRecognizerStateCancelled || gesture.state==UIGestureRecognizerStateFailed) {
         self.dragging=NO;self.rect=SBFrame(self.profile,UIInterfaceOrientationIsLandscape(self.orientation));[self layout];

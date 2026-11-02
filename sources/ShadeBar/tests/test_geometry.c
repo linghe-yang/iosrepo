@@ -1,4 +1,5 @@
 #include "../src/Geometry.h"
+#include "../src/Interaction.h"
 #include <assert.h>
 #include <math.h>
 #include <stdio.h>
@@ -8,6 +9,41 @@ static void valid(SBRect r) {
     assert(r.w>=.01&&r.h>=.01&&r.w<=1.2&&r.h<=1.2);
 }
 int main(void) {
+    // Actual hit-routing policy used by ShadeWindow, including full-screen bars.
+    for(int flags=0;flags<32;flags++) {
+        bool eligible=flags&1,bar=flags&2,icon=flags&4,panel=flags&8,interactive=flags&16;
+        SBOverlayState state=SBOverlayVisibility(eligible,bar,icon,panel,interactive);
+        if(!eligible) assert(!state.window && !state.bar && !state.icon && !state.panel);
+        if(eligible && panel) assert(state.panel && !state.icon && !state.barHit);
+        if(eligible && !panel && icon) assert(state.icon && state.window);
+        if(!bar || !interactive) assert(!state.barHit);
+        for(int points=0;points<8;points++) {
+            bool inBar=points&1,inIcon=points&2,inPanel=points&4;
+            int route=SBOverlayHit(state,inBar,inIcon,inPanel);
+            if(!eligible) assert(route==SBHitNone);
+            else if(panel) assert(route==(inPanel?SBHitPanel:SBHitMask));
+            else if(icon && inIcon) assert(route==SBHitIcon); // Icon wins even over an opaque full-screen bar.
+            else if(bar && interactive && inBar) assert(route==SBHitBar);
+            else assert(route==SBHitNone); // Disabled interaction must not swallow app touches.
+        }
+    }
+    SBOverlayState minimized=SBOverlayVisibility(1,0,1,0,1);
+    assert(!minimized.bar && minimized.icon && minimized.window);
+    assert(SBOverlayHit(minimized,1,0,0)==SBHitNone);
+    assert(!SBOverlayVisibility(1,0,0,0,1).window);
+    assert(fabs(SBPinchOpacity(.5,.7)-.8)<1e-9);
+    assert(fabs(SBPinchOpacity(.5,1.3)-.2)<1e-9);
+    assert(SBPinchOpacity(.5,1)==.5 && SBPinchOpacity(1,.1)==1 && SBPinchOpacity(0,2)==0);
+    assert(SBPinchOpacity(.5,NAN)==.5 && SBPinchOpacity(.5,100)==0);
+    for(int i=0;i<1000;i++) {
+        double start=i/999.;
+        assert(SBPinchOpacity(start,.6)>=start && SBPinchOpacity(start,1.4)<=start);
+    }
+    for(int i=0;i<2;i++) {
+        double w=i?1133:744,h=i?744:1133;
+        assert(SBIconCoordinate(-4,w)==40 && SBIconCoordinate(8,w)==w-40);
+        assert(SBIconCoordinate(.88,w)>40 && SBIconCoordinate(.2,h)>40);
+    }
     for(int bits=0;bits<16;bits++) {
         bool hasOverride=bits&1,overrideEnabled=bits&2,restricted=bits&4,selected=bits&8;
         bool enabled=SBAppEnabled(hasOverride,overrideEnabled,restricted,selected);
@@ -82,5 +118,5 @@ int main(void) {
         SBRect center=SBCenteredRect(.5,.5,after.w,after.h);
         assert(fabs(center.x+center.w/2-.5)<1e-9 && fabs(center.y+center.h/2-.5)<1e-9);
     }
-    puts("PASS: 4 screen directions; 100%x20% and 120% sizes; off-screen dragging, center reset, restoration; 64 policies; 50000 geometry cases");
+    puts("PASS: 256 overlay hit routes; bar hiding, pass-through and icon recovery; pinch opacity bounds; 4 directions; 64 app policies; 50000 geometry cases");
 }

@@ -2,6 +2,7 @@
 #import <CoreFoundation/CoreFoundation.h>
 #import <notify.h>
 #import "Geometry.h"
+#import "Interaction.h"
 #import "Store.h"
 static NSString *const SBDomain=@"com.linghe.shadebar";
 static const char *SBChanged="com.linghe.shadebar.changed";
@@ -38,7 +39,7 @@ static inline BOOL SBApplicationEnabled(NSDictionary *settings,NSString *bundle)
     return SBAppEnabled(hasOverride,hasOverride?[override boolValue]:NO,SBBool(settings,@"restricted",NO),selected);
 }
 static inline NSDictionary *SBProfile(NSDictionary *settings,NSString *bundle) {
-    NSMutableDictionary *profile=[@{@"width":@.8,@"height":@.2,@"opacity":@1,@"color":@"000000",@"portrait.cx":@.5,@"portrait.cy":@.5,@"landscape.cx":@.5,@"landscape.cy":@.5} mutableCopy];
+    NSMutableDictionary *profile=[@{@"width":@.8,@"height":@.2,@"opacity":@1,@"color":@"000000",@"barVisible":@YES,@"interactive":@YES,@"iconEnabled":@YES,@"portrait.cx":@.5,@"portrait.cy":@.5,@"landscape.cx":@.5,@"landscape.cy":@.5,@"portrait.icon.cx":@.88,@"portrait.icon.cy":@.2,@"landscape.icon.cx":@.88,@"landscape.icon.cy":@.2} mutableCopy];
     for(NSString *field in profile.allKeys) {
         id value=settings[SBProfileKey(bundle,field)];
         if(value) profile[field]=value;

@@ -157,7 +157,7 @@
 - (NSString *)displayText {
     NSDictionary *display=[NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/ShadeBar/display.plist"];
     if([display[@"reason"] isEqual:@"configuring"]) display=[NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/ShadeBar/last-target.plist"]?:display;
-    NSDictionary *names=@{@"disabled":SBT(@"Disabled",@"总开关已关闭"),@"switcher":SBT(@"Hidden in app switcher",@"多任务预览中隐藏"),@"locked":SBT(@"Hidden while locked",@"锁屏隐藏"),@"lockUnknown":SBT(@"Cannot read lock state",@"无法读取锁屏状态"),@"frontUnknown":SBT(@"Cannot identify foreground app",@"无法识别前台应用"),@"notSelected":SBT(@"Overlay disabled for this app",@"该应用未启用遮挡条"),@"configuring":SBT(@"Hidden in settings; open a target app",@"设置中隐藏，请打开目标应用"),@"offscreen":SBT(@"Off screen; reset this app position",@"已在屏幕外，请重置此应用的位置"),@"transparent":SBT(@"Opacity is zero",@"不透明度为零"),@"visible":SBT(@"Window requested visible",@"窗口已请求显示"),@"error":SBT(@"Display error; export diagnostics",@"显示异常，请导出诊断")};
+    NSDictionary *names=@{@"disabled":SBT(@"Disabled",@"总开关已关闭"),@"switcher":SBT(@"Hidden in app switcher",@"多任务预览中隐藏"),@"locked":SBT(@"Hidden while locked",@"锁屏隐藏"),@"lockUnknown":SBT(@"Cannot read lock state",@"无法读取锁屏状态"),@"frontUnknown":SBT(@"Cannot identify foreground app",@"无法识别前台应用"),@"notSelected":SBT(@"Overlay disabled for this app",@"该应用未启用遮挡条"),@"configuring":SBT(@"Hidden in settings; open a target app",@"设置中隐藏，请打开目标应用"),@"offscreen":SBT(@"Off screen; reset this app position",@"已在屏幕外，请重置此应用的位置"),@"barHidden":SBT(@"Shade bar hidden; restore from floating icon or app",@"遮挡条已隐藏，可从悬浮图标或 App 恢复"),@"transparent":SBT(@"Opacity is zero",@"不透明度为零"),@"visible":SBT(@"Window requested visible",@"窗口已请求显示"),@"error":SBT(@"Display error; export diagnostics",@"显示异常，请导出诊断")};
     NSString *text=names[display[@"reason"]?:@""]?:SBT(@"No display report yet",@"尚未收到显示报告");
     NSString *bundle=[display[@"bundle"] isKindOfClass:NSString.class]?display[@"bundle"]:nil;
     return bundle.length?[NSString stringWithFormat:@"%@\n%@",text,bundle]:text;
@@ -208,7 +208,7 @@
 }
 - (void)exportDiagnostics {
     NSMutableDictionary *report=[NSMutableDictionary new];
-    report[@"version"]=@"0.4.0~beta1";
+    report[@"version"]=@"0.5.0~beta1";
     report[@"system"]=UIDevice.currentDevice.systemVersion;
     report[@"status"]=[NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/ShadeBar/status.plist"]?:@{};
     report[@"display"]=[NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/ShadeBar/display.plist"]?:@{};

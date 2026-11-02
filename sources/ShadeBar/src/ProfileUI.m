@@ -12,6 +12,10 @@
     [super viewDidLoad];self.title=self.appName;
     self.profile=SBProfile(SBRead(),self.bundle);
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResign:) name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+}
+- (void)appDidBecomeActive:(NSNotification *)notification {
+    self.profile=SBProfile(SBRead(),self.bundle);[self.tableView reloadData];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];self.profile=SBProfile(SBRead(),self.bundle);[self.tableView reloadData];
@@ -23,16 +27,19 @@
         [self showError:SBT(@"Could not save the application's enable switch.",@"无法保存此应用的启用开关。")];
     }
 }
+- (void)toggleOverlayOption:(UISwitch *)control {
+    [self saveChanges:@{control.accessibilityIdentifier:@(control.on)}];
+}
 - (void)appWillResign:(NSNotification *)notification {[self flushPending];}
 - (void)viewWillDisappear:(BOOL)animated {[self flushPending];[super viewWillDisappear:animated];}
 - (void)dealloc {[[NSNotificationCenter defaultCenter] removeObserver:self];[self.saveTimer invalidate];}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)table {return 4;}
-- (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section {return ((NSInteger[]){1,2,3,1})[section];}
+- (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section {return ((NSInteger[]){4,2,3,1})[section];}
 - (NSString *)tableView:(UITableView *)table titleForHeaderInSection:(NSInteger)section {
     return @[SBT(@"This application",@"此应用"),SBT(@"Rectangle size (%)",@"矩形尺寸（%）"),SBT(@"Color and opacity",@"颜色与不透明度"),SBT(@"Position",@"位置")][section];
 }
 - (NSString *)tableView:(UITableView *)table titleForFooterInSection:(NSInteger)section {
-    if(section==0) return SBT(@"This switch applies only to this app. The main overlay switch must also be on. Turning this off keeps the size, color and saved positions.",@"此开关只控制当前应用；首页的遮挡层总开关也需开启。关闭此开关会保留尺寸、颜色和已保存的位置。");
+    if(section==0) return SBT(@"Enable ShadeBar controls whether this app is handled. Show shade bar only hides/restores the rectangle. Interaction allows dragging and pinch-to-adjust opacity; when off, bar touches pass through. The floating icon can still open quick settings.",@"启用 ShadeBar 决定是否处理此应用；“显示遮挡条”仅控制矩形。开启交互可拖动、双指调节不透明度；关闭后触摸穿透遮挡条。悬浮图标仍可打开快捷设置。");
     section--;
     if(section==0) return SBT(@"Width and height: 1–120% of the current screen. 100% × 20% spans the screen horizontally. Rotation recalculates the size using the new screen dimensions; excess area is allowed off screen.",@"宽高均为当前屏幕的 1–120%。100% × 20% 表示横跨屏幕的条。旋转后按新屏幕尺寸重新计算，允许部分超出屏幕。");
     if(section==1) return SBT(@"Saved automatically for this app only. Width, height, color and opacity are shared between its portrait and landscape views. Zero opacity is invisible.",@"自动保存，仅影响此应用。此应用的横竖屏共用宽高比例、颜色和不透明度。不透明度为 0 时不可见。");
@@ -89,9 +96,12 @@
 - (UITableViewCell *)tableView:(UITableView *)table cellForRowAtIndexPath:(NSIndexPath *)index {
     if(index.section==0) {
         UITableViewCell *cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-        cell.textLabel.text=SBT(@"Enable shade bar for this app",@"在此应用中启用遮挡条");cell.textLabel.numberOfLines=0;
-        UISwitch *control=[UISwitch new];control.on=SBApplicationEnabled(SBRead(),self.bundle);
-        [control addTarget:self action:@selector(toggleApplication:) forControlEvents:UIControlEventValueChanged];
+        NSArray *titles=@[SBT(@"Enable ShadeBar for this app",@"在此应用中启用 ShadeBar"),SBT(@"Show shade bar",@"显示遮挡条"),SBT(@"Allow bar interaction",@"允许遮挡条交互"),SBT(@"Show floating icon",@"显示悬浮图标")];
+        NSArray *keys=@[@"enabled",@"barVisible",@"interactive",@"iconEnabled"];
+        cell.textLabel.text=titles[index.row];cell.textLabel.numberOfLines=0;
+        UISwitch *control=[UISwitch new];control.accessibilityIdentifier=keys[index.row];
+        control.on=index.row==0?SBApplicationEnabled(SBRead(),self.bundle):SBBool(self.profile,keys[index.row],YES);
+        [control addTarget:self action:index.row==0?@selector(toggleApplication:):@selector(toggleOverlayOption:) forControlEvents:UIControlEventValueChanged];
         cell.accessoryView=control;cell.selectionStyle=UITableViewCellSelectionStyleNone;return cell;
     }
     NSInteger section=index.section-1;

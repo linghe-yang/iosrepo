@@ -122,6 +122,23 @@ SHA1: e297a9880bfee2e03f30f15aebc79fdd87ed0607
 SHA256: 79ab61a714dcabc6015a911a18e1713a85242a2b6359f791b6083aa406fdb5c7
 SHA512: a7730039eafcaac7c6d79e1253994493a100b485a1ba63fb82e62d5c7dfbbbd85951f198b9d883f764985918d1d1e8b3251f44969d450efdccf8f9b46932b8ea
 
+Package: com.linghe.shadebar
+Name: ShadeBar (Beta)
+Version: 0.5.0~beta1
+Architecture: iphoneos-arm64
+Description: Per-app shade bar with floating quick settings, touch pass-through and pinch opacity control.
+Maintainer: Local Build
+Author: Local Build
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 16.0), firmware (<< 17.0)
+Installed-Size: 381
+Filename: ./debs/com.linghe.shadebar_0.5.0~beta1_iphoneos-arm64.deb
+Size: 111540
+MD5sum: 0315e615519969afd2404a1e10375680
+SHA1: c88beeca5ddfa0305233f59292ceb194c7cedbdf
+SHA256: 182a063f3b00f1e983664ee4e07ca3fa73bfda11532c500f7dc4c012ea97b236
+SHA512: f1a1146b2ca5e1471b9b3ccf455c441226167fac39f7a04708b280acb005b0f437f68175e99b86327d9082751f4e1f357932c054a1cbf1e1c7ae8c1eced2b38d
+
 Package: com.vietanh.overlayiostool
 Name: OverlayIOSTOOL
 Depends: mobilesubstrate, firmware (>= 14.0), firmware (<< 17.0)

@@ -24,14 +24,22 @@ https://linghe-yang.github.io/iosrepo/
 | `com.gamegod.igg` | 传统越狱，`iphoneos-arm` | `0.8.9.5+noads1` |
 | `com.gamegod.igg.rootless` | Rootless，`iphoneos-arm64` | `0.8.9.5+noads1` |
 | `com.gamegod.igg.roothide` | Roothide，`iphoneos-arm64e` | `0.8.9.5+noads1` |
+| `com.vietanh.overlayiostool` | 传统越狱，`iphoneos-arm` | `5.8.12` |
+| `com.vietanh.overlayiostool` | Rootless，`iphoneos-arm64` | `5.8.12` |
 
-这些是基于 iGameGod 官方 0.8.9.5 的本地去广告测试包，并非官方发布。原作者信息和软件包依赖保留在 DEB 中。
+上述 iGameGod 包基于官方 0.8.9.5 制作，是本地去广告测试包，并非官方发布。原作者信息和软件包依赖保留在 DEB 中。
 
 修改针对共享框架中的横幅、插屏、定时及闲置广告路径，保留完成回调以继续后续功能。已完成包结构、代码页哈希及局部 ARM64 控制流程模拟检查；尚未完成真实越狱设备运行验证，因此保留 **No Ads TEST** 标记。应按实际越狱环境选择包，不能只按 CPU 类型选择。
 
+OverlayIOSTOOL 来自本地提供的两个 5.8.12 DEB，作者标注为 Viet Anh。对包内全部可执行文件、资源和通信路径做了静态检查，未发现广告组件，因此保留全部应用及插件内容。原普通版将包架构误标为 `iphoneos-arm64`；本源仅将其改为传统越狱使用的 `iphoneos-arm`，使两种环境可以区分。Rootless DEB 与提供的原文件逐字节一致。
+
+对于 **iPad mini 6 / iPadOS 16.1 / Dopamine**，应选择 Rootless 版：ARM64、系统依赖范围和 `/var/jb` 加载路径符合该环境。App 仅声明 iPhone 设备族并限制竖屏，预计通过 iPhone 兼容模式运行；尚未真机验证，不能视为原生 iPad、横屏或分屏适配。
+
+安装 Rootless 版后，重新加载 SpringBoard 并打开 Overlay Tool，选择图片测试悬浮显示、拖动和缩放。只有在设备启用越狱及插件注入后，跨应用浮层才有相应运行环境。
+
 ## 更新软件源
 
-需要 Python 3.10 或更新版本，不依赖额外 Python 包。
+当前 OverlayIOSTOOL DEB 使用 Zstandard 压缩，需要 Python 3.14 或更新版本来读取并更新索引，不依赖额外 Python 包。
 
 1. 将新增或更新的 DEB 放入 `debs/`。
 2. 更新包时递增 DEB 内部的 `Version`，例如从 `0.8.9.5+noads1` 更新到 `0.8.9.5+noads2`；只改文件名不会改变包版本。
@@ -42,7 +50,7 @@ python tools/update_repo.py
 python tools/update_repo.py --check
 git add .
 git commit -m "Update packages and repository indexes"
-git push
+git push origin HEAD:main
 ```
 
 脚本扫描 `debs/` 下的全部 DEB，读取实际控制信息，重新生成 `Packages`、其压缩版本以及 `Release` 中的大小和哈希。不要只上传更新后的 DEB 而保留旧索引。

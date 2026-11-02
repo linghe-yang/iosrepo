@@ -49,3 +49,37 @@ SHA1: 401003c18826a45e9fa742482a258e848e17ad8d
 SHA256: 398b73a144b5a1e73922cd38a171f7bb81a60b54d85b53a8393be3acffbc74e8
 SHA512: 049440c4392c8052668b6e2710a170dfb8183d64af86403760455effb6a76b286c2f40d2a110196f5a3dc3c036356987ec0d54cb87618e6d7dfccf0984cbb5ab
 
+Package: com.vietanh.overlayiostool
+Name: OverlayIOSTOOL
+Depends: mobilesubstrate, firmware (>= 14.0), firmware (<< 17.0)
+Description: Stable overlay for iOS 14-16 (rootless + rootful), A8 and newer devices.
+Maintainer: Viet Anh
+Author: Viet Anh
+Section: Tweaks
+Architecture: iphoneos-arm
+Version: 5.8.12
+Installed-Size: 252
+Filename: ./debs/OverlayIOSTOOL_5.8.12_rootful_iphoneos-arm.deb
+Size: 45594
+MD5sum: f7c9ef1223520505802adf129455798f
+SHA1: d02c26979d5289e95086b2fbe2b3a0b183294e36
+SHA256: 0252ea19a62f87c257df0b649b4f18b19d4ad284b9a5340bbe86e2b014a1675b
+SHA512: 2591afd7c5f8285ca56af8fe7f62749572d7d7c23fbbc1b7a64cda41fa516fbecfdfec54f7be0146e601e0c183e35061df4e1b59996ebac4e63341165ebb0e00
+
+Package: com.vietanh.overlayiostool
+Name: OverlayIOSTOOL
+Depends: mobilesubstrate, firmware (>= 14.0), firmware (<< 17.0)
+Description: Stable overlay for iOS 14-16 (rootless + rootful), A8 and newer devices.
+Maintainer: Viet Anh
+Author: Viet Anh
+Section: Tweaks
+Architecture: iphoneos-arm64
+Version: 5.8.12
+Installed-Size: 252
+Filename: ./debs/OverlayIOSTOOL_5.8.12_rootless_arm64.deb
+Size: 45636
+MD5sum: 3c0e5675f84769c0ad6927aaba5d6cee
+SHA1: 641950d7ca808fa114eb380f891f8b266640891e
+SHA256: 62292c18bdb3025eed9e50eae5e98292e921bc47f6ffe45bebe1deda6a07a623
+SHA512: e9b50224257390f7659ecb2518c0c01577732f60aadd2899f7ec9b792f48e9187bdddee49d07f4bfd801387057a716de3e164dfea549f9840cf1b923c8d61eae
+

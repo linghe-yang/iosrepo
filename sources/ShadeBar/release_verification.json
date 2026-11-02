@@ -12,5 +12,7 @@
   "code_pages_verified": 77,
   "device_tested": false,
   "per_application_profile_ui_and_shared_key_format_present": true,
-  "percentage_sliders_present": true
+  "percentage_sliders_present": true,
+  "application_icons_and_per_app_switch_present": true,
+  "app_switcher_visibility_detection_present": true
 }

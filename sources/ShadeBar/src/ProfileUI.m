@@ -13,20 +13,32 @@
     self.profile=SBProfile(SBRead(),self.bundle);
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResign:) name:UIApplicationWillResignActiveNotification object:nil];
 }
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];self.profile=SBProfile(SBRead(),self.bundle);[self.tableView reloadData];
+}
+- (void)toggleApplication:(UISwitch *)control {
+    [self flushPending];
+    if(!SBWriteProfile(self.bundle,@{@"enabled":@(control.on)})) {
+        control.on=SBApplicationEnabled(SBRead(),self.bundle);
+        [self showError:SBT(@"Could not save the application's enable switch.",@"无法保存此应用的启用开关。")];
+    }
+}
 - (void)appWillResign:(NSNotification *)notification {[self flushPending];}
 - (void)viewWillDisappear:(BOOL)animated {[self flushPending];[super viewWillDisappear:animated];}
 - (void)dealloc {[[NSNotificationCenter defaultCenter] removeObserver:self];[self.saveTimer invalidate];}
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)table {return 3;}
-- (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section {return ((NSInteger[]){2,3,1})[section];}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)table {return 4;}
+- (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section {return ((NSInteger[]){1,2,3,1})[section];}
 - (NSString *)tableView:(UITableView *)table titleForHeaderInSection:(NSInteger)section {
-    return @[SBT(@"Rectangle size (%)",@"矩形尺寸（%）"),SBT(@"Color and opacity",@"颜色与不透明度"),SBT(@"Position",@"位置")][section];
+    return @[SBT(@"This application",@"此应用"),SBT(@"Rectangle size (%)",@"矩形尺寸（%）"),SBT(@"Color and opacity",@"颜色与不透明度"),SBT(@"Position",@"位置")][section];
 }
 - (NSString *)tableView:(UITableView *)table titleForFooterInSection:(NSInteger)section {
+    if(section==0) return SBT(@"This switch applies only to this app. The main overlay switch must also be on. Turning this off keeps the size, color and saved positions.",@"此开关只控制当前应用；首页的遮挡层总开关也需开启。关闭此开关会保留尺寸、颜色和已保存的位置。");
+    section--;
     if(section==0) return SBT(@"Width and height: 1–120% of the current screen. 100% × 20% spans the screen horizontally. Rotation recalculates the size using the new screen dimensions; excess area is allowed off screen.",@"宽高均为当前屏幕的 1–120%。100% × 20% 表示横跨屏幕的条。旋转后按新屏幕尺寸重新计算，允许部分超出屏幕。");
     if(section==1) return SBT(@"Saved automatically for this app only. Width, height, color and opacity are shared between its portrait and landscape views. Zero opacity is invisible.",@"自动保存，仅影响此应用。此应用的横竖屏共用宽高比例、颜色和不透明度。不透明度为 0 时不可见。");
     return [NSString stringWithFormat:@"%@\n%@",SBT(@"Drag the bar freely, including completely off screen. Portrait and landscape remember their positions separately. Reset centers both without changing size or appearance.",@"遮挡条可自由拖动，包括完全拖出屏幕。横竖屏分别记住位置。重置使两种方向都居中，保留尺寸与外观。"),self.bundle];
 }
-- (CGFloat)tableView:(UITableView *)table heightForRowAtIndexPath:(NSIndexPath *)index {return index.section==0 || (index.section==1 && index.row==2)?86:UITableViewAutomaticDimension;}
+- (CGFloat)tableView:(UITableView *)table heightForRowAtIndexPath:(NSIndexPath *)index {return index.section==1 || (index.section==2 && index.row==2)?86:UITableViewAutomaticDimension;}
 - (UITableViewCell *)sliderCell:(UITableView *)table field:(NSString *)field title:(NSString *)title {
     UITableViewCell *cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
@@ -75,26 +87,36 @@
     [self.tableView reloadData];
 }
 - (UITableViewCell *)tableView:(UITableView *)table cellForRowAtIndexPath:(NSIndexPath *)index {
-    if(index.section==0) return [self sliderCell:table field:index.row==0?@"width":@"height" title:index.row==0?SBT(@"Width",@"宽度"):SBT(@"Height",@"高度")];
-    if(index.section==1 && index.row==2) return [self sliderCell:table field:@"opacity" title:SBT(@"Opacity",@"不透明度")];
+    if(index.section==0) {
+        UITableViewCell *cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+        cell.textLabel.text=SBT(@"Enable shade bar for this app",@"在此应用中启用遮挡条");cell.textLabel.numberOfLines=0;
+        UISwitch *control=[UISwitch new];control.on=SBApplicationEnabled(SBRead(),self.bundle);
+        [control addTarget:self action:@selector(toggleApplication:) forControlEvents:UIControlEventValueChanged];
+        cell.accessoryView=control;cell.selectionStyle=UITableViewCellSelectionStyleNone;return cell;
+    }
+    NSInteger section=index.section-1;
+    if(section==0) return [self sliderCell:table field:index.row==0?@"width":@"height" title:index.row==0?SBT(@"Width",@"宽度"):SBT(@"Height",@"高度")];
+    if(section==1 && index.row==2) return [self sliderCell:table field:@"opacity" title:SBT(@"Opacity",@"不透明度")];
     UITableViewCell *cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];cell.textLabel.numberOfLines=0;
-    if(index.section==1 && index.row==0) {
+    if(section==1 && index.row==0) {
         cell.textLabel.text=SBT(@"Choose color",@"选择颜色");
         UIView *swatch=[[UIView alloc] initWithFrame:CGRectMake(0,0,32,24)];swatch.backgroundColor=SBColor(self.profile);cell.accessoryView=swatch;
-    } else if(index.section==1) {cell.textLabel.text=SBT(@"Color HEX",@"颜色 HEX");cell.detailTextLabel.text=self.profile[@"color"];}
+    } else if(section==1) {cell.textLabel.text=SBT(@"Color HEX",@"颜色 HEX");cell.detailTextLabel.text=self.profile[@"color"];}
     else {cell.textLabel.text=SBT(@"Reset position to screen center",@"重置位置到屏幕正中央");cell.textLabel.textColor=UIColor.systemBlueColor;}
     return cell;
 }
 - (void)tableView:(UITableView *)table didSelectRowAtIndexPath:(NSIndexPath *)index {
+    if(index.section==0) return;
+    NSInteger section=index.section-1;
     [table deselectRowAtIndexPath:index animated:YES];
-    if(index.section==2) {
+    if(section==2) {
         [self saveChanges:@{@"portrait.cx":@.5,@"portrait.cy":@.5,@"landscape.cx":@.5,@"landscape.cy":@.5}];return;
     }
-    if(index.section==1 && index.row==0) {
+    if(section==1 && index.row==0) {
         UIColorPickerViewController *picker=[UIColorPickerViewController new];picker.delegate=self;picker.supportsAlpha=NO;picker.selectedColor=SBColor(self.profile);
         [self presentViewController:picker animated:YES completion:nil];return;
     }
-    if(index.section!=1 || index.row!=1) return;
+    if(section!=1 || index.row!=1) return;
     UIAlertController *alert=[UIAlertController alertControllerWithTitle:SBT(@"Color HEX",@"颜色 HEX") message:SBT(@"Six hexadecimal digits, such as FF0000.",@"六位十六进制颜色，例如 FF0000。") preferredStyle:UIAlertControllerStyleAlert];
     [alert addTextFieldWithConfigurationHandler:^(UITextField *field){field.text=self.profile[@"color"];field.autocorrectionType=UITextAutocorrectionTypeNo;field.keyboardType=UIKeyboardTypeASCIICapable;}];
     [alert addAction:[UIAlertAction actionWithTitle:SBT(@"Cancel",@"取消") style:UIAlertActionStyleCancel handler:nil]];

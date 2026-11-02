@@ -1,8 +1,8 @@
 {
-  "package": "com.linghe.shadebar_0.3.0~beta1_iphoneos-arm64.deb",
-  "version": "0.3.0~beta1",
-  "sha256": "61852b1c79b0f356021f14a96f53df53c59b9b903e2fe89e099f49237e51b738",
-  "bytes": 83758,
+  "package": "com.linghe.shadebar_0.4.0~beta1_iphoneos-arm64.deb",
+  "version": "0.4.0~beta1",
+  "sha256": "79ab61a714dcabc6015a911a18e1713a85242a2b6359f791b6083aa406fdb5c7",
+  "bytes": 89370,
   "device_tested": false,
   "binaries": {
     "bootstrap": {
@@ -24,12 +24,12 @@
         "/usr/lib/libSystem.B.dylib",
         "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation"
       ],
-      "sha256": "be90ac2013396de042dc6b62b55f46c9cf142cd76d6af75eda7c71b5b0f4785b"
+      "sha256": "d389c62094dd50405c2891903217f5df0041abcf02502b671b9956c2abbb21bd"
     },
     "renderer": {
       "architecture": "arm64e native",
       "cpu_subtype": "0x80000002",
-      "uuid": "326181f46bff33a6834851626834279d",
+      "uuid": "66e2b9fcc2ca33b5ab1eca4b00a5e66d",
       "sections": [
         "__text",
         "__auth_stubs",
@@ -50,6 +50,7 @@
         "__objc_imageinfo",
         "__objc_arraydata",
         "__objc_dictobj",
+        "__objc_arrayobj",
         "__objc_doubleobj",
         "__objc_intobj",
         "__objc_const",
@@ -70,12 +71,12 @@
         "/System/Library/Frameworks/QuartzCore.framework/QuartzCore",
         "/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics"
       ],
-      "sha256": "7f136bfcf24e8f1d97ee060387480214c895a7d0e67e035c504881a8cdeb2c95"
+      "sha256": "64d7b5854f466ecd17855adda092cb8bf141ca5a8e0c0289d94d02b918c24574"
     },
     "app": {
       "architecture": "arm64",
       "cpu_subtype": "0x0",
-      "uuid": "cc22fd44542a3ec18a4d76f9f603c6d5",
+      "uuid": "a6750e38ab93350d809b7a3dd1dd7f74",
       "sections": [
         "__text",
         "__stubs",
@@ -115,7 +116,7 @@
         "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
         "/System/Library/Frameworks/QuartzCore.framework/QuartzCore"
       ],
-      "sha256": "298da60ed86a34b278e30471c30584957fdb63131ff8de7d0182847378088f60"
+      "sha256": "886616c5082a92211884e87b61b5885b96f4aaf411f4e41f206ec29aecb7f857"
     }
   },
   "payloads": [
@@ -133,16 +134,16 @@
   ],
   "source_hash_format": "UTF-8, LF newlines, no BOM",
   "sources": {
-    "src/App.m": "db9b9193e36fa67e1642d4fd3c4ddde356c3097f67f6c9b92b9e30a0273f92dc",
+    "src/App.m": "257e7868977d44697311ef4f2020fa3cfc31f7363e6b2ca4697800444609e63f",
     "src/Bootstrap.c": "76e90afb4ec78ca74c16b43a9cc731bcd5d6bd73801efbfda8bae3fa45914532",
-    "src/Common.h": "b6e600a8085bd33b9bf7474d536b08ada83a8cb6e7c54ad2fe06d721fc6f83f9",
-    "src/Geometry.c": "0c842f8539224f06beecc763a822c59b643ca1ca047dfa11011acba4aeb31abc",
-    "src/Geometry.h": "aae710cf8105f0483a7cbac2959fd3be78690d2149eb6fa95ed464c6595505ab",
+    "src/Common.h": "ab089cbd0cc0ad8925fd51fd751ff69b51c5f060b08481310225e592b19fe53b",
+    "src/Geometry.c": "b8b0a24e5748fc7953e317ab0f090efc7e3632836fc9e3fd44b935175877d93d",
+    "src/Geometry.h": "65a465765b6b5716e2436bb3273f4594736c42687060c04be2472c0f1ff8269b",
     "src/Preferences.h": "525f74f77324769483fbe7758e1c95b6975f4823d56791d546027f79d398a233",
-    "src/Private.h": "cef3d92ff0c7feb943386149c4ba3cb7e98389ab0c0865177a7671e4be8124ad",
+    "src/Private.h": "685844a27b9a3b5938c1377fd15029b76c57b969ef9bdee7f780824a1e745114",
     "src/ProfileUI.h": "35cdf4b337b3085c76f01ff4eaeaa28e3b659abadb7d2ed79ecc45be3e899a5c",
-    "src/ProfileUI.m": "7cac51bfbf49e4bf8c4afeebad504892089927462a7f8431bb484053467341d6",
-    "src/ShadeBar.m": "0a7e45f62f6227b94ff7e49257f38cdc24d1affbbe44c6b3338db7f629d9b3a8",
+    "src/ProfileUI.m": "bb0c87fd9c1e9b43a15190b168c6cb80cf66dfa5c1e2f68a278836d79e202a60",
+    "src/ShadeBar.m": "528feee317d2b433b72962e9e3ffcad02d2eab6a26d2b6586cb6e07c37778fda",
     "src/ShadePreferences.m": "c7993cd2f6c4f562df4cf48d192cb91d9564f13524c2dedb82e48b7415521a48",
     "src/Store.h": "359e32d08493fdc1e70eb663a530e26693785291ebbe0a322a7071fb5f5b498d"
   },
@@ -150,9 +151,10 @@
     "beta1 device crash confirmed in ShadeManager init -> FBSOrientationObserver setHandler: -> objc_msgSend. Callback registration removed.",
     "Native Clang 23 + Apple ld64 956.6 arm64e build; no ABI converter. New build still needs physical-device validation.",
     "Desktop app and manual renderer loading are separate. Overlay does not automatically start after respring.",
-    "Focused foreground application only; polling interval 0.2 seconds; lock screen and settings app hidden.",
+    "Focused foreground application only; polling interval 0.2 seconds; lock screen, app switcher and settings app hidden.",
     "0.2.0 device feedback: desktop app opened but overlay was absent even without app filtering; exact device-side cause remains unconfirmed.",
-    "0.3.0 adds scene association, default window hosting, shared settings and display diagnostics; physical-device verification is still required.",
+    "User confirmed 0.3.0 works on device; 0.3.1 adds app-switcher hiding and needs device verification.",
+    "0.4.0 adds searchable app icons and explicit per-app enable switches; icon availability and UI need device verification.",
     "Each app has an independent profile: 1-120 percent width/height, color/opacity, and separate portrait/landscape centers.",
     "Dragging changes position only and may move the bar fully off screen; the app reset centers both orientations without changing size or appearance."
   ]

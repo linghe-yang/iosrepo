@@ -32,7 +32,7 @@ SBRect SBDrag(SBRect r,double dx,double dy) {
     if(isfinite(dy) && isfinite(r.y+dy)) r.y+=dy;
     return r;
 }
-bool SBVisible(bool enabled,bool locked,bool restricted,bool frontKnown,bool selected) {
+bool SBVisible(bool enabled,bool locked,bool restricted,bool frontKnown,bool selected,bool switcherVisible) {
     // A per-app profile requires a known foreground application even without a whitelist.
-    return enabled && !locked && frontKnown && (!restricted || selected);
+    return enabled && !locked && !switcherVisible && frontKnown && (!restricted || selected);
 }

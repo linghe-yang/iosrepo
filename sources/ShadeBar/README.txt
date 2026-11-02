@@ -1,17 +1,23 @@
-ShadeBar / 遮挡条 0.3.0~beta1
+ShadeBar / 遮挡条 0.4.0~beta1
 
 目标设备：iPad mini 6 / iPadOS 16.1 / Dopamine Rootless。
-本版包含显示链路修复候选、逐应用保存、百分比滑块、自由拖动与居中重置。
-本地编译和检查已通过；此版本的真实设备显示、触摸和旋转仍需验证。
+用户已确认 0.3.0 基本功能正常。本版新增带图标的统一应用列表、常驻搜索栏和逐应用启用开关。
+保留 0.3.1 的多任务预览隐藏逻辑、逐应用外观和位置配置。
+本地编译及检查已通过；新列表的实际图标显示、搜索交互和开关仍需真机确认。
 
 安装与使用
 1. 安装新版 DEB 后重新加载 SpringBoard，打开桌面 ShadeBar App。
 2. 等待约 5 秒，显示“等待启用”后打开“启用遮挡层”。每次重载 SpringBoard 后需手动启用。
    正常切换、退出、重开目标应用无需重新调整；每个应用的配置会保存在磁盘上。
-3. 首次可关闭“仅在指定应用显示”，回到主屏幕检查。设置 App 内和锁屏时隐藏遮挡条。
-4. 开启“仅在指定应用显示”后，在“选择显示应用”里勾选目标 App。空名单不显示。
-5. 进入“设置各应用的遮挡条”，选择应用，为它单独设置宽度、高度、颜色和不透明度。
-   应用列表支持搜索，缺少的应用可手动添加包标识；“主屏幕”也有自己的配置。
+3. 首页进入“应用列表”，可看到每个应用的图标、名称、包标识及“已启用/未启用”状态。
+   顶部搜索栏常驻显示，按名称或包标识即时筛选，不区分大小写；可切换“全部/已启用”。
+   图标按可见行读取并缓存在内存。读取失败或手动添加的未知应用显示占位图标。
+4. 点开某个应用，在设置页顶部使用“在此应用中启用遮挡条”开关。
+   关闭后该应用不显示遮挡条，保留尺寸、颜色和位置；再次打开即可恢复。
+   首页总开关也需要开启。锁屏、多任务预览、ShadeBar 设置界面中仍隐藏。
+5. 启用开关下方可直接修改该应用的尺寸、颜色、不透明度及重置位置。
+   从设置页返回列表时，启用状态和“已启用”筛选会刷新，不需要重开 App。
+   缺少的应用仍可用右上角 + 添加包标识；“主屏幕”也有独立配置和图标。
 6. 宽高均使用 1–120% 滑动条，按当前方向下的屏幕宽和高计算，保持矩形直角形状。
    例如宽 100%、高 20%：横跨整个屏幕，高度等于当前屏幕高度的五分之一。
    旋转后保持比例，按旋转后的屏幕尺寸重新计算像素宽高；120% 超出的部分自然位于屏幕外。
@@ -21,7 +27,10 @@ ShadeBar / 遮挡条 0.3.0~beta1
    重置使矩形中心与屏幕中心重合，同时恢复横竖屏居中，保留宽高、颜色和不透明度。
 
 逐应用保存规则
-每个应用按包标识独立保存：宽度比例、高度比例、颜色、不透明度，以及横竖屏各自的中心位置。
+每个应用按包标识独立保存：启用开关、宽度比例、高度比例、颜色、不透明度，以及横竖屏各自的中心位置。
+升级后，尚未单独设置开关的应用沿用旧版显示范围；旧版名单中的应用保持启用，
+旧版“不限制应用”模式下默认保持启用。单独设置过的开关优先，明确关闭后不会被旧名单重新启用。
+旧版的双列表入口和全局名单模式开关已合并为新的应用列表。
 同一应用的横竖屏共用宽高比例、颜色和不透明度，位置分别保存。
 横屏左/右方向共用一套横屏位置；竖屏正/反方向共用一套竖屏位置。
 新应用默认宽 80%、高 20%、黑色、不透明度 100%，居中显示。
@@ -31,7 +40,8 @@ ShadeBar / 遮挡条 0.3.0~beta1
 
 如果仍不显示
 返回 App 查看显示状态，或点“重新启动遮挡层”。
-状态可区分总开关关闭、锁屏、无法识别前台应用、应用未勾选、透明度为零、条在屏幕外等情况。
+状态可区分总开关关闭、锁屏、多任务预览、无法识别前台应用、应用开关关闭、透明度为零、条在屏幕外等情况。
+诊断新增 switcherVisible / switcherKnown，用于确认多任务预览状态是否被正确读取。
 “窗口已请求显示”只表示程序已设置窗口可见，不代表屏幕已实际绘制成功。
 请打开目标 App 停留几秒，再回 ShadeBar 从右上角“诊断”导出 ShadeBar-diagnostics.json。
 导出仅包含本插件状态、当前/最近前台应用的包标识、名单匹配和数量、方向、窗口位置及自身错误。
@@ -53,7 +63,9 @@ ShadeBar / 遮挡条 0.3.0~beta1
 Rootless 包的 iGameGodLoader.plist 链接到可更新的 substrate.plist，App 中存在 preferredBundles。
 框架中可见 initWithWindowScene:、setWindowScene:、interfaceOrientation、windowLevel、hitTest:withEvent:。
 这些支持应用过滤和场景窗口的实现思路，但静态字符串不足以还原完整执行流程。
-本项目没有复制或嵌入 iGameGod 二进制；仍由 SpringBoard 统一显示，以支持主屏幕及名单即时变更。
+本次还在 iGameGod App 中确认 UISearchController、filteredApps、searchedAppsSections、
+iconResourceLocator、primaryIconDataForVariant: 等字符串，参考其原生搜索与应用图标呈现思路。
+ShadeBar 使用系统图标读取接口，保留自己的布局和显示策略，没有复制或嵌入 iGameGod 二进制。
 
 边界与验证
 分屏按系统报告的焦点应用判断，不是所有可见应用的并集；显示/方向刷新周期约 0.2 秒。
@@ -63,11 +75,13 @@ Rootless 包的 iGameGodLoader.plist 链接到可更新的 substrate.plist，App
 已通过：原生 arm64e ABI 与代码签名页、启动隔离、旧崩溃回调移除、场景创建接口、共享文件路径、
 桌面 App/iPad/图标声明、逐应用页面与滑块打包检查，以及 DEB 结构检查。
 几何检查包括四个方向的角点/中心/轴映射、100%×20% 旋转尺寸、120% 超屏、完全拖出屏幕、居中重置、
-保存中心还原、32 种显示规则和 5 万组随机尺寸/移动/旋转计算。
+保存中心还原、64 种显示规则和 5 万组随机尺寸/移动/旋转计算。
+另外检查了从应用进入预览、停留、返回应用的显示状态序列，以及 16 组新开关与旧名单兼容组合。
+显式关闭优先于旧版不限制模式，启用仍受总开关与多任务预览隐藏规则约束。
 本地检查不能代替设备上的窗口托管、触摸、配置读写、逐应用切换与方向联调。
 
 源码与构建
-src/App.m：主设置页和应用选择；src/ProfileUI.m：逐应用滑块、颜色与位置重置。
+src/App.m：主设置页、图标列表、搜索与启用筛选；src/ProfileUI.m：逐应用开关、滑块、颜色与位置重置。
 src/Bootstrap.c：C 启动组件；src/ShadeBar.m：遮挡层与应用切换。
 src/Store.h：共享配置；src/Common.h：逐应用字段；src/Geometry.c：百分比坐标与显示规则。
 旧 Preferences 源码仅保留作历史参考，不参与构建。
@@ -76,8 +90,9 @@ bootstrap.py 将固定工具和 SDK 放在本项目 tools/；原生 Clang 23 + A
 sources/ShadeBar 含源码、资源、构建配方和校验清单，不包含工具、SDK 或用户原始日志。
 
 发布
-新包：debs/com.linghe.shadebar_0.3.0~beta1_iphoneos-arm64.deb。
+新包：debs/com.linghe.shadebar_0.4.0~beta1_iphoneos-arm64.deb。
 0.1.0 崩溃版和 0.2.0 不显示版保存在 retired/，不列入活动索引。
+已确认基本功能正常的 0.3.0 保留在 debs/，需要时可回退；0.3.1 使用原有配置格式。
 推送 iosrepo 的本次完整变更，等待 Pages 部署，随后在 Sileo 刷新并升级。
 语言默认英文；系统首选语言为简体中文时使用中文。
 
@@ -85,3 +100,17 @@ sources/ShadeBar 含源码、资源、构建配方和校验清单，不包含工
 https://github.com/theos/headers/blob/master/SpringBoard/SpringBoard.h
 https://github.com/theos/headers/blob/master/SpringBoard/SBLockScreenManager.h
 https://github.com/Lessica/AltSpringBoardServices/blob/main/AltSpringBoardServices.mm
+
+多任务预览接口参考
+iOS 16 的控制器类型已见于 TrollPad 的 SBMainSwitcherControllerCoordinator 使用；
+可见性声明参考 MTACS 的接口镜像，运行时检查实例与方法存在后才调用，并兼容旧控制器。
+https://github.com/khanhduytran0/TrollPad/blob/main/TweakSB.x
+https://github.com/MTACS/iOS-17-Runtime-Headers/blob/main/PrivateFrameworks/SpringBoard.framework/SBMainSwitcherControllerCoordinator.h
+
+本版设备验收建议
+1. 分别按中文名称、英文名称、包标识搜索，清空搜索后恢复列表。
+2. 检查普通应用图标、主屏幕图标和未知包标识占位图。
+3. 进入一个应用关闭开关，返回“已启用”列表应消失，再开启后应重新出现。
+4. 打开目标应用确认关闭时隐藏、开启时恢复原位置/颜色/尺寸；多任务预览继续隐藏。
+5. 重开 ShadeBar 后确认开关保持，重载 SpringBoard 后重新开总开关验证配置仍保留。
+图标接口声明参考：https://github.com/theos/headers/blob/master/UIKit/UIImage%2BPrivate.h

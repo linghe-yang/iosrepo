@@ -29,6 +29,14 @@ static inline double SBNumber(NSDictionary *d,NSString *k,double fallback) {
 static inline NSString *SBProfileKey(NSString *bundle,NSString *field) {
     return [NSString stringWithFormat:@"profile.%@.%@",bundle,field];
 }
+static inline BOOL SBApplicationEnabled(NSDictionary *settings,NSString *bundle) {
+    if(!bundle.length) return NO;
+    id override=settings[SBProfileKey(bundle,@"enabled")];
+    BOOL hasOverride=[override respondsToSelector:@selector(boolValue)];
+    id apps=settings[@"apps"];
+    BOOL selected=[apps isKindOfClass:NSArray.class] && [apps containsObject:bundle];
+    return SBAppEnabled(hasOverride,hasOverride?[override boolValue]:NO,SBBool(settings,@"restricted",NO),selected);
+}
 static inline NSDictionary *SBProfile(NSDictionary *settings,NSString *bundle) {
     NSMutableDictionary *profile=[@{@"width":@.8,@"height":@.2,@"opacity":@1,@"color":@"000000",@"portrait.cx":@.5,@"portrait.cy":@.5,@"landscape.cx":@.5,@"landscape.cy":@.5} mutableCopy];
     for(NSString *field in profile.allKeys) {

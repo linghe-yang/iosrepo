@@ -56,11 +56,15 @@ def main():
     assert b'_isWindowServerHostingManaged\0' not in renderer_bytes
     assert b'_isSystemWindow\0' not in renderer_bytes
     assert b'initWithWindowScene:\0' in renderer_bytes
+    for selector in (b'isAnySwitcherVisible\0',b'isMainSwitcherVisible\0',b'appSwitcherVisible:\0'):
+        assert selector in renderer_bytes
     assert b'resize:\0' not in renderer_bytes and b'finish\0' not in renderer_bytes
     for data in (payload[path+'ShadeBootstrap.dylib'],renderer_bytes,payload[app+'ShadeBarApp']):
         assert b'/var/mobile/Library/ShadeBar/settings.plist\0' in data
     app_bytes=payload[app+'ShadeBarApp']
     assert b'UISlider\0' in app_bytes and b'ShadeProfileSettings\0' in app_bytes
+    assert b'_applicationIconImageForBundleIdentifier:format:scale:\0' in app_bytes
+    assert b'toggleApplication:\0' in app_bytes and b'iconForBundle:\0' in app_bytes
     assert b'profile.%@.%@\0' in app_bytes and b'profile.%@.%@\0' in renderer_bytes
     assert not any('Preferences.framework' in p for p in application['dependencies'])
     assert not any('PreferenceBundles/' in p or 'PreferenceLoader/' in p for p in payload)
@@ -72,6 +76,8 @@ def main():
     result={'native_abi_and_signatures_passed':True,'bootstrap_has_no_objc_classes_or_renderer_dependency':True,'renderer_has_no_constructor_or_setHandler_callback':True,'scene_window_creation_present':True,'unmanaged_window_override_removed':True,'on_screen_resize_controls_removed':True,'all_three_binaries_use_shared_settings_path':True,'app_icons_ipad_and_orientation_metadata_passed':True,'preferences_bundle_removed':True,'installation_scripts_passed':True,'code_pages_verified':sum(x['code_pages_verified'] for x in (boot,render,application)),'device_tested':False}
     result['per_application_profile_ui_and_shared_key_format_present']=True
     result['percentage_sliders_present']=True
+    result['application_icons_and_per_app_switch_present']=True
+    result['app_switcher_visibility_detection_present']=True
     (ROOT/'build/release_verification.json').write_text(json.dumps(result,indent=2))
     print('PASS: native ABI, isolated startup, removed crashing callback, desktop icons, iPad orientations, scripts, signed package')
 

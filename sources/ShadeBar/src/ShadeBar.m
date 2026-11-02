@@ -164,7 +164,33 @@
     self.profile=SBProfile(self.settings,bundle);
     [self applyProfile];
 }
+- (BOOL)appSwitcherVisible:(BOOL *)known {
+    *known=NO;
+    // iOS 16 uses the coordinator; older releases expose the view controller.
+    // Probe instances and selectors before calling; never assume an OS-specific ABI.
+    for(NSString *name in @[@"SBMainSwitcherControllerCoordinator",@"SBMainSwitcherViewController"]) {
+        Class cls=NSClassFromString(name);
+        id controller=nil;
+        if([cls respondsToSelector:@selector(sharedInstanceIfExists)]) controller=[cls sharedInstanceIfExists];
+        else if([cls respondsToSelector:@selector(sharedInstance)]) controller=[cls sharedInstance];
+        if([controller respondsToSelector:@selector(isAnySwitcherVisible)]) {
+            *known=YES;return [controller isAnySwitcherVisible];
+        }
+        if([controller respondsToSelector:@selector(isMainSwitcherVisible)]) {
+            *known=YES;return [controller isMainSwitcherVisible];
+        }
+    }
+    return NO;
+}
 - (void)updateDisplay {
+    BOOL switcherKnown=NO,switcherVisible=[self appSwitcherVisible:&switcherKnown];
+    if(switcherVisible) {
+        self.window.hidden=YES;
+        if(self.dragging) {
+            for(UIGestureRecognizer *g in self.window.bar.gestureRecognizers) {g.enabled=NO;g.enabled=YES;}
+            self.dragging=NO;
+        }
+    }
     UIApplication *application=UIApplication.sharedApplication;
     NSInteger orientation=0;
     if([application respondsToSelector:@selector(activeInterfaceOrientation)]) {
@@ -192,21 +218,23 @@
         }
     }
     NSArray *selected=[self.settings[@"apps"] isKindOfClass:NSArray.class]?self.settings[@"apps"]:@[];
-    BOOL enabled=SBBool(self.settings,@"enabled",NO),restricted=SBBool(self.settings,@"restricted",NO);
-    BOOL matched=[selected containsObject:bundle?:@""];
+    BOOL enabled=SBBool(self.settings,@"enabled",NO),restricted=YES;
+    BOOL matched=SBApplicationEnabled(self.settings,bundle);
     // Keep settings reachable even if the bar covers the entire screen.
     BOOL configuring=[bundle isEqual:@"com.linghe.shadebar.app"];
-    if(known && !configuring) [self selectProfile:bundle];
-    [self changeOrientation:orientation];
-    BOOL show=SBVisible(enabled,locked,restricted,known,matched) && !configuring;
+    if(!switcherVisible) {
+        if(known && !configuring) [self selectProfile:bundle];
+        [self changeOrientation:orientation];
+    }
+    BOOL show=SBVisible(enabled,locked,restricted,known,matched,switcherVisible) && !configuring;
     SBRect pixels=SBPixelRect(self.rect,self.canvasSize.width,self.canvasSize.height);
     BOOL offscreen=!CGRectIntersectsRect(CGRectMake(pixels.x,pixels.y,pixels.w,pixels.h),(CGRect){CGPointZero,self.canvasSize});
-    NSString *reason=!enabled?@"disabled":!lockKnown?@"lockUnknown":locked?@"locked":configuring?@"configuring":!known?@"frontUnknown":restricted&&!matched?@"notSelected":SBNumber(self.profile,@"opacity",1)<=0?@"transparent":offscreen?@"offscreen":@"visible";
+    NSString *reason=!enabled?@"disabled":!lockKnown?@"lockUnknown":locked?@"locked":switcherVisible?@"switcher":configuring?@"configuring":!known?@"frontUnknown":restricted&&!matched?@"notSelected":SBNumber(self.profile,@"opacity",1)<=0?@"transparent":offscreen?@"offscreen":@"visible";
     [self createWindow];
     self.window.windowLevel=100000;
     self.window.hidden=!show;
     [self layout];
-    [self recordDisplay:@{@"reason":reason,@"visible":@(show),@"bundle":bundle?:@"",@"frontKnown":@(known),@"locked":@(locked),@"lockKnown":@(lockKnown),@"selected":@(matched),@"selectedCount":@(selected.count),@"restricted":@(restricted),@"orientation":@(self.orientation),@"orientationSource":self.orientationSource?:@"unknown",@"sceneAttached":@(self.window.windowScene!=nil),@"sceneState":@(self.window.windowScene?self.window.windowScene.activationState:-99),@"windowFrame":NSStringFromCGRect(self.window.frame),@"barFrame":NSStringFromCGRect(self.window.bar.frame)}];
+    [self recordDisplay:@{@"reason":reason,@"visible":@(show),@"bundle":bundle?:@"",@"frontKnown":@(known),@"switcherVisible":@(switcherVisible),@"switcherKnown":@(switcherKnown),@"locked":@(locked),@"lockKnown":@(lockKnown),@"selected":@(matched),@"selectedCount":@(selected.count),@"restricted":@(restricted),@"orientation":@(self.orientation),@"orientationSource":self.orientationSource?:@"unknown",@"sceneAttached":@(self.window.windowScene!=nil),@"sceneState":@(self.window.windowScene?self.window.windowScene.activationState:-99),@"windowFrame":NSStringFromCGRect(self.window.frame),@"barFrame":NSStringFromCGRect(self.window.bar.frame)}];
 }
 - (CGPoint)rootPoint:(SBPoint)p {
     CGSize fixed=UIScreen.mainScreen.fixedCoordinateSpace.bounds.size;

@@ -88,6 +88,40 @@ SHA1: 3ee525fefb3791f52df082e803b460d7103d673f
 SHA256: 61852b1c79b0f356021f14a96f53df53c59b9b903e2fe89e099f49237e51b738
 SHA512: ac19f5ec48c890e296638882c965f16b7417bcd035e2cce9f269fba5f1d82c9b6a1b564867bf73585b191ed63d4b2a611833814336d6259bc34b0fe08ca0b3e9
 
+Package: com.linghe.shadebar
+Name: ShadeBar (Beta)
+Version: 0.3.1~beta1
+Architecture: iphoneos-arm64
+Description: Per-app rectangular overlay: 1-120% size sliders, free dragging, centered reset. Manual start after respring.
+Maintainer: Local Build
+Author: Local Build
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 16.0), firmware (<< 17.0)
+Installed-Size: 325
+Filename: ./debs/com.linghe.shadebar_0.3.1~beta1_iphoneos-arm64.deb
+Size: 84640
+MD5sum: b1918835e0a7d94b2acd5088c80b8d26
+SHA1: 8bc05a5875574257a7edc34ac2b269c2d517eafe
+SHA256: 45d6ef91cfa51d9267edec8a6405e5dc8b2738a2c6624eb4921dcd1daf09b3da
+SHA512: ab91091f9ecd0ac83a38fc95b34454022468e1355ee5c239bf0c95385208a79ff28ed978d63ba7360c12c97a8e0fb613cd99c37ce2b98a8c195e7a18c4f8e545
+
+Package: com.linghe.shadebar
+Name: ShadeBar (Beta)
+Version: 0.4.0~beta1
+Architecture: iphoneos-arm64
+Description: Searchable app icons and per-app enable switches. Rectangular overlay with size sliders and free dragging.
+Maintainer: Local Build
+Author: Local Build
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 16.0), firmware (<< 17.0)
+Installed-Size: 328
+Filename: ./debs/com.linghe.shadebar_0.4.0~beta1_iphoneos-arm64.deb
+Size: 89370
+MD5sum: b8fdf51733e84673159c54abdd5eb5d5
+SHA1: e297a9880bfee2e03f30f15aebc79fdd87ed0607
+SHA256: 79ab61a714dcabc6015a911a18e1713a85242a2b6359f791b6083aa406fdb5c7
+SHA512: a7730039eafcaac7c6d79e1253994493a100b485a1ba63fb82e62d5c7dfbbbd85951f198b9d883f764985918d1d1e8b3251f44969d450efdccf8f9b46932b8ea
+
 Package: com.vietanh.overlayiostool
 Name: OverlayIOSTOOL
 Depends: mobilesubstrate, firmware (>= 14.0), firmware (<< 17.0)

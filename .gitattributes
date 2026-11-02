@@ -1,0 +1,7 @@
+* text=auto eol=lf
+Packages -text
+Release -text
+*.deb -text
+*.gz -text
+*.bz2 -text
+*.xz -text

@@ -1,0 +1,51 @@
+Package: com.gamegod.igg.roothide
+Name: iGameGod Roothide (No Ads TEST)
+Description: Local no-ad test build; device validation pending.
+Maintainer: iGameGod
+Author: iGameGod
+Section: Utilities
+Depends: mobilesubstrate (>= 0.9.5000), ldid, fakeroot, odcctools
+Architecture: iphoneos-arm64e
+Version: 0.8.9.5+noads1
+Installed-Size: 35404
+Filename: ./debs/com.gamegod.igg.roothide_0.8.9.5+noads1_iphoneos-arm64e_TEST.deb
+Size: 6682268
+MD5sum: de9623ff5e0deb43ff1c201915c9d344
+SHA1: 8fd7eabf13a51908534312148d13304c702d550d
+SHA256: 10de08f015f2e63525a9e68b99cf1f3a1ed6e0a56667781c46e933dcbcddb640
+SHA512: dded52fdbf67a5a7be45e073f45e4103b59fbafd977c6a899c12849689ac39bb59dd9167743d20d794ec04f5976c6efb3b772e4bad6aeeb9a1a759a86cd26be7
+
+Package: com.gamegod.igg.rootless
+Name: iGameGod Rootless (No Ads TEST)
+Description: Local no-ad test build; device validation pending.
+Maintainer: iGameGod
+Author: iGameGod
+Section: Utilities
+Depends: mobilesubstrate (>= 0.9.5000), ldid, fakeroot, odcctools
+Architecture: iphoneos-arm64
+Version: 0.8.9.5+noads1
+Installed-Size: 35420
+Filename: ./debs/com.gamegod.igg.rootless_0.8.9.5+noads1_iphoneos-arm64_TEST.deb
+Size: 6680840
+MD5sum: e398e798847083d31fde0b9b01024f0b
+SHA1: d3dae752c5d27a272c261e3752df434844de00c5
+SHA256: c11d48d118d7202940d427f8f3ed765379c29a1ec39fea92f3bd4b69c87f8148
+SHA512: 80702609f0a090d63862515e47f689ea7668d19ebdcfb93c28d5fca70f352c067c1ed0bf676c83c82f77506a920e735266d898c47bcd9e5d040ad21bd1c386e9
+
+Package: com.gamegod.igg
+Name: iGameGod (No Ads TEST)
+Description: Local no-ad test build; device validation pending.
+Maintainer: iGameGod
+Author: iGameGod
+Section: Utilities
+Depends: mobilesubstrate (>= 0.9.5000), ldid, fakeroot, odcctools
+Architecture: iphoneos-arm
+Version: 0.8.9.5+noads1
+Installed-Size: 35452
+Filename: ./debs/com.gamegod.igg_0.8.9.5+noads1_iphoneos-arm_TEST.deb
+Size: 6692026
+MD5sum: e21e31d9312bee2b22441b114d391e17
+SHA1: 401003c18826a45e9fa742482a258e848e17ad8d
+SHA256: 398b73a144b5a1e73922cd38a171f7bb81a60b54d85b53a8393be3acffbc74e8
+SHA512: 049440c4392c8052668b6e2710a170dfb8183d64af86403760455effb6a76b286c2f40d2a110196f5a3dc3c036356987ec0d54cb87618e6d7dfccf0984cbb5ab
+

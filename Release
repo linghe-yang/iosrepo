@@ -2,8 +2,9 @@ Origin: sangeeeee iOS Repo
 Label: sangeeeee iOS Repo
 Suite: stable
 Codename: stable
+Components: main
 Architectures: iphoneos-arm iphoneos-arm64 iphoneos-arm64e
-Date: Mon, 02 Nov 2026 03:40:01 GMT
+Date: Mon, 02 Nov 2026 03:55:31 GMT
 Description: Personal jailbreak package repository
 MD5Sum:
  90ae41eb2561104f806c5a37e46b4b75 2155 Packages

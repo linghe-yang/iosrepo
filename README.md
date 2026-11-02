@@ -5,7 +5,7 @@
 启用 GitHub Pages 后，软件源地址为：
 
 ```text
-https://sangeeeee.github.io/iosrepo/
+https://linghe-yang.github.io/iosrepo/
 ```
 
 ## 首次启用
@@ -14,8 +14,8 @@ https://sangeeeee.github.io/iosrepo/
 
 等待部署完成，确认以下链接可访问，再在设备的包管理器中添加上面的源地址：
 
-- [Release](https://sangeeeee.github.io/iosrepo/Release)
-- [Packages](https://sangeeeee.github.io/iosrepo/Packages)
+- [Release](https://linghe-yang.github.io/iosrepo/Release)
+- [Packages](https://linghe-yang.github.io/iosrepo/Packages)
 
 ## 当前软件包
 
@@ -58,5 +58,11 @@ git push
 - `tools/update_repo.py`：索引生成和校验工具。
 
 当前未配置 GPG 仓库签名。DEB 内二进制的本地 ad-hoc 签名与 APT 仓库的 GPG 签名是不同机制。若以后启用 GPG 签名，需要在每次更新 `Release` 后重新签名；本脚本遇到已有签名文件会停止，避免发布过期签名。
+
+## Sileo 提示 Couldn't parse release
+
+`Release` 必须包含 `Components: main`；Sileo 即使面对平面源也会检查该字段。平面源的 `Packages` 仍放在根目录，不需要移动到 `dists/`。更新脚本会生成并校验这个字段。
+
+修复后推送仓库，等待 GitHub Pages 部署完成，再确认线上 `Release` 出现 `Components: main`，然后在 Sileo 中刷新源。若仍保留旧结果，可移除这个源后重新添加。
 
 项目参考：[GitHub Pages 发布设置](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)、[Sileo 官方软件源结构](https://github.com/Sileo/repo)、[iGameGod 官网](https://igamegod.app/)。

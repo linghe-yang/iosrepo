@@ -68,7 +68,11 @@ def check(expected, architectures):
         if decompress((ROOT / name).read_bytes()) != expected["Packages"]:
             raise ValueError(f"Stale compressed index: {name}")
     release = (ROOT / "Release").read_text(encoding="utf-8")
-    if fields(release)["Architectures"].split() != architectures:
+    release_fields = fields(release)
+    required = {"Origin", "Label", "Suite", "Codename", "Architectures", "Components"}
+    if not required.issubset(release_fields) or not release_fields["Components"].strip():
+        raise ValueError("Release is missing required repository metadata, including Components required by Sileo")
+    if release_fields["Architectures"].split() != architectures:
         raise ValueError("Release architectures do not match packages")
     algorithm, checked = None, set()
     for line in release.splitlines():
@@ -97,7 +101,7 @@ def main():
         old = fields((ROOT / "Release").read_text(encoding="utf-8")) if (ROOT / "Release").exists() else {}
         release = "".join(f"{key}: {old.get(key, default)}\n" for key, default in [
             ("Origin", "sangeeeee iOS Repo"), ("Label", "sangeeeee iOS Repo"),
-            ("Suite", "stable"), ("Codename", "stable")])
+            ("Suite", "stable"), ("Codename", "stable"), ("Components", "main")])
         release += "Architectures: " + " ".join(architectures) + "\n"
         release += f"Date: {format_datetime(datetime.now(timezone.utc), usegmt=True)}\n"
         release += f"Description: {old.get('Description', 'Personal jailbreak package repository')}\n"

@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "pcm_cases_bit_identical": [
+    "C1_low_bass",
+    "C3",
+    "C4",
+    "C4_missing_fundamental",
+    "C4_noise",
+    "C4_detuned_35c",
+    "C5",
+    "C7",
+    "C8",
+    "silence",
+    "one_partial"
+  ],
+  "model_calls_bit_identical": 704,
+  "original_jni_exports_preserved": 37,
+  "linked_macho_included": true,
+  "scope": "Original, statically address-adapted, and actual linked Mach-O instructions executed under Unicorn with the same external math shims. Not iOS device verification."
+}

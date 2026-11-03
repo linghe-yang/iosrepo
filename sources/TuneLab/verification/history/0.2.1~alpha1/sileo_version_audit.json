@@ -1,0 +1,29 @@
+{
+  "cause": "At the earlier online audit, only the 0.1.0 prototype DEBs were published; the development version alone could not update Sileo.",
+  "development_version": "0.2.1~alpha1",
+  "current_published_version": "0.1.0~beta1",
+  "user_release_requirement": "Complete original UI, behavior and algorithm port in an installable DEB; retire 0.1.0 from active repository.",
+  "repair_status": "0.2.1~alpha1 capture-fix DEBs built locally; local indexes updated; superseded packages retired. No remote publication.",
+  "online_evidence": [
+    {
+      "url": "https://linghe-yang.github.io/iosrepo/Packages",
+      "status": 200,
+      "etag": "\"6ae9d080-3492\"",
+      "sha256": "c4739bffef7ab49eb00112394f24e045e47603e0890fac9d02860bae7d319cf9",
+      "bytes": 13458,
+      "piano_entries": [
+        "Package: com.linghe.pianolab.rootful\nName: PianoLab (Rootful Beta)\nVersion: 0.1.0~beta1\nArchitecture: iphoneos-arm\nDescription: Standalone piano tuner with inharmonicity, stretch curves, spectrum and overpull.\nMaintainer: Local Build\nAuthor: Local Build\nSection: Multimedia\nDepends: firmware (>= 16.0), firmware (<< 17.0)\nConflicts: com.linghe.pianolab\nInstalled-Size: 251\nFilename: ./debs/com.linghe.pianolab.rootful_0.1.0~beta1_iphoneos-arm.deb\nSize: 95588\nMD5sum: 767224c3dae988fc9db3490d21fedf48\nSHA1: 7456481025f10d7d8af23be90608b3a0e1ed9565\nSHA256: 79bfd0a544e4c1613949fdcddae7322ac84f264e664083332652d95a8e311cfc\nSHA512: 3f9d4c47d5146c2811dc1161c7488d8f065e9144b9e86a6e9502cbfbc25a78f6d2baebad1ebfe8f546ed196be5c73b07b5b060b59a69a725e0fa341bc598d9eb",
+        "Package: com.linghe.pianolab\nName: PianoLab (Rootless Beta)\nVersion: 0.1.0~beta1\nArchitecture: iphoneos-arm64\nDescription: Standalone piano tuner with inharmonicity, stretch curves, spectrum and overpull.\nMaintainer: Local Build\nAuthor: Local Build\nSection: Multimedia\nDepends: firmware (>= 16.0), firmware (<< 17.0)\nConflicts: com.linghe.pianolab.rootful\nInstalled-Size: 251\nFilename: ./debs/com.linghe.pianolab_0.1.0~beta1_iphoneos-arm64.deb\nSize: 95628\nMD5sum: 34fb4b1ac5178c55d672eb61cbaae431\nSHA1: a3aab623566a5228cdcfb1def254607e3abd2373\nSHA256: 77c61eb3c4ab9b30738404e88c8bc22b449d754e091007ee752db9e267407ae4\nSHA512: a202898c56077a1a14484ca964fd5e735393b06a28afc1a1bbe109a1371482793d094ab9df5fd0ca648280b6a51c7d569aef5f92dcef39b9bc15640c0ac082f4"
+      ]
+    },
+    {
+      "url": "https://linghe-yang.github.io/iosrepo/Release",
+      "status": 200,
+      "etag": "\"6ae9d080-661\"",
+      "sha256": "daf1d583c4a8a3f4605f14791a829cf6807f8ccf2b3798bab85e15d59f90d85b",
+      "bytes": 1633,
+      "piano_entries": []
+    }
+  ],
+  "local_candidate_manifest": "installable_candidate.json"
+}

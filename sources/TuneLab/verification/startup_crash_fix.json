@@ -1,0 +1,21 @@
+{
+  "source_log": "TuneLab-2026-11-03-222515.ips",
+  "affected_version": "0.2.1~alpha1",
+  "affected_build": "3",
+  "matched_macho_uuid": "341b8afa-7643-398c-b1e4-fcdb85c3f8fb",
+  "log_exception": "EXC_CRASH SIGABRT",
+  "exception_backtrace": "-[TLMain viewDidLoad] + 624",
+  "image_offset": 38660,
+  "verified_call_instruction": "0x100009700: bl 0x10003c3b4",
+  "verified_imported_symbol": "_objc_enumerationMutation",
+  "cause": "Fast enumeration of _preferences while replacing values in the same mutable dictionary when saved preferences exist",
+  "fix": "Enumerate an independent allKeys snapshot, then restore values into the dictionary",
+  "user_data_deleted": false,
+  "fixed_device_tested": false,
+  "fixed_version": "0.2.2~alpha1",
+  "fixed_build": 4,
+  "fixed_application_sha256": "15915cbe4d0fcd7bf7656f62eebf7d90a1b81d7b2fe927eafbe310a85e5859fb",
+  "compiled_and_signed": true,
+  "package_checks_passed": true,
+  "source_log_sha256": "6351238a49b1ac211d292989df037573bd1a32bd733081d6a93082eb6834a851"
+}

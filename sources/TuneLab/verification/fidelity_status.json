@@ -411,8 +411,8 @@
   "all_ui_parity_complete": false,
   "all_algorithm_parity_complete": false,
   "release_ready": false,
-  "ios_port_version": "0.2.1~alpha1",
-  "ios_build": 3,
+  "ios_port_version": "0.2.2~alpha1",
+  "ios_build": 4,
   "complete_original_dsp_static_macho_compiles": true,
   "original_dsp_relocation_regressions_passed": true,
   "standalone_ios_application_built": true,
@@ -420,7 +420,7 @@
   "installable_alpha_report": "installable_candidate.json",
   "complete_original_port": false,
   "physical_ios_device_tested": false,
-  "local_active_repository_version": "0.2.1~alpha1",
+  "local_active_repository_version": "0.2.2~alpha1",
   "old_prototype_retired_from_active_local_index": true,
   "remaining_work": [
     "Complete original activity layouts, interactions, gestures, dialog and widget appearance parity",
@@ -432,5 +432,6 @@
     "Physical iOS 16 installation, audio, lifecycle and visual comparisons"
   ],
   "latest_audio_capture_fix_built": true,
-  "latest_audio_fix_physical_device_tested": false
+  "latest_audio_fix_physical_device_tested": false,
+  "startup_preferences_crash_fix_built": true
 }

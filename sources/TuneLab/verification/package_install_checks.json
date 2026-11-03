@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "version": "0.2.1~alpha1",
+  "version": "0.2.2~alpha1",
   "actual_dpkg_deb_info_and_extract": true,
   "extracted_executable_and_icon_identical": true,
   "shell_syntax_passed": true,
@@ -17,22 +17,22 @@
   "device_installation_performed": false,
   "packages": [
     {
-      "path": "debs/com.linghe.pianolab_0.2.1~alpha1_iphoneos-arm64.deb",
+      "path": "debs/com.linghe.pianolab_0.2.2~alpha1_iphoneos-arm64.deb",
       "package": "com.linghe.pianolab",
       "architecture": "iphoneos-arm64",
-      "version": "0.2.1~alpha1",
-      "bytes": 3325168,
-      "sha256": "96f587f21f447168141874b49bbb606b3ac752be30e20514f5ed56fcf9a7472d",
+      "version": "0.2.2~alpha1",
+      "bytes": 3325218,
+      "sha256": "6d28a2d88b641d0139ad89c998aa0d06b139e23edbaa0b900af344f8e3dab15b",
       "payload_files": 862,
       "payload_and_scripts_verified": true
     },
     {
-      "path": "debs/com.linghe.pianolab.rootful_0.2.1~alpha1_iphoneos-arm.deb",
+      "path": "debs/com.linghe.pianolab.rootful_0.2.2~alpha1_iphoneos-arm.deb",
       "package": "com.linghe.pianolab.rootful",
       "architecture": "iphoneos-arm",
-      "version": "0.2.1~alpha1",
-      "bytes": 3324850,
-      "sha256": "33072e7c0dc773afe9590c8b0f4aafd691e73f8ab10ffe536a66a867b0993bf4",
+      "version": "0.2.2~alpha1",
+      "bytes": 3324892,
+      "sha256": "5afb7f6de5e8a669dedc760590ee06ae2836b14df9c2d3bf6478f9e9ced8011b",
       "payload_files": 862,
       "payload_and_scripts_verified": true
     }

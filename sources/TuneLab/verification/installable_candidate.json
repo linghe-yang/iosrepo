@@ -1,5 +1,5 @@
 {
-  "version": "0.2.1~alpha1",
+  "version": "0.2.2~alpha1",
   "installable_candidate_built": true,
   "complete_original_port": false,
   "device_tested": false,
@@ -7,7 +7,7 @@
   "binary": {
     "architecture": "arm64",
     "cpu_subtype": "0x0",
-    "uuid": "341b8afa7643398cb1e4fcdb85c3f8fb",
+    "uuid": "c8b13949c63e303cb00fd4b532a52e89",
     "sections": [
       "__text",
       "__tlrom",
@@ -58,7 +58,7 @@
       "/System/Library/Frameworks/AVFAudio.framework/AVFAudio",
       "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation"
     ],
-    "sha256": "1896e128c000a4157094c45ca89cb616183d497543ff73adfd1ce64dab62da7e",
+    "sha256": "15915cbe4d0fcd7bf7656f62eebf7d90a1b81d7b2fe927eafbe310a85e5859fb",
     "entry_offset": 109556,
     "minimum_ios": "16.0",
     "entitlements": {
@@ -69,28 +69,28 @@
   },
   "packages": [
     {
-      "path": "debs/com.linghe.pianolab_0.2.1~alpha1_iphoneos-arm64.deb",
+      "path": "debs/com.linghe.pianolab_0.2.2~alpha1_iphoneos-arm64.deb",
       "package": "com.linghe.pianolab",
       "architecture": "iphoneos-arm64",
-      "version": "0.2.1~alpha1",
-      "bytes": 3325168,
-      "sha256": "96f587f21f447168141874b49bbb606b3ac752be30e20514f5ed56fcf9a7472d",
+      "version": "0.2.2~alpha1",
+      "bytes": 3325218,
+      "sha256": "6d28a2d88b641d0139ad89c998aa0d06b139e23edbaa0b900af344f8e3dab15b",
       "payload_files": 862,
       "payload_and_scripts_verified": true
     },
     {
-      "path": "debs/com.linghe.pianolab.rootful_0.2.1~alpha1_iphoneos-arm.deb",
+      "path": "debs/com.linghe.pianolab.rootful_0.2.2~alpha1_iphoneos-arm.deb",
       "package": "com.linghe.pianolab.rootful",
       "architecture": "iphoneos-arm",
-      "version": "0.2.1~alpha1",
-      "bytes": 3324850,
-      "sha256": "33072e7c0dc773afe9590c8b0f4aafd691e73f8ab10ffe536a66a867b0993bf4",
+      "version": "0.2.2~alpha1",
+      "bytes": 3324892,
+      "sha256": "5afb7f6de5e8a669dedc760590ee06ae2836b14df9c2d3bf6478f9e9ced8011b",
       "payload_files": 862,
       "payload_and_scripts_verified": true
     }
   ],
   "source_sha256": {
-    "src/App.mm": "c776ea4847df3aeea987e1df23ae457ec462fd89efd79a40cde7ac5d50e9cf77",
+    "src/App.mm": "2e8fdfd09ab84d489acf1b90d2fe9b7aeae374b0b92f4c694f014ebf433f3e38",
     "src/TLCapturePolicy.hpp": "a0355b3eeefa8a9cf70424c060a938b863c89e512f1abc56cea5d23e67c2eedc",
     "src/TLOriginalAudio.h": "f46a5fc7f589427ee81b3cebf85dfe23b5543f8c42c57a535dd78de2328a5150",
     "src/TLOriginalAudio.mm": "3de01546989560c020bf97c92829c1468f2843e31cf5aafbaceb2d5e0df5a3f2",

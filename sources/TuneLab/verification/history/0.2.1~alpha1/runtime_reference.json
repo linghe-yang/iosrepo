@@ -1,0 +1,306 @@
+{
+  "source": "unmodified AndroidTuneLab-3.2.apk on dedicated Android API35 emulator",
+  "raw_activity_launch_attempts": 41,
+  "raw_requested_pages_visible": 39,
+  "additional_original_main_captured": true,
+  "spectrum_update_recovered_after_original_state_initialization": true,
+  "distinct_application_pages_with_visible_reference": 41,
+  "missing_authenticated_page": "DBXfer closes when its original Dropbox credential/client state is null; no account used.",
+  "screenshot_dimensions": {
+    "About.png": [
+      1080,
+      1920
+    ],
+    "AdvSettings.png": [
+      1080,
+      1920
+    ],
+    "AndroidID.png": [
+      1080,
+      1920
+    ],
+    "AutoNote.png": [
+      1080,
+      1920
+    ],
+    "AutoPartial.png": [
+      1080,
+      1920
+    ],
+    "CustomStretch.png": [
+      1080,
+      1920
+    ],
+    "DarkMode.png": [
+      1080,
+      1920
+    ],
+    "DBXfer.png": [
+      1080,
+      1920
+    ],
+    "DispTxt.png": [
+      1080,
+      1920
+    ],
+    "DropboxOps.png": [
+      1080,
+      1920
+    ],
+    "EdIHCons.png": [
+      1080,
+      1920
+    ],
+    "EdMeasureSeq.png": [
+      1080,
+      1920
+    ],
+    "EdPartials.png": [
+      1080,
+      1920
+    ],
+    "EdPremeasure.png": [
+      1080,
+      1920
+    ],
+    "EnterGenLicense.png": [
+      1080,
+      1920
+    ],
+    "EnterHT.png": [
+      1080,
+      1920
+    ],
+    "Exam.png": [
+      1080,
+      1920
+    ],
+    "ExamTemp.png": [
+      1080,
+      1920
+    ],
+    "ExtMem.png": [
+      1080,
+      1920
+    ],
+    "FileExplorer.png": [
+      1080,
+      1920
+    ],
+    "FileTransfer.png": [
+      1080,
+      1920
+    ],
+    "Help.png": [
+      1080,
+      1920
+    ],
+    "HTOptions.png": [
+      1080,
+      1920
+    ],
+    "ICal.png": [
+      1080,
+      1920
+    ],
+    "IHRes.png": [
+      1080,
+      1920
+    ],
+    "IntSel.png": [
+      1080,
+      1920
+    ],
+    "Main_file_menu.png": [
+      1080,
+      1920
+    ],
+    "Main_help_menu.png": [
+      1080,
+      1920
+    ],
+    "Main_initial.png": [
+      1080,
+      1920
+    ],
+    "Main_phone_landscape.png": [
+      1920,
+      1080
+    ],
+    "Main_tablet_1133dp_landscape.png": [
+      2266,
+      1488
+    ],
+    "Main_tablet_744dp_portrait.png": [
+      1488,
+      2266
+    ],
+    "MparSettings.png": [
+      1080,
+      1920
+    ],
+    "MulParSetup.png": [
+      1080,
+      1920
+    ],
+    "Notations.png": [
+      1080,
+      1920
+    ],
+    "OPFactor.png": [
+      1080,
+      1920
+    ],
+    "OPHighestBass.png": [
+      1080,
+      1920
+    ],
+    "OPSafetyLimSel.png": [
+      1080,
+      1920
+    ],
+    "Overpull.png": [
+      1080,
+      1920
+    ],
+    "PhaseVel.png": [
+      1080,
+      1920
+    ],
+    "PickNote.png": [
+      1080,
+      1920
+    ],
+    "SaveFile.png": [
+      1080,
+      1920
+    ],
+    "Sel3part.png": [
+      1080,
+      1920
+    ],
+    "Settings.png": [
+      1080,
+      1920
+    ],
+    "SpectrumUpdateRate.png": [
+      1080,
+      1920
+    ],
+    "SpectrumUpdateRate_settled.png": [
+      1080,
+      1920
+    ],
+    "SpectrumZoom.png": [
+      1080,
+      1920
+    ],
+    "Tedit.png": [
+      1080,
+      1920
+    ]
+  },
+  "files": {
+    "About.png": "5e0cca81984c180ebe1cf7d7ed8cc154ddd1f98861804bc2222221f1bdd60d44",
+    "About.xml": "7c6d1c2a55a6b8c3bda28fff5fd0e613f014ec9d7f82ffd15487baceba35e458",
+    "AdvSettings.png": "7942a9a26db281311a28646aa481d17daa0acdad068264b2715040b3109a51b8",
+    "AdvSettings.xml": "1bffae04333055624823dcc9f343af4ffabaa6e3938b4e2282ee7180c33f9d83",
+    "AndroidID.png": "15227d87442dcc2d82c80a23c07fac46973d9b7922f55dcd50b4b20653f25edc",
+    "AndroidID.xml": "8ac12be0eea16ae081d443985c275077aaa5a96af69a77ab49c31a8c1e9b5d2a",
+    "AutoNote.png": "2ca5ca24fb0f2860d627635d0b5fbe53e6bfee33bc7d3d166c270ba2de902db9",
+    "AutoNote.xml": "96feebb358019a0fb371b3b56dd342ecafb69fb92e43de4813ae4135b0f07d3e",
+    "AutoPartial.png": "a1649108ddc9025ae91a9567ed434bbf71d16e6f235ddb55adca17e29e7f7a53",
+    "AutoPartial.xml": "45b6ba26158d8f7d212ddfa5327701be3ff363632e939c1b1454f55796ee350c",
+    "capture.json": "d0f43b7690b0b2a929a6f3cf5d19895eaec57c66fbfe89ee49f7becde6c5fc63",
+    "CustomStretch.png": "2f79625a34ab5d239c775ac1dcaef76e52dac9441787eb791695cd3f7a286906",
+    "CustomStretch.xml": "e35147f9c53f116fe5d8edaab6ee05d63706f5cd06d99c3fe03c70f73f3dfe8d",
+    "DarkMode.png": "90be7fbdb66a75d0d0435c9b25caa3133fc50d3bd991d9e265074a8ce74955da",
+    "DarkMode.xml": "25e1e81422e5c92cce712aedbcbeb6ec4d682c8cc4eea1d6139b4817e8758d28",
+    "DBXfer.png": "43669742da348f051d0e91c80cf8e42a346ff1973a445c846a7d1c50b4b79cb5",
+    "DBXfer.xml": "2e217c9a38b6136063c500a5faa1b2503fc2c4636555d24355d3abc71feee738",
+    "DispTxt.png": "fa7d84399bc523a3ad57cf9300d1545a3ec3426085e10e5b92a8741374fe239c",
+    "DispTxt.xml": "f0ba7df92b43600f54e7fbece26eab8e8d1aae78a39d2ccbd3ace8c17a786aa6",
+    "DropboxOps.png": "6ee784fa2866f3ee1e8c190babde7b1cc4ebccc4d5a46b64862c3a395bb7e4f8",
+    "DropboxOps.xml": "f8947e37c05eb028c0dcf6ddcfa7306f3f94d3faed5d2fc401219f856017a9f3",
+    "EdIHCons.png": "dfa7de86d9dcfb847b8d880c65afcae13bdac9082a30ac162c9e57ee128777b2",
+    "EdIHCons.xml": "e5bb5637dd94017fe680dd922b3adc88ef74857c8c17b408ff5fa7a9d1243fe8",
+    "EdMeasureSeq.png": "2a799e12a74f4ee216ebbc4e377048938b674fb8f8db2ffd21f97b394ec49d6f",
+    "EdMeasureSeq.xml": "aaa40099fa14854d322d34ae179c25649e0dbff411579560df643b218e410ced",
+    "EdPartials.png": "52d0483158095707f8604308a9be63162c0bd4ae5fdd12f8e19ed9f9c140c3e2",
+    "EdPartials.xml": "5b44cd68a1aa82352896acb41e3eae1462fbffc63278a45021d1ffabb1776abe",
+    "EdPremeasure.png": "3aae694a806d19a96c0b7669711d4a3a1533f0345789401ce8ea9eb90c9c3fd7",
+    "EdPremeasure.xml": "ee3fcbc8bf25eed322e7d85a1e54e0159cea795c88fb0e5023346ae782e31a45",
+    "EnterGenLicense.png": "8d463e34ad456a74cdb819df5df7815b7a7cb729dfe95dd28f58dc2645b4fc3e",
+    "EnterGenLicense.xml": "7a3bf205b466cb794a4ace67f6a48ac843a28f463cf122fe1f9c2b26a2a43fc2",
+    "EnterHT.png": "4e9adec097e54099bc4761e3fdc9e075ddac339ebec43854bc92ddbcfcb20d3a",
+    "EnterHT.xml": "473978f0cec574c35e80fd7a41ab85dfd288ba19ea5f374d004e6042438382c1",
+    "Exam.png": "ef0baf827e1352e53a59265781e1fb0a80433093af32afa2b5c813afc2c6a25d",
+    "Exam.xml": "a211e04c610ffdd9b9677775ecb701a3c61b53c6cfed4b556a334eb28ab33237",
+    "ExamTemp.png": "8b9eeb6edbebc1242de6b5d9ac7ed643d0eafc30f9df39f2c370e8048fb8a40c",
+    "ExamTemp.xml": "273e46cd60faf3b101de795d7115e040831ea22109da3ec2f7724909984afd9e",
+    "ExtMem.png": "a1b0a037b3fa1ab7263a6d854098e78fbcd93bf8d48c311d842bf6b5e8d7386b",
+    "ExtMem.xml": "453cfa1015a0bb3519ddb15c05c18afdc091de5b39b264eab84f34c4933ef4a6",
+    "FileExplorer.png": "7c4ac98f62fc130adeaa3c900feb8cf5b66e79d4351c7df0165c32c9477a4d7c",
+    "FileExplorer.xml": "63a512d224debdf380e12931d564f0b4c7639b110aecf2b801e2b4c7507b92a0",
+    "FileTransfer.png": "c7e2dc659df94d6d55cb80b038cf422c03bed7dc765003adc2cf92fd2bac0ff9",
+    "FileTransfer.xml": "024806a284c48a5fb89a23f513d7f65ea22dbf505a14892c6925a1888f433021",
+    "Help.png": "a62182e248bd0f1619e6226a655012331c8f00d4a6bbde57de24acd10d14b963",
+    "Help.xml": "cf4620d42e410059426f6cffb999ddc924ded7607759c2fc8d6739c3d565bda2",
+    "HTOptions.png": "1988509bfa6e5466dc0c4955b2275e254b71e4b1aa278b43155d4677ed74cb82",
+    "HTOptions.xml": "c79c7e98dc8549773d1310934073783f29b760316d3e15de54ff71614d15ed1f",
+    "ICal.png": "f2209aca6c8253eafe23e526b56cdce3522512835ddfa4857a17563c7ea88874",
+    "ICal.xml": "531890b6209a71cda2532f401cc1cbc80b65ebf0075d2a6ac2065e7b3a38eb72",
+    "IHRes.png": "b564310d4393d855c156a875380afc336d2e2e65e363edb56897d1b75e3fe37f",
+    "IHRes.xml": "b2f3bb064b91f27fda8f972e37489d7c9b614423eb3a92c8d1125c530b9a36ce",
+    "IntSel.png": "cbd6ba93f24250bed464ded7b61d01f00d620f5c0cb3b6e1e0fd8be5927ae2e3",
+    "IntSel.xml": "18452aea15627c76bad93fae5948cb896a7a98e31e24b3a2a4d42b4a60a906d2",
+    "Main_file_menu.png": "66ca35329776f422b405736ac5cacfe4b587dbf91e5821ad763d4216101dc84c",
+    "Main_file_menu.xml": "25fd25cfa28321169521a3b4fbe99bed3baa2ba2bbd123bf672b8f62f95249dd",
+    "Main_help_menu.png": "15452e076656b26aa93142005b2cbc14b7958324ac16290506c6bd3d50708a36",
+    "Main_help_menu.xml": "5232a81ca902d99766c67480fe0daa8d80449c1b62aa81d77e280aab43ecb238",
+    "Main_initial.png": "4f1012d153bdacd33f52940e1f5456079e8a40d222a8ed3dea8aa908374d73b4",
+    "Main_initial.xml": "2e217c9a38b6136063c500a5faa1b2503fc2c4636555d24355d3abc71feee738",
+    "Main_phone_landscape.png": "03e5b9bd1f7fee72edd59c032f79b7d4769d9e0847c78571182cdebac91854a1",
+    "Main_phone_landscape.xml": "04d4970b689b9a6a2d5332424f7933ad0711c5096f32d63b56713dbc3b803f7e",
+    "Main_tablet_1133dp_landscape.png": "29ee8e5d004f9d32d435ebe8c8d11ead6379510fd376d73153a00a26766659ab",
+    "Main_tablet_1133dp_landscape.xml": "5c5ad7d0b8c1fb77c24e6d74f71cdf8f5ff29a9bd50c4c89f3be1d7dd9a90885",
+    "Main_tablet_744dp_portrait.png": "228203c75223651d73e8b3a04825f794c9c31caab993849b5db04405a32d67f2",
+    "Main_tablet_744dp_portrait.xml": "feeaab9cc60b5984ad7f16e9845f120f713cb21f5c8532cfc3fef38df360c5f6",
+    "MparSettings.png": "b1aaa7456d7339de254ec4d6ab762bdcab618fae84a3a23291b5ae6ddcd96693",
+    "MparSettings.xml": "d1e0147ae491d1e6e072c3c06cd20f589b0a1603b549a63e8a71ed3fccf8afc4",
+    "MulParSetup.png": "92643023a2a45053b22e69ae5032a7c77d996be5fceca4e8144e805eaed618a8",
+    "MulParSetup.xml": "6b0ce1338721e032aae8c04b62ba0fa91a0f019fb94fbf9b33b8f1d67279a491",
+    "Notations.png": "8cb564eb63f0eeda509580623e08d187a01b8cc0f9d2fbd36ee4787be35f5087",
+    "Notations.xml": "f7ad0662abeedadecba3ecb6a89f9a590ede7680cc7b7cfd5634e1a537f92334",
+    "OPFactor.png": "f9a86d649ee7ffd5866ca35959a7ac005ed0e18fec2eb64ef973d827bd2d0386",
+    "OPFactor.xml": "d5a2fec2e9f47e6743bf2a16021764112c43cdc7fe40fa4893dd1945009d6206",
+    "OPHighestBass.png": "3ae1b4ab6c32dc3fa56cc5d194ffdaef6287f1985fcca4effd847a7d085e0c49",
+    "OPHighestBass.xml": "aec147f1ee3327e74d050bab677bd0e05f60ac6be990eb6e8bb62405b1486089",
+    "OPSafetyLimSel.png": "f35b653e7656ae991258de8a4ace325719190e62043178b742c6c946e3a53c3d",
+    "OPSafetyLimSel.xml": "1b4283907cd86258ebd0a125b92daeb60cd588a0c4fb9bd28d496a39285896fb",
+    "Overpull.png": "b62b789806437df3d9ba397cad881511550372e48fb72900cdef545c3c14a8ec",
+    "Overpull.xml": "a9aca26fb650b44398b24608e6d4e2ef7b4ae262b5dfe932b18d06b0ae230645",
+    "pages.json": "e77d42222c038c49761297205a0942a7b989bd240d802f246f5fc1a923bfa28d",
+    "PhaseVel.png": "5de046497034e1ce170919dc2f6ecca4e01aea44683896d786bf493a74fcaeef",
+    "PhaseVel.xml": "2367598d7f95cb1f070fdc72f5b1136695f7954ed70a496b4b25855cb26437d4",
+    "PickNote.png": "3b40291774237a81547147a6523e15039e792a2de62b59ed1233355dbc58b788",
+    "PickNote.xml": "2166714dc324cc832bfc602663513c4db33f5028bf834c752d8bea22f5d17807",
+    "SaveFile.png": "aa9cbfc5da90ca8f443e86512377edc8ce462ccbdf36cdee3c3a2b2bfe2caa40",
+    "SaveFile.xml": "5d63eb1c7bfc0ab1292fc53cb0d89de4ffc06c40d2b0e6e27300847e0bafb4c9",
+    "Sel3part.png": "7cdc22b2dd6574f87c2e397f8e95142279b685019e9c7e976091cf7ca14ef915",
+    "Sel3part.xml": "845b436f2021bde384095e326385302fbe56ae17427f75aa962c4213399edd87",
+    "Settings.png": "d94f9625960c7aff81f56b087b2936c7bf14ccb2e867529d7d8844bc60b3e11e",
+    "Settings.xml": "97713cce8525de52c44150ca4b0e9872aacde9c89389e33f8d741818ef261bc3",
+    "SpectrumUpdateRate.png": "7cca0e138259eb84d887511e4a958f167c74ed34c389ca197c62b9dfe05c42e5",
+    "SpectrumUpdateRate.xml": "2e217c9a38b6136063c500a5faa1b2503fc2c4636555d24355d3abc71feee738",
+    "SpectrumUpdateRate_settled.png": "af5c7af3e0558d8a5ab0736ea61f9fd605407171cd0bc2144544bd9cc719a688",
+    "SpectrumUpdateRate_settled.xml": "9ab0f06e46ca3c3734a5464e943b4bdb221f78b40d0506040e88080c6b90d3b7",
+    "SpectrumZoom.png": "5d8483fda7df03d8a50e960802facff5380c5dfd2e63c503b28bab4d6314696b",
+    "SpectrumZoom.xml": "fe5875fbcd2bd4bdb491345491e75a6fcd5d530801a1b5c9de2ee8039d0bcc92",
+    "Tedit.png": "c59f18a3e2cf7090b519de00b8c3b5f0a1213c4a06bbc54b248580fca6947669",
+    "Tedit.xml": "9b850ae3252a8a7e4593cb8f03710746c4ae30383ec807ea26fbc973926fa28e",
+    "variants.json": "9e5cc0b38f05f52f9e23dc2f444b069687f94a5b2a59cb1696ee0975e943cb6c"
+  },
+  "ios_ui_comparison_performed": false,
+  "full_port_complete": false
+}

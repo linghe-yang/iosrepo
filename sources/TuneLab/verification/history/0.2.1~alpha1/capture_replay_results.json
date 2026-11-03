@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "pcm_blocks": 240,
+  "scenes": [
+    {
+      "input_cents": -12,
+      "blocks": 80,
+      "active_phase_blocks": 56,
+      "distinct_phase_positions": 56,
+      "distinct_bitmap_frames": 4,
+      "peak_hz": 436.04736328125
+    },
+    {
+      "input_cents": 0,
+      "blocks": 80,
+      "active_phase_blocks": 56,
+      "distinct_phase_positions": 1,
+      "distinct_bitmap_frames": 4,
+      "peak_hz": 438.739013671875
+    },
+    {
+      "input_cents": 12,
+      "blocks": 80,
+      "active_phase_blocks": 56,
+      "distinct_phase_positions": 56,
+      "distinct_bitmap_frames": 4,
+      "peak_hz": 444.122314453125
+    }
+  ],
+  "original_application_outputs_bit_identical": true,
+  "phase_and_spectrum_react_to_pcm": true,
+  "physical_microphone_executed": false,
+  "apple_audio_converter_executed": false,
+  "application_sha256": "1896e128c000a4157094c45ca89cb616183d497543ff73adfd1ce64dab62da7e"
+}

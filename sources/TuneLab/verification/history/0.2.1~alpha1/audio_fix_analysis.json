@@ -1,0 +1,28 @@
+{
+  "version": "0.2.1~alpha1",
+  "affected_previous_version": "0.2.0~alpha1",
+  "user_reported_device": {
+    "model": "iPad mini 6",
+    "ios": "16.1",
+    "headphones": "not specified",
+    "previous_app_launch_ui_and_note_selection": "working",
+    "previous_real_microphone_analysis": "not responding"
+  },
+  "confirmed_code_defects": [
+    "Route and interruption handlers stopped capture without preserving intent or resuming",
+    "Audio-engine configuration and media reset events were not handled",
+    "No watchdog/counters to distinguish permission from live PCM delivery"
+  ],
+  "capture_graph_change": "Direct input-node tap at actual hardware format; persistent explicit AVAudioConverter to 44100 Hz mono; fixed-address 2048-frame original-native blocks",
+  "previous_muted_graph_as_unique_device_cause_proven": false,
+  "all_executed_checks_passed": true,
+  "new_physical_device_test_performed": false,
+  "apple_audio_converter_executed_locally": false,
+  "remote_publication_performed": false,
+  "details": "AUDIO_FIX_0.2.1.txt",
+  "sources": [
+    "https://developer.apple.com/documentation/avfaudio/avaudioengineconfigurationchangenotification",
+    "https://developer.apple.com/library/archive/qa/qa1631/_index.html",
+    "https://developer.apple.com/documentation/technotes/tn3136-avaudioconverter-performing-sample-rate-conversions"
+  ]
+}

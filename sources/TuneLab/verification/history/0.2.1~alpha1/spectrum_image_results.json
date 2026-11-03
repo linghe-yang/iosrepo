@@ -1,0 +1,93 @@
+{
+  "passed": true,
+  "bitmap_cases_bit_identical": 12,
+  "buffer_guards_preserved": true,
+  "cases": [
+    {
+      "width": 360,
+      "height": 220,
+      "zoom": 0,
+      "bitmap_sha256": "fa323bec3f7d436975b8036bf09c6f29bed6665e9b8a6ca3242570ccc4b1625f",
+      "return_value": -99999.0
+    },
+    {
+      "width": 360,
+      "height": 220,
+      "zoom": 1,
+      "bitmap_sha256": "26a445a56683f6279ccffe8f492b45b12d199311e913f4f412106fff02cc7ffd",
+      "return_value": -99999.0
+    },
+    {
+      "width": 360,
+      "height": 220,
+      "zoom": 2,
+      "bitmap_sha256": "26a445a56683f6279ccffe8f492b45b12d199311e913f4f412106fff02cc7ffd",
+      "return_value": -99999.0
+    },
+    {
+      "width": 360,
+      "height": 220,
+      "zoom": 3,
+      "bitmap_sha256": "26a445a56683f6279ccffe8f492b45b12d199311e913f4f412106fff02cc7ffd",
+      "return_value": -99999.0
+    },
+    {
+      "width": 360,
+      "height": 220,
+      "zoom": 4,
+      "bitmap_sha256": "c0ce84fd77bc89b850998bb9134ca4b3a6ff0e05a2fd16d7fe4ddd1881225875",
+      "return_value": -99999.0
+    },
+    {
+      "width": 360,
+      "height": 220,
+      "zoom": 5,
+      "bitmap_sha256": "c0ce84fd77bc89b850998bb9134ca4b3a6ff0e05a2fd16d7fe4ddd1881225875",
+      "return_value": -99999.0
+    },
+    {
+      "width": 1080,
+      "height": 420,
+      "zoom": 0,
+      "bitmap_sha256": "d2f6eaec9d7e9c3d6ad9375b499d678d7392d7b6fb84734d906f009a29e7015f",
+      "return_value": -99999.0
+    },
+    {
+      "width": 1080,
+      "height": 420,
+      "zoom": 1,
+      "bitmap_sha256": "eaef07f692c5463352eb206bf83c34b4d938b7bdbe11d2c46726516cc66919cc",
+      "return_value": -99999.0
+    },
+    {
+      "width": 1080,
+      "height": 420,
+      "zoom": 2,
+      "bitmap_sha256": "eaef07f692c5463352eb206bf83c34b4d938b7bdbe11d2c46726516cc66919cc",
+      "return_value": -99999.0
+    },
+    {
+      "width": 1080,
+      "height": 420,
+      "zoom": 3,
+      "bitmap_sha256": "eaef07f692c5463352eb206bf83c34b4d938b7bdbe11d2c46726516cc66919cc",
+      "return_value": -99999.0
+    },
+    {
+      "width": 1080,
+      "height": 420,
+      "zoom": 4,
+      "bitmap_sha256": "9c96a6605b7016174b61e3abe67a063e2d3d763cd46117eb8aa255cc987e376a",
+      "return_value": -99999.0
+    },
+    {
+      "width": 1080,
+      "height": 420,
+      "zoom": 5,
+      "bitmap_sha256": "9c96a6605b7016174b61e3abe67a063e2d3d763cd46117eb8aa255cc987e376a",
+      "return_value": -99999.0
+    }
+  ],
+  "application_sha256": "1896e128c000a4157094c45ca89cb616183d497543ff73adfd1ce64dab62da7e",
+  "scope": "Original bitmap JNI and actual application-linked original DSP; explicit host bitmap/math shims. Not UIKit or physical-device validation."
+}

@@ -1,0 +1,35 @@
+Piano Tuner / TuneLab 0.2.2~alpha1（构建号 4）启动闪退修复
+
+日志：TuneLab-2026-11-03-222515.ips。
+受影响版本：0.2.1，构建号 3；设备 iPad mini 6，iOS 16.1。
+
+根因已经定位：
+- 日志 UUID 341b8afa-7643-398c-b1e4-fcdb85c3f8fb 与本地交付的 0.2.1 可执行文件完全匹配。
+- 日志记录 EXC_CRASH / SIGABRT；异常回溯为 -[TLMain viewDidLoad] + 624，镜像偏移 38660。
+- 对应指令为 0x100009700 的 bl 调用，返回地址 0x100009704，导入符号确认为 _objc_enumerationMutation。
+- 该位置在恢复 Preferences.plist 时：遍历可变字典 _preferences，同时向同一个字典替换保存的值。
+  已有可恢复设置时触发集合遍历期间修改异常；此时还没有启动声音采集。
+
+修复：
+改为遍历独立的 _preferences.allKeys 数组，再将保存的值恢复到原字典。
+没有删除、重建或迁移用户的 Preferences.plist、Current.json 和调律文件。
+保留 0.2.1 的麦克风直采、采样率转换、路由恢复、电平显示及诊断功能。
+
+安装：
+Rootless / Dopamine：../../debs/com.linghe.pianolab_0.2.2~alpha1_iphoneos-arm64.deb
+Rootful：../../debs/com.linghe.pianolab.rootful_0.2.2~alpha1_iphoneos-arm.deb
+按现有越狱类型选择一种，直接覆盖安装，无需卸载或删除已有数据。
+
+验证范围：
+已核对原崩溃日志、原二进制 UUID、异常回溯地址及具体导入函数。
+修复后重新编译、签名、打包并检查升级顺序；执行声音核心和频谱联动回放回归。
+具体包哈希及检查结果见 verification/installable_candidate.json、package_install_checks.json、final_validation.json。
+尚未连接物理 iPad，修复后的实际启动和采音仍需设备复测。
+
+设备复测：
+1. 保留现有数据，覆盖安装 0.2.2~alpha1，确认 About 中为构建号 4。
+2. 打开应用、修改一个设置、退出再打开，重复启动应能正常恢复设置。
+3. 观察 Mic level 是否随声音变化，再测试选定音高的频谱及相位。
+4. 如仍闪退，提供版本 0.2.2 / 构建号 4 的新 TuneLab .ips。
+
+仅更新本地软件源和 DEB，不自动推送 GitHub Pages。

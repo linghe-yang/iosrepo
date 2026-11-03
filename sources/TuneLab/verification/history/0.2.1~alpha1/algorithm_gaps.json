@@ -1,0 +1,65 @@
+{
+  "scope": "Exact original behavior is required. Similar functions are not proof of parity.",
+  "original_apk_sha256": "2530c1d4dc81252c5af2de013a993c7c9c813796b75c22d8a6fd39a4f0347cb4",
+  "reusable_with_existing_frozen_comparisons": [
+    "PCM frame to inharmonicity: 11 saved WAVs and 132 partial diagnostics",
+    "IH interpolation and three-part curves: 190 configurations",
+    "Overpull correction from measured offsets: 1056 notes",
+    "Legacy automatic fitting and split-scale curve: 32 configurations"
+  ],
+  "must_port_original_implementation_or_demonstrate_full_behavior_parity": [
+    {
+      "original": "processAudioBuffer / CalcDemodParms / GetPitch",
+      "prototype_difference": "PianoLab uses a target-band FFT estimator with its own noise gate and capture threshold."
+    },
+    {
+      "original": "PhaseDisplayV with original phase and quality values",
+      "prototype_difference": "PianoLab animates from frequency error; that is not the original demodulated phase."
+    },
+    {
+      "original": "AutonoteAnalyzeFFT / SetAutoNoteParms",
+      "prototype_difference": "PianoLab uses a harmonic-comb heuristic and its own frame hysteresis."
+    },
+    {
+      "original": "CalculateAutoPartial / auto-partial configuration",
+      "prototype_difference": "Range presets and manual partial selection do not reproduce the original adaptive selector."
+    },
+    {
+      "original": "mparVelQual / mparAvgVelQual and partial weight tables",
+      "prototype_difference": "PianoLab merges partial cents using a median, which is not the original algorithm."
+    },
+    {
+      "original": "SetLocking / PendDoLocking",
+      "prototype_difference": "Original lock state, time constants and transition semantics have not been reproduced."
+    },
+    {
+      "original": "SpectrumSiphon / PaintSpectrumGraph / zoom modes",
+      "prototype_difference": "PianoLab uses its own logarithmic display instead of the original frequency and mid-zoom mappings."
+    },
+    {
+      "original": "DoOverpullAnalysis / OverpullSiphon",
+      "prototype_difference": "Manual target-band premeasurements are not a complete port of the original predictive measurement chain."
+    },
+    {
+      "original": "Exam / exam detune and report generation",
+      "prototype_difference": "PianoLab practice comparison omits the original exam state and report calculations."
+    },
+    {
+      "original": "FileExplorer / SaveFile",
+      "prototype_difference": "Original saved cents, selected partials, extra fields and exam import semantics require exact preservation."
+    },
+    {
+      "original": "ICal and network calibration",
+      "prototype_difference": "Manual and reference-tone correction do not include the original internet time calibration path."
+    }
+  ],
+  "all_original_algorithms_ported": false,
+  "original_native_image_status": {
+    "all_37_original_entries_statically_available": true,
+    "signed_macho_build": true,
+    "relocation_and_linked_code_regression_passed": true,
+    "frontend_and_platform_lifecycle_fully_connected": false,
+    "see": "native_component.json"
+  },
+  "must_port_original_implementation_or_demonstrate_full_behavior_parity_note": "The original compiled core is now statically available; the differences below describe the obsolete PianoLab prototype and frontend/runtime behaviors that still require original-state integration."
+}

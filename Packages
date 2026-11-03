@@ -73,9 +73,9 @@ SHA512: 049440c4392c8052668b6e2710a170dfb8183d64af86403760455effb6a76b286c2f40d2
 
 Package: com.linghe.pianolab.rootful
 Name: Piano Tuner (TuneLab, Rootful Alpha)
-Version: 0.2.1~alpha1
+Version: 0.2.2~alpha1
 Architecture: iphoneos-arm
-Description: TuneLab iOS port alpha with original ARM64 DSP; microphone capture and route recovery fix. Complete UI and feature parity remains in progress; device verification pending.
+Description: TuneLab iOS port alpha with original ARM64 DSP; saved-preferences startup crash fix and microphone recovery. Complete UI and feature parity remains in progress; device verification pending.
 Maintainer: Local Build
 Author: Local Build
 Section: Multimedia
@@ -83,18 +83,18 @@ Depends: firmware (>= 16.0), firmware (<< 17.0), uikittools
 Conflicts: com.linghe.pianolab
 Icon: https://linghe-yang.github.io/iosrepo/sources/TuneLab/resources/Icon.png
 Installed-Size: 7178
-Filename: ./debs/com.linghe.pianolab.rootful_0.2.1~alpha1_iphoneos-arm.deb
-Size: 3324850
-MD5sum: e3f334520314488d11bd8e0e08b825cb
-SHA1: 41feb36c525cd10a5b915543d4165f2bd2c52379
-SHA256: 33072e7c0dc773afe9590c8b0f4aafd691e73f8ab10ffe536a66a867b0993bf4
-SHA512: f907d72bdef8c86fc421f46fe971b79bd5bff3d2321483c3f59806b5fd7fa6d71ce62a1ec49495e0363b3ab28c3ef572c1d88d2e4bbf1dbcacde46e6fa7f6ec8
+Filename: ./debs/com.linghe.pianolab.rootful_0.2.2~alpha1_iphoneos-arm.deb
+Size: 3324892
+MD5sum: 957377523bd94e4c07e19b81811d70e2
+SHA1: a8bb066f8e04572de7505731f6408c5b79fb25ec
+SHA256: 5afb7f6de5e8a669dedc760590ee06ae2836b14df9c2d3bf6478f9e9ced8011b
+SHA512: 912abb7155285d3a9c55702fd55399a89383f2b63a43a426b0a94642221b022d014e1381c16cd721fecdc02c483340ae89067c7ed181f990f619148607ad22c0
 
 Package: com.linghe.pianolab
 Name: Piano Tuner (TuneLab, Rootless Alpha)
-Version: 0.2.1~alpha1
+Version: 0.2.2~alpha1
 Architecture: iphoneos-arm64
-Description: TuneLab iOS port alpha with original ARM64 DSP; microphone capture and route recovery fix. Complete UI and feature parity remains in progress; device verification pending.
+Description: TuneLab iOS port alpha with original ARM64 DSP; saved-preferences startup crash fix and microphone recovery. Complete UI and feature parity remains in progress; device verification pending.
 Maintainer: Local Build
 Author: Local Build
 Section: Multimedia
@@ -102,12 +102,12 @@ Depends: firmware (>= 16.0), firmware (<< 17.0), uikittools
 Conflicts: com.linghe.pianolab.rootful
 Icon: https://linghe-yang.github.io/iosrepo/sources/TuneLab/resources/Icon.png
 Installed-Size: 7178
-Filename: ./debs/com.linghe.pianolab_0.2.1~alpha1_iphoneos-arm64.deb
-Size: 3325168
-MD5sum: b76f570264046cf728669db274cf6fe3
-SHA1: 9282eff1b82222ce5326c55ea1e6418ea64505c2
-SHA256: 96f587f21f447168141874b49bbb606b3ac752be30e20514f5ed56fcf9a7472d
-SHA512: dadadf4d9a3b910742f23b7a673e9cd3699ad4d28b494e700d946dc734430104f784016935154d967ee97b4a3c0028a005eb7773bf1157d605193ca1412cf0ca
+Filename: ./debs/com.linghe.pianolab_0.2.2~alpha1_iphoneos-arm64.deb
+Size: 3325218
+MD5sum: 3717dadbe7bc477d3b0d9096908ae54d
+SHA1: 2f81ff55efdc059c3717f1f1e46bd79cc1fdadad
+SHA256: 6d28a2d88b641d0139ad89c998aa0d06b139e23edbaa0b900af344f8e3dab15b
+SHA512: 3d0921c7d748df0c642e97d3bd27e142c6e7d5dce74fb7462ea5e34deed2dee8774a337f483cefed016f1a6cd5709f630adde8a254153ada7b644e716c032d69
 
 Package: com.linghe.shadebar
 Name: ShadeBar (Beta)

@@ -88,7 +88,7 @@ def main():
 Name: Piano Tuner (TuneLab, {label} Alpha)
 Version: {version}
 Architecture: {arch}
-Description: TuneLab iOS port alpha with original ARM64 DSP; microphone capture and route recovery fix. Complete UI and feature parity remains in progress; device verification pending.
+Description: TuneLab iOS port alpha with original ARM64 DSP; saved-preferences startup crash fix and microphone recovery. Complete UI and feature parity remains in progress; device verification pending.
 Maintainer: Local Build
 Author: Local Build
 Section: Multimedia

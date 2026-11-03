@@ -1,6 +1,6 @@
 {
-  "version": "0.2.1~alpha1",
-  "final_application_sha256": "1896e128c000a4157094c45ca89cb616183d497543ff73adfd1ce64dab62da7e",
+  "version": "0.2.2~alpha1",
+  "final_application_sha256": "15915cbe4d0fcd7bf7656f62eebf7d90a1b81d7b2fe927eafbe310a85e5859fb",
   "measurement_audio_cases": 11,
   "model_calls": 704,
   "live_audio_blocks": 168,
@@ -14,5 +14,9 @@
   "apple_audio_converter_executed": false,
   "full_ui_parity_verified": false,
   "package_checks": "package_install_checks.json",
-  "candidate_manifest": "installable_candidate.json"
+  "candidate_manifest": "installable_candidate.json",
+  "startup_crash_log_symbolicated": true,
+  "startup_crash_cause": "Preference dictionary mutated during enumeration",
+  "startup_fix": "Enumerate independent allKeys snapshot",
+  "startup_fix_device_verified": false
 }

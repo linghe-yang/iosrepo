@@ -1,12 +1,12 @@
 {
-  "version": "0.2.1~alpha1",
-  "ios_short_version": "0.2.1",
-  "build": 3,
+  "version": "0.2.2~alpha1",
+  "ios_short_version": "0.2.2",
+  "build": 4,
   "original_android_version": "3.2",
   "previous_prototype_version": "0.1.0~beta1",
   "stage": "exact-port-in-progress",
   "deb_available": true,
-  "release_status": "installable-audio-fix-built-local-repository-only",
+  "release_status": "installable-startup-fix-built-local-repository-only",
   "retire_prototype_on_complete_release": true,
-  "previous_installable_version": "0.2.0~alpha1"
+  "previous_installable_version": "0.2.1~alpha1"
 }

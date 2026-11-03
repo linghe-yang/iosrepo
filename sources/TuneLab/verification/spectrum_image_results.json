@@ -88,6 +88,6 @@
       "return_value": -99999.0
     }
   ],
-  "application_sha256": "1896e128c000a4157094c45ca89cb616183d497543ff73adfd1ce64dab62da7e",
+  "application_sha256": "15915cbe4d0fcd7bf7656f62eebf7d90a1b81d7b2fe927eafbe310a85e5859fb",
   "scope": "Original bitmap JNI and actual application-linked original DSP; explicit host bitmap/math shims. Not UIKit or physical-device validation."
 }

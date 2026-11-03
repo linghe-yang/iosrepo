@@ -1,0 +1,18 @@
+{
+  "version": "0.2.1~alpha1",
+  "final_application_sha256": "1896e128c000a4157094c45ca89cb616183d497543ff73adfd1ce64dab62da7e",
+  "measurement_audio_cases": 11,
+  "model_calls": 704,
+  "live_audio_blocks": 168,
+  "spectrum_bitmap_cases": 12,
+  "phase_and_spectrum_pcm_replay_blocks": 240,
+  "capture_policy_pcm_checks": 67490,
+  "callback_partition_cases": 15,
+  "all_executed_checks_passed": true,
+  "same_external_math_and_clock_shims": true,
+  "physical_device_tested": false,
+  "apple_audio_converter_executed": false,
+  "full_ui_parity_verified": false,
+  "package_checks": "package_install_checks.json",
+  "candidate_manifest": "installable_candidate.json"
+}

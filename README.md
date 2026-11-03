@@ -28,8 +28,8 @@ https://linghe-yang.github.io/iosrepo/
 | `com.vietanh.overlayiostool` | Rootless，`iphoneos-arm64` | `5.8.12+lang1`；保留 `5.8.12` |
 | `com.linghe.shadebar` | Rootless，iOS 16，A12+；桌面 App + 原生 arm64e 组件 | `0.6.0~beta1` |
 | `ai.akemi.appsyncunified` | 官方原版镜像，Rootless / `iphoneos-arm64` | `116.0` |
-| `com.linghe.pianolab` | Piano Tuner / TuneLab iOS 16 Rootless 移植测试版 | `0.2.1~alpha1` |
-| `com.linghe.pianolab.rootful` | Piano Tuner / TuneLab iOS 16 Rootful 移植测试版 | `0.2.1~alpha1` |
+| `com.linghe.pianolab` | Piano Tuner / TuneLab iOS 16 Rootless 移植测试版 | `0.2.2~alpha1` |
+| `com.linghe.pianolab.rootful` | Piano Tuner / TuneLab iOS 16 Rootful 移植测试版 | `0.2.2~alpha1` |
 
 上述 iGameGod 包基于官方 0.8.9.5 制作，是本地去广告测试包，并非官方发布。原作者信息和软件包依赖保留在 DEB 中。
 
@@ -47,13 +47,15 @@ OverlayIOSTOOL 来自本地提供的两个 5.8.12 DEB，作者标注为 Viet Anh
 
 ## Piano Tuner / TuneLab 钢琴调律应用
 
-`0.2.1~alpha1` 修复采音路由变化后未恢复、实际采样转换与停滞检测，新增可点击重试的麦克风电平状态。[修复与验证范围](sources/TuneLab/AUDIO_FIX_0.2.1.txt)。目标反馈设备为 iPad mini 6 / iOS 16.1，新修复仍待真机复测。
+本次 **0.2.2~alpha1（构建号 4）** 修复恢复已有偏好设置时的启动闪退，已由真实日志 UUID 和反汇编确认根因。[定位与安装说明](sources/TuneLab/STARTUP_FIX_0.2.2.txt)。可直接覆盖升级，保留用户数据，修复后的真机启动仍待复测。
 
-现已生成 **`0.2.1~alpha1`（系统版本 0.2.1，构建号 3）** 的真实安装包。使用原版 Piano Tuner 名称、原图标和按钮资源，直接链接原 ARM64 声音核心；保留包标识供 `0.1.0~beta1` 升级。旧版已移至 `retired/`，不再出现在有效索引中。
+`0.2.2~alpha1` 修复采音路由变化后未恢复、实际采样转换与停滞检测，新增可点击重试的麦克风电平状态。[修复与验证范围](sources/TuneLab/AUDIO_FIX_0.2.1.txt)。目标反馈设备为 iPad mini 6 / iOS 16.1，新修复仍待真机复测。
+
+现已生成 **`0.2.2~alpha1`（系统版本 0.2.2，构建号 4）** 的真实安装包。使用原版 Piano Tuner 名称、原图标和按钮资源，直接链接原 ARM64 声音核心；保留包标识供 `0.1.0~beta1` 升级。旧版已移至 `retired/`，不再出现在有效索引中。
 
 **这是可安装的开发测试版，完整精准移植仍未完成，也尚未经过 iOS 真机安装、声音和逐页画面对照验收。** PTG 考试、Dropbox 同步及完整校准流程等仍有缺口；各设置页面目前不能视为原 UI 的等价移植。不能把安装包存在或声音样本对照通过解释为全部功能完成。
 
-下载 [Rootless / Dopamine DEB](debs/com.linghe.pianolab_0.2.1~alpha1_iphoneos-arm64.deb) 或 [Rootful DEB](debs/com.linghe.pianolab.rootful_0.2.1~alpha1_iphoneos-arm.deb)，选择符合越狱类型的一种。安装后打开 **Piano Tuner** 并允许使用麦克风。具体范围、限制和构建步骤见 [安装说明](sources/TuneLab/INSTALL_NOTES.txt)。
+下载 [Rootless / Dopamine DEB](debs/com.linghe.pianolab_0.2.2~alpha1_iphoneos-arm64.deb) 或 [Rootful DEB](debs/com.linghe.pianolab.rootful_0.2.2~alpha1_iphoneos-arm.deb)，选择符合越狱类型的一种。安装后打开 **Piano Tuner** 并允许使用麦克风。具体范围、限制和构建步骤见 [安装说明](sources/TuneLab/INSTALL_NOTES.txt)。
 
 最终应用镜像已通过 11 段测量音频、704 次模型调用、168 个连续处理块和 12 项原生频谱位图对照；签名、隐私声明、安装路径、安装脚本与包索引检查通过。对照使用相同的外部数学/时钟替身，物理设备验收仍待进行。
 

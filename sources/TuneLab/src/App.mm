@@ -137,7 +137,11 @@ static NSArray *Intervals(){return @[@"2:1 octaves",@"4:2 octaves",@"6:3 octaves
     [super viewDidLoad];_foreground=YES;self.view.backgroundColor=UIColor.blackColor;
     _folder=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/TuneLab"];NSError *error=nil;[[NSFileManager defaultManager] createDirectoryAtPath:_folder withIntermediateDirectories:YES attributes:nil error:&error];
     _preferences=[@{@"auto":@0,@"autoType":@1,@"triggerOnly":@NO,@"autoPartialBelow":@15,@"autoPartialMax":@7,@"persistent":@NO,@"zoom":@1,@"phaseSpeed":@1,@"thickness":@1,@"dark":@NO,@"updateRate":@1,@"calibration":@0,@"sequence":@[@3,@15,@27,@39,@51,@63],@"multi":@[],@"combined":@NO} mutableCopy];
-    NSDictionary *savedPrefs=[NSDictionary dictionaryWithContentsOfFile:[_folder stringByAppendingPathComponent:@"Preferences.plist"]];for(NSString *key in _preferences)if([savedPrefs[key] isKindOfClass:[_preferences[key] class]])_preferences[key]=savedPrefs[key];
+    NSDictionary *savedPrefs=[NSDictionary dictionaryWithContentsOfFile:[_folder stringByAppendingPathComponent:@"Preferences.plist"]];
+    // Restore into the mutable dictionary while enumerating an independent key
+    // snapshot. Fast enumeration of _preferences itself throws on replacement,
+    // including when the saved value equals the default value (second launch).
+    for(NSString *key in _preferences.allKeys)if([savedPrefs[key] isKindOfClass:[_preferences[key] class]])_preferences[key]=savedPrefs[key];
     NSData *data=[NSData dataWithContentsOfFile:[_folder stringByAppendingPathComponent:@"Current.json"]];if(data){id d=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];if([self validDocument:d])_document=d;}
     if(!_document){NSString *average=[NSString stringWithContentsOfFile:[Assets() stringByAppendingPathComponent:@"Average.tun"] encoding:NSUTF8StringEncoding error:nil];_document=[self parseTuning:average?:@"" name:@"Average"]?:[self newDocument];}
     _note=48;_partial=[_document[@"partials"][_note] intValue];_runtime=[TLOriginalRuntime new];_audio=[[TLOriginalAudio alloc] initWithRuntime:_runtime];

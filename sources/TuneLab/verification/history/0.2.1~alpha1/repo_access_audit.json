@@ -1,0 +1,69 @@
+[
+  {
+    "url": "https://linghe-yang.github.io/iosrepo/",
+    "status": 200,
+    "final_url": "https://linghe-yang.github.io/iosrepo/",
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 2557,
+    "sha256": "e2fa5df288fe880c9c7d9e7e147842a1f4a2df8c24f6a36b14623cbdcf46d308"
+  },
+  {
+    "url": "https://linghe-yang.github.io/iosrepo/Release",
+    "status": 200,
+    "final_url": "https://linghe-yang.github.io/iosrepo/Release",
+    "content_type": "application/octet-stream",
+    "bytes": 1633,
+    "sha256": "07b4a9796488d7869312a166d436231da10cadafc7383f27b8ae617b1f667e18",
+    "text": "Origin: sangeeeee iOS Repo\nLabel: sangeeeee iOS Repo\nSuite: stable\nCodename: stable\nComponents: main\nArchitectures: iphoneos-arm iphoneos-arm64 iphoneos-arm64e\nDate: Tue, 03 Nov 2026 14:11:54 GMT\nDescription: Personal jailbreak package repository\nMD5Sum:\n d4129066601eb615fe40e216b5bc97a1 13856 Packages\n 9322767e0b814754c100913ba32d1433 4974 Packages.gz\n 746837baa6840255f268249219612aad 4904 Packages.bz2\n 79e887b3128f4afc322e9efbdbbffc26 4484 Packages.xz\nSHA1:\n 7382ec22f2ad20e2fc0a62e5a355245341fdcd12 13856 Packages\n b482a042b3b3c7dc30fa8af57cbfba3e3d667fff 4974 Packages.gz\n d9dec96836feecbd8873117ff4837646dc347228 4904 Packages.bz2\n 3c099d1227fb55b036e00e16260cc2cceb62642e 4484 Packages.xz\nSHA256:\n 8538864f43c72a917da62b778a928dd00c5257d197cda9a3562fcb4f1938f0c5 13856 Packages\n db3f1dc4349f70e5ccfac612886c495e7d94786bfb9acf1606b158ee5efb8663 4974 Packages.gz\n 5e98fbd2f7d6ef75a4f58d58b2465fdba7003b103ed1771916efec5230840142 4904 Packages.bz2\n 1fcbf1fe824633ddec392483cd9c0ac9b2e224860db3170814488c8c81c7d12a 4484 Packages.xz\nSHA512:\n 3a0f5d124214496196fc956a19d0d0ae9701cd115b84d8d9c5e398eaa495f8d73fba895165589042c8d30183c575d6317f1473bc350eb1c406dad433dd9decc0 13856 Packages\n 35212af01033cb5b93fa2c2a5543ee04e32034dc089687da68c2a583d7e5efe2308d17abc304d0ca2e652726d5c982f61d78dbaa11f05101515d923c9896d768 4974 Packages.gz\n bcfe34eef1fb9dd7b95ea2e0acdf07c1ace98c5192d11497e55b407f541c31be819aad5d4efc3f1f717f2b1d5beebb993c4139067124bd317c315a4e7a4d61c7 4904 Packages.bz2\n 1cc1243a5bddb"
+  },
+  {
+    "url": "https://linghe-yang.github.io/iosrepo/Packages",
+    "status": 200,
+    "final_url": "https://linghe-yang.github.io/iosrepo/Packages",
+    "content_type": "application/octet-stream",
+    "bytes": 13856,
+    "sha256": "8538864f43c72a917da62b778a928dd00c5257d197cda9a3562fcb4f1938f0c5"
+  },
+  {
+    "url": "https://linghe-yang.github.io/iosrepo/Packages.gz",
+    "status": 200,
+    "final_url": "https://linghe-yang.github.io/iosrepo/Packages.gz",
+    "content_type": "application/gzip",
+    "bytes": 4974,
+    "sha256": "db3f1dc4349f70e5ccfac612886c495e7d94786bfb9acf1606b158ee5efb8663"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/linghe-yang/iosrepo/main/Release",
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/linghe-yang/iosrepo/main/Release",
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 1633,
+    "sha256": "07b4a9796488d7869312a166d436231da10cadafc7383f27b8ae617b1f667e18",
+    "text": "Origin: sangeeeee iOS Repo\nLabel: sangeeeee iOS Repo\nSuite: stable\nCodename: stable\nComponents: main\nArchitectures: iphoneos-arm iphoneos-arm64 iphoneos-arm64e\nDate: Tue, 03 Nov 2026 14:11:54 GMT\nDescription: Personal jailbreak package repository\nMD5Sum:\n d4129066601eb615fe40e216b5bc97a1 13856 Packages\n 9322767e0b814754c100913ba32d1433 4974 Packages.gz\n 746837baa6840255f268249219612aad 4904 Packages.bz2\n 79e887b3128f4afc322e9efbdbbffc26 4484 Packages.xz\nSHA1:\n 7382ec22f2ad20e2fc0a62e5a355245341fdcd12 13856 Packages\n b482a042b3b3c7dc30fa8af57cbfba3e3d667fff 4974 Packages.gz\n d9dec96836feecbd8873117ff4837646dc347228 4904 Packages.bz2\n 3c099d1227fb55b036e00e16260cc2cceb62642e 4484 Packages.xz\nSHA256:\n 8538864f43c72a917da62b778a928dd00c5257d197cda9a3562fcb4f1938f0c5 13856 Packages\n db3f1dc4349f70e5ccfac612886c495e7d94786bfb9acf1606b158ee5efb8663 4974 Packages.gz\n 5e98fbd2f7d6ef75a4f58d58b2465fdba7003b103ed1771916efec5230840142 4904 Packages.bz2\n 1fcbf1fe824633ddec392483cd9c0ac9b2e224860db3170814488c8c81c7d12a 4484 Packages.xz\nSHA512:\n 3a0f5d124214496196fc956a19d0d0ae9701cd115b84d8d9c5e398eaa495f8d73fba895165589042c8d30183c575d6317f1473bc350eb1c406dad433dd9decc0 13856 Packages\n 35212af01033cb5b93fa2c2a5543ee04e32034dc089687da68c2a583d7e5efe2308d17abc304d0ca2e652726d5c982f61d78dbaa11f05101515d923c9896d768 4974 Packages.gz\n bcfe34eef1fb9dd7b95ea2e0acdf07c1ace98c5192d11497e55b407f541c31be819aad5d4efc3f1f717f2b1d5beebb993c4139067124bd317c315a4e7a4d61c7 4904 Packages.bz2\n 1cc1243a5bddb"
+  },
+  {
+    "url": "https://api.github.com/repos/linghe-yang/iosrepo",
+    "status": 200,
+    "final_url": "https://api.github.com/repos/linghe-yang/iosrepo",
+    "content_type": "application/json; charset=utf-8",
+    "bytes": 5095,
+    "sha256": "e2bd2b760cf5b0daaa26776b4344e3f788c4395f9d226a75f0d2feb312858b28",
+    "info": {
+      "full_name": "linghe-yang/iosrepo",
+      "default_branch": "main",
+      "has_pages": true,
+      "private": false,
+      "html_url": "https://github.com/linghe-yang/iosrepo"
+    }
+  },
+  {
+    "url": "https://api.github.com/repos/linghe-yang/iosrepo/pages",
+    "status": 404,
+    "error": "Not Found"
+  },
+  {
+    "url": "https://linghe-yang.github.io/iosrepo/dists/stable/Release",
+    "status": 404,
+    "error": "Not Found"
+  }
+]

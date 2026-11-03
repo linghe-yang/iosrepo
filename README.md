@@ -28,6 +28,8 @@ https://linghe-yang.github.io/iosrepo/
 | `com.vietanh.overlayiostool` | Rootless，`iphoneos-arm64` | `5.8.12+lang1`；保留 `5.8.12` |
 | `com.linghe.shadebar` | Rootless，iOS 16，A12+；桌面 App + 原生 arm64e 组件 | `0.6.0~beta1` |
 | `ai.akemi.appsyncunified` | 官方原版镜像，Rootless / `iphoneos-arm64` | `116.0` |
+| `com.linghe.pianolab` | iOS 16 Rootless 独立钢琴调律应用 | `0.1.0~beta1` |
+| `com.linghe.pianolab.rootful` | iOS 16 Rootful 独立钢琴调律应用 | `0.1.0~beta1` |
 
 上述 iGameGod 包基于官方 0.8.9.5 制作，是本地去广告测试包，并非官方发布。原作者信息和软件包依赖保留在 DEB 中。
 
@@ -42,6 +44,16 @@ OverlayIOSTOOL 来自本地提供的两个 5.8.12 DEB，作者标注为 Viet Anh
 对于 **iPad mini 6 / iPadOS 16.1 / Dopamine**，应选择 Rootless 版：ARM64、系统依赖范围和 `/var/jb` 加载路径符合该环境。App 仅声明 iPhone 设备族并限制竖屏，预计通过 iPhone 兼容模式运行；尚未真机验证，不能视为原生 iPad、横屏或分屏适配。
 
 安装 Rootless 双语版 `5.8.12+lang1` 后，重新加载 SpringBoard 并打开 Overlay Tool（简体中文下为“图片浮层”），选择图片测试悬浮显示、拖动和缩放。切换系统首选语言后，需要退出 App 并重新加载 SpringBoard，使 App 和悬浮插件重新读取语言。只有在设备启用越狱及插件注入后，跨应用浮层才有相应运行环境。
+
+## PianoLab 钢琴调律应用
+
+PianoLab 是本地实现的 iOS 16 桌面应用，包含麦克风拾音、音分和频谱显示、非谐性测量、三段式与旧版拉伸曲线、过拉补偿、历史律制、琴型管理及文件导入导出。数值核心直接编译为 C++，运行时不依赖 Android 库或模拟器。
+
+提供 [Rootless / Dopamine DEB](debs/com.linghe.pianolab_0.1.0~beta1_iphoneos-arm64.deb) 和 [Rootful DEB](debs/com.linghe.pianolab.rootful_0.1.0~beta1_iphoneos-arm.deb)，按越狱环境选择一种。安装后打开 PianoLab，点“开始监听”并允许麦克风。
+
+已通过原算法声音、曲线、过拉和旧版自动拟合回归，以及签名、隐私声明、安装路径和包索引检查。**尚未在真实 iPhone / iPad 安装验收**，当前为 beta。实时自动选音、多泛音合并和视觉反馈使用独立实现，未证明与原应用逐项等价；考试入口提供练习对比，云端文件使用系统文件/分享界面。
+
+[完整使用说明与真机验收](sources/PianoLab/README.txt) · [C++ 核心检查结果](sources/PianoLab/verification/core_results.json) · [安装包检查](sources/PianoLab/verification/install_checks.json)。源码及测试音频随源保存；本地构建不会自动推送 GitHub Pages。
 
 ## ShadeBar 桌面 App 与遮挡条测试版
 

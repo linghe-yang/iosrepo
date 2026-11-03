@@ -71,6 +71,42 @@ SHA1: 401003c18826a45e9fa742482a258e848e17ad8d
 SHA256: 398b73a144b5a1e73922cd38a171f7bb81a60b54d85b53a8393be3acffbc74e8
 SHA512: 049440c4392c8052668b6e2710a170dfb8183d64af86403760455effb6a76b286c2f40d2a110196f5a3dc3c036356987ec0d54cb87618e6d7dfccf0984cbb5ab
 
+Package: com.linghe.pianolab.rootful
+Name: PianoLab (Rootful Beta)
+Version: 0.1.0~beta1
+Architecture: iphoneos-arm
+Description: Standalone piano tuner with inharmonicity, stretch curves, spectrum and overpull.
+Maintainer: Local Build
+Author: Local Build
+Section: Multimedia
+Depends: firmware (>= 16.0), firmware (<< 17.0)
+Conflicts: com.linghe.pianolab
+Installed-Size: 251
+Filename: ./debs/com.linghe.pianolab.rootful_0.1.0~beta1_iphoneos-arm.deb
+Size: 95588
+MD5sum: 767224c3dae988fc9db3490d21fedf48
+SHA1: 7456481025f10d7d8af23be90608b3a0e1ed9565
+SHA256: 79bfd0a544e4c1613949fdcddae7322ac84f264e664083332652d95a8e311cfc
+SHA512: 3f9d4c47d5146c2811dc1161c7488d8f065e9144b9e86a6e9502cbfbc25a78f6d2baebad1ebfe8f546ed196be5c73b07b5b060b59a69a725e0fa341bc598d9eb
+
+Package: com.linghe.pianolab
+Name: PianoLab (Rootless Beta)
+Version: 0.1.0~beta1
+Architecture: iphoneos-arm64
+Description: Standalone piano tuner with inharmonicity, stretch curves, spectrum and overpull.
+Maintainer: Local Build
+Author: Local Build
+Section: Multimedia
+Depends: firmware (>= 16.0), firmware (<< 17.0)
+Conflicts: com.linghe.pianolab.rootful
+Installed-Size: 251
+Filename: ./debs/com.linghe.pianolab_0.1.0~beta1_iphoneos-arm64.deb
+Size: 95628
+MD5sum: 34fb4b1ac5178c55d672eb61cbaae431
+SHA1: a3aab623566a5228cdcfb1def254607e3abd2373
+SHA256: 77c61eb3c4ab9b30738404e88c8bc22b449d754e091007ee752db9e267407ae4
+SHA512: a202898c56077a1a14484ca964fd5e735393b06a28afc1a1bbe109a1371482793d094ab9df5fd0ca648280b6a51c7d569aef5f92dcef39b9bc15640c0ac082f4
+
 Package: com.linghe.shadebar
 Name: ShadeBar (Beta)
 Version: 0.3.0~beta1

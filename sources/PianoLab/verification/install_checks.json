@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "packages": [
+    {
+      "file": "com.linghe.pianolab_0.1.0~beta1_iphoneos-arm64.deb",
+      "passed": true,
+      "code_pages_verified": 54,
+      "preset_files": 28,
+      "entitlements_verified": true,
+      "minimum_ios": "16.0"
+    },
+    {
+      "file": "com.linghe.pianolab.rootful_0.1.0~beta1_iphoneos-arm.deb",
+      "passed": true,
+      "code_pages_verified": 54,
+      "preset_files": 28,
+      "entitlements_verified": true,
+      "minimum_ios": "16.0"
+    }
+  ],
+  "device_installed": false
+}

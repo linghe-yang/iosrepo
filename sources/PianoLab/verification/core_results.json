@@ -1,0 +1,338 @@
+{
+  "passed": true,
+  "audio_cases": [
+    {
+      "name": "C1_low_bass",
+      "ih_difference": 0.0
+    },
+    {
+      "name": "C3",
+      "ih_difference": 0.0
+    },
+    {
+      "name": "C4",
+      "ih_difference": 0.0
+    },
+    {
+      "name": "C4_missing_fundamental",
+      "ih_difference": 0.0
+    },
+    {
+      "name": "C4_noise",
+      "ih_difference": 0.0
+    },
+    {
+      "name": "C4_detuned_35c",
+      "ih_difference": 0.0
+    },
+    {
+      "name": "C5",
+      "ih_difference": 0.0
+    },
+    {
+      "name": "C7",
+      "ih_difference": 0.0
+    },
+    {
+      "name": "C8",
+      "ih_difference": 0.0
+    },
+    {
+      "name": "silence",
+      "ih_difference": 0.0
+    },
+    {
+      "name": "one_partial",
+      "ih_difference": 0.0
+    }
+  ],
+  "max_ih_difference": 0.0,
+  "partial_max_differences": [
+    0.0,
+    1.9073486328125e-06,
+    1.1444091796875e-05,
+    0.0009765625,
+    0.0
+  ],
+  "model_cases": 190,
+  "max_stretch_difference_cents": 0.001953125,
+  "overpull_notes": 1056,
+  "max_overpull_difference": 0.0,
+  "pitch_cases": [
+    {
+      "target": 165.0,
+      "cents": -30.0,
+      "error_cents": 0.015569686889648438
+    },
+    {
+      "target": 165.0,
+      "cents": 0.0,
+      "error_cents": 0.010886848904192448
+    },
+    {
+      "target": 165.0,
+      "cents": 30.0,
+      "error_cents": 0.00072479248046875
+    },
+    {
+      "target": 440.0,
+      "cents": -30.0,
+      "error_cents": 0.0005817413330078125
+    },
+    {
+      "target": 440.0,
+      "cents": 0.0,
+      "error_cents": 0.00012007515761069953
+    },
+    {
+      "target": 440.0,
+      "cents": 30.0,
+      "error_cents": 0.0010395050048828125
+    },
+    {
+      "target": 1000.0,
+      "cents": -30.0,
+      "error_cents": 3.4332275390625e-05
+    },
+    {
+      "target": 1000.0,
+      "cents": 0.0,
+      "error_cents": 0.00010566613491391763
+    },
+    {
+      "target": 1000.0,
+      "cents": 30.0,
+      "error_cents": 2.86102294921875e-05
+    },
+    {
+      "target": 4186.0,
+      "cents": -30.0,
+      "error_cents": 4.76837158203125e-05
+    },
+    {
+      "target": 4186.0,
+      "cents": 0.0,
+      "error_cents": 0.0
+    },
+    {
+      "target": 4186.0,
+      "cents": 30.0,
+      "error_cents": 2.86102294921875e-05
+    }
+  ],
+  "resampling": [
+    {
+      "input_rate": 44100.0,
+      "output_samples": 22050,
+      "cents_error": 0.00012007515761069953,
+      "chunk_invariant": true
+    },
+    {
+      "input_rate": 48000.0,
+      "output_samples": 22050,
+      "cents_error": 0.0,
+      "chunk_invariant": true
+    },
+    {
+      "input_rate": 96000.0,
+      "output_samples": 22050,
+      "cents_error": 0.00012007515761069953,
+      "chunk_invariant": true
+    }
+  ],
+  "legacy_cases": [
+    {
+      "profile": "Average.tun",
+      "modern": false,
+      "split": 0,
+      "max_curve_error_cents": 7.62939453125e-06
+    },
+    {
+      "profile": "Average.tun",
+      "modern": false,
+      "split": 0,
+      "max_curve_error_cents": 7.62939453125e-06
+    },
+    {
+      "profile": "Average.tun",
+      "modern": true,
+      "split": 0,
+      "max_curve_error_cents": 1.1444091796875e-05
+    },
+    {
+      "profile": "Average.tun",
+      "modern": true,
+      "split": 0,
+      "max_curve_error_cents": 1.1444091796875e-05
+    },
+    {
+      "profile": "Baldwin E.tun",
+      "modern": false,
+      "split": 0,
+      "max_curve_error_cents": 1.1444091796875e-05
+    },
+    {
+      "profile": "Baldwin E.tun",
+      "modern": false,
+      "split": 0,
+      "max_curve_error_cents": 1.1444091796875e-05
+    },
+    {
+      "profile": "Baldwin E.tun",
+      "modern": true,
+      "split": 0,
+      "max_curve_error_cents": 1.1444091796875e-05
+    },
+    {
+      "profile": "Baldwin E.tun",
+      "modern": true,
+      "split": 0,
+      "max_curve_error_cents": 1.1444091796875e-05
+    },
+    {
+      "profile": "Baldwin R.tun",
+      "modern": false,
+      "split": 0,
+      "max_curve_error_cents": 7.62939453125e-06
+    },
+    {
+      "profile": "Baldwin R.tun",
+      "modern": false,
+      "split": 0,
+      "max_curve_error_cents": 7.62939453125e-06
+    },
+    {
+      "profile": "Baldwin R.tun",
+      "modern": true,
+      "split": 0,
+      "max_curve_error_cents": 7.62939453125e-06
+    },
+    {
+      "profile": "Baldwin R.tun",
+      "modern": true,
+      "split": 0,
+      "max_curve_error_cents": 7.62939453125e-06
+    },
+    {
+      "profile": "Mason & Hamlin A.tun",
+      "modern": false,
+      "split": 0,
+      "max_curve_error_cents": 9.5367431640625e-06
+    },
+    {
+      "profile": "Mason & Hamlin A.tun",
+      "modern": false,
+      "split": 0,
+      "max_curve_error_cents": 9.5367431640625e-06
+    },
+    {
+      "profile": "Mason & Hamlin A.tun",
+      "modern": true,
+      "split": 0,
+      "max_curve_error_cents": 5.7220458984375e-06
+    },
+    {
+      "profile": "Mason & Hamlin A.tun",
+      "modern": true,
+      "split": 0,
+      "max_curve_error_cents": 5.7220458984375e-06
+    },
+    {
+      "profile": "Petrof II.tun",
+      "modern": false,
+      "split": 0,
+      "max_curve_error_cents": 3.814697265625e-06
+    },
+    {
+      "profile": "Petrof II.tun",
+      "modern": false,
+      "split": 0,
+      "max_curve_error_cents": 3.814697265625e-06
+    },
+    {
+      "profile": "Petrof II.tun",
+      "modern": true,
+      "split": 0,
+      "max_curve_error_cents": 1.71661376953125e-05
+    },
+    {
+      "profile": "Petrof II.tun",
+      "modern": true,
+      "split": 0,
+      "max_curve_error_cents": 1.71661376953125e-05
+    },
+    {
+      "profile": "Steinway A.tun",
+      "modern": false,
+      "split": 0,
+      "max_curve_error_cents": 7.62939453125e-06
+    },
+    {
+      "profile": "Steinway A.tun",
+      "modern": false,
+      "split": 0,
+      "max_curve_error_cents": 7.62939453125e-06
+    },
+    {
+      "profile": "Steinway A.tun",
+      "modern": true,
+      "split": 0,
+      "max_curve_error_cents": 4.76837158203125e-06
+    },
+    {
+      "profile": "Steinway A.tun",
+      "modern": true,
+      "split": 0,
+      "max_curve_error_cents": 4.76837158203125e-06
+    },
+    {
+      "profile": "Steinway D.tun",
+      "modern": false,
+      "split": 0,
+      "max_curve_error_cents": 1.1444091796875e-05
+    },
+    {
+      "profile": "Steinway D.tun",
+      "modern": false,
+      "split": 0,
+      "max_curve_error_cents": 1.1444091796875e-05
+    },
+    {
+      "profile": "Steinway D.tun",
+      "modern": true,
+      "split": 0,
+      "max_curve_error_cents": 1.1444091796875e-05
+    },
+    {
+      "profile": "Steinway D.tun",
+      "modern": true,
+      "split": 0,
+      "max_curve_error_cents": 1.1444091796875e-05
+    },
+    {
+      "profile": "synthetic_split_scale",
+      "modern": false,
+      "split": 0,
+      "max_curve_error_cents": 2.86102294921875e-06
+    },
+    {
+      "profile": "synthetic_split_scale",
+      "modern": false,
+      "split": 28,
+      "max_curve_error_cents": 6.67572021484375e-06
+    },
+    {
+      "profile": "synthetic_split_scale",
+      "modern": true,
+      "split": 0,
+      "max_curve_error_cents": 1.9073486328125e-06
+    },
+    {
+      "profile": "synthetic_split_scale",
+      "modern": true,
+      "split": 28,
+      "max_curve_error_cents": 8.58306884765625e-06
+    }
+  ],
+  "scope": "Host C++ numerical tests, not iOS hardware validation."
+}

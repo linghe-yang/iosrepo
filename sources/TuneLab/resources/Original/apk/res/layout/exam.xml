@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/topLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <CheckBox
+        android:textSize="26sp"
+        android:id="@+id/detune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pre-exam detuning"
+        android:onClick="onClickDetune"/>
+    <CheckBox
+        android:textSize="26sp"
+        android:id="@+id/examCapture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15sp"
+        android:text="Exam capture mode"
+        android:onClick="onClickCapture"/>
+    <Button
+        android:textSize="26sp"
+        android:textColor="#ffffffff"
+        android:background="@drawable/roundedbuttonlight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15sp"
+        android:text=" Generate Report "
+        android:onClick="onClickGen"/>
+    <Button
+        android:textSize="26sp"
+        android:textColor="#ffffffff"
+        android:background="@drawable/roundedbuttonlight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15sp"
+        android:text=" View Old Reports "
+        android:onClick="onClickViewRep"/>
+    <Button
+        android:textSize="26sp"
+        android:textColor="#ffffffff"
+        android:background="@drawable/roundedbuttonlight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15sp"
+        android:text=" Force Exam Partials "
+        android:onClick="onClickExamPartials"/>
+    <Button
+        android:textSize="26sp"
+        android:textColor="#ffffffff"
+        android:background="@drawable/roundedbuttonltblue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15sp"
+        android:text=" Back to main "
+        android:onClick="mainOnClick"/>
+</LinearLayout>

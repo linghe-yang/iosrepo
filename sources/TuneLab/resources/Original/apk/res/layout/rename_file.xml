@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ff99aaa2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <EditText
+        android:textSize="24sp"
+        android:textColor="#ff000000"
+        android:textColorHint="#90000000"
+        android:id="@+id/edTextNewName"
+        android:background="#ffaabbe0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="   (enter new name here)"
+        app:layout_constraintTop_toTopOf="parent">
+        <requestFocus/>
+    </EditText>
+    <Button
+        android:textColor="#ffffffff"
+        android:id="@+id/clearButton"
+        android:background="#ff442222"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text=" Clear "
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edTextNewName"/>
+    <Button
+        android:textColor="#ffffffff"
+        android:id="@+id/originalButton"
+        android:background="#ff003322"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:text=" Original "
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/clearButton"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

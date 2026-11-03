@@ -1,0 +1,547 @@
+[
+  {
+    "activity": "Main",
+    "method": "lockButtonOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Main",
+    "method": "measureButtonOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Main",
+    "method": "onActivityResult",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Main",
+    "method": "onLongClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Main",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Main",
+    "method": "settingsButtonOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Main",
+    "method": "speakerButtonOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Main",
+    "method": "tcurveButtonOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Settings",
+    "method": "onActivityResult",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Settings",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "AdvSettings",
+    "method": "onClickSwitch",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "AdvSettings",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "MparSettings",
+    "method": "onClickSwitch",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "MparSettings",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "MulParSetup",
+    "method": "onClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "MulParSetup",
+    "method": "onLongClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "MulParSetup",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "SpectrumZoom",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "SpectrumZoom",
+    "method": "zoomClicked",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "EdPartials",
+    "method": "onClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "EdPartials",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "EdMeasureSeq",
+    "method": "onClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "EdMeasureSeq",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "EdIHCons",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "IHRes",
+    "method": "deletePriorButtonOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "IHRes",
+    "method": "discardButtonOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "IHRes",
+    "method": "onLongClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "IHRes",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "IHRes",
+    "method": "saveButtonOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "IHRes",
+    "method": "savePlusButtonOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "PickNote",
+    "method": "octaveOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "PickNote",
+    "method": "onTouch",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "AndroidID",
+    "method": "onActivityResult",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "AndroidID",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "EnterGenLicense",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "AutoNote",
+    "method": "autoAllClicked",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "AutoNote",
+    "method": "autoBothClicked",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "AutoNote",
+    "method": "autoDownClicked",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "AutoNote",
+    "method": "autoNoteOnClicked",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "AutoNote",
+    "method": "autoNoteTrigOnlyClicked",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "AutoNote",
+    "method": "autoUpClicked",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "AutoNote",
+    "method": "mainOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "AutoNote",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Tedit",
+    "method": "onActivityResult",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Tedit",
+    "method": "onClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Tedit",
+    "method": "onLongClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Tedit",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Tedit",
+    "method": "onTouch",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "IntSel",
+    "method": "doneButtonOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "IntSel",
+    "method": "makeDefButtonOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "IntSel",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Overpull",
+    "method": "mainOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Overpull",
+    "method": "onActivityResult",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Overpull",
+    "method": "onClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Overpull",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "OPSafetyLimSel",
+    "method": "doneOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "OPSafetyLimSel",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "OPHighestBass",
+    "method": "doneOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "OPFactor",
+    "method": "doneOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "OPFactor",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "EdPremeasure",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "AutoPartial",
+    "method": "doneOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "AutoPartial",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "PhaseVel",
+    "method": "doneOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "EnterHT",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "CustomStretch",
+    "method": "onClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "CustomStretch",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Exam",
+    "method": "mainOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Exam",
+    "method": "onActivityResult",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Exam",
+    "method": "onClickCapture",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Exam",
+    "method": "onClickDetune",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Exam",
+    "method": "onClickExamPartials",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Exam",
+    "method": "onClickGen",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Exam",
+    "method": "onClickViewRep",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Exam",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "ExamTemp",
+    "method": "onActivityResult",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "ExamTemp",
+    "method": "onClickPickMaster",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "About",
+    "method": "mainOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "About",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "HTOptions",
+    "method": "onClickA0",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "HTOptions",
+    "method": "onClickAvg0",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "HTOptions",
+    "method": "onClickDone",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Help",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "FileExplorer",
+    "method": "onActivityResult",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "FileExplorer",
+    "method": "onClickBack",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "FileExplorer",
+    "method": "onClickCancel",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "FileExplorer",
+    "method": "onClickNew",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "FileExplorer",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "SaveFile",
+    "method": "onClickBack",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "SaveFile",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Sel3part",
+    "method": "doneButtonOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Sel3part",
+    "method": "makeDefButtonOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "Sel3part",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "ExtMem",
+    "method": "onClickUpdateSD",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "ExtMem",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "ICal",
+    "method": "onClickBegin",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "ICal",
+    "method": "onClickCancel",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "ICal",
+    "method": "onClickDef",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "DropboxOps",
+    "method": "onClickCopyToDropbox",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "DropboxOps",
+    "method": "onClickDownloadFromDropbox",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "DropboxOps",
+    "method": "onClickLinkUnlink",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "DropboxOps",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "DBXfer",
+    "method": "onClickCancel",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "DBXfer",
+    "method": "onClickNdays",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "DBXfer",
+    "method": "onClickOK",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "DBXfer",
+    "method": "onClickPauseForInfo",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "SpectrumUpdateRate",
+    "method": "doneOnClick",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "SpectrumUpdateRate",
+    "method": "onOptionsItemSelected",
+    "status": "requires_original_behavior_port"
+  },
+  {
+    "activity": "DarkMode",
+    "method": "darkClicked",
+    "status": "requires_original_behavior_port"
+  }
+]

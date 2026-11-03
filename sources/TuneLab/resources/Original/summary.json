@@ -1,0 +1,11 @@
+{
+  "activities": 42,
+  "layout_variants": 69,
+  "layout_nodes": 673,
+  "menu_files": 13,
+  "public_click_and_navigation_handlers": 109,
+  "native_api_functions": 37,
+  "resources_hashed": 847,
+  "ui_pixel_comparison_passed": false,
+  "all_function_parity_passed": false
+}

@@ -1,0 +1,224 @@
+[
+  {
+    "return_type": "void",
+    "name": "AddIHConstant",
+    "arguments": "int i, float f",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "void",
+    "name": "AddIHOffsets",
+    "arguments": "int i",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "void",
+    "name": "AddThisIHOffset",
+    "arguments": "int i, int i2, float f",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "float",
+    "name": "AnalyzeForIH",
+    "arguments": "",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "float",
+    "name": "BetaNative",
+    "arguments": "int i",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "int",
+    "name": "CPcomm",
+    "arguments": "int i, int i2",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "void",
+    "name": "CalcDemodParms",
+    "arguments": "float f",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "void",
+    "name": "CalcPhaseIncrement",
+    "arguments": "float f, float f2",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "void",
+    "name": "ClearIHConstant",
+    "arguments": "int i",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "void",
+    "name": "ClearIHOffsets",
+    "arguments": "",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "float",
+    "name": "DeltaForPartialNative",
+    "arguments": "int i, int i2",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "void",
+    "name": "DoAdjust",
+    "arguments": "int i, float f, float f2, float f3, float f4",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "int",
+    "name": "GetIHConstantExists",
+    "arguments": "int i",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "float",
+    "name": "GetIHConstantValue",
+    "arguments": "int i",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "float",
+    "name": "GetIHOffset",
+    "arguments": "int i, int i2",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "float",
+    "name": "GetOneIHResultAmp",
+    "arguments": "int i",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "float",
+    "name": "GetOneIHResultOffset",
+    "arguments": "int i",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "int",
+    "name": "GetPitch",
+    "arguments": "int i",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "float",
+    "name": "IHform",
+    "arguments": "int i",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "int",
+    "name": "IncrBK",
+    "arguments": "int i, float f",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "float",
+    "name": "ModelCents",
+    "arguments": "int i",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "void",
+    "name": "Set3partParms",
+    "arguments": "int i, int i2, int i3, int i4, int i5, int i6",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "void",
+    "name": "SetAdjustmentParms",
+    "arguments": "int i, int i2, int i3, float f, int i4, int i5",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "void",
+    "name": "SetAutoNoteParms",
+    "arguments": "",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "int",
+    "name": "SetMeasureState",
+    "arguments": "int i",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "void",
+    "name": "SetNote",
+    "arguments": "int i, float f, int i2",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "float",
+    "name": "TStretchForPartial",
+    "arguments": "int i, int i2",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "float",
+    "name": "drawSpectrumGraph",
+    "arguments": "Bitmap bitmap",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "void",
+    "name": "flashTallyRect",
+    "arguments": "int i, int i2",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "int",
+    "name": "mparAvgVelQual",
+    "arguments": "",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "int",
+    "name": "mparVelQual",
+    "arguments": "int i",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "int",
+    "name": "processAudioBuffer",
+    "arguments": "int i",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "int",
+    "name": "processForAutoNote",
+    "arguments": "",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "int",
+    "name": "setAudioBlockAddress",
+    "arguments": "ShortBuffer shortBuffer, float f",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "int",
+    "name": "setFilesDir",
+    "arguments": "String str",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "int",
+    "name": "setupPartials",
+    "arguments": "int i, int i2, int i3, int i4",
+    "full_behavior_verified": false
+  },
+  {
+    "return_type": "void",
+    "name": "setupSpectrumGraph",
+    "arguments": "int i, int i2, int i3, float f, int i4, int i5, int i6, int i7",
+    "full_behavior_verified": false
+  }
+]

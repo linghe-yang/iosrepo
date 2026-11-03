@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/topLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="30sp"
+        android:layout_marginTop="20sp">
+        <TextView
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Bass Interval"
+            android:layout_weight="1"/>
+        <TextView
+            android:textSize="18sp"
+            android:gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Treble Interval"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="65sp">
+        <Spinner
+            android:id="@+id/bass"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <Spinner
+            android:id="@+id/treble"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="18sp"
+            android:gravity="center"
+            android:background="#ff3300aa"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="** For Display only **\10** in Deviation Curve **"
+            android:layout_weight="1"/>
+        <Button
+            android:textColor="#ffffffff"
+            android:background="@drawable/roundedbuttonlight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="8sp"
+            android:layout_marginBottom="8sp"
+            android:text="Done"
+            android:onClick="doneButtonOnClick"/>
+    </LinearLayout>
+    <TextView
+        android:textSize="15sp"
+        android:background="#ff3300aa"
+        android:paddingLeft="15sp"
+        android:paddingRight="15sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8sp"
+        android:text="When 3-part tuning is enabled, these settings do not control the Tuning Curve.  They only determine what intervals are shown in the Deviation Curve."/>
+</LinearLayout>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Audio Triggering</title>
+  </head>
+  <body>
+    <p><b>Audio Triggering</b> is used to control several operations within
+      TuneLab. A <b><i>Trigger</i></b> is detected when the sound detected at
+      the microphone rises suddenly. The purpose of detecting a Trigger is to
+      detect the start of a note being played.&nbsp; This detection is obviously
+      important in measuring inharmonicity and pre-measuring for a pitch-raise
+      in over-pull mode.&nbsp; But it is also used in restarting the grouping of
+      audio samples for the Spectrum Display, for restarting an Offset Locking
+      operation, and optionally for auto note switching.&nbsp; On the <a href="help33.html">auto
+        note switching setup page</a> you can choose to make auto note switching
+      work only on triggers at the beginning of a note being played rather than
+      all the time.&nbsp; This will reduce the chances that auto note switching
+      will switch to the wrong note because the note is decaying and subject to
+      more noise.&nbsp; Because of the many uses of Triggering, the volume
+      indicator bar on the right side of the Spectrum Display shows when a
+      trigger is detected by a slight change in color.&nbsp; Whenever a trigger
+      is detected the color alternates between a <b><span style="color: #7070b8;">blue
+          tint</span></b> and a <b><span style="color: #9050b8;">lavender tint</span></b>
+      to verify that triggers are being detected correctly.</p>
+    <p>The threshold volume level for detecting a Trigger is a certain
+      percentage of the average volume level in the past 30 seconds.&nbsp;
+      Therefore, if the recent volume level is very loud then this threshold will
+      become higher so that if you play a note quietly immediately after playing
+      loudly the volume rise due to playing the quiet note may not be detected
+      as a trigger. Likewise, if the sound from the microphone is quiet for
+      some time the threshold for detecting a trigger will drift lower so that
+      even the slightest sound may produce a trigger.&nbsp; This could be
+      important in measuring inharmonicity, for example.&nbsp; Suppose you take
+      some time placing mutes and getting ready to measure a note.&nbsp; Then
+      you tap the measure button which causes TuneLab to wait for the next
+      trigger to begin sampling inharmonicity.&nbsp; But if the trigger
+      detection has become too sensitive due to all the preceding silence, it
+      might detect a trigger too soon and start listening for inharmonicity even
+      before you play the note because of some small random noise.&nbsp; If
+      there has been some period of silence, play the note several times before
+      tapping the measure button.&nbsp; Then when you do tap the measure button
+      the trigger detection will not start the measurement prematurely.</p>
+    <br>
+  </body>
+</html>

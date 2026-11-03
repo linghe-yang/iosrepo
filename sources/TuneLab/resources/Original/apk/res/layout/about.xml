@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/topLayout"
+    android:background="#ff408080"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#ff000000"
+        android:gravity="center_horizontal"
+        android:paddingBottom="12sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="About TuneLab Piano Tuner"/>
+    <TextView
+        android:textSize="16sp"
+        android:textColor="#ff000000"
+        android:id="@+id/build"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Version 1.0 (Oct 30 2011)"/>
+    <TextView
+        android:textSize="16sp"
+        android:textColor="#ff000000"
+        android:id="@+id/samRate"
+        android:paddingBottom="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Audio Sample Rate: 22050.12"/>
+    <Button
+        android:textColor="#ffffffff"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/roundedbutton"
+        android:paddingBottom="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Help and support info "
+        android:onClick="onSupportButton"/>
+    <Button
+        android:textColor="#ffffffff"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/roundedbutton"
+        android:paddingBottom="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:text=" External memory file transfer "
+        android:onClick="onExtMemXfer"/>
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp">
+        <Button
+            android:textColor="#ffffffff"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/roundedbutton"
+            android:paddingBottom="6sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Back to main "
+            android:onClick="mainOnClick"/>
+        <Button
+            android:textColor="#ffffffff"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/roundedbutton"
+            android:paddingBottom="6sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30sp"
+            android:text=" Advanced "
+            android:onClick="onAdvanced"/>
+    </LinearLayout>
+</LinearLayout>

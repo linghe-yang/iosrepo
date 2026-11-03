@@ -1,0 +1,917 @@
+[
+  {
+    "class": "Main",
+    "label": "Piano Tuner",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "main",
+      "offset_menu"
+    ],
+    "menus": [
+      "activity_main_actions",
+      "filesmenu",
+      "helpmainmenu"
+    ],
+    "destinations": [
+      "EdPremeasure",
+      "Exam",
+      "Sel3part",
+      "Settings",
+      "Tedit"
+    ],
+    "handlers": [
+      "lockButtonOnClick",
+      "measureButtonOnClick",
+      "onActivityResult",
+      "onLongClick",
+      "onOptionsItemSelected",
+      "settingsButtonOnClick",
+      "speakerButtonOnClick",
+      "tcurveButtonOnClick"
+    ],
+    "source_sha256": "0de3106b7e3fff92ba53e490ba1ba5a3d3fa6cd43d526dea2dccad027f4a6946",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "Settings",
+    "label": "Settings",
+    "theme": "@style/BlackTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "list_activity"
+    ],
+    "menus": [
+      "helpmenu",
+      "helponly_actions"
+    ],
+    "destinations": [
+      "About",
+      "AutoNote",
+      "AutoPartial",
+      "CustomStretch",
+      "DarkMode",
+      "EdIHCons",
+      "EdMeasureSeq",
+      "EnterGenLicense",
+      "Exam",
+      "FileExplorer",
+      "Overpull",
+      "PhaseVel",
+      "SpectrumUpdateRate",
+      "SpectrumZoom"
+    ],
+    "handlers": [
+      "onActivityResult",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "0ba7553c9992f20c6e9f1abe45ad3cd08f714617ff61c5f3fd0466f250d241e6",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "AdvSettings",
+    "label": "Advanced Settings",
+    "theme": "@style/BlackTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "advsettings"
+    ],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [],
+    "handlers": [
+      "onClickSwitch",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "c819202d15190b9fe0372e0bb84666cbf6b7e6c0b87d4668c05f554d3c9e5b08",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "MparSettings",
+    "label": "Multi-Partial Settings",
+    "theme": "@style/BlackTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "mparsettings",
+      "spinner_dropdown_item",
+      "spinner_layout_big"
+    ],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [],
+    "handlers": [
+      "onClickSwitch",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "d2ffc43ea0176e664e047a83bbbb4fa54a0b6f57df110b480f3b4db995f4280a",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "MulParSetup",
+    "label": "Piano Tuner",
+    "theme": "@style/BlackTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "mpar_edit"
+    ],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [
+      "MparSettings"
+    ],
+    "handlers": [
+      "onClick",
+      "onLongClick",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "b8ee677507a7fe1f1e6636227414009714bbc7f31d7e77380b1e23e456ed98f6",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "SpectrumZoom",
+    "label": "Select spectrum zoom..",
+    "theme": "@style/BlackTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "spectrum_zoom"
+    ],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [],
+    "handlers": [
+      "onOptionsItemSelected",
+      "zoomClicked"
+    ],
+    "source_sha256": "e2a32254ac162095572b1d8060f8b8ca0fb0e4b3602a5470a1620dcbb52d6102",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "EdPartials",
+    "label": "Table of Partials",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [],
+    "handlers": [
+      "onClick",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "ae1df4c64538b2b73fd061d6e20b2f8979876accb3d8e524104873a8a70e578f",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "EdMeasureSeq",
+    "label": "Measure Sequence (for new tunings)",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [],
+    "handlers": [
+      "onClick",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "035b7a55ff0d6694bd52de7565bf64e7d5aa97bdb99b64e85f9edb2befe5147c",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "EdIHCons",
+    "label": "Inharmonicity Constants",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "ed1_ihcon",
+      "edihcon",
+      "edihcons_list_item"
+    ],
+    "menus": [
+      "helpihresmenu",
+      "helponly_actions"
+    ],
+    "destinations": [],
+    "handlers": [
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "4702864c17012a4de2af17607898813fc25834b144fa03c0a16638b2b2a7e5f2",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "IHRes",
+    "label": "Inharmonicity Measurement Results:",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "ihres"
+    ],
+    "menus": [
+      "helponly_actions",
+      "ihresmenu"
+    ],
+    "destinations": [],
+    "handlers": [
+      "deletePriorButtonOnClick",
+      "discardButtonOnClick",
+      "onLongClick",
+      "onOptionsItemSelected",
+      "saveButtonOnClick",
+      "savePlusButtonOnClick"
+    ],
+    "source_sha256": "52b43bb4b643b0617641943763fc4da2ff235a1d7488b42362b5b33c16223617",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "PickNote",
+    "label": "Select note:",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "pick_note"
+    ],
+    "menus": [],
+    "destinations": [],
+    "handlers": [
+      "octaveOnClick",
+      "onTouch"
+    ],
+    "source_sha256": "ad3d7d7eb7101ea758f2a189041b9776598a4ab03a3a821c9a4bd70062411530",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "AndroidID",
+    "label": "Licensing TuneLab Piano Tuner",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "get_device_id"
+    ],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [],
+    "handlers": [
+      "onActivityResult",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "cde983cd76f07dbe7a6248443ae5f004d58f52aad54008b72f7a7191ded36611",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "EnterGenLicense",
+    "label": "Enter License Number",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "forever_license"
+    ],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [],
+    "handlers": [
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "5f37f9e2b56f21993559b03706da4493c0245120bc5b0e228e49e68f9cc7b403",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "AutoNote",
+    "label": "Auto Note Switching",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "auto_note"
+    ],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [],
+    "handlers": [
+      "autoAllClicked",
+      "autoBothClicked",
+      "autoDownClicked",
+      "autoNoteOnClicked",
+      "autoNoteTrigOnlyClicked",
+      "autoUpClicked",
+      "mainOnClick",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "001e15d16cee0c4b8bbad7bd4fef7467bf19a7fcf964a66ebb4c52551c85e092",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "Tedit",
+    "label": "Tuning Curve",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "tedit"
+    ],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [
+      "IntSel",
+      "Sel3part"
+    ],
+    "handlers": [
+      "onActivityResult",
+      "onClick",
+      "onLongClick",
+      "onOptionsItemSelected",
+      "onTouch"
+    ],
+    "source_sha256": "6944ff9e39e35ab64590bc5b4c97896ab373010c19183452956bb9ed86fd7784",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "IntSel",
+    "label": "Select Bass,Treble Intervals",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "intpicker",
+      "intpicker3",
+      "spinner_dropdown_item",
+      "spinner_layout_big"
+    ],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [],
+    "handlers": [
+      "doneButtonOnClick",
+      "makeDefButtonOnClick",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "bfd2913bb105e34680e81338d5f545ee38950c5b50e65421a6eebcda1214273f",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "Overpull",
+    "label": "Over-pull setup:",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "overpull"
+    ],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [
+      "EdPremeasure",
+      "OPFactor",
+      "OPHighestBass",
+      "OPSafetyLimSel"
+    ],
+    "handlers": [
+      "mainOnClick",
+      "onActivityResult",
+      "onClick",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "7b5c24bd827a681680f30c7c741e9ca7294e4634ca556037669b40eec7bac4e0",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "OPSafetyLimSel",
+    "label": "Over-pull safety limits:",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "opsafetylim",
+      "spinner_dropdown_item",
+      "spinner_layout_big"
+    ],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [],
+    "handlers": [
+      "doneOnClick",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "2bc05f59ee213d8fe839bb7b1a0fc54ed00d97c7415a209c988893367767d4e8",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "OPHighestBass",
+    "label": "Break settings:",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "opbreak",
+      "spinner_dropdown_item",
+      "spinner_layout_big"
+    ],
+    "menus": [],
+    "destinations": [],
+    "handlers": [
+      "doneOnClick"
+    ],
+    "source_sha256": "94f1e231200cd78f59267c8cbf74295a3e5964c82aea3b4802ccf0593841dfaa",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "OPFactor",
+    "label": "Over-pull factor:",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "pickopfactor",
+      "spinner_dropdown_item",
+      "spinner_layout_big"
+    ],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [],
+    "handlers": [
+      "doneOnClick",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "b8d56f48577d17206bdf22619e6dd1dfe08c246e523de8b121b2d2b10886ec8c",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "EdPremeasure",
+    "label": "Pre-measurements",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "ed_premeasure"
+    ],
+    "menus": [
+      "more_actions",
+      "moremenu"
+    ],
+    "destinations": [],
+    "handlers": [
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "8e01b6d37753e93c342b7d00c2b230d05a13d5b7883f2dff0132caa4f6c6a160",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "AutoPartial",
+    "label": "Auto Partial Selection",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "auto_partial",
+      "spinner_dropdown_item",
+      "spinner_layout_big"
+    ],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [],
+    "handlers": [
+      "doneOnClick",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "7c29ee0498629a9c92d142f39d552878c7ee314a25ab9626e0f4b69408df7cdb",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "PhaseVel",
+    "label": "Phase Display Speed",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "phase_vel",
+      "spinner_dropdown_item",
+      "spinner_layout_big"
+    ],
+    "menus": [],
+    "destinations": [],
+    "handlers": [
+      "doneOnClick"
+    ],
+    "source_sha256": "8ff3ae382ad4f84612181f1740550242495c7f976aedf48fea214555523df1b0",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "EnterHT",
+    "label": "Enter non-equal temper.",
+    "theme": "@style/AppTheme",
+    "orientation": "portrait",
+    "layouts": [
+      "ht_enter"
+    ],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [],
+    "handlers": [
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "fe3b1057935ec3edb7b354f94c58eac1d4a5fa1b81099a2ab4915a3efde50cda",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "CustomStretch",
+    "label": "Custom Offsets",
+    "theme": "@style/AppTheme",
+    "orientation": "portrait",
+    "layouts": [],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [],
+    "handlers": [
+      "onClick",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "66301bdf369fbb6e731324678ced1492a4b4d8ec7a24cb81afa0d4b1594a0dd6",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "Exam",
+    "label": "PTG Tuning Exam",
+    "theme": "@style/BlackTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "exam"
+    ],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [
+      "DispTxt",
+      "ExamTemp"
+    ],
+    "handlers": [
+      "mainOnClick",
+      "onActivityResult",
+      "onClickCapture",
+      "onClickDetune",
+      "onClickExamPartials",
+      "onClickGen",
+      "onClickViewRep",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "c99ee2cfedec21bb50bf941d2ef0d64ee69a43f225c51d2437459dcbecc96cf4",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "ExamTemp",
+    "label": "Pick Temperament Octave",
+    "theme": "@style/BlackTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "exam_temp",
+      "spinner_dropdown_item",
+      "spinner_layout_big"
+    ],
+    "menus": [],
+    "destinations": [],
+    "handlers": [
+      "onActivityResult",
+      "onClickPickMaster"
+    ],
+    "source_sha256": "52aab937fa7112f63e4e15154825e3b1f481b1b0b5fa9fb79cb3af5cb400228f",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "About",
+    "label": "About this version",
+    "theme": "@style/AppTheme",
+    "orientation": "portrait",
+    "layouts": [
+      "about"
+    ],
+    "menus": [
+      "helpmenuabout",
+      "helponly_actions"
+    ],
+    "destinations": [
+      "AdvSettings",
+      "ExtMem"
+    ],
+    "handlers": [
+      "mainOnClick",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "4f1eb01035fc4454857d6f561d13e3314c0af9862c4af9cc73f66652eb76b528",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "HTOptions",
+    "label": "Options for applying non-equal temper.",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "ht_options",
+      "spinner_dropdown_item",
+      "spinner_layout_big"
+    ],
+    "menus": [],
+    "destinations": [],
+    "handlers": [
+      "onClickA0",
+      "onClickAvg0",
+      "onClickDone"
+    ],
+    "source_sha256": "d2fb193146f22b986393c708b67dea21368fa71120c2fb8ea043311fd816ecb5",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "Help",
+    "label": "Piano Tuner",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "help"
+    ],
+    "menus": [
+      "exit_action"
+    ],
+    "destinations": [],
+    "handlers": [
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "113d4deec502d1154e323b552a3afb054dd35d2311cfe0c712c8ad961ca0ff90",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "DispTxt",
+    "label": "Piano Tuner",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "disp_txtfile"
+    ],
+    "menus": [],
+    "destinations": [],
+    "handlers": [],
+    "source_sha256": "a85c809d6dee5e09c1b65f8620d5335b0cbf95029fd87433024e2952a01f5615",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "FileExplorer",
+    "label": "Piano Tuner",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "file_explorer",
+      "file_explorer_plus",
+      "file_search_dialog"
+    ],
+    "menus": [
+      "loadfile_actions"
+    ],
+    "destinations": [
+      "EnterHT",
+      "HTOptions"
+    ],
+    "handlers": [
+      "onActivityResult",
+      "onClickBack",
+      "onClickCancel",
+      "onClickNew",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "3f4543d333456b4a31780c2449cfcc4b15da2278df5697e5f61970c9bd2e5cb2",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "SaveFile",
+    "label": "Piano Tuner",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "file_save_as",
+      "new_folder_dialog"
+    ],
+    "menus": [
+      "helpexit_actions"
+    ],
+    "destinations": [],
+    "handlers": [
+      "onClickBack",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "5ba2d2f0289c99cf57714f1cfde7a069ee17839deac94d45a5da2dc560f7119e",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "Sel3part",
+    "label": "Piano Tuner",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "spinner_dropdown_item",
+      "spinner_layout_big",
+      "threepart"
+    ],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [],
+    "handlers": [
+      "doneButtonOnClick",
+      "makeDefButtonOnClick",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "1d4d0253bb31be1289f361813acc3b2a1e050af698037d3509aeff539769cfa0",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "Notations",
+    "label": "Piano Tuner",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "notations"
+    ],
+    "menus": [],
+    "destinations": [],
+    "handlers": [],
+    "source_sha256": "c8d03de580629e058e385b6be2c400e8bd791ca62cea6d856a74a00af45e7c69",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "ExtMem",
+    "label": "Piano Tuner",
+    "theme": "@style/AppTheme",
+    "orientation": "portrait",
+    "layouts": [
+      "extmem"
+    ],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [
+      "FileTransfer"
+    ],
+    "handlers": [
+      "onClickUpdateSD",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "bce89fab5c39d36fb65ddefbb094e81c056f309b17935d68f8c2bb22a48112c1",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "ICal",
+    "label": "Calibration",
+    "theme": "@style/MarchTheme",
+    "orientation": "portrait",
+    "layouts": [
+      "ical"
+    ],
+    "menus": [],
+    "destinations": [],
+    "handlers": [
+      "onClickBegin",
+      "onClickCancel",
+      "onClickDef"
+    ],
+    "source_sha256": "b0fff70e42b7d66fbfd13df2cd3411c1585e075fbab09564e306362387eeea31",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "DropboxOps",
+    "label": "Piano Tuner",
+    "theme": "@style/AppTheme",
+    "orientation": "portrait",
+    "layouts": [
+      "dropboxops"
+    ],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [
+      "DBXfer"
+    ],
+    "handlers": [
+      "onClickCopyToDropbox",
+      "onClickDownloadFromDropbox",
+      "onClickLinkUnlink",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "8b87d6fec61fa1d65ac8a4108ed658bd1199bff24b6ebdf7b145cdc7dd705ccb",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "DBXfer",
+    "label": "Piano Tuner",
+    "theme": "@style/AppTheme",
+    "orientation": "portrait",
+    "layouts": [
+      "dropbox_xfer_dialog",
+      "new_n_days"
+    ],
+    "menus": [],
+    "destinations": [],
+    "handlers": [
+      "onClickCancel",
+      "onClickNdays",
+      "onClickOK",
+      "onClickPauseForInfo"
+    ],
+    "source_sha256": "942986d0f6b53ab3793338b0231ac70e30a239f1413c3a4c4cf34787e1a00f47",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "FileTransfer",
+    "label": "Piano Tuner",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "file_xfer"
+    ],
+    "menus": [],
+    "destinations": [],
+    "handlers": [],
+    "source_sha256": "778e46ed0f93358ce4f89913e19b9e8668d967659f312ed8394201ab5f941376",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "SpectrumUpdateRate",
+    "label": "Spectrum Update Rate",
+    "theme": "@style/AppTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "spec_update",
+      "spinner_dropdown_item",
+      "spinner_layout_big"
+    ],
+    "menus": [
+      "helponly_actions"
+    ],
+    "destinations": [],
+    "handlers": [
+      "doneOnClick",
+      "onOptionsItemSelected"
+    ],
+    "source_sha256": "b805ddbdb7e0667d5a32cd4c9ae911f941a05f60f752a63031941a8becd28d2e",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  },
+  {
+    "class": "DarkMode",
+    "label": "Dark Mode",
+    "theme": "@style/BlackTheme",
+    "orientation": "unspecified",
+    "layouts": [
+      "dark_mode"
+    ],
+    "menus": [],
+    "destinations": [],
+    "handlers": [
+      "darkClicked"
+    ],
+    "source_sha256": "4df2fd45350b3ca353eca74f67ee0f167c55c87c4744c3df84a930ff794646e7",
+    "ios_exact_visual_verified": false,
+    "ios_complete_behavior_verified": false
+  }
+]

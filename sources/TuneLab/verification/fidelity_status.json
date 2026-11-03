@@ -1,0 +1,414 @@
+{
+  "requirements": "FIDELITY_REQUIREMENTS.txt",
+  "source": "AndroidTuneLab-3.2.apk",
+  "identity_and_original_asset_hashes_verified": true,
+  "layout_adapter_ios16_arm64_compiles": true,
+  "layout_adapter_is_only_scaffolding": true,
+  "pages": [
+    {
+      "class": "Main",
+      "original_layouts": [
+        "main",
+        "offset_menu"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "Settings",
+      "original_layouts": [
+        "list_activity"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "AdvSettings",
+      "original_layouts": [
+        "advsettings"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "MparSettings",
+      "original_layouts": [
+        "mparsettings",
+        "spinner_dropdown_item",
+        "spinner_layout_big"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "MulParSetup",
+      "original_layouts": [
+        "mpar_edit"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "SpectrumZoom",
+      "original_layouts": [
+        "spectrum_zoom"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "EdPartials",
+      "original_layouts": [],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "EdMeasureSeq",
+      "original_layouts": [],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "EdIHCons",
+      "original_layouts": [
+        "ed1_ihcon",
+        "edihcon",
+        "edihcons_list_item"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "IHRes",
+      "original_layouts": [
+        "ihres"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "PickNote",
+      "original_layouts": [
+        "pick_note"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "AndroidID",
+      "original_layouts": [
+        "get_device_id"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "EnterGenLicense",
+      "original_layouts": [
+        "forever_license"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "AutoNote",
+      "original_layouts": [
+        "auto_note"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "Tedit",
+      "original_layouts": [
+        "tedit"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "IntSel",
+      "original_layouts": [
+        "intpicker",
+        "intpicker3",
+        "spinner_dropdown_item",
+        "spinner_layout_big"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "Overpull",
+      "original_layouts": [
+        "overpull"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "OPSafetyLimSel",
+      "original_layouts": [
+        "opsafetylim",
+        "spinner_dropdown_item",
+        "spinner_layout_big"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "OPHighestBass",
+      "original_layouts": [
+        "opbreak",
+        "spinner_dropdown_item",
+        "spinner_layout_big"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "OPFactor",
+      "original_layouts": [
+        "pickopfactor",
+        "spinner_dropdown_item",
+        "spinner_layout_big"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "EdPremeasure",
+      "original_layouts": [
+        "ed_premeasure"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "AutoPartial",
+      "original_layouts": [
+        "auto_partial",
+        "spinner_dropdown_item",
+        "spinner_layout_big"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "PhaseVel",
+      "original_layouts": [
+        "phase_vel",
+        "spinner_dropdown_item",
+        "spinner_layout_big"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "EnterHT",
+      "original_layouts": [
+        "ht_enter"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "CustomStretch",
+      "original_layouts": [],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "Exam",
+      "original_layouts": [
+        "exam"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "ExamTemp",
+      "original_layouts": [
+        "exam_temp",
+        "spinner_dropdown_item",
+        "spinner_layout_big"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "About",
+      "original_layouts": [
+        "about"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "HTOptions",
+      "original_layouts": [
+        "ht_options",
+        "spinner_dropdown_item",
+        "spinner_layout_big"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "Help",
+      "original_layouts": [
+        "help"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "DispTxt",
+      "original_layouts": [
+        "disp_txtfile"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "FileExplorer",
+      "original_layouts": [
+        "file_explorer",
+        "file_explorer_plus",
+        "file_search_dialog"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "SaveFile",
+      "original_layouts": [
+        "file_save_as",
+        "new_folder_dialog"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "Sel3part",
+      "original_layouts": [
+        "spinner_dropdown_item",
+        "spinner_layout_big",
+        "threepart"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "Notations",
+      "original_layouts": [
+        "notations"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "ExtMem",
+      "original_layouts": [
+        "extmem"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "ICal",
+      "original_layouts": [
+        "ical"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "DropboxOps",
+      "original_layouts": [
+        "dropboxops"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "DBXfer",
+      "original_layouts": [
+        "dropbox_xfer_dialog",
+        "new_n_days"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "FileTransfer",
+      "original_layouts": [
+        "file_xfer"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "SpectrumUpdateRate",
+      "original_layouts": [
+        "spec_update",
+        "spinner_dropdown_item",
+        "spinner_layout_big"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    },
+    {
+      "class": "DarkMode",
+      "original_layouts": [
+        "dark_mode"
+      ],
+      "original_source_identified": true,
+      "visual_parity_verified": false,
+      "interaction_parity_verified": false
+    }
+  ],
+  "all_ui_parity_complete": false,
+  "all_algorithm_parity_complete": false,
+  "release_ready": false
+}

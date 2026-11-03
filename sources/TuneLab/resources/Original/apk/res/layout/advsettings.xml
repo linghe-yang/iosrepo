@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/topLayout"
+    android:background="#ff445544"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageButton
+        android:id="@+id/help_alt_source"
+        android:background="@drawable/help"
+        android:clickable="true"
+        android:layout_width="48sp"
+        android:layout_height="48sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="24dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <Switch
+        android:id="@+id/alt_source_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Alt Source"
+        android:onClick="onClickSwitch"
+        app:layout_constraintBottom_toBottomOf="@+id/help_alt_source"
+        app:layout_constraintLeft_toRightOf="@+id/help_alt_source"
+        app:layout_constraintTop_toTopOf="@+id/help_alt_source"/>
+    <ImageButton
+        android:id="@+id/exit_button"
+        android:background="@drawable/exit"
+        android:layout_width="48sp"
+        android:layout_height="48sp"
+        android:layout_marginTop="24dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alt_source_switch"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

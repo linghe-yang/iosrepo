@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/topLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/licnum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="(license number)"/>
+    <RelativeLayout
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:textSize="20sp"
+            android:textColor="#ffffffff"
+            android:background="@drawable/roundedbuttonlight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Other Options"
+            android:layout_alignParentLeft="true"
+            android:onClick="onOtherButton"/>
+        <Button
+            android:textSize="20sp"
+            android:textColor="#ffffffff"
+            android:background="@drawable/roundedbuttonlight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10sp"
+            android:text="Exit"
+            android:layout_toLeftOf="@+id/saveButton"
+            android:onClick="onExitButton"/>
+        <Button
+            android:textSize="20sp"
+            android:textColor="#ffffffff"
+            android:id="@+id/saveButton"
+            android:background="@drawable/roundedbuttonlight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:layout_alignParentRight="true"
+            android:onClick="onSaveButton"/>
+    </RelativeLayout>
+    <TextView
+        android:textSize="20sp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/instructions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tap in the space above to enter your license number then tap on &quot;Save&quot;"
+        android:singleLine="false"/>
+</LinearLayout>

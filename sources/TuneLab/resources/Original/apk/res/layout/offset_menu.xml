@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ff889988"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <Button
+        android:textColor="#ffffffff"
+        android:id="@+id/zeroButton"
+        android:background="#ff222222"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4sp"
+        android:layout_marginTop="6sp"
+        android:text=" Set offset to zero "
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <ImageButton
+        android:id="@+id/action_exit"
+        android:background="@drawable/exit"
+        android:layout_width="48sp"
+        android:layout_height="48sp"
+        android:layout_marginLeft="24dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/zeroButton"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/zeroButton"/>
+    <Button
+        android:textColor="#ffffffff"
+        android:id="@+id/setButton"
+        android:background="#ff222222"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6sp"
+        android:text=" Set offset to this: "
+        app:layout_constraintLeft_toLeftOf="@+id/zeroButton"
+        app:layout_constraintTop_toBottomOf="@+id/zeroButton"/>
+    <EditText
+        android:textSize="20sp"
+        android:textColor="#ff000000"
+        android:textColorHint="#60000000"
+        android:id="@+id/valField"
+        android:background="#ffccddee"
+        android:layout_width="80sp"
+        android:layout_height="0sp"
+        android:layout_marginLeft="6sp"
+        android:hint="  x.xx"
+        app:layout_constraintBottom_toBottomOf="@+id/setButton"
+        app:layout_constraintLeft_toRightOf="@+id/setButton"
+        app:layout_constraintTop_toTopOf="@+id/setButton">
+        <requestFocus/>
+    </EditText>
+    <Button
+        android:textColor="#ffffffff"
+        android:id="@+id/xferButton"
+        android:background="#ff222222"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6sp"
+        android:text=" xfer "
+        app:layout_constraintLeft_toLeftOf="@+id/zeroButton"
+        app:layout_constraintTop_toBottomOf="@+id/setButton"/>
+    <Button
+        android:textColor="#ffffffff"
+        android:id="@+id/floatButton"
+        android:background="#ff222222"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6sp"
+        android:text=" float "
+        app:layout_constraintLeft_toLeftOf="@+id/zeroButton"
+        app:layout_constraintTop_toBottomOf="@+id/xferButton"/>
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="5sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/floatButton"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

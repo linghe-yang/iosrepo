@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Advanced Settings</title>
+  </head>
+  <body>
+    <p>The "Alt Source" switch makes a minor change in the way audio data is
+      delivered to TuneLab by the system.&nbsp; In most Android devices this
+      change has no effect on the operation of TuneLab.&nbsp; But in at least
+      one old device, turning the switch ON fixed a problem where a phantom
+      frequency was being injected into the frequency spectrum.&nbsp; At the
+      time it was called the "B7 problem" because the phantom peak appeared when
+      playing the notes B7 and C8.&nbsp; The specific change is that when the
+      switch is ON, the audio stream from the microphone will be requested with
+      a source of:</p>
+    <pre>MediaRecorder.AudioSource.VOICE_RECOGNITION</pre>
+    <p>Otherwise, with the switch OFF, the audio stream will be requested with a
+      source of:</p>
+    <pre>MediaRecorder.AudioSource.MIC</pre>
+    <p>These source settings may be implemented differently by different device
+      manufacturers, therefore we maintain the option for you use either source
+      format in case you think your device may have the "B7 problem" or some
+      other audio anomaly. </p>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_help_all_topics"
+        android:title="Help topics"/>
+    <item
+        android:id="@+id/menu_help_this_page"
+        android:title="Help, this page"/>
+    <item
+        android:id="@+id/menu_help_faq"
+        android:title="FAQs"/>
+    <item
+        android:id="@+id/menu_help_whatsnew"
+        android:title="What&apos;s new in this version?"/>
+</menu>

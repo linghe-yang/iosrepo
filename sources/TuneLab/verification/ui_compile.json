@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "scope": "Compile-only check of original-layout adapter, not an application or visual/behavior parity test.",
+  "target": "arm64-apple-ios16.0",
+  "sdk": "iPhoneOS16.5.sdk",
+  "sources": {
+    "src\\TLOriginalLayout.h": "cb2abe017b0f717ac42a71208baa58b70f6b45215079bf888f51f6c100103577",
+    "src\\TLOriginalLayout.m": "e7fee859d20ac7b0a5df5676e4f12a6390d675dcdf11f381184fd5ac88bed141"
+  },
+  "pixel_comparison_passed": false
+}

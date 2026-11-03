@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ff99aaa2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:textSize="20sp"
+        android:textColor="#ff000000"
+        android:id="@+id/prompt"
+        android:background="#00000000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14sp"
+        android:text=" New value:"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <EditText
+        android:textSize="20sp"
+        android:textColor="#ff000000"
+        android:textColorHint="#60000000"
+        android:id="@+id/edTextNewCon"
+        android:background="#ffaabbe0"
+        android:layout_width="100sp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20sp"
+        android:hint="x.xxx"
+        app:layout_constraintLeft_toRightOf="@+id/prompt"
+        app:layout_constraintTop_toTopOf="@+id/prompt">
+        <requestFocus/>
+    </EditText>
+    <Button
+        android:textColor="#ffffffff"
+        android:id="@+id/delete"
+        android:background="#ff442222"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12sp"
+        android:text=" Delete value "
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prompt"/>
+    <Button
+        android:textColor="#ffffffff"
+        android:id="@+id/enter"
+        android:background="#ff003322"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter a value"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/delete"/>
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="15sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/topLayout"
+    android:background="#ff445566"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#ffffffff"
+        android:gravity="center_horizontal"
+        android:paddingBottom="12sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="File transfer to/from external memory"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:textColor="#ffffffff"
+            android:id="@+id/copyToExt"
+            android:background="@drawable/roundedbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5sp"
+            android:text="Copy to External"
+            android:layout_weight="1"
+            android:onClick="copyToExtButton"/>
+        <Button
+            android:textColor="#ffffffff"
+            android:id="@+id/loadFromExt"
+            android:background="@drawable/roundedbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5sp"
+            android:text="Load from External"
+            android:layout_weight="1"
+            android:onClick="loadFromExtButton"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:textColor="#ffffffff"
+            android:id="@+id/updateSDPath"
+            android:background="@drawable/roundedbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4sp"
+            android:text="Save"
+            android:layout_alignParentRight="true"
+            android:onClick="onClickUpdateSD"/>
+        <EditText
+            android:textColor="#ff000000"
+            android:id="@+id/editSDPath"
+            android:background="#ff334455"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4sp"
+            android:layout_below="@+id/updateSDPath"/>
+        <TextView
+            android:textSize="20sp"
+            android:textColor="#ffffffff"
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ext.Mem Path:"
+            android:layout_above="@+id/editSDPath"
+            android:layout_alignParentLeft="true"/>
+    </RelativeLayout>
+    <Button
+        android:textColor="#ffffffff"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/roundedbutton"
+        android:layout_width="270sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12sp"
+        android:text="Reinstall packaged files"
+        android:onClick="onInitButton"/>
+</LinearLayout>

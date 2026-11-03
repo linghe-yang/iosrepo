@@ -1,0 +1,10 @@
+{
+  "android_package": "com.realtimespecialties.tunelab",
+  "version": "3.2",
+  "launcher_label": "Piano Tuner",
+  "launcher_reference": "@mipmap/ic_launcher",
+  "round_icon_reference": "@mipmap/ic_launcher_round",
+  "adaptive_icon": "res/mipmap-anydpi-v26/ic_launcher.xml",
+  "ios_application_display_name": "Piano Tuner",
+  "policy": "Use original assets and strings. No redesign, translated substitute, regenerated icon, renamed product, or replacement DSP may be counted as an exact port."
+}

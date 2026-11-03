@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:versionCode="1"
+    android:versionName="3.2"
+    android:compileSdkVersion="35"
+    android:compileSdkVersionCodename="15"
+    package="com.realtimespecialties.tunelab"
+    platformBuildVersionCode="35"
+    platformBuildVersionName="15">
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="35"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.SENDTO"/>
+            <category android:name="android.intent.category.DEFAULT"/>
+            <data android:scheme="mailto"/>
+        </intent>
+        <package android:name="com.dropbox.android"/>
+    </queries>
+    <application
+        android:theme="@style/AppTheme"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:name="com.realtimespecialties.tunelab.MyApp"
+        android:allowBackup="false"
+        android:extractNativeLibs="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory">
+        <activity
+            android:name="com.realtimespecialties.tunelab.Main"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.dropbox.core.android.AuthActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboard">
+            <intent-filter>
+                <data android:scheme="db-gn4tcgsads52hjm"/>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/BlackTheme"
+            android:label="Settings"
+            android:name="com.realtimespecialties.tunelab.Settings"/>
+        <activity
+            android:theme="@style/BlackTheme"
+            android:label="Advanced Settings"
+            android:name="com.realtimespecialties.tunelab.AdvSettings"/>
+        <activity
+            android:theme="@style/BlackTheme"
+            android:label="Multi-Partial Settings"
+            android:name="com.realtimespecialties.tunelab.MparSettings"/>
+        <activity
+            android:theme="@style/BlackTheme"
+            android:name="com.realtimespecialties.tunelab.MulParSetup"
+            android:exported="false"/>
+        <activity
+            android:theme="@style/BlackTheme"
+            android:label="Select spectrum zoom.."
+            android:name="com.realtimespecialties.tunelab.SpectrumZoom"/>
+        <activity
+            android:label="Table of Partials"
+            android:name="com.realtimespecialties.tunelab.EdPartials"/>
+        <activity
+            android:label="Measure Sequence (for new tunings)"
+            android:name="com.realtimespecialties.tunelab.EdMeasureSeq"/>
+        <activity
+            android:label="Inharmonicity Constants"
+            android:name="com.realtimespecialties.tunelab.EdIHCons"/>
+        <activity
+            android:label="Inharmonicity Measurement Results:"
+            android:name="com.realtimespecialties.tunelab.IHRes"/>
+        <activity
+            android:label="Select note:"
+            android:name="com.realtimespecialties.tunelab.PickNote"/>
+        <activity
+            android:label="Licensing TuneLab Piano Tuner"
+            android:name="com.realtimespecialties.tunelab.AndroidID"/>
+        <activity
+            android:label="Enter License Number"
+            android:name="com.realtimespecialties.tunelab.EnterGenLicense"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:label="Auto Note Switching"
+            android:name="com.realtimespecialties.tunelab.AutoNote"/>
+        <activity
+            android:label="Tuning Curve"
+            android:name="com.realtimespecialties.tunelab.Tedit"/>
+        <activity
+            android:label="Select Bass,Treble Intervals"
+            android:name="com.realtimespecialties.tunelab.IntSel"/>
+        <activity
+            android:label="Over-pull setup:"
+            android:name="com.realtimespecialties.tunelab.Overpull"/>
+        <activity
+            android:label="Over-pull safety limits:"
+            android:name="com.realtimespecialties.tunelab.OPSafetyLimSel"/>
+        <activity
+            android:label="Break settings:"
+            android:name="com.realtimespecialties.tunelab.OPHighestBass"/>
+        <activity
+            android:label="Over-pull factor:"
+            android:name="com.realtimespecialties.tunelab.OPFactor"/>
+        <activity
+            android:label="Pre-measurements"
+            android:name="com.realtimespecialties.tunelab.EdPremeasure"/>
+        <activity
+            android:label="Auto Partial Selection"
+            android:name="com.realtimespecialties.tunelab.AutoPartial"/>
+        <activity
+            android:label="Phase Display Speed"
+            android:name="com.realtimespecialties.tunelab.PhaseVel"/>
+        <activity
+            android:label="Enter non-equal temper."
+            android:name="com.realtimespecialties.tunelab.EnterHT"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:label="Custom Offsets"
+            android:name="com.realtimespecialties.tunelab.CustomStretch"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:theme="@style/BlackTheme"
+            android:label="PTG Tuning Exam"
+            android:name="com.realtimespecialties.tunelab.Exam"/>
+        <activity
+            android:theme="@style/BlackTheme"
+            android:label="Pick Temperament Octave"
+            android:name="com.realtimespecialties.tunelab.ExamTemp"/>
+        <activity
+            android:label="About this version"
+            android:name="com.realtimespecialties.tunelab.About"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:label="Options for applying non-equal temper."
+            android:name="com.realtimespecialties.tunelab.HTOptions"/>
+        <activity android:name="com.realtimespecialties.tunelab.Help"/>
+        <activity android:name="com.realtimespecialties.tunelab.DispTxt"/>
+        <activity android:name="com.realtimespecialties.tunelab.FileExplorer"/>
+        <activity android:name="com.realtimespecialties.tunelab.SaveFile"/>
+        <activity android:name="com.realtimespecialties.tunelab.Sel3part"/>
+        <activity android:name="com.realtimespecialties.tunelab.Notations"/>
+        <activity
+            android:name="com.realtimespecialties.tunelab.ExtMem"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:theme="@style/MarchTheme"
+            android:label="Calibration"
+            android:name="com.realtimespecialties.tunelab.ICal"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.realtimespecialties.tunelab.DropboxOps"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.realtimespecialties.tunelab.DBXfer"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.realtimespecialties.tunelab.FileTransfer"/>
+        <activity
+            android:label="Spectrum Update Rate"
+            android:name="com.realtimespecialties.tunelab.SpectrumUpdateRate"/>
+        <activity
+            android:theme="@style/BlackTheme"
+            android:label="Dark Mode"
+            android:name="com.realtimespecialties.tunelab.DarkMode"/>
+        <uses-library
+            android:name="androidx.window.extensions"
+            android:required="false"/>
+        <uses-library
+            android:name="androidx.window.sidecar"
+            android:required="false"/>
+    </application>
+</manifest>

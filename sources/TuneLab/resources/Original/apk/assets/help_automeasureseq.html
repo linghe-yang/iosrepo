@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Help for Auto Measure Sequencing</title>
+  </head>
+  <body>
+    <p><u><b>Auto Measure Sequencing</b></u></p>
+    <p>Whenever an inharmonicity measurement is taken and saved one of three
+      things can happen:</p>
+    <ol>
+      <li><u><b>(Table</b></u>) TuneLab could automatically switch to the next
+        note in the Auto Measure Sequence table.&nbsp; This is the table that
+        initially calls for measuring C1, C2, C3, C4, and C5, but you can edit
+        that table to call for whichever combination of notes you would like be
+        measured when starting a new tuning file.</li>
+      <li>(<u><b>Next</b></u>) TuneLab could automatically switch to the very
+        next note in the scale, going up by half-steps so as to cover every
+        note.&nbsp; This is useful if you want to measure every note in the bass
+        to compensate for bass strings with an irregular inharmonicity pattern.
+      </li>
+      <li>(<u><b>Disabled</b></u>) TuneLab could simply do nothing after storing
+        the inharmonicity measurement, and stay on the same note.&nbsp; This is
+        what happens when you do an ad hoc measurement that is not part of the
+        initial set of measurements for a new tuning.</li>
+    </ol>
+    <p> Normally TuneLab is in state #3 (<b>Disabled</b>) and does not do any
+      automatic sequencing after inharmonicity measurements.&nbsp; When you
+      start a<i> <b>new tuning</b></i> TuneLab enters state #1(<b>Table</b>) in
+      preparation for measuring the usual set of notes that you use whenever you
+      start a new tuning.&nbsp; (<i>It is important to remember that regardless
+        of any type of automatic measure sequencing, you can always select a
+        note manually and measure its inharmonicity.</i><b>)</b> &nbsp; When in
+      state #1 TuneLab stays in state #1 until you measure the last note in the
+      Measure Sequence, whereupon it enters state #3 (<b>Disabled</b>).&nbsp;
+      The only way to enter state #2 (<b>Next</b>) and measure a set of
+      consecutive notes is to use the long press of the Measure button and
+      select "Next".&nbsp; TuneLab will stay in state #2 (<b>Next</b>) until you
+      again use the same long press of the Measure button and select some other
+      state. For a new tuning that would typically be state #1 (<b>Table</b>) to
+      using the measure sequence table to finish up inharmonicity measurements
+      of the treble. With the long press of the Measure button you can have
+      complete control over Auto Measure Sequencing.&nbsp; </p>
+  </body>
+</html>

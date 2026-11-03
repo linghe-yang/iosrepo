@@ -1,0 +1,15 @@
+{
+  "device": "emulator-5580",
+  "android_api": 35,
+  "resolution": [
+    1080,
+    1920
+  ],
+  "density": 480,
+  "apk_sha256": "2530c1d4dc81252c5af2de013a993c7c9c813796b75c22d8a6fd39a4f0347cb4",
+  "main": {
+    "screenshot": "Main_initial.png",
+    "sha256": "4f1012d153bdacd33f52940e1f5456079e8a40d222a8ed3dea8aa908374d73b4",
+    "uiautomator": "Main_initial.xml"
+  }
+}

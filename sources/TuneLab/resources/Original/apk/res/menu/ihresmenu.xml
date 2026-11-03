@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/ihresamp"
+        android:title="Amplitude"/>
+    <item
+        android:id="@+id/ihresqual"
+        android:title="Signal:noise ratio"/>
+    <item
+        android:id="@+id/ihreswidth"
+        android:title="Width in cents"/>
+    <item
+        android:id="@+id/ihresreason"
+        android:title="Failure reason"/>
+</menu>

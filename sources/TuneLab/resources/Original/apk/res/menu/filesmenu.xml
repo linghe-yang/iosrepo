@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/loadtuning"
+        android:title="Load tuning"/>
+    <item
+        android:id="@+id/savetuning"
+        android:title="Save tuning"/>
+    <item
+        android:id="@+id/newtuning"
+        android:title="New tuning"/>
+    <item
+        android:id="@+id/notations"
+        android:title="Notations"/>
+    <item
+        android:id="@+id/dropboxOps"
+        android:title="Dropbox Ops"/>
+    <item
+        android:id="@+id/extmemOps"
+        android:title="External Memory Ops"/>
+</menu>

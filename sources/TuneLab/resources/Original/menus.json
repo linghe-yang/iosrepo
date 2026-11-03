@@ -1,0 +1,364 @@
+{
+  "activity_main_actions": {
+    "tag": "menu",
+    "attributes": {},
+    "children": [
+      {
+        "tag": "item",
+        "attributes": {
+          "icon": "@drawable/help",
+          "id": "@+id/action_help",
+          "title": "Help",
+          "showAsAction": "always"
+        },
+        "children": []
+      },
+      {
+        "tag": "item",
+        "attributes": {
+          "icon": "@drawable/filesaction",
+          "id": "@+id/action_files",
+          "title": "Tuning File Actions",
+          "showAsAction": "always"
+        },
+        "children": []
+      }
+    ]
+  },
+  "exit_action": {
+    "tag": "menu",
+    "attributes": {},
+    "children": [
+      {
+        "tag": "item",
+        "attributes": {
+          "icon": "@drawable/exit",
+          "id": "@+id/action_exit",
+          "title": "Exit",
+          "showAsAction": "always"
+        },
+        "children": []
+      }
+    ]
+  },
+  "filesmenu": {
+    "tag": "menu",
+    "attributes": {},
+    "children": [
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/loadtuning",
+          "title": "Load tuning"
+        },
+        "children": []
+      },
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/savetuning",
+          "title": "Save tuning"
+        },
+        "children": []
+      },
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/newtuning",
+          "title": "New tuning"
+        },
+        "children": []
+      },
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/notations",
+          "title": "Notations"
+        },
+        "children": []
+      },
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/dropboxOps",
+          "title": "Dropbox Ops"
+        },
+        "children": []
+      },
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/extmemOps",
+          "title": "External Memory Ops"
+        },
+        "children": []
+      }
+    ]
+  },
+  "helpexit_actions": {
+    "tag": "menu",
+    "attributes": {},
+    "children": [
+      {
+        "tag": "item",
+        "attributes": {
+          "icon": "@drawable/help",
+          "id": "@+id/action_help",
+          "title": "Help",
+          "showAsAction": "always"
+        },
+        "children": []
+      },
+      {
+        "tag": "item",
+        "attributes": {
+          "icon": "@drawable/exit",
+          "id": "@+id/action_exit",
+          "title": "Exit",
+          "showAsAction": "always"
+        },
+        "children": []
+      }
+    ]
+  },
+  "helpihresmenu": {
+    "tag": "menu",
+    "attributes": {},
+    "children": [
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/menu_help_this_page",
+          "title": "Help, this page"
+        },
+        "children": []
+      },
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/view_last_measurement",
+          "title": "View last measurement"
+        },
+        "children": []
+      }
+    ]
+  },
+  "helpmainmenu": {
+    "tag": "menu",
+    "attributes": {},
+    "children": [
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/menu_help_all_topics",
+          "title": "Help topics"
+        },
+        "children": []
+      },
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/menu_help_this_page",
+          "title": "Help, this page"
+        },
+        "children": []
+      },
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/menu_help_faq",
+          "title": "FAQs"
+        },
+        "children": []
+      },
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/menu_help_whatsnew",
+          "title": "What's new in this version?"
+        },
+        "children": []
+      }
+    ]
+  },
+  "helpmenu": {
+    "tag": "menu",
+    "attributes": {},
+    "children": [
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/menu_help_all_topics",
+          "title": "Help topics"
+        },
+        "children": []
+      },
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/menu_help_this_page",
+          "title": "Help, this page"
+        },
+        "children": []
+      }
+    ]
+  },
+  "helpmenuabout": {
+    "tag": "menu",
+    "attributes": {},
+    "children": [
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/menu_help_all_topics",
+          "title": "Help topics"
+        },
+        "children": []
+      },
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/menu_help_this_page",
+          "title": "Help, this page"
+        },
+        "children": []
+      },
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/menu_help_whatsnew",
+          "title": "What's new in this version?"
+        },
+        "children": []
+      }
+    ]
+  },
+  "helponly_actions": {
+    "tag": "menu",
+    "attributes": {},
+    "children": [
+      {
+        "tag": "item",
+        "attributes": {
+          "icon": "@drawable/help",
+          "id": "@+id/action_help",
+          "title": "Help",
+          "showAsAction": "always"
+        },
+        "children": []
+      }
+    ]
+  },
+  "ihresmenu": {
+    "tag": "menu",
+    "attributes": {},
+    "children": [
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/ihresamp",
+          "title": "Amplitude"
+        },
+        "children": []
+      },
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/ihresqual",
+          "title": "Signal:noise ratio"
+        },
+        "children": []
+      },
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/ihreswidth",
+          "title": "Width in cents"
+        },
+        "children": []
+      },
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/ihresreason",
+          "title": "Failure reason"
+        },
+        "children": []
+      }
+    ]
+  },
+  "loadfile_actions": {
+    "tag": "menu",
+    "attributes": {},
+    "children": [
+      {
+        "tag": "item",
+        "attributes": {
+          "icon": "@drawable/search",
+          "id": "@+id/action_search",
+          "title": "Search for File",
+          "showAsAction": "always"
+        },
+        "children": []
+      },
+      {
+        "tag": "item",
+        "attributes": {
+          "icon": "@drawable/help",
+          "id": "@+id/action_help",
+          "title": "Help",
+          "showAsAction": "always"
+        },
+        "children": []
+      },
+      {
+        "tag": "item",
+        "attributes": {
+          "icon": "@drawable/exit",
+          "id": "@+id/action_exit",
+          "title": "Help",
+          "showAsAction": "always"
+        },
+        "children": []
+      }
+    ]
+  },
+  "more_actions": {
+    "tag": "menu",
+    "attributes": {},
+    "children": [
+      {
+        "tag": "item",
+        "attributes": {
+          "icon": "@drawable/more",
+          "id": "@+id/action_more",
+          "title": "More",
+          "showAsAction": "always"
+        },
+        "children": []
+      }
+    ]
+  },
+  "moremenu": {
+    "tag": "menu",
+    "attributes": {},
+    "children": [
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/menu_help_this_page",
+          "title": "Help for this page"
+        },
+        "children": []
+      },
+      {
+        "tag": "item",
+        "attributes": {
+          "id": "@+id/menu_send_by_email",
+          "title": "Send data by e-mail"
+        },
+        "children": []
+      }
+    ]
+  }
+}

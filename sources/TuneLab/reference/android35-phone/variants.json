@@ -1,0 +1,32 @@
+[
+  {
+    "screenshot": "Main_file_menu.png",
+    "sha256": "66ca35329776f422b405736ac5cacfe4b587dbf91e5821ad763d4216101dc84c",
+    "uiautomator": "Main_file_menu.xml"
+  },
+  {
+    "screenshot": "Main_help_menu.png",
+    "sha256": "15452e076656b26aa93142005b2cbc14b7958324ac16290506c6bd3d50708a36",
+    "uiautomator": "Main_help_menu.xml"
+  },
+  {
+    "screenshot": "SpectrumUpdateRate_settled.png",
+    "sha256": "af5c7af3e0558d8a5ab0736ea61f9fd605407171cd0bc2144544bd9cc719a688",
+    "uiautomator": "SpectrumUpdateRate_settled.xml"
+  },
+  {
+    "screenshot": "Main_phone_landscape.png",
+    "sha256": "03e5b9bd1f7fee72edd59c032f79b7d4769d9e0847c78571182cdebac91854a1",
+    "uiautomator": "Main_phone_landscape.xml"
+  },
+  {
+    "screenshot": "Main_tablet_744dp_portrait.png",
+    "sha256": "228203c75223651d73e8b3a04825f794c9c31caab993849b5db04405a32d67f2",
+    "uiautomator": "Main_tablet_744dp_portrait.xml"
+  },
+  {
+    "screenshot": "Main_tablet_1133dp_landscape.png",
+    "sha256": "29ee8e5d004f9d32d435ebe8c8d11ead6379510fd376d73153a00a26766659ab",
+    "uiautomator": "Main_tablet_1133dp_landscape.xml"
+  }
+]

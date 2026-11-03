@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/topLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <CheckBox
+        android:textSize="24sp"
+        android:id="@+id/autoNoteOn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Auto Note Switching"
+        android:onClick="autoNoteOnClicked"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioGroup
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40sp">
+            <RadioButton
+                android:textSize="24sp"
+                android:id="@+id/autoUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Auto Up"
+                android:onClick="autoUpClicked"/>
+            <RadioButton
+                android:textSize="24sp"
+                android:id="@+id/autoDown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Auto Down"
+                android:onClick="autoDownClicked"/>
+            <RadioButton
+                android:textSize="24sp"
+                android:id="@+id/autoBoth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Auto Both"
+                android:onClick="autoBothClicked"/>
+            <RadioButton
+                android:textSize="24sp"
+                android:id="@+id/autoAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Auto All"
+                android:onClick="autoAllClicked"/>
+        </RadioGroup>
+        <TextView
+            android:textSize="20sp"
+            android:id="@+id/instruct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15sp"
+            android:layout_marginTop="15sp"
+            android:layout_marginRight="15sp"
+            android:layout_marginBottom="15sp"
+            android:text="Check the box to turn on Auto Note Switching.  Tap the blue &apos;?&apos; above for help on how to control Auto Note Switching from the main tuning page."
+            android:layout_marginStart="15sp"
+            android:layout_marginEnd="15sp"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:textColor="#ffffffff"
+            android:background="@drawable/roundedbuttonlight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20sp"
+            android:layout_marginTop="20sp"
+            android:text=" Back to Main "
+            android:onClick="mainOnClick"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <CheckBox
+            android:textSize="24sp"
+            android:id="@+id/autoNoteTrigOnly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:layout_marginRight="20sp"
+            android:text="Switch only on Trigger"
+            android:onClick="autoNoteTrigOnlyClicked"/>
+    </LinearLayout>
+</LinearLayout>

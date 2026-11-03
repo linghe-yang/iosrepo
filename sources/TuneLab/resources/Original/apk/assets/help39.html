@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Inharmonicity Results</title>
+  </head>
+  <body>
+    <p><b>Inharmonicity Results<br>
+      </b></p>
+    <p>This screen shows the results of an inharmonicity measurement so that you
+      can decide whether to save the result in the tuning file or discard
+      it.&nbsp; To help you decide, the results show the offset for each partial
+      detected as well as the normalized amplitude (strength) of each
+      partial.&nbsp; The button labeled "<b>Save</b>" will save the
+      inharmonicity results and exit.&nbsp; The button labeled "<b>Save+</b>" is
+      shown if you have already saved a previous result for the same note.&nbsp;
+      Tapping "<b>Save+</b>" will average the current measurement with the
+      previous measurements, but it is not usually necessary since measurements
+      are generally quite repeatable.&nbsp; The "<b>Discard</b>" button will
+      just exit without saving the current measurement into the tuning.&nbsp;
+      The "<b>Delete Prior</b>" button is only shown if a prior measurement
+      exists for the same note.&nbsp; Tapping that button will delete the prior
+      measurement so that you can save the current measurement without averaging
+      it with any prior measurement.</p>
+    <p>For more detailed diagnostic information on the current reading, long
+      press (touch and hold) the field that says "<b>For: &lt;<i>note name</i>&gt;</b>".&nbsp;
+      Doing so will present a menu of alternate quantities to display in place
+      of the "Amp" field in the 3rd column.&nbsp; The choices are "<b>Amplitude</b>"
+      (the default), "<b>Signal/noise ratio</b>", "<b>Width (of the peak) in
+        cents</b>", and "<b>Failure reason</b>".</p>
+    <p>Amplitude is the normal default strength of the given partial where the
+      strongest partial is assigned to 100.0.</p>
+    <p>Signal/noise ratio is the ratio of the peak amplitude of the given
+      partial as compared to the average amplitude of the noise within +/- 50
+      cents of the partial peak.</p>
+    <p>Failure reason is the reason why a partial was not included in the
+      inharmonicity calculation.&nbsp; The reasons ranked by priority are:</p>
+    <ul>
+      <li>"NoData" if frequency of the partial is either too low or too high to
+        be considered.&nbsp; In the low bass this excludes partials 1-3.&nbsp;
+        In the high treble it excludes all but partials 1 and 2.</li>
+      <li>"LoAmp" if the amplitude is so low as to make the measurement of the
+        offset for that partial unreliable.</li>
+      <li>"S/N" if the signal to noise ratio in the region around this partial
+        is too low to rely on the results.</li>
+      <li>"Width" if the peak in the frequency spectrum is too wide, indicating
+        this partial had several peaks very close together.&nbsp; This usually
+        means the tone was unstable, such as from false beats.</li>
+    </ul>
+    <p>This diagnostic data is not saved for the long term.&nbsp; But it is
+      available until the app is restarted or until another inharmonicity
+      measurement is made.&nbsp; To see this diagnostic information after this
+      screen has been dismissed, go Edit Inharmoniticy Constants and tap on the
+      Help button to view the most recent measurement.</p>
+    <p></p>
+  </body>
+</html>

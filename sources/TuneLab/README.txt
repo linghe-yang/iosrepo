@@ -1,6 +1,10 @@
 TuneLab 3.2 原样移植工程
 
-当前 iOS 移植工程版本：0.2.0~alpha1（系统版本号 0.2.0，构建号 2）。
+本次 0.2.1~alpha1 修复麦克风直采、明确采样转换、路由/中断恢复与采音停滞检测。
+用户设备为 iPad mini 6 / iOS 16.1，旧版启动/UI 可用但声音不响应；本修复版尚待该设备复测。
+详细原因、回放和测试边界见 AUDIO_FIX_0.2.1.txt；最新验证见 verification/final_validation.json。
+
+当前 iOS 移植工程版本：0.2.1~alpha1（系统版本号 0.2.1，构建号 3）。
 上个 PianoLab 原型版本：0.1.0~beta1。
 原 Android 样本版本仍为 3.2，独立记录，不与 iOS 移植版本混用。
 本版本已生成 Rootless、Rootful 两个真实 DEB；它们是可安装 Alpha，不表示完整精准移植已经完成。
@@ -53,7 +57,7 @@ Android 包名：com.realtimespecialties.tunelab。
 尚未完成全部页面的原样 UI 与动态交互。
 尚未用原 Android 运行画面和 iOS 实机画面逐页做像素/状态对照。
 原实时解调、自动换音、自动泛音、锁定及多泛音原生接口已接线，但完整工作流和设备行为尚未全面核验。
-现有 0.2.0~alpha1 DEB 可供安装测试，尚不满足完整精准移植验收标准。
+现有 0.2.1~alpha1 DEB 可供安装测试，尚不满足完整精准移植验收标准。
 PTG 考试、Dropbox、完整自动校准、多泛音分行显示和完整文件管理等仍需继续迁移。
 verification/original_assets.json 中的 assets 校验通过，只证明原始资源相同，不能解释为全部移植完成。
 

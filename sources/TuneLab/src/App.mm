@@ -84,7 +84,8 @@ static NSArray *Intervals(){return @[@"2:1 octaves",@"4:2 octaves",@"6:3 octaves
     NSMutableDictionary *_document,*_preferences;NSString *_folder;
     int _note,_partial,_opMode,_lockFrames,_lastLockState,_lastTrigger;
     float _target,_fundamental,_temporaryOffset,_lockGain;BOOL _locked,_tone,_measuring,_foreground;
-    CFTimeInterval _lastSpectrum;NSDictionary *_lastMeasurement;
+    CFTimeInterval _lastSpectrum,_lastDiagnosticSave;NSDictionary *_lastMeasurement,*_audioDiagnostics;
+    NSString *_microphoneStatus;
 }
 - (UIViewController*)presenter{UIViewController *p=self;while(p.presentedViewController&&!p.presentedViewController.isBeingDismissed&&![p.presentedViewController isKindOfClass:UIAlertController.class])p=p.presentedViewController;return p;}
 - (void)message:(NSString*)title text:(NSString*)text{UIAlertController *alert=[UIAlertController alertControllerWithTitle:title message:text preferredStyle:UIAlertControllerStyleAlert];[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];[[self presenter] presentViewController:alert animated:YES completion:nil];}
@@ -147,7 +148,8 @@ static NSArray *Intervals(){return @[@"2:1 octaves",@"4:2 octaves",@"6:3 octaves
     _buttons=[NSMutableArray new];NSArray *icons=@[@"tuningcurve120",@"ruler120",@"lock120",@"speaker120",@"gears120"];SEL selectors[]={@selector(curve),@selector(measure),@selector(lock),@selector(tone),@selector(settings)};for(int i=0;i<5;i++){UIButton *b=IconButton(icons[i],self,selectors[i]);[_body addSubview:b];[_buttons addObject:b];}
     for(NSArray *pair in @[@[_current,NSStringFromSelector(@selector(pickNote))],@[_partialLabel,NSStringFromSelector(@selector(partials))],@[_frequencyLabel,NSStringFromSelector(@selector(offset))],@[_fileLabel,NSStringFromSelector(@selector(files))],@[_autoLabel,NSStringFromSelector(@selector(autoNote))],@[_spectrum,NSStringFromSelector(@selector(zoom))]]){UIView *v=pair[0];v.userInteractionEnabled=YES;[v addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:NSSelectorFromString(pair[1])]];}
     [_phase addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)]];
-    __weak TLMain *weak=self;_runtime.update=^(NSDictionary *state){[weak receive:state];};_runtime.measurementReady=^(NSDictionary *state){[weak measured:state];};_audio.error=^(NSString *message){TLMain *s=weak;if(s){s->_tone=NO;UIApplication.sharedApplication.idleTimerDisabled=NO;[s message:@"Audio" text:message];}};
+    _right.userInteractionEnabled=YES;[_right addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(microphone)]];
+    __weak TLMain *weak=self;_runtime.update=^(NSDictionary *state){[weak receive:state];};_runtime.measurementReady=^(NSDictionary *state){[weak measured:state];};_audio.stateChanged=^(NSDictionary *state){[weak audioState:state];};_audio.error=^(NSString *message){TLMain *s=weak;if(s){s->_tone=NO;UIApplication.sharedApplication.idleTimerDisabled=NO;[s message:@"Audio" text:message];}};
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(background) name:UIApplicationDidEnterBackgroundNotification object:nil];[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foreground) name:UIApplicationDidBecomeActiveNotification object:nil];
     [self applyModel];[self refresh];[self save];if(error)[self message:@"Storage" text:error.localizedDescription];
 }
@@ -205,7 +207,7 @@ static NSArray *Intervals(){return @[@"2:1 octaves",@"4:2 octaves",@"6:3 octaves
     float frequency=_target*float(std::exp(double(offset*5.776227E-4f)));_fileLabel.text=_document[@"name"];_offsetLabel.text=fabs(offset)>.001?[NSString stringWithFormat:@"%+.2f ¢",offset]:@"";_temperLabel.text=_document[@"temperName"];
     _partialLabel.text=_partial==1?@"fundamental":[NSString stringWithFormat:@"%d%@ partial",_partial,_partial==2?@"nd":_partial==3?@"rd":@"th"];_frequencyLabel.text=[NSString stringWithFormat:@"%7.2f Hz.",frequency];_current.text=Note(_note);
     _autoLabel.text=[_preferences[@"auto"] intValue]?@[@"Manual Note",@"Auto Up",@"Auto Down",@"Auto Both",@"Auto All"][MAX(0,MIN(4,[_preferences[@"autoType"] intValue]))]:@"Manual Note";
-    _left.text=_measuring?@"Measuring IH…":_locked?@"Locking…":_opMode==1?@"Pre-measure":_opMode==2?@"Over-pull":@"";_right.text=_tone?@"Sound":@"";
+    _left.text=_measuring?@"Measuring IH…":_locked?@"Locking…":_opMode==1?@"Pre-measure":_opMode==2?@"Over-pull":@"";_right.text=_tone?@"Sound":(_microphoneStatus?:@"Microphone starting");
     _spectrum.target=frequency;_spectrum.fundamental=_fundamental;_spectrum.zoom=MAX(0,MIN(5,[_preferences[@"zoom"] intValue]));_spectrum.thickness=MAX(0,MIN(2,[_preferences[@"thickness"] intValue]));_spectrum.dark=[_preferences[@"dark"] boolValue];NSArray *t=_document[@"three"];_spectrum.intervals=[_document[@"useThree"] boolValue]?[NSString stringWithFormat:@"Bass:%@:%@\nMid:%@:%@\nTreb:%@:%@",t[0],t[1],t[2],t[3],t[4],t[5]]:@"";[_spectrum setNeedsDisplay];[self.view setNeedsLayout];
     [_buttons[2] setImage:Image(_locked?@"lock120p":@"lock120")?:Image(@"lock120") forState:UIControlStateNormal];
     if(_tone)[self playTone];
@@ -213,6 +215,26 @@ static NSArray *Intervals(){return @[@"2:1 octaves",@"4:2 octaves",@"6:3 octaves
 - (void)save {
     NSData *json=[NSJSONSerialization dataWithJSONObject:_document options:NSJSONWritingPrettyPrinted error:nil];NSError *error=nil;if(![json writeToFile:[_folder stringByAppendingPathComponent:@"Current.json"] options:NSDataWritingAtomic error:&error]){_right.text=@"Save failed";NSLog(@"TuneLab save: %@",error);}
     [_preferences writeToFile:[_folder stringByAppendingPathComponent:@"Preferences.plist"] atomically:YES];
+}
+- (void)audioState:(NSDictionary*)state {
+    NSMutableDictionary *record=[state mutableCopy];record[@"runtime"]=[_runtime diagnostics];record[@"iosVersion"]=UIDevice.currentDevice.systemVersion;record[@"appVersion"]=[NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"]?:@"";record[@"build"]=[NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleVersion"]?:@"";_audioDiagnostics=record;
+    NSString *status=state[@"status"];
+    if([status isEqual:@"Listening"]){
+        float peak=[state[@"peak"] floatValue];
+        _microphoneStatus=[state[@"convertedFrames"] unsignedLongLongValue]?[NSString stringWithFormat:@"Mic level\n%.0f dB",20*log10f(MAX(peak,.000001f))]:@"Mic connected\nWaiting for audio";
+    }else _microphoneStatus=status;
+    if(!_tone)_right.text=_microphoneStatus;UIApplication.sharedApplication.idleTimerDisabled=_foreground&&(_audio.listening||_tone);
+    // Input health must remain visible even if no DSP update is being emitted.
+    [_spectrum setNeedsDisplay];
+    CFTimeInterval now=CACurrentMediaTime();if(now-_lastDiagnosticSave>=2||![status isEqual:@"Listening"]){_lastDiagnosticSave=now;NSData *json=[NSJSONSerialization dataWithJSONObject:record options:NSJSONWritingPrettyPrinted error:nil];[json writeToFile:[_folder stringByAppendingPathComponent:@"AudioDiagnostics.json"] options:NSDataWritingAtomic error:nil];}
+}
+- (void)microphone {
+    NSDictionary *state=_audioDiagnostics?:_audio.diagnostics,*runtime=state[@"runtime"]?:@{};
+    NSString *text=[NSString stringWithFormat:@"%@\nInput: %@ Hz / %@ channel(s)\nMicrophone callbacks: %@\nConverted frames: %@\nAnalysis blocks: %@\n%@",state[@"status"]?:@"Stopped",state[@"inputSampleRate"]?:@0,state[@"inputChannels"]?:@0,state[@"inputCallbacks"]?:@0,state[@"convertedFrames"]?:@0,runtime[@"processedBlocks"]?:@0,state[@"lastError"]?:@""];
+    UIAlertController *a=[UIAlertController alertControllerWithTitle:@"Microphone" message:text preferredStyle:UIAlertControllerStyleAlert];__weak TLMain *weak=self;
+    [a addAction:[UIAlertAction actionWithTitle:@"Restart microphone" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){TLMain *s=weak;if(!s)return;s->_tone=NO;s->_measuring=NO;[s->_audio stop];[s->_audio listen];[s refresh];}]];
+    [a addAction:[UIAlertAction actionWithTitle:@"Copy diagnostics" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){NSData *json=[NSJSONSerialization dataWithJSONObject:state options:NSJSONWritingPrettyPrinted error:nil];UIPasteboard.generalPasteboard.string=[[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding];}]];
+    [a addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:nil]];[[self presenter] presentViewController:a animated:YES completion:nil];
 }
 - (void)receive:(NSDictionary*)state {
     if(!_foreground)return;
@@ -268,7 +290,7 @@ static NSArray *Intervals(){return @[@"2:1 octaves",@"4:2 octaves",@"6:3 octaves
     case 17:[self message:@"Licensing" text:@"This iOS build is ready to use. No activation is required."];break;
     case 18:{[self list:@"Spectrum traces" items:@[@"Thin",@"Medium Thick",@"Extra Thick"] choose:^(NSInteger n){TLMain *s=weak;if(!s)return;s->_preferences[@"thickness"]=@(n);[s refresh];[s save];[[s presenter] dismissViewControllerAnimated:YES completion:nil];}];break;}
     case 19:{[self number:@"Phase display speed" value:[_preferences[@"phaseSpeed"] floatValue] min:.1 max:10 apply:^(float f){TLMain *s=weak;if(!s)return;s->_preferences[@"phaseSpeed"]=@(f);[s->_runtime setPhaseSpeed:f];[s save];}];break;}
-    case 20:[self message:@"About TuneLab Piano Tuner" text:@"Android source version 3.2\niOS port 0.2.0~alpha1 (build 2)\n\nOriginal name, images, documentation and ARM64 sound-analysis core.\n\nThis is an installable development build. Complete UI and function parity and physical-device validation remain in progress."];break;
+    case 20:[self message:@"About TuneLab Piano Tuner" text:[NSString stringWithFormat:@"Android source version 3.2\niOS port %@ (build %@)\n\nOriginal name, images, documentation and ARM64 sound-analysis core.\n\nThis is an installable development build. Complete UI and function parity and physical-device validation remain in progress.",[NSBundle.mainBundle objectForInfoDictionaryKey:@"TuneLabPortVersion"],[NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleVersion"]]];break;
     case 21:{[self list:@"Dark Mode" items:@[@"Light",@"Dark"] choose:^(NSInteger n){TLMain *s=weak;if(!s)return;s->_preferences[@"dark"]=@(n!=0);[s refresh];[s save];[[s presenter] dismissViewControllerAnimated:YES completion:nil];}];break;}
     case 22:{[self number:@"Spectrum Update Rate (1–10)" value:[_preferences[@"updateRate"] floatValue] min:1 max:10 apply:^(float f){TLMain *s=weak;if(!s)return;s->_preferences[@"updateRate"]=@(int(f));[s configureAuto];[s save];}];break;}
     }
@@ -284,7 +306,7 @@ static NSArray *Intervals(){return @[@"2:1 octaves",@"4:2 octaves",@"6:3 octaves
 }
 - (void)sequence {
     NSMutableArray *items=[NSMutableArray new];for(NSNumber *n in _preferences[@"sequence"])[items addObject:Note(n.intValue)];[items addObject:@"Add note"];
-    __weak TLMain *weak=self;[self list:@"Edit Measure Sequence" items:items choose:^(NSInteger i){TLMain *s=weak;if(!s)return;if(i<[s->_preferences[@"sequence"] count]){s->_note=[s->_preferences[@"sequence"][i] intValue];s->_partial=[s->_document[@"partials"][s->_note] intValue];[s refresh];[s measure];[[s presenter] dismissViewControllerAnimated:YES completion:nil];}else[s number:@"Add note (A0 = 0, C8 = 87)" value:s->_note min:0 max:87 apply:^(float f){NSMutableArray *seq=[s->_preferences[@"sequence"] mutableCopy];if(![seq containsObject:@(int(f))])[seq addObject:@(int(f))];[seq sortUsingSelector:@selector(compare:)];s->_preferences[@"sequence"]=seq;[s save];[[s presenter] dismissViewControllerAnimated:YES completion:nil];}];}];
+    __weak TLMain *weak=self;[self list:@"Edit Measure Sequence" items:items choose:^(NSInteger i){TLMain *s=weak;if(!s)return;if(NSUInteger(i)<[s->_preferences[@"sequence"] count]){s->_note=[s->_preferences[@"sequence"][i] intValue];s->_partial=[s->_document[@"partials"][s->_note] intValue];[s refresh];[s measure];[[s presenter] dismissViewControllerAnimated:YES completion:nil];}else[s number:@"Add note (A0 = 0, C8 = 87)" value:s->_note min:0 max:87 apply:^(float f){NSMutableArray *seq=[s->_preferences[@"sequence"] mutableCopy];if(![seq containsObject:@(int(f))])[seq addObject:@(int(f))];[seq sortUsingSelector:@selector(compare:)];s->_preferences[@"sequence"]=seq;[s save];[[s presenter] dismissViewControllerAnimated:YES completion:nil];}];}];
 }
 - (void)multi {__weak TLMain *weak=self;[self ask:@"Multiple partials (up to four, e.g. 1 2 3 4)" value:[_preferences[@"multi"] componentsJoinedByString:@" "] multiline:NO apply:^(NSString *text){TLMain *s=weak;if(!s)return;NSArray *tokens=Tokens(text);if(tokens.count>4){[s message:@"Multiple partials" text:@"Enter at most four partial numbers."];return;}NSMutableArray *p=[NSMutableArray new];for(NSString *t in tokens){int value=t.intValue;if(value<1||value>16){[s message:@"Multiple partials" text:@"Partials must be from 1 to 16."];return;}[p addObject:@(value)];}s->_preferences[@"multi"]=p;s->_preferences[@"combined"]=@YES;[s->_runtime setPartials:p combined:YES];[s refresh];[s save];}];}
 - (void)overpull {__weak TLMain *weak=self;[self list:@"Over-pull" items:@[@"Normal tuning",@"Begin pre-measurements",@"Over-pull tuning",@"Highest bass bridge note",@"Highest wound string",@"Clear pre-measurements"] choose:^(NSInteger i){TLMain *s=weak;if(!s)return;if(i<3){s->_opMode=int(i);[s->_runtime call:@"CPcomm" arguments:@[@102,@(i)]];[s refresh];[[s presenter] dismissViewControllerAnimated:YES completion:nil];}else if(i==5){s->_document[@"premeasure"]=[NSMutableDictionary new];[s save];[s message:@"Over-pull" text:@"Pre-measurements cleared."];}else[s number:i==3?@"Highest bass note (1–86)":@"Highest wound string (0–87)" value:[s->_document[@"opParms"][i-3] floatValue] min:i==3?1:0 max:i==3?86:87 apply:^(float f){NSMutableArray *p=[s->_document[@"opParms"] mutableCopy];p[i-3]=@(int(f));s->_document[@"opParms"]=p;[s refresh];[s save];}];}];}

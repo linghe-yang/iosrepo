@@ -72,10 +72,11 @@ def verify(path,version,package,arch,prefix,binary):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--activate',action='store_true');args=parser.parse_args()
-    version=json.loads((ROOT/'version.json').read_text(encoding='utf8'))['version']
+    release=json.loads((ROOT/'version.json').read_text(encoding='utf8'));version=release['version']
     assert '~alpha' in version,'Only clearly labelled development candidates are built here.'
     binary=(ROOT/'build/TuneLab').read_bytes();check=binary_check(binary)
-    info=plistlib.loads((ROOT/'resources/Info.plist').read_bytes());assert info['CFBundleShortVersionString']=='0.2.0' and info['CFBundleVersion']=='2'
+    info=plistlib.loads((ROOT/'resources/Info.plist').read_bytes());assert info['CFBundleShortVersionString']==release['ios_short_version'] and info['CFBundleVersion']==str(release['build'])
+    assert info['TuneLabPortVersion']==version
     reports=[]
     for arch,prefix,package,label in [('iphoneos-arm64','var/jb/','com.linghe.pianolab','Rootless'),('iphoneos-arm','','com.linghe.pianolab.rootful','Rootful')]:
         base='./'+prefix+'Applications/TuneLab.app/'
@@ -87,7 +88,7 @@ def main():
 Name: Piano Tuner (TuneLab, {label} Alpha)
 Version: {version}
 Architecture: {arch}
-Description: Installable TuneLab 3.2 iOS port alpha with original ARM64 DSP. Complete UI and feature parity remains in progress; device testing pending.
+Description: TuneLab iOS port alpha with original ARM64 DSP; microphone capture and route recovery fix. Complete UI and feature parity remains in progress; device verification pending.
 Maintainer: Local Build
 Author: Local Build
 Section: Multimedia
@@ -137,6 +138,19 @@ exit 0
             if old.exists():
                 if destination.exists():assert destination.read_bytes()==old.read_bytes();old.unlink()
                 else:old.replace(destination)
+        current={item['path'] for item in reports}
+        sys.path.insert(0,str(REPO/'tools'))
+        from update_repo import control,fields
+        for old in sorted((REPO/'debs').glob('com.linghe.pianolab*.deb')):
+            if old.relative_to(REPO).as_posix() in current:continue
+            metadata=fields(control(old.read_bytes()))
+            if metadata['Package'] not in {'com.linghe.pianolab','com.linghe.pianolab.rootful'}:continue
+            assert metadata['Version']!=version,'Unexpected duplicate current candidate'
+            retired=REPO/'retired'/('TuneLab-'+metadata['Version']);retired.mkdir(parents=True,exist_ok=True)
+            destination=retired/old.name
+            assert old.resolve().is_relative_to((REPO/'debs').resolve()) and destination.resolve().is_relative_to((REPO/'retired').resolve())
+            if destination.exists():assert destination.read_bytes()==old.read_bytes();old.unlink()
+            else:old.replace(destination)
         subprocess.run([sys.executable,str(REPO/'tools/update_repo.py')],check=True)
         subprocess.run([sys.executable,str(REPO/'tools/update_repo.py'),'--check'],check=True)
     print(json.dumps({'version':version,'complete_original_port':False,'packages':reports},indent=2))

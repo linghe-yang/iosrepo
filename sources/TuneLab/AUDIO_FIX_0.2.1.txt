@@ -1,0 +1,61 @@
+Piano Tuner / TuneLab 0.2.1~alpha1 — 采音与实时显示修复
+
+用户设备：iPad mini 6，iOS 16.1。
+用户对上一版本 0.2.0~alpha1 的实际反馈：能够启动、显示界面和更改目标音，麦克风获准后频谱和相位条仍不响应。
+用户没有提供连接耳机情况、设备采音日志或回调计数，不能据此锁定该设备上的唯一故障原因。
+
+已确认的代码缺陷及修复
+
+1. 旧版在新设备接入、设备断开及音频中断时直接调用 stop，未保留采音意图，也未在结束后恢复。
+   同时没有处理 AVAudioEngineConfigurationChangeNotification。采样率或通道数变化后，引擎可能停止，界面却保持原状。
+   新版将“用户要求监听”与“引擎当前运行”分开，异步重建输入链路，并处理中断结束、音频服务重置。
+   恢复具有次数限制；进入后台或主动停止会取消待执行的恢复，避免错误重新开启麦克风。
+
+2. 旧版通过两个混音器及静音输出链路间接读取、转换输入，未直接验证硬件输入是否持续到达。
+   新版直接对麦克风 inputNode 安装 tap，读取激活后的实际格式；44100 Hz 偏好只作为请求，不视为设备保证。
+   用持续的 AVAudioConverter 明确转换为 44100 Hz、单声道、Float32，再量化为原算法需要的 int16。
+   转换在串行队列执行；tap 缓冲区在回调返回前复制，转换输入耗尽返回 NoDataNow，保留连续流转换状态。
+   原算法内部的 44100 → 22050 降采样仍由原核心完成，不重复降采样。
+
+3. 旧版没有检测“引擎显示运行但没有输入”或“收到输入却没有转换输出”，也没有采音状态提示。
+   新版检测这两类停滞、尝试恢复，最终失败时明确提示，并可点击主界面右侧麦克风状态手动重试。
+   显示 Mic level 及输入电平；诊断记录实际采样率、通道、输入回调数、转换帧数、算法处理块数和错误。
+   AudioDiagnostics.json 保存到应用用户目录 Documents/TuneLab，不保存录音内容。
+   点击麦克风状态可复制诊断内容，便于后续判断是采集、转换、算法还是显示出了问题。
+
+4. 抽取并验证真实输入拼块代码，支持系统 tap / 采样转换后的不同回调长度。
+   每 2048 个样本才调用一次原算法；保持已注册的缓冲区地址固定。
+   重建流时清理旧碎片、撤销过期任务与界面更新，避免把两个采音会话的数据拼在一起。
+
+验证结果
+
+- ARM64 iOS 16 可执行文件重新编译、链接、签名通过；系统版本号 0.2.1，构建号 3。
+- CaptureTests：67490 项检查，15 种回调长度，覆盖量化、拼块、流重置、中断、后台取消、停滞和有界重试。
+- 11 段测量音频、704 次模型调用、168 个连续处理块与原算法对照通过。
+- 12 项原生频谱位图与原算法逐字节一致，边界保护通过。
+- 新增 240 个 PCM 块联动回放：每个偏移场景有 56 个活跃相位块；±12 音分场景产生 56 个相位位置；
+  每个场景的 4 个采样时刻均产生不同频谱位图。0 音分场景相位保持稳定，属于正确对音结果。
+- 以上回放直接执行最终应用所链接的原声音核心，外部数学、时钟、JNI/位图边界使用明确替身。
+- 没有在本机执行 iOS AVAudioEngine / AVAudioConverter，也没有连接用户的实体 iPad，因此不能宣称该设备已修复验收。
+
+安装与复测
+
+使用新 DEB 覆盖安装，不需要删除调律文件。不要继续安装 0.2.0~alpha1。
+Rootless / Dopamine：../../debs/com.linghe.pianolab_0.2.1~alpha1_iphoneos-arm64.deb
+Rootful：../../debs/com.linghe.pianolab.rootful_0.2.1~alpha1_iphoneos-arm.deb
+
+打开 Piano Tuner，允许麦克风，观察右侧 Mic level 是否随声音变化。
+先选 A4，再用钢琴 A4 或另一台设备的约 440 Hz 声音测试；频谱应有峰，偏离目标时相位条移动。
+准确对音时相位条应静止；远离所选音的拍手/环境噪声不保证产生有效相位，但应使输入电平、频谱变化。
+本应用的参考音播放与麦克风监听互斥，测试时不要停留在 Sound 播放状态。
+如果仍无反应，点击右侧麦克风状态，选择 Copy diagnostics，可提供具体链路状态进行定位。
+
+Apple 接口依据
+
+https://developer.apple.com/documentation/avfaudio/avaudioengine/inputnode
+https://developer.apple.com/documentation/avfaudio/avaudioengineconfigurationchangenotification
+https://developer.apple.com/library/archive/qa/qa1631/_index.html
+https://developer.apple.com/documentation/technotes/tn3136-avaudioconverter-performing-sample-rate-conversions
+
+完整原 UI / 全部功能的迁移范围没有在本次音频修复中扩大为“全部完成”。
+新包及索引仅写入本地 iosrepo，没有自动推送 GitHub Pages；线上 Sileo 需要实际发布后才会更新。

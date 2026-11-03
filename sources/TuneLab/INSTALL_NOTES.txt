@@ -1,12 +1,16 @@
 Piano Tuner / TuneLab — iOS 16 安装候选包
 
-版本：0.2.0~alpha1；系统显示版本 0.2.0；构建号 2。
+本次为 0.2.1 麦克风修复：直接输入 tap、实际格式转换、自动恢复、输入停滞检测。
+可从 0.2.0~alpha1 覆盖升级；右侧 Mic level 显示电平，点击可重试及复制诊断。
+细节与验证边界见 AUDIO_FIX_0.2.1.txt。
+
+版本：0.2.1~alpha1；系统显示版本 0.2.1；构建号 3。
 原 Android 样本：AndroidTuneLab-3.2.apk，版本 3.2。
 
 安装文件（从本文件所在目录起）：
-../../debs/com.linghe.pianolab_0.2.0~alpha1_iphoneos-arm64.deb
+../../debs/com.linghe.pianolab_0.2.1~alpha1_iphoneos-arm64.deb
   用于 Rootless / Dopamine，应用路径 /var/jb/Applications/TuneLab.app。
-../../debs/com.linghe.pianolab.rootful_0.2.0~alpha1_iphoneos-arm.deb
+../../debs/com.linghe.pianolab.rootful_0.2.1~alpha1_iphoneos-arm.deb
   用于 Rootful，应用路径 /Applications/TuneLab.app。
 两种选一种，不能混装。本次没有制作 RootHide 专用包。
 

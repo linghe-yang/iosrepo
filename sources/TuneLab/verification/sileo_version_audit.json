@@ -1,9 +1,9 @@
 {
   "cause": "At the earlier online audit, only the 0.1.0 prototype DEBs were published; the development version alone could not update Sileo.",
-  "development_version": "0.2.0~alpha1",
+  "development_version": "0.2.1~alpha1",
   "current_published_version": "0.1.0~beta1",
   "user_release_requirement": "Complete original UI, behavior and algorithm port in an installable DEB; retire 0.1.0 from active repository.",
-  "repair_status": "Real 0.2.0~alpha1 DEBs now built and checked locally; local indexes updated, old prototype retired; remote publication not performed.",
+  "repair_status": "0.2.1~alpha1 capture-fix DEBs built locally; local indexes updated; superseded packages retired. No remote publication.",
   "online_evidence": [
     {
       "url": "https://linghe-yang.github.io/iosrepo/Packages",

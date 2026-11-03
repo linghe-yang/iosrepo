@@ -18,6 +18,7 @@ icon=DEST/'apk/res/mipmap-xxxhdpi/ic_launcher.png'
 shutil.copy2(icon,ROOT/'resources/Icon.png')
 info={'CFBundleExecutable':'TuneLab','CFBundleIdentifier':'com.realtimespecialties.tunelab.ios','CFBundleName':'TuneLab','CFBundleDisplayName':identity['launcher_label'],'CFBundlePackageType':'APPL','CFBundleVersion':str(VERSION['build']),'CFBundleShortVersionString':VERSION['ios_short_version'],'MinimumOSVersion':'16.0','LSRequiresIPhoneOS':True,'UIDeviceFamily':[1,2],'UISupportedInterfaceOrientations':['UIInterfaceOrientationPortrait','UIInterfaceOrientationLandscapeLeft','UIInterfaceOrientationLandscapeRight'],'UILaunchScreen':{},'NSMicrophoneUsageDescription':'TuneLab uses the microphone to measure piano pitch and inharmonicity.','CFBundleIcons':{'CFBundlePrimaryIcon':{'CFBundleIconFiles':['Icon']}},'CFBundleIcons~ipad':{'CFBundlePrimaryIcon':{'CFBundleIconFiles':['Icon']}}}
 platform=SPEC/'platform_android35'
+info['TuneLabPortVersion']=VERSION['version']
 if (platform/'Roboto-Regular.ttf').exists() and (platform/'Roboto-NOTICE.txt').exists():
     fonts=ROOT/'resources/AndroidPlatform';fonts.mkdir(exist_ok=True)
     shutil.copy2(platform/'Roboto-Regular.ttf',fonts/'Roboto-Regular.ttf')

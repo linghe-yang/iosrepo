@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0~alpha1",
+  "version": "0.2.1~alpha1",
   "installable_candidate_built": true,
   "complete_original_port": false,
   "device_tested": false,
@@ -7,7 +7,7 @@
   "binary": {
     "architecture": "arm64",
     "cpu_subtype": "0x0",
-    "uuid": "0d2c299a15bf34fa8adc820dd2bdfde7",
+    "uuid": "341b8afa7643398cb1e4fcdb85c3f8fb",
     "sections": [
       "__text",
       "__tlrom",
@@ -42,7 +42,7 @@
       "__tlram",
       "__bss"
     ],
-    "code_pages_verified": 345,
+    "code_pages_verified": 354,
     "dependencies": [
       "/usr/lib/libSystem.B.dylib",
       "/usr/lib/libc++.1.dylib",
@@ -58,8 +58,8 @@
       "/System/Library/Frameworks/AVFAudio.framework/AVFAudio",
       "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation"
     ],
-    "sha256": "d71ccb6daaa03514291d37e1723de0060fab3ca343aa11cad1335f76756ded83",
-    "entry_offset": 118256,
+    "sha256": "1896e128c000a4157094c45ca89cb616183d497543ff73adfd1ce64dab62da7e",
+    "entry_offset": 109556,
     "minimum_ios": "16.0",
     "entitlements": {
       "platform-application": true,
@@ -69,34 +69,36 @@
   },
   "packages": [
     {
-      "path": "debs/com.linghe.pianolab_0.2.0~alpha1_iphoneos-arm64.deb",
+      "path": "debs/com.linghe.pianolab_0.2.1~alpha1_iphoneos-arm64.deb",
       "package": "com.linghe.pianolab",
       "architecture": "iphoneos-arm64",
-      "version": "0.2.0~alpha1",
-      "bytes": 3314572,
-      "sha256": "aa568407903d3333f2d8518734d7ef6b8204bd23207d3e79c5e7081ecf847410",
+      "version": "0.2.1~alpha1",
+      "bytes": 3325168,
+      "sha256": "96f587f21f447168141874b49bbb606b3ac752be30e20514f5ed56fcf9a7472d",
       "payload_files": 862,
       "payload_and_scripts_verified": true
     },
     {
-      "path": "debs/com.linghe.pianolab.rootful_0.2.0~alpha1_iphoneos-arm.deb",
+      "path": "debs/com.linghe.pianolab.rootful_0.2.1~alpha1_iphoneos-arm.deb",
       "package": "com.linghe.pianolab.rootful",
       "architecture": "iphoneos-arm",
-      "version": "0.2.0~alpha1",
-      "bytes": 3314322,
-      "sha256": "3920dd3dada943240cf6dde28c7aa5bd442932bb492ee3f7925c092cb31860bd",
+      "version": "0.2.1~alpha1",
+      "bytes": 3324850,
+      "sha256": "33072e7c0dc773afe9590c8b0f4aafd691e73f8ab10ffe536a66a867b0993bf4",
       "payload_files": 862,
       "payload_and_scripts_verified": true
     }
   ],
   "source_sha256": {
-    "src/App.mm": "d426c6bc918a3491ef25b9f59c2b875c2f0895609f8929ab7f362fc27130a60a",
-    "src/TLOriginalAudio.h": "4a87ba1fca1d2e573b10dcd1e7c3c860986b402aa3a5ea8d41318a7520992a06",
-    "src/TLOriginalAudio.mm": "ebb0c99a0b6b31f724a2ebce194cc70e5b3e1751337f73168c5b6b9c41eb3758",
+    "src/App.mm": "c776ea4847df3aeea987e1df23ae457ec462fd89efd79a40cde7ac5d50e9cf77",
+    "src/TLCapturePolicy.hpp": "a0355b3eeefa8a9cf70424c060a938b863c89e512f1abc56cea5d23e67c2eedc",
+    "src/TLOriginalAudio.h": "f46a5fc7f589427ee81b3cebf85dfe23b5543f8c42c57a535dd78de2328a5150",
+    "src/TLOriginalAudio.mm": "3de01546989560c020bf97c92829c1468f2843e31cf5aafbaceb2d5e0df5a3f2",
     "src/TLOriginalLayout.h": "cb2abe017b0f717ac42a71208baa58b70f6b45215079bf888f51f6c100103577",
     "src/TLOriginalLayout.m": "e7fee859d20ac7b0a5df5676e4f12a6390d675dcdf11f381184fd5ac88bed141",
-    "src/TLOriginalRuntime.h": "384d7c326146d99331d45e97a32497e255e21d82681b3d58d1e0ea821c8c650b",
-    "src/TLOriginalRuntime.mm": "0e8e4cea808016ad6944afd4efd2bc03c07b2579c7a058b21183f6a027a027db",
+    "src/TLOriginalRuntime.h": "95c0128bd3e6fd1cd1e4afbbcbc69c3b31cea0a9b7dcf383d3ef37d33cba7c62",
+    "src/TLOriginalRuntime.mm": "23a8c5abdf7b99fff938f57e2534fa75598cfc9f5caa59fd86fd7247cd2e4ade",
+    "src/TLPCMBlocks.hpp": "2bcca9cf5e4662d8fe3d793cf128587892e99007491e92d98cb3e5f3a33b5776",
     "src/TLSpectrum.h": "8fd9c8b6ca4e8cd41f483a2b2a58fbff470480527f77ed96aaa5f5a56652dded",
     "src/TLSpectrum.mm": "5270580dc506fca4deb258c5467f006e780729204af32774772bbe0c23f2d6cc",
     "native/Fixups.inc": "c76af4ad715e2442fa161f2b993396359aa3b2340d6c2e8004c031e6229e6010",

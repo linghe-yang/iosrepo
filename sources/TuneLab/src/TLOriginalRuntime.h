@@ -6,6 +6,8 @@
 - (id)call:(NSString*)method arguments:(NSArray*)arguments;
 - (void)configureNote:(int)note partial:(int)partial target:(float)target offset:(float)offset;
 - (void)process44100PCM:(const int16_t*)samples count:(NSUInteger)count;
+- (void)resetInputStream;
+- (NSDictionary*)diagnostics;
 - (void)setPhaseSpeed:(float)speed;
 - (void)setPartials:(NSArray<NSNumber*>*)partials combined:(BOOL)combined;
 - (void)beginMeasurement;

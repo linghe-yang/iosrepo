@@ -1,0 +1,11 @@
+{
+  "resource_files_verified": 847,
+  "original_launcher_name": "Piano Tuner",
+  "icon_exact_original_sha256": "01b6d0ab7fd4564c74bd76d0245ea9e942261358151efbdba12d0df51e96ee6f",
+  "ios_icon_bytes_identical": true,
+  "text_and_images_regenerated": false,
+  "all_ui_pixel_verified": false,
+  "all_behaviors_ported": false,
+  "new_release_ready": false,
+  "ios_port_version": "0.2.0~alpha1"
+}

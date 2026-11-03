@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "version": "0.2.0~alpha1",
+  "actual_dpkg_deb_info_and_extract": true,
+  "extracted_executable_and_icon_identical": true,
+  "shell_syntax_passed": true,
+  "maintainer_scripts_executed_with_mock_uicache": true,
+  "uicache_calls": [
+    "-u /var/jb/Applications/PianoLab.app",
+    "-p /var/jb/Applications/TuneLab.app",
+    "-u /var/jb/Applications/TuneLab.app",
+    "-u /Applications/PianoLab.app",
+    "-p /Applications/TuneLab.app",
+    "-u /Applications/TuneLab.app"
+  ],
+  "upgrade_version_order_passed": true,
+  "device_installation_performed": false,
+  "packages": [
+    {
+      "path": "debs/com.linghe.pianolab_0.2.0~alpha1_iphoneos-arm64.deb",
+      "package": "com.linghe.pianolab",
+      "architecture": "iphoneos-arm64",
+      "version": "0.2.0~alpha1",
+      "bytes": 3314572,
+      "sha256": "aa568407903d3333f2d8518734d7ef6b8204bd23207d3e79c5e7081ecf847410",
+      "payload_files": 862,
+      "payload_and_scripts_verified": true
+    },
+    {
+      "path": "debs/com.linghe.pianolab.rootful_0.2.0~alpha1_iphoneos-arm.deb",
+      "package": "com.linghe.pianolab.rootful",
+      "architecture": "iphoneos-arm",
+      "version": "0.2.0~alpha1",
+      "bytes": 3314322,
+      "sha256": "3920dd3dada943240cf6dde28c7aa5bd442932bb492ee3f7925c092cb31860bd",
+      "payload_files": 862,
+      "payload_and_scripts_verified": true
+    }
+  ]
+}

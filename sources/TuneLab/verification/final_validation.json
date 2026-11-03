@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0~alpha1",
+  "final_application_sha256": "d71ccb6daaa03514291d37e1723de0060fab3ca343aa11cad1335f76756ded83",
+  "measurement_audio_cases": 11,
+  "model_calls": 704,
+  "live_audio_blocks": 168,
+  "spectrum_bitmap_cases": 12,
+  "all_passed": true,
+  "same_external_math_and_clock_shims": true,
+  "physical_device_tested": false,
+  "full_ui_parity_verified": false,
+  "package_checks": "package_install_checks.json",
+  "candidate_manifest": "installable_candidate.json"
+}

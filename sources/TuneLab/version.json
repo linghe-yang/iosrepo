@@ -5,5 +5,7 @@
   "original_android_version": "3.2",
   "previous_prototype_version": "0.1.0~beta1",
   "stage": "exact-port-in-progress",
-  "deb_available": false
+  "deb_available": true,
+  "release_status": "installable-alpha-built-local-repository-only",
+  "retire_prototype_on_complete_release": true
 }

@@ -1,0 +1,9385 @@
+{
+  "original_sha256": "ef83110e3b105f0a6d17e0a5c90344c5cdda86be5ce9227082b45301f00de17f",
+  "ram_start": 81920,
+  "rom_size": 81920,
+  "ram_size": 1010040,
+  "patches": [
+    {
+      "at": 31024,
+      "mnemonic": "adrp",
+      "register": "x0",
+      "target": 87296,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 31028,
+      "mnemonic": "addlo",
+      "register": "x0",
+      "target": 87296,
+      "original": "60de0610"
+    },
+    {
+      "at": 31084,
+      "mnemonic": "adr",
+      "register": "x0",
+      "target": 31052,
+      "original": "00ffff10"
+    },
+    {
+      "at": 31088,
+      "mnemonic": "adrp",
+      "register": "x2",
+      "target": 87296,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 31092,
+      "mnemonic": "addlo",
+      "register": "x2",
+      "target": 87296,
+      "original": "62dc0610"
+    },
+    {
+      "at": 31392,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "e8ffffb0"
+    },
+    {
+      "at": 31436,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "e8ffffb0"
+    },
+    {
+      "at": 31672,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000d0"
+    },
+    {
+      "at": 31720,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "690000d0"
+    },
+    {
+      "at": 31832,
+      "mnemonic": "adrp",
+      "register": "x25",
+      "target": 86016,
+      "original": "790000d0"
+    },
+    {
+      "at": 31868,
+      "mnemonic": "adrp",
+      "register": "x26",
+      "target": 86016,
+      "original": "7a0000d0"
+    },
+    {
+      "at": 32044,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000d0"
+    },
+    {
+      "at": 32224,
+      "mnemonic": "adrp",
+      "register": "x20",
+      "target": 86016,
+      "original": "740000d0"
+    },
+    {
+      "at": 32260,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000d0"
+    },
+    {
+      "at": 32288,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000d0"
+    },
+    {
+      "at": 32312,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000d0"
+    },
+    {
+      "at": 32372,
+      "mnemonic": "adrp",
+      "register": "x20",
+      "target": 86016,
+      "original": "740000d0"
+    },
+    {
+      "at": 32396,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000d0"
+    },
+    {
+      "at": 32420,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000d0"
+    },
+    {
+      "at": 32448,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000d0"
+    },
+    {
+      "at": 32484,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000d0"
+    },
+    {
+      "at": 32556,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000d0"
+    },
+    {
+      "at": 32560,
+      "mnemonic": "adrp",
+      "register": "x22",
+      "target": 86016,
+      "original": "760000d0"
+    },
+    {
+      "at": 32572,
+      "mnemonic": "adrp",
+      "register": "x19",
+      "target": 86016,
+      "original": "730000d0"
+    },
+    {
+      "at": 32576,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "6a0000d0"
+    },
+    {
+      "at": 32580,
+      "mnemonic": "adrp",
+      "register": "x28",
+      "target": 86016,
+      "original": "7c0000d0"
+    },
+    {
+      "at": 32584,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 86016,
+      "original": "6b0000d0"
+    },
+    {
+      "at": 32596,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "e8ffffb0"
+    },
+    {
+      "at": 32604,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "e8ffffb0"
+    },
+    {
+      "at": 32608,
+      "mnemonic": "adrp",
+      "register": "x25",
+      "target": 86016,
+      "original": "790000d0"
+    },
+    {
+      "at": 32616,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "e8ffffb0"
+    },
+    {
+      "at": 32628,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "e8ffffb0"
+    },
+    {
+      "at": 32632,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "690000d0"
+    },
+    {
+      "at": 32640,
+      "mnemonic": "adrp",
+      "register": "x24",
+      "target": 86016,
+      "original": "780000d0"
+    },
+    {
+      "at": 32688,
+      "mnemonic": "adrp",
+      "register": "x26",
+      "target": 86016,
+      "original": "7a0000d0"
+    },
+    {
+      "at": 32704,
+      "mnemonic": "adr",
+      "register": "x27",
+      "target": 17600,
+      "original": "1b28fe10"
+    },
+    {
+      "at": 32728,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "6a0000d0"
+    },
+    {
+      "at": 32736,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "690000d0"
+    },
+    {
+      "at": 32744,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 86016,
+      "original": "6b0000d0"
+    },
+    {
+      "at": 32748,
+      "mnemonic": "adrp",
+      "register": "x25",
+      "target": 86016,
+      "original": "790000d0"
+    },
+    {
+      "at": 32860,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "e8ffff90"
+    },
+    {
+      "at": 32868,
+      "mnemonic": "adrp",
+      "register": "x22",
+      "target": 86016,
+      "original": "760000b0"
+    },
+    {
+      "at": 32880,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 86016,
+      "original": "6b0000b0"
+    },
+    {
+      "at": 32884,
+      "mnemonic": "adrp",
+      "register": "x21",
+      "target": 86016,
+      "original": "750000b0"
+    },
+    {
+      "at": 32888,
+      "mnemonic": "adrp",
+      "register": "x23",
+      "target": 86016,
+      "original": "770000b0"
+    },
+    {
+      "at": 32972,
+      "mnemonic": "adrp",
+      "register": "x23",
+      "target": 86016,
+      "original": "770000b0"
+    },
+    {
+      "at": 33116,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 33136,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 33176,
+      "mnemonic": "adrp",
+      "register": "x21",
+      "target": 86016,
+      "original": "750000b0"
+    },
+    {
+      "at": 33180,
+      "mnemonic": "adrp",
+      "register": "x25",
+      "target": 86016,
+      "original": "790000b0"
+    },
+    {
+      "at": 33184,
+      "mnemonic": "adrp",
+      "register": "x23",
+      "target": 86016,
+      "original": "770000b0"
+    },
+    {
+      "at": 33328,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "e8ffff90"
+    },
+    {
+      "at": 33332,
+      "mnemonic": "adrp",
+      "register": "x25",
+      "target": 86016,
+      "original": "790000b0"
+    },
+    {
+      "at": 33340,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 33344,
+      "mnemonic": "adrp",
+      "register": "x23",
+      "target": 86016,
+      "original": "770000b0"
+    },
+    {
+      "at": 33404,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "e8ffff90"
+    },
+    {
+      "at": 33412,
+      "mnemonic": "adrp",
+      "register": "x25",
+      "target": 86016,
+      "original": "790000b0"
+    },
+    {
+      "at": 33420,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 33424,
+      "mnemonic": "adrp",
+      "register": "x23",
+      "target": 86016,
+      "original": "770000b0"
+    },
+    {
+      "at": 33456,
+      "mnemonic": "adrp",
+      "register": "x21",
+      "target": 86016,
+      "original": "750000b0"
+    },
+    {
+      "at": 33684,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 33688,
+      "mnemonic": "adrp",
+      "register": "x21",
+      "target": 86016,
+      "original": "750000b0"
+    },
+    {
+      "at": 33832,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "e8ffff90"
+    },
+    {
+      "at": 33844,
+      "mnemonic": "adrp",
+      "register": "x22",
+      "target": 86016,
+      "original": "760000b0"
+    },
+    {
+      "at": 33848,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 86016,
+      "original": "6b0000b0"
+    },
+    {
+      "at": 33852,
+      "mnemonic": "adrp",
+      "register": "x21",
+      "target": 86016,
+      "original": "750000b0"
+    },
+    {
+      "at": 33856,
+      "mnemonic": "adrp",
+      "register": "x23",
+      "target": 86016,
+      "original": "770000b0"
+    },
+    {
+      "at": 34044,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "690000b0"
+    },
+    {
+      "at": 34164,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 34264,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "e8ffff90"
+    },
+    {
+      "at": 34272,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 34320,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "e8ffff90"
+    },
+    {
+      "at": 34328,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 34408,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 34544,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 16384,
+      "original": "e9ffff90"
+    },
+    {
+      "at": 34580,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 34732,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "e8ffff90"
+    },
+    {
+      "at": 34780,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "e8ffff90"
+    },
+    {
+      "at": 34792,
+      "mnemonic": "adrp",
+      "register": "x19",
+      "target": 86016,
+      "original": "730000b0"
+    },
+    {
+      "at": 34888,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "e8ffff90"
+    },
+    {
+      "at": 34892,
+      "mnemonic": "adrp",
+      "register": "x19",
+      "target": 86016,
+      "original": "730000b0"
+    },
+    {
+      "at": 34920,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 35032,
+      "mnemonic": "adrp",
+      "register": "x21",
+      "target": 86016,
+      "original": "750000b0"
+    },
+    {
+      "at": 35044,
+      "mnemonic": "adrp",
+      "register": "x22",
+      "target": 86016,
+      "original": "760000b0"
+    },
+    {
+      "at": 35048,
+      "mnemonic": "adrp",
+      "register": "x23",
+      "target": 86016,
+      "original": "770000b0"
+    },
+    {
+      "at": 35052,
+      "mnemonic": "adrp",
+      "register": "x24",
+      "target": 86016,
+      "original": "780000b0"
+    },
+    {
+      "at": 35080,
+      "mnemonic": "adr",
+      "register": "x25",
+      "target": 17600,
+      "original": "d9ddfd10"
+    },
+    {
+      "at": 35320,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 35356,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 35428,
+      "mnemonic": "adrp",
+      "register": "x21",
+      "target": 86016,
+      "original": "750000b0"
+    },
+    {
+      "at": 35440,
+      "mnemonic": "adrp",
+      "register": "x22",
+      "target": 86016,
+      "original": "760000b0"
+    },
+    {
+      "at": 35444,
+      "mnemonic": "adrp",
+      "register": "x23",
+      "target": 86016,
+      "original": "770000b0"
+    },
+    {
+      "at": 35448,
+      "mnemonic": "adrp",
+      "register": "x24",
+      "target": 86016,
+      "original": "780000b0"
+    },
+    {
+      "at": 35476,
+      "mnemonic": "adr",
+      "register": "x25",
+      "target": 17600,
+      "original": "79d1fd10"
+    },
+    {
+      "at": 35716,
+      "mnemonic": "adrp",
+      "register": "x19",
+      "target": 86016,
+      "original": "730000b0"
+    },
+    {
+      "at": 35720,
+      "mnemonic": "adrp",
+      "register": "x20",
+      "target": 86016,
+      "original": "740000b0"
+    },
+    {
+      "at": 35728,
+      "mnemonic": "adrp",
+      "register": "x21",
+      "target": 86016,
+      "original": "750000b0"
+    },
+    {
+      "at": 35732,
+      "mnemonic": "adrp",
+      "register": "x22",
+      "target": 86016,
+      "original": "760000b0"
+    },
+    {
+      "at": 35972,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 35996,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "690000b0"
+    },
+    {
+      "at": 36000,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "6a0000b0"
+    },
+    {
+      "at": 36004,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 86016,
+      "original": "6b0000b0"
+    },
+    {
+      "at": 36016,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 36032,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "690000b0"
+    },
+    {
+      "at": 36044,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "6a0000b0"
+    },
+    {
+      "at": 36060,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 86016,
+      "original": "6b0000b0"
+    },
+    {
+      "at": 36064,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 36068,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "690000b0"
+    },
+    {
+      "at": 36072,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "6a0000b0"
+    },
+    {
+      "at": 36176,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 36180,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "690000b0"
+    },
+    {
+      "at": 36240,
+      "mnemonic": "adrp",
+      "register": "x19",
+      "target": 86016,
+      "original": "730000b0"
+    },
+    {
+      "at": 36244,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 36248,
+      "mnemonic": "adrp",
+      "register": "x20",
+      "target": 86016,
+      "original": "740000b0"
+    },
+    {
+      "at": 36272,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 36296,
+      "mnemonic": "adrp",
+      "register": "x21",
+      "target": 86016,
+      "original": "750000b0"
+    },
+    {
+      "at": 36300,
+      "mnemonic": "adrp",
+      "register": "x22",
+      "target": 86016,
+      "original": "760000b0"
+    },
+    {
+      "at": 36444,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 36448,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "690000b0"
+    },
+    {
+      "at": 36452,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "6a0000b0"
+    },
+    {
+      "at": 36472,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 36520,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 36556,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 36652,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 36680,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 36732,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "680000b0"
+    },
+    {
+      "at": 36784,
+      "mnemonic": "adrp",
+      "register": "x20",
+      "target": 86016,
+      "original": "740000b0"
+    },
+    {
+      "at": 36900,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "68000090"
+    },
+    {
+      "at": 36928,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "68000090"
+    },
+    {
+      "at": 36952,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "68000090"
+    },
+    {
+      "at": 36956,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "69000090"
+    },
+    {
+      "at": 36992,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "68000090"
+    },
+    {
+      "at": 37044,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "68000090"
+    },
+    {
+      "at": 37060,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "69000090"
+    },
+    {
+      "at": 37068,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "68000090"
+    },
+    {
+      "at": 37248,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "68000090"
+    },
+    {
+      "at": 37272,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "68000090"
+    },
+    {
+      "at": 37296,
+      "mnemonic": "adrp",
+      "register": "x20",
+      "target": 86016,
+      "original": "74000090"
+    },
+    {
+      "at": 37300,
+      "mnemonic": "adrp",
+      "register": "x21",
+      "target": 86016,
+      "original": "75000090"
+    },
+    {
+      "at": 37308,
+      "mnemonic": "adrp",
+      "register": "x22",
+      "target": 86016,
+      "original": "76000090"
+    },
+    {
+      "at": 37312,
+      "mnemonic": "adrp",
+      "register": "x23",
+      "target": 86016,
+      "original": "77000090"
+    },
+    {
+      "at": 37476,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "68000090"
+    },
+    {
+      "at": 37488,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "68000090"
+    },
+    {
+      "at": 37536,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "68000090"
+    },
+    {
+      "at": 37572,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "68000090"
+    },
+    {
+      "at": 37588,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "68000090"
+    },
+    {
+      "at": 37612,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "68000090"
+    },
+    {
+      "at": 37644,
+      "mnemonic": "adrp",
+      "register": "x20",
+      "target": 86016,
+      "original": "74000090"
+    },
+    {
+      "at": 37648,
+      "mnemonic": "adrp",
+      "register": "x21",
+      "target": 86016,
+      "original": "75000090"
+    },
+    {
+      "at": 37656,
+      "mnemonic": "adrp",
+      "register": "x22",
+      "target": 86016,
+      "original": "76000090"
+    },
+    {
+      "at": 37660,
+      "mnemonic": "adrp",
+      "register": "x23",
+      "target": 86016,
+      "original": "77000090"
+    },
+    {
+      "at": 37816,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "69000090"
+    },
+    {
+      "at": 37924,
+      "mnemonic": "adr",
+      "register": "x8",
+      "target": 17644,
+      "original": "4886fd10"
+    },
+    {
+      "at": 38020,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "68000090"
+    },
+    {
+      "at": 38128,
+      "mnemonic": "adr",
+      "register": "x8",
+      "target": 17644,
+      "original": "e87ffd10"
+    },
+    {
+      "at": 38152,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "68000090"
+    },
+    {
+      "at": 38160,
+      "mnemonic": "adrp",
+      "register": "x27",
+      "target": 102400,
+      "original": "9b000090"
+    },
+    {
+      "at": 38168,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "69000090"
+    },
+    {
+      "at": 38172,
+      "mnemonic": "adrp",
+      "register": "x25",
+      "target": 102400,
+      "original": "99000090"
+    },
+    {
+      "at": 38176,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 102400,
+      "original": "8a000090"
+    },
+    {
+      "at": 38180,
+      "mnemonic": "adrp",
+      "register": "x24",
+      "target": 102400,
+      "original": "98000090"
+    },
+    {
+      "at": 38184,
+      "mnemonic": "adrp",
+      "register": "x26",
+      "target": 102400,
+      "original": "9a000090"
+    },
+    {
+      "at": 38204,
+      "mnemonic": "adrp",
+      "register": "x28",
+      "target": 102400,
+      "original": "9c000090"
+    },
+    {
+      "at": 38228,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "69000090"
+    },
+    {
+      "at": 38320,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 105360,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 38324,
+      "mnemonic": "addlo",
+      "register": "x9",
+      "target": 105360,
+      "original": "e92e0810"
+    },
+    {
+      "at": 38368,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 105364,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 38372,
+      "mnemonic": "addlo",
+      "register": "x9",
+      "target": 105364,
+      "original": "892d0810"
+    },
+    {
+      "at": 38412,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "c8fffff0"
+    },
+    {
+      "at": 38428,
+      "mnemonic": "adrp",
+      "register": "x21",
+      "target": 105368,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 38432,
+      "mnemonic": "addlo",
+      "register": "x21",
+      "target": 105368,
+      "original": "d52b0810"
+    },
+    {
+      "at": 38436,
+      "mnemonic": "adrp",
+      "register": "x23",
+      "target": 105432,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 38440,
+      "mnemonic": "addlo",
+      "register": "x23",
+      "target": 105432,
+      "original": "972d0810"
+    },
+    {
+      "at": 38536,
+      "mnemonic": "adrp",
+      "register": "x12",
+      "target": 102400,
+      "original": "8c000090"
+    },
+    {
+      "at": 38544,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "68000090"
+    },
+    {
+      "at": 38636,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 102400,
+      "original": "89000090"
+    },
+    {
+      "at": 38684,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "68000090"
+    },
+    {
+      "at": 38688,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "6a000090"
+    },
+    {
+      "at": 38716,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 106204,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 38720,
+      "mnemonic": "addlo",
+      "register": "x8",
+      "target": 106204,
+      "original": "e83c0810"
+    },
+    {
+      "at": 38888,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "6a000090"
+    },
+    {
+      "at": 39024,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "6a000090"
+    },
+    {
+      "at": 39140,
+      "mnemonic": "tls",
+      "register": "x24",
+      "target": 81920,
+      "original": "58d03bd5"
+    },
+    {
+      "at": 39144,
+      "mnemonic": "adrp",
+      "register": "x27",
+      "target": 102400,
+      "original": "9b000090"
+    },
+    {
+      "at": 39156,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "88000090"
+    },
+    {
+      "at": 39220,
+      "mnemonic": "adrp",
+      "register": "x13",
+      "target": 16384,
+      "original": "cdfffff0"
+    },
+    {
+      "at": 39228,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 102400,
+      "original": "8a000090"
+    },
+    {
+      "at": 39284,
+      "mnemonic": "adrp",
+      "register": "x13",
+      "target": 86016,
+      "original": "6d000090"
+    },
+    {
+      "at": 39344,
+      "mnemonic": "adr",
+      "register": "x16",
+      "target": 17760,
+      "original": "905dfd10"
+    },
+    {
+      "at": 39356,
+      "mnemonic": "adr",
+      "register": "x1",
+      "target": 17732,
+      "original": "415cfd10"
+    },
+    {
+      "at": 39368,
+      "mnemonic": "adrp",
+      "register": "x4",
+      "target": 16384,
+      "original": "c4fffff0"
+    },
+    {
+      "at": 39852,
+      "mnemonic": "adr",
+      "register": "x9",
+      "target": 17816,
+      "original": "694ffd10"
+    },
+    {
+      "at": 39864,
+      "mnemonic": "adr",
+      "register": "x9",
+      "target": 17844,
+      "original": "e94ffd10"
+    },
+    {
+      "at": 39908,
+      "mnemonic": "adr",
+      "register": "x11",
+      "target": 17788,
+      "original": "cb4cfd10"
+    },
+    {
+      "at": 39944,
+      "mnemonic": "adrp",
+      "register": "x28",
+      "target": 86016,
+      "original": "7c000090"
+    },
+    {
+      "at": 40024,
+      "mnemonic": "adrp",
+      "register": "x23",
+      "target": 86016,
+      "original": "77000090"
+    },
+    {
+      "at": 40208,
+      "mnemonic": "adrp",
+      "register": "x27",
+      "target": 102400,
+      "original": "9b000090"
+    },
+    {
+      "at": 40228,
+      "mnemonic": "adrp",
+      "register": "x28",
+      "target": 86016,
+      "original": "7c000090"
+    },
+    {
+      "at": 40424,
+      "mnemonic": "adrp",
+      "register": "x28",
+      "target": 86016,
+      "original": "7c000090"
+    },
+    {
+      "at": 40520,
+      "mnemonic": "adrp",
+      "register": "x28",
+      "target": 86016,
+      "original": "7c000090"
+    },
+    {
+      "at": 40528,
+      "mnemonic": "adrp",
+      "register": "x27",
+      "target": 102400,
+      "original": "9b000090"
+    },
+    {
+      "at": 40552,
+      "mnemonic": "adrp",
+      "register": "x26",
+      "target": 86016,
+      "original": "7a000090"
+    },
+    {
+      "at": 40616,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "88000090"
+    },
+    {
+      "at": 40620,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 102400,
+      "original": "89000090"
+    },
+    {
+      "at": 40624,
+      "mnemonic": "adrp",
+      "register": "x25",
+      "target": 105368,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 40628,
+      "mnemonic": "addlo",
+      "register": "x25",
+      "target": 105368,
+      "original": "39e70710"
+    },
+    {
+      "at": 40656,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 102400,
+      "original": "8a000090"
+    },
+    {
+      "at": 40792,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 102400,
+      "original": "8a000090"
+    },
+    {
+      "at": 41052,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 41136,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "680000f0"
+    },
+    {
+      "at": 41176,
+      "mnemonic": "adrp",
+      "register": "x27",
+      "target": 86016,
+      "original": "5b0000f0"
+    },
+    {
+      "at": 41188,
+      "mnemonic": "adrp",
+      "register": "x28",
+      "target": 86016,
+      "original": "5c0000f0"
+    },
+    {
+      "at": 41204,
+      "mnemonic": "adrp",
+      "register": "x24",
+      "target": 105432,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 41208,
+      "mnemonic": "addlo",
+      "register": "x24",
+      "target": 105432,
+      "original": "18d70710"
+    },
+    {
+      "at": 41640,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 102400,
+      "original": "690000f0"
+    },
+    {
+      "at": 41672,
+      "mnemonic": "adrp",
+      "register": "x28",
+      "target": 86016,
+      "original": "5c0000f0"
+    },
+    {
+      "at": 41676,
+      "mnemonic": "adrp",
+      "register": "x26",
+      "target": 86016,
+      "original": "5a0000f0"
+    },
+    {
+      "at": 41720,
+      "mnemonic": "adr",
+      "register": "x9",
+      "target": 17872,
+      "original": "c916fd10"
+    },
+    {
+      "at": 41788,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "c8ffffd0"
+    },
+    {
+      "at": 41868,
+      "mnemonic": "adrp",
+      "register": "x22",
+      "target": 102400,
+      "original": "760000f0"
+    },
+    {
+      "at": 41872,
+      "mnemonic": "adrp",
+      "register": "x27",
+      "target": 102400,
+      "original": "7b0000f0"
+    },
+    {
+      "at": 42480,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 42604,
+      "mnemonic": "adr",
+      "register": "x8",
+      "target": 17644,
+      "original": "08f4fc10"
+    },
+    {
+      "at": 42780,
+      "mnemonic": "adrp",
+      "register": "x22",
+      "target": 86016,
+      "original": "560000f0"
+    },
+    {
+      "at": 42800,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "c8ffffd0"
+    },
+    {
+      "at": 43100,
+      "mnemonic": "adrp",
+      "register": "x22",
+      "target": 102400,
+      "original": "760000f0"
+    },
+    {
+      "at": 43104,
+      "mnemonic": "adrp",
+      "register": "x27",
+      "target": 102400,
+      "original": "7b0000f0"
+    },
+    {
+      "at": 43112,
+      "mnemonic": "adr",
+      "register": "x8",
+      "target": 17872,
+      "original": "48ebfc10"
+    },
+    {
+      "at": 43224,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 43312,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 106204,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 43316,
+      "mnemonic": "addlo",
+      "register": "x9",
+      "target": 106204,
+      "original": "49ad0710"
+    },
+    {
+      "at": 43452,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 43532,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "4a0000f0"
+    },
+    {
+      "at": 43536,
+      "mnemonic": "adrp",
+      "register": "x12",
+      "target": 86016,
+      "original": "4c0000f0"
+    },
+    {
+      "at": 43572,
+      "mnemonic": "adrp",
+      "register": "x12",
+      "target": 86016,
+      "original": "4c0000f0"
+    },
+    {
+      "at": 43592,
+      "mnemonic": "adrp",
+      "register": "x12",
+      "target": 86016,
+      "original": "4c0000f0"
+    },
+    {
+      "at": 43648,
+      "mnemonic": "adrp",
+      "register": "x12",
+      "target": 86016,
+      "original": "4c0000f0"
+    },
+    {
+      "at": 43692,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 43712,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 43728,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "490000f0"
+    },
+    {
+      "at": 43732,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "680000f0"
+    },
+    {
+      "at": 43744,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "680000f0"
+    },
+    {
+      "at": 43784,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 43804,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 43832,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 106272,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 43836,
+      "mnemonic": "addlo",
+      "register": "x8",
+      "target": 106272,
+      "original": "289f0710"
+    },
+    {
+      "at": 43956,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "680000f0"
+    },
+    {
+      "at": 43992,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 44036,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 44072,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 44096,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 44100,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "490000f0"
+    },
+    {
+      "at": 44136,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 44140,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "4a0000f0"
+    },
+    {
+      "at": 44172,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 44184,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 44204,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "680000f0"
+    },
+    {
+      "at": 44216,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 44220,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "490000f0"
+    },
+    {
+      "at": 44248,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 44288,
+      "mnemonic": "tls",
+      "register": "x19",
+      "target": 81920,
+      "original": "53d03bd5"
+    },
+    {
+      "at": 44312,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 106272,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 44316,
+      "mnemonic": "addlo",
+      "register": "x8",
+      "target": 106272,
+      "original": "28900710"
+    },
+    {
+      "at": 44352,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 106284,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 44356,
+      "mnemonic": "addlo",
+      "register": "x8",
+      "target": 106284,
+      "original": "488f0710"
+    },
+    {
+      "at": 44372,
+      "mnemonic": "adrp",
+      "register": "x12",
+      "target": 102400,
+      "original": "6c0000f0"
+    },
+    {
+      "at": 44384,
+      "mnemonic": "adr",
+      "register": "x10",
+      "target": 18253,
+      "original": "6acffc30"
+    },
+    {
+      "at": 44396,
+      "mnemonic": "adr",
+      "register": "x11",
+      "target": 18438,
+      "original": "cbd4fc50"
+    },
+    {
+      "at": 44404,
+      "mnemonic": "adr",
+      "register": "x12",
+      "target": 24584,
+      "original": "ac94fd10"
+    },
+    {
+      "at": 44416,
+      "mnemonic": "adr",
+      "register": "x13",
+      "target": 18374,
+      "original": "2dd2fc50"
+    },
+    {
+      "at": 44424,
+      "mnemonic": "adr",
+      "register": "x15",
+      "target": 21510,
+      "original": "ef33fd50"
+    },
+    {
+      "at": 44428,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 106272,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 44432,
+      "mnemonic": "addlo",
+      "register": "x16",
+      "target": 106272,
+      "original": "908c0710"
+    },
+    {
+      "at": 44648,
+      "mnemonic": "adr",
+      "register": "x9",
+      "target": 18224,
+      "original": "49c6fc10"
+    },
+    {
+      "at": 44652,
+      "mnemonic": "adr",
+      "register": "x10",
+      "target": 44668,
+      "original": "8a000010"
+    },
+    {
+      "at": 44668,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 44684,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 44700,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "680000f0"
+    },
+    {
+      "at": 44704,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 102400,
+      "original": "690000f0"
+    },
+    {
+      "at": 44772,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "680000f0"
+    },
+    {
+      "at": 44788,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 44804,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "680000f0"
+    },
+    {
+      "at": 44820,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 102400,
+      "original": "6a0000f0"
+    },
+    {
+      "at": 44840,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 44892,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 102400,
+      "original": "690000f0"
+    },
+    {
+      "at": 44908,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 44924,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 44928,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "490000f0"
+    },
+    {
+      "at": 44976,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "680000f0"
+    },
+    {
+      "at": 45012,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "680000f0"
+    },
+    {
+      "at": 45024,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 45040,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000f0"
+    },
+    {
+      "at": 45072,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000d0"
+    },
+    {
+      "at": 45188,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "680000d0"
+    },
+    {
+      "at": 45228,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "680000d0"
+    },
+    {
+      "at": 45264,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000d0"
+    },
+    {
+      "at": 45300,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "680000d0"
+    },
+    {
+      "at": 45328,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "680000d0"
+    },
+    {
+      "at": 45344,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "680000d0"
+    },
+    {
+      "at": 45360,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "680000d0"
+    },
+    {
+      "at": 45408,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "680000d0"
+    },
+    {
+      "at": 45460,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "680000d0"
+    },
+    {
+      "at": 45492,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 102400,
+      "original": "690000d0"
+    },
+    {
+      "at": 45516,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 102400,
+      "original": "690000d0"
+    },
+    {
+      "at": 45548,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "680000d0"
+    },
+    {
+      "at": 45552,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 102400,
+      "original": "6a0000d0"
+    },
+    {
+      "at": 45584,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 102400,
+      "original": "690000d0"
+    },
+    {
+      "at": 45608,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 102400,
+      "original": "690000d0"
+    },
+    {
+      "at": 45612,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 102400,
+      "original": "6b0000d0"
+    },
+    {
+      "at": 45628,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 102400,
+      "original": "6b0000d0"
+    },
+    {
+      "at": 45672,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 102400,
+      "original": "6a0000d0"
+    },
+    {
+      "at": 45708,
+      "mnemonic": "adr",
+      "register": "x8",
+      "target": 24600,
+      "original": "686cfd10"
+    },
+    {
+      "at": 46156,
+      "mnemonic": "tls",
+      "register": "x20",
+      "target": 81920,
+      "original": "54d03bd5"
+    },
+    {
+      "at": 46184,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "680000d0"
+    },
+    {
+      "at": 46292,
+      "mnemonic": "adr",
+      "register": "x8",
+      "target": 24600,
+      "original": "285afd10"
+    },
+    {
+      "at": 46848,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "c8ffffb0"
+    },
+    {
+      "at": 47864,
+      "mnemonic": "adr",
+      "register": "x17",
+      "target": 24856,
+      "original": "1131fd10"
+    },
+    {
+      "at": 48316,
+      "mnemonic": "tls",
+      "register": "x19",
+      "target": 81920,
+      "original": "53d03bd5"
+    },
+    {
+      "at": 48320,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "490000d0"
+    },
+    {
+      "at": 48352,
+      "mnemonic": "adrp",
+      "register": "x1",
+      "target": 24576,
+      "original": "c1fffff0"
+    },
+    {
+      "at": 48452,
+      "mnemonic": "adr",
+      "register": "x3",
+      "target": 24987,
+      "original": "a322fd70"
+    },
+    {
+      "at": 48488,
+      "mnemonic": "tls",
+      "register": "x19",
+      "target": 81920,
+      "original": "53d03bd5"
+    },
+    {
+      "at": 48580,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 86016,
+      "original": "4b0000d0"
+    },
+    {
+      "at": 48592,
+      "mnemonic": "adrp",
+      "register": "x12",
+      "target": 86016,
+      "original": "4c0000d0"
+    },
+    {
+      "at": 48704,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 86016,
+      "original": "4b0000d0"
+    },
+    {
+      "at": 48740,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000d0"
+    },
+    {
+      "at": 48808,
+      "mnemonic": "tls",
+      "register": "x8",
+      "target": 81920,
+      "original": "48d03bd5"
+    },
+    {
+      "at": 48812,
+      "mnemonic": "adrp",
+      "register": "x25",
+      "target": 86016,
+      "original": "590000d0"
+    },
+    {
+      "at": 48816,
+      "mnemonic": "adrp",
+      "register": "x26",
+      "target": 86016,
+      "original": "5a0000d0"
+    },
+    {
+      "at": 48848,
+      "mnemonic": "adrp",
+      "register": "x19",
+      "target": 24576,
+      "original": "d3fffff0"
+    },
+    {
+      "at": 48960,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000d0"
+    },
+    {
+      "at": 48988,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 107380,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 48992,
+      "mnemonic": "addlo",
+      "register": "x11",
+      "target": 107380,
+      "original": "ab200710"
+    },
+    {
+      "at": 49860,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 107380,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 49864,
+      "mnemonic": "addlo",
+      "register": "x11",
+      "target": 107380,
+      "original": "6b050710"
+    },
+    {
+      "at": 49888,
+      "mnemonic": "adrp",
+      "register": "x13",
+      "target": 86016,
+      "original": "4d0000b0"
+    },
+    {
+      "at": 49896,
+      "mnemonic": "adrp",
+      "register": "x14",
+      "target": 86016,
+      "original": "4e0000b0"
+    },
+    {
+      "at": 50008,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "4a0000b0"
+    },
+    {
+      "at": 50016,
+      "mnemonic": "adrp",
+      "register": "x12",
+      "target": 86016,
+      "original": "4c0000b0"
+    },
+    {
+      "at": 50040,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 50076,
+      "mnemonic": "adrp",
+      "register": "x0",
+      "target": 107028,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 50080,
+      "mnemonic": "addlo",
+      "register": "x0",
+      "target": 107028,
+      "original": "a0f30610"
+    },
+    {
+      "at": 50168,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 107380,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 50172,
+      "mnemonic": "addlo",
+      "register": "x8",
+      "target": 107380,
+      "original": "c8fb0610"
+    },
+    {
+      "at": 50184,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 50188,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "490000b0"
+    },
+    {
+      "at": 50192,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "4a0000b0"
+    },
+    {
+      "at": 50232,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 107380,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 50236,
+      "mnemonic": "addlo",
+      "register": "x8",
+      "target": 107380,
+      "original": "c8f90610"
+    },
+    {
+      "at": 50284,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 50328,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 50360,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 50372,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 50384,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 50396,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 50412,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 50444,
+      "mnemonic": "adr",
+      "register": "x8",
+      "target": 24996,
+      "original": "c8e4fc10"
+    },
+    {
+      "at": 50460,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 50492,
+      "mnemonic": "adr",
+      "register": "x8",
+      "target": 24996,
+      "original": "48e3fc10"
+    },
+    {
+      "at": 50516,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 50548,
+      "mnemonic": "adr",
+      "register": "x8",
+      "target": 24996,
+      "original": "88e1fc10"
+    },
+    {
+      "at": 50584,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 50608,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 50652,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 50664,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 50756,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 50776,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 107028,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 50780,
+      "mnemonic": "addlo",
+      "register": "x8",
+      "target": 107028,
+      "original": "c8dd0610"
+    },
+    {
+      "at": 50792,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 50820,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 50828,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "490000b0"
+    },
+    {
+      "at": 50832,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "4a0000b0"
+    },
+    {
+      "at": 50884,
+      "mnemonic": "adrp",
+      "register": "x22",
+      "target": 107380,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 50888,
+      "mnemonic": "addlo",
+      "register": "x22",
+      "target": 107380,
+      "original": "76e50610"
+    },
+    {
+      "at": 50896,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "490000b0"
+    },
+    {
+      "at": 51028,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 51040,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 51084,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 51096,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 51148,
+      "mnemonic": "adr",
+      "register": "x8",
+      "target": 24996,
+      "original": "c8cefc10"
+    },
+    {
+      "at": 51248,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 51252,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 107380,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 51256,
+      "mnemonic": "addlo",
+      "register": "x9",
+      "target": 107380,
+      "original": "e9d90610"
+    },
+    {
+      "at": 51292,
+      "mnemonic": "adr",
+      "register": "x8",
+      "target": 24996,
+      "original": "48cafc10"
+    },
+    {
+      "at": 51320,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 51324,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 107380,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 51328,
+      "mnemonic": "addlo",
+      "register": "x9",
+      "target": 107380,
+      "original": "a9d70610"
+    },
+    {
+      "at": 51364,
+      "mnemonic": "adr",
+      "register": "x8",
+      "target": 24996,
+      "original": "08c8fc10"
+    },
+    {
+      "at": 51416,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 51420,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 107380,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 51424,
+      "mnemonic": "addlo",
+      "register": "x9",
+      "target": 107380,
+      "original": "a9d40610"
+    },
+    {
+      "at": 51460,
+      "mnemonic": "adr",
+      "register": "x8",
+      "target": 24996,
+      "original": "08c5fc10"
+    },
+    {
+      "at": 51524,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 51528,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 107380,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 51532,
+      "mnemonic": "addlo",
+      "register": "x9",
+      "target": 107380,
+      "original": "49d10610"
+    },
+    {
+      "at": 51568,
+      "mnemonic": "adr",
+      "register": "x8",
+      "target": 24996,
+      "original": "a8c1fc10"
+    },
+    {
+      "at": 51604,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 106496,
+      "original": "680000d0"
+    },
+    {
+      "at": 51668,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 51672,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 107380,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 51676,
+      "mnemonic": "addlo",
+      "register": "x9",
+      "target": 107380,
+      "original": "c9cc0610"
+    },
+    {
+      "at": 51712,
+      "mnemonic": "adr",
+      "register": "x8",
+      "target": 24996,
+      "original": "28bdfc10"
+    },
+    {
+      "at": 51748,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 106496,
+      "original": "680000d0"
+    },
+    {
+      "at": 51928,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "c8ffff90"
+    },
+    {
+      "at": 51932,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 16384,
+      "original": "c9ffff90"
+    },
+    {
+      "at": 51968,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "c8ffff90"
+    },
+    {
+      "at": 52108,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 52136,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 372736,
+      "original": "690200f0"
+    },
+    {
+      "at": 52140,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 372736,
+      "original": "6a0200f0"
+    },
+    {
+      "at": 52160,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "490000b0"
+    },
+    {
+      "at": 52164,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "4a0000b0"
+    },
+    {
+      "at": 52180,
+      "mnemonic": "adrp",
+      "register": "x15",
+      "target": 111976,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 52184,
+      "mnemonic": "addlo",
+      "register": "x15",
+      "target": 111976,
+      "original": "8f4c0710"
+    },
+    {
+      "at": 52216,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 102400,
+      "original": "690000b0"
+    },
+    {
+      "at": 52240,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "4a0000b0"
+    },
+    {
+      "at": 52252,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 86016,
+      "original": "4b0000b0"
+    },
+    {
+      "at": 52268,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 372736,
+      "original": "6a0200f0"
+    },
+    {
+      "at": 52484,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 372736,
+      "original": "6b0200f0"
+    },
+    {
+      "at": 52536,
+      "mnemonic": "adrp",
+      "register": "x19",
+      "target": 102400,
+      "original": "730000b0"
+    },
+    {
+      "at": 52540,
+      "mnemonic": "adrp",
+      "register": "x0",
+      "target": 374140,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 52544,
+      "mnemonic": "addlo",
+      "register": "x0",
+      "target": 374140,
+      "original": "e0412710"
+    },
+    {
+      "at": 52556,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 372736,
+      "original": "680200f0"
+    },
+    {
+      "at": 52560,
+      "mnemonic": "adrp",
+      "register": "x1",
+      "target": 111976,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 52564,
+      "mnemonic": "addlo",
+      "register": "x1",
+      "target": 111976,
+      "original": "a1400710"
+    },
+    {
+      "at": 52584,
+      "mnemonic": "adrp",
+      "register": "x0",
+      "target": 439676,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 52588,
+      "mnemonic": "addlo",
+      "register": "x0",
+      "target": 439676,
+      "original": "80402f10"
+    },
+    {
+      "at": 52612,
+      "mnemonic": "adrp",
+      "register": "x20",
+      "target": 439676,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 52616,
+      "mnemonic": "addlo",
+      "register": "x20",
+      "target": 439676,
+      "original": "b43f2f10"
+    },
+    {
+      "at": 52620,
+      "mnemonic": "adrp",
+      "register": "x1",
+      "target": 374140,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 52624,
+      "mnemonic": "addlo",
+      "register": "x1",
+      "target": 374140,
+      "original": "613f2710"
+    },
+    {
+      "at": 52640,
+      "mnemonic": "adrp",
+      "register": "x21",
+      "target": 701820,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 52644,
+      "mnemonic": "addlo",
+      "register": "x21",
+      "target": 701820,
+      "original": "d53e4f10"
+    },
+    {
+      "at": 52660,
+      "mnemonic": "adrp",
+      "register": "x22",
+      "target": 86016,
+      "original": "560000b0"
+    },
+    {
+      "at": 52664,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 52680,
+      "mnemonic": "adrp",
+      "register": "x19",
+      "target": 86016,
+      "original": "530000b0"
+    },
+    {
+      "at": 52780,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "490000b0"
+    },
+    {
+      "at": 52868,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 86016,
+      "original": "4b0000b0"
+    },
+    {
+      "at": 52984,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 53004,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 53060,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 53064,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "490000b0"
+    },
+    {
+      "at": 53128,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 53144,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 53160,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "480000b0"
+    },
+    {
+      "at": 53164,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "490000b0"
+    },
+    {
+      "at": 53420,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "49000090"
+    },
+    {
+      "at": 53484,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "49000090"
+    },
+    {
+      "at": 53532,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "49000090"
+    },
+    {
+      "at": 53608,
+      "mnemonic": "tls",
+      "register": "x12",
+      "target": 81920,
+      "original": "4cd03bd5"
+    },
+    {
+      "at": 53612,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "49000090"
+    },
+    {
+      "at": 53616,
+      "mnemonic": "adrp",
+      "register": "x13",
+      "target": 86016,
+      "original": "4d000090"
+    },
+    {
+      "at": 53648,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "48000090"
+    },
+    {
+      "at": 53688,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "48000090"
+    },
+    {
+      "at": 53924,
+      "mnemonic": "adr",
+      "register": "x19",
+      "target": 25060,
+      "original": "137afc10"
+    },
+    {
+      "at": 54012,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "48000090"
+    },
+    {
+      "at": 54024,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "48000090"
+    },
+    {
+      "at": 54108,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "48000090"
+    },
+    {
+      "at": 54232,
+      "mnemonic": "adrp",
+      "register": "x23",
+      "target": 86016,
+      "original": "57000090"
+    },
+    {
+      "at": 54236,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "a8fffff0"
+    },
+    {
+      "at": 54888,
+      "mnemonic": "adrp",
+      "register": "x23",
+      "target": 86016,
+      "original": "57000090"
+    },
+    {
+      "at": 55136,
+      "mnemonic": "adrp",
+      "register": "x23",
+      "target": 86016,
+      "original": "57000090"
+    },
+    {
+      "at": 55304,
+      "mnemonic": "adr",
+      "register": "x3",
+      "target": 55776,
+      "original": "c30e0010"
+    },
+    {
+      "at": 55816,
+      "mnemonic": "adrp",
+      "register": "x19",
+      "target": 897024,
+      "original": "730600d0"
+    },
+    {
+      "at": 55820,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 102400,
+      "original": "69000090"
+    },
+    {
+      "at": 55824,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 833228,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 55828,
+      "mnemonic": "addlo",
+      "register": "x10",
+      "target": 833228,
+      "original": "cae55e10"
+    },
+    {
+      "at": 55844,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "48000090"
+    },
+    {
+      "at": 55864,
+      "mnemonic": "adrp",
+      "register": "x0",
+      "target": 898768,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 55868,
+      "mnemonic": "addlo",
+      "register": "x0",
+      "target": 898768,
+      "original": "a0e46610"
+    },
+    {
+      "at": 55900,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "48000090"
+    },
+    {
+      "at": 55928,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 102400,
+      "original": "69000090"
+    },
+    {
+      "at": 55948,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 833228,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 55952,
+      "mnemonic": "addlo",
+      "register": "x16",
+      "target": 833228,
+      "original": "f0e15e10"
+    },
+    {
+      "at": 55984,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 897024,
+      "original": "6a0600d0"
+    },
+    {
+      "at": 56204,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "4a000090"
+    },
+    {
+      "at": 56208,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 833228,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 56212,
+      "mnemonic": "addlo",
+      "register": "x11",
+      "target": 833228,
+      "original": "cbd95e10"
+    },
+    {
+      "at": 56312,
+      "mnemonic": "adrp",
+      "register": "x24",
+      "target": 915156,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 56316,
+      "mnemonic": "addlo",
+      "register": "x24",
+      "target": 915156,
+      "original": "d8d66810"
+    },
+    {
+      "at": 56468,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 833228,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 56472,
+      "mnemonic": "addlo",
+      "register": "x8",
+      "target": 833228,
+      "original": "a8d15e10"
+    },
+    {
+      "at": 56700,
+      "mnemonic": "tls",
+      "register": "x21",
+      "target": 81920,
+      "original": "55d03bd5"
+    },
+    {
+      "at": 56704,
+      "mnemonic": "adrp",
+      "register": "x19",
+      "target": 897024,
+      "original": "730600d0"
+    },
+    {
+      "at": 56724,
+      "mnemonic": "adrp",
+      "register": "x0",
+      "target": 898768,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 56728,
+      "mnemonic": "addlo",
+      "register": "x0",
+      "target": 898768,
+      "original": "c0c96610"
+    },
+    {
+      "at": 56748,
+      "mnemonic": "adrp",
+      "register": "x19",
+      "target": 833228,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 56752,
+      "mnemonic": "addlo",
+      "register": "x19",
+      "target": 833228,
+      "original": "f3c85e10"
+    },
+    {
+      "at": 56756,
+      "mnemonic": "adrp",
+      "register": "x1",
+      "target": 898768,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 56760,
+      "mnemonic": "addlo",
+      "register": "x1",
+      "target": 898768,
+      "original": "c1c86610"
+    },
+    {
+      "at": 56776,
+      "mnemonic": "adrp",
+      "register": "x20",
+      "target": 915156,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 56780,
+      "mnemonic": "addlo",
+      "register": "x20",
+      "target": 915156,
+      "original": "54c86810"
+    },
+    {
+      "at": 56800,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "48000090"
+    },
+    {
+      "at": 56804,
+      "mnemonic": "adrp",
+      "register": "x25",
+      "target": 86016,
+      "original": "59000090"
+    },
+    {
+      "at": 56808,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "49000090"
+    },
+    {
+      "at": 57332,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "a8fffff0"
+    },
+    {
+      "at": 57768,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "a8ffffd0"
+    },
+    {
+      "at": 57796,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 57880,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 946176,
+      "original": "c80600b0"
+    },
+    {
+      "at": 57884,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 946176,
+      "original": "c90600b0"
+    },
+    {
+      "at": 57892,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 946176,
+      "original": "c80600b0"
+    },
+    {
+      "at": 57912,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 57964,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 102400,
+      "original": "490000f0"
+    },
+    {
+      "at": 57976,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 57992,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 58012,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 946176,
+      "original": "ca0600b0"
+    },
+    {
+      "at": 58016,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 946176,
+      "original": "c80600b0"
+    },
+    {
+      "at": 58020,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 946176,
+      "original": "c90600b0"
+    },
+    {
+      "at": 58040,
+      "mnemonic": "adrp",
+      "register": "x14",
+      "target": 946176,
+      "original": "ce0600b0"
+    },
+    {
+      "at": 58104,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 947944,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 58108,
+      "mnemonic": "addlo",
+      "register": "x10",
+      "target": 947944,
+      "original": "6a9f6c10"
+    },
+    {
+      "at": 58152,
+      "mnemonic": "adrp",
+      "register": "x12",
+      "target": 978944,
+      "original": "0c0700b0"
+    },
+    {
+      "at": 58192,
+      "mnemonic": "adrp",
+      "register": "x12",
+      "target": 102400,
+      "original": "4c0000f0"
+    },
+    {
+      "at": 58232,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 980716,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 58236,
+      "mnemonic": "addlo",
+      "register": "x8",
+      "target": 980716,
+      "original": "889b7010"
+    },
+    {
+      "at": 58268,
+      "mnemonic": "adrp",
+      "register": "x21",
+      "target": 980716,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 58272,
+      "mnemonic": "addlo",
+      "register": "x21",
+      "target": 980716,
+      "original": "759a7010"
+    },
+    {
+      "at": 58276,
+      "mnemonic": "adrp",
+      "register": "x1",
+      "target": 1013484,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 58280,
+      "mnemonic": "addlo",
+      "register": "x1",
+      "target": 1013484,
+      "original": "219a7410"
+    },
+    {
+      "at": 58296,
+      "mnemonic": "adrp",
+      "register": "x20",
+      "target": 1021676,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 58300,
+      "mnemonic": "addlo",
+      "register": "x20",
+      "target": 1021676,
+      "original": "94997510"
+    },
+    {
+      "at": 58320,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 978944,
+      "original": "090700b0"
+    },
+    {
+      "at": 58324,
+      "mnemonic": "adrp",
+      "register": "x22",
+      "target": 86016,
+      "original": "360000f0"
+    },
+    {
+      "at": 58368,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 946176,
+      "original": "c80600b0"
+    },
+    {
+      "at": 58372,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "2a0000f0"
+    },
+    {
+      "at": 58420,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 58440,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 58456,
+      "mnemonic": "adrp",
+      "register": "x0",
+      "target": 86016,
+      "original": "200000f0"
+    },
+    {
+      "at": 58460,
+      "mnemonic": "adrp",
+      "register": "x1",
+      "target": 1021676,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 58464,
+      "mnemonic": "addlo",
+      "register": "x1",
+      "target": 1021676,
+      "original": "61947510"
+    },
+    {
+      "at": 58480,
+      "mnemonic": "adrp",
+      "register": "x0",
+      "target": 86016,
+      "original": "200000f0"
+    },
+    {
+      "at": 58484,
+      "mnemonic": "adrp",
+      "register": "x1",
+      "target": 980716,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 58488,
+      "mnemonic": "addlo",
+      "register": "x1",
+      "target": 980716,
+      "original": "a1937010"
+    },
+    {
+      "at": 58536,
+      "mnemonic": "adrp",
+      "register": "x22",
+      "target": 86016,
+      "original": "360000f0"
+    },
+    {
+      "at": 58540,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 1085440,
+      "original": "c90700f0"
+    },
+    {
+      "at": 58544,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 1085440,
+      "original": "ca0700f0"
+    },
+    {
+      "at": 58572,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 58656,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 58676,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "2a0000f0"
+    },
+    {
+      "at": 58948,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 58960,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 1085440,
+      "original": "c90700f0"
+    },
+    {
+      "at": 58964,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 1085440,
+      "original": "cb0700f0"
+    },
+    {
+      "at": 58972,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 59024,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700f0"
+    },
+    {
+      "at": 59120,
+      "mnemonic": "adrp",
+      "register": "x20",
+      "target": 86016,
+      "original": "340000f0"
+    },
+    {
+      "at": 59148,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 59168,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 59188,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700f0"
+    },
+    {
+      "at": 59196,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 59216,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 1085440,
+      "original": "ca0700f0"
+    },
+    {
+      "at": 59264,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000f0"
+    },
+    {
+      "at": 59296,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 59320,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 59352,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 59388,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 59436,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 59460,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 59488,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000f0"
+    },
+    {
+      "at": 59512,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 59532,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000f0"
+    },
+    {
+      "at": 59552,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000f0"
+    },
+    {
+      "at": 59600,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 59604,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000f0"
+    },
+    {
+      "at": 59652,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 946176,
+      "original": "c80600b0"
+    },
+    {
+      "at": 59676,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 946176,
+      "original": "c80600b0"
+    },
+    {
+      "at": 59680,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 946176,
+      "original": "c90600b0"
+    },
+    {
+      "at": 59684,
+      "mnemonic": "adrp",
+      "register": "x0",
+      "target": 1013484,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 59688,
+      "mnemonic": "addlo",
+      "register": "x0",
+      "target": 1013484,
+      "original": "206e7410"
+    },
+    {
+      "at": 59696,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 946176,
+      "original": "c80600b0"
+    },
+    {
+      "at": 59716,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 59732,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 59796,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700f0"
+    },
+    {
+      "at": 59816,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 1021676,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 59820,
+      "mnemonic": "addlo",
+      "register": "x9",
+      "target": 1021676,
+      "original": "096a7510"
+    },
+    {
+      "at": 59856,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700f0"
+    },
+    {
+      "at": 59884,
+      "mnemonic": "adrp",
+      "register": "x19",
+      "target": 1085440,
+      "original": "d30700f0"
+    },
+    {
+      "at": 59896,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700f0"
+    },
+    {
+      "at": 59972,
+      "mnemonic": "adrp",
+      "register": "x26",
+      "target": 1085440,
+      "original": "da0700f0"
+    },
+    {
+      "at": 60008,
+      "mnemonic": "adrp",
+      "register": "x12",
+      "target": 1085440,
+      "original": "cc0700f0"
+    },
+    {
+      "at": 60016,
+      "mnemonic": "adrp",
+      "register": "x20",
+      "target": 102400,
+      "original": "540000f0"
+    },
+    {
+      "at": 60024,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 1085440,
+      "original": "c90700f0"
+    },
+    {
+      "at": 60036,
+      "mnemonic": "adrp",
+      "register": "x22",
+      "target": 1085440,
+      "original": "d60700f0"
+    },
+    {
+      "at": 60040,
+      "mnemonic": "adrp",
+      "register": "x14",
+      "target": 1085440,
+      "original": "ce0700f0"
+    },
+    {
+      "at": 60060,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700f0"
+    },
+    {
+      "at": 60068,
+      "mnemonic": "adrp",
+      "register": "x13",
+      "target": 1021676,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 60072,
+      "mnemonic": "addlo",
+      "register": "x13",
+      "target": 1021676,
+      "original": "2d627510"
+    },
+    {
+      "at": 60096,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 1085440,
+      "original": "ca0700f0"
+    },
+    {
+      "at": 60148,
+      "mnemonic": "adrp",
+      "register": "x27",
+      "target": 1085440,
+      "original": "db0700f0"
+    },
+    {
+      "at": 60260,
+      "mnemonic": "adrp",
+      "register": "x14",
+      "target": 1085440,
+      "original": "ce0700f0"
+    },
+    {
+      "at": 60264,
+      "mnemonic": "adrp",
+      "register": "x13",
+      "target": 1021676,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 60268,
+      "mnemonic": "addlo",
+      "register": "x13",
+      "target": 1021676,
+      "original": "0d5c7510"
+    },
+    {
+      "at": 60280,
+      "mnemonic": "adrp",
+      "register": "x13",
+      "target": 1021676,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 60284,
+      "mnemonic": "addlo",
+      "register": "x13",
+      "target": 1021676,
+      "original": "8d5b7510"
+    },
+    {
+      "at": 60328,
+      "mnemonic": "adrp",
+      "register": "x19",
+      "target": 1085440,
+      "original": "d30700f0"
+    },
+    {
+      "at": 60332,
+      "mnemonic": "adrp",
+      "register": "x28",
+      "target": 1085440,
+      "original": "dc0700f0"
+    },
+    {
+      "at": 60476,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 1085440,
+      "original": "ca0700f0"
+    },
+    {
+      "at": 60544,
+      "mnemonic": "adrp",
+      "register": "x14",
+      "target": 1085440,
+      "original": "ce0700f0"
+    },
+    {
+      "at": 60548,
+      "mnemonic": "adrp",
+      "register": "x13",
+      "target": 1021676,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 60552,
+      "mnemonic": "addlo",
+      "register": "x13",
+      "target": 1021676,
+      "original": "2d537510"
+    },
+    {
+      "at": 60568,
+      "mnemonic": "adrp",
+      "register": "x12",
+      "target": 1085440,
+      "original": "cc0700f0"
+    },
+    {
+      "at": 60584,
+      "mnemonic": "adrp",
+      "register": "x19",
+      "target": 102400,
+      "original": "530000f0"
+    },
+    {
+      "at": 60604,
+      "mnemonic": "adrp",
+      "register": "x20",
+      "target": 1085440,
+      "original": "d40700f0"
+    },
+    {
+      "at": 60608,
+      "mnemonic": "adrp",
+      "register": "x25",
+      "target": 1085440,
+      "original": "d90700f0"
+    },
+    {
+      "at": 60616,
+      "mnemonic": "adrp",
+      "register": "x26",
+      "target": 1085440,
+      "original": "da0700f0"
+    },
+    {
+      "at": 60748,
+      "mnemonic": "adrp",
+      "register": "x19",
+      "target": 86016,
+      "original": "330000f0"
+    },
+    {
+      "at": 60808,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 60904,
+      "mnemonic": "adrp",
+      "register": "x12",
+      "target": 1085440,
+      "original": "cc0700f0"
+    },
+    {
+      "at": 61068,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 61076,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000f0"
+    },
+    {
+      "at": 61096,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 61188,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 1085440,
+      "original": "ca0700f0"
+    },
+    {
+      "at": 61220,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700f0"
+    },
+    {
+      "at": 61228,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700f0"
+    },
+    {
+      "at": 61240,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700f0"
+    },
+    {
+      "at": 61244,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 1085440,
+      "original": "c90700f0"
+    },
+    {
+      "at": 61260,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000f0"
+    },
+    {
+      "at": 61264,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700f0"
+    },
+    {
+      "at": 61284,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700f0"
+    },
+    {
+      "at": 61292,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "480000f0"
+    },
+    {
+      "at": 61300,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000f0"
+    },
+    {
+      "at": 61308,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "480000f0"
+    },
+    {
+      "at": 61320,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 61340,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000f0"
+    },
+    {
+      "at": 61448,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 1085440,
+      "original": "ca0700d0"
+    },
+    {
+      "at": 61536,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 1085440,
+      "original": "c90700d0"
+    },
+    {
+      "at": 61548,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 1085440,
+      "original": "c90700d0"
+    },
+    {
+      "at": 61552,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 1085440,
+      "original": "ca0700d0"
+    },
+    {
+      "at": 61560,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 1085440,
+      "original": "c90700d0"
+    },
+    {
+      "at": 61568,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700d0"
+    },
+    {
+      "at": 61576,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700d0"
+    },
+    {
+      "at": 61584,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700d0"
+    },
+    {
+      "at": 61592,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700d0"
+    },
+    {
+      "at": 61600,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700d0"
+    },
+    {
+      "at": 61636,
+      "mnemonic": "tls",
+      "register": "x21",
+      "target": 81920,
+      "original": "55d03bd5"
+    },
+    {
+      "at": 61680,
+      "mnemonic": "adrp",
+      "register": "x2",
+      "target": 86016,
+      "original": "220000d0"
+    },
+    {
+      "at": 61720,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000d0"
+    },
+    {
+      "at": 61724,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "480000d0"
+    },
+    {
+      "at": 61744,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 1085440,
+      "original": "ca0700d0"
+    },
+    {
+      "at": 61772,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "2a0000d0"
+    },
+    {
+      "at": 61868,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "2a0000d0"
+    },
+    {
+      "at": 61920,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700d0"
+    },
+    {
+      "at": 61924,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 1085440,
+      "original": "c90700d0"
+    },
+    {
+      "at": 61944,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000d0"
+    },
+    {
+      "at": 61960,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000d0"
+    },
+    {
+      "at": 61968,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "480000d0"
+    },
+    {
+      "at": 61980,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "480000d0"
+    },
+    {
+      "at": 61996,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700d0"
+    },
+    {
+      "at": 62000,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 1085440,
+      "original": "c90700d0"
+    },
+    {
+      "at": 62016,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700d0"
+    },
+    {
+      "at": 62020,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 1085440,
+      "original": "c90700d0"
+    },
+    {
+      "at": 62056,
+      "mnemonic": "adrp",
+      "register": "x12",
+      "target": 102400,
+      "original": "4c0000d0"
+    },
+    {
+      "at": 62060,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "300000d0"
+    },
+    {
+      "at": 62064,
+      "mnemonic": "adrp",
+      "register": "x15",
+      "target": 102400,
+      "original": "4f0000d0"
+    },
+    {
+      "at": 62092,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "300000d0"
+    },
+    {
+      "at": 62172,
+      "mnemonic": "adrp",
+      "register": "x14",
+      "target": 86016,
+      "original": "2e0000d0"
+    },
+    {
+      "at": 62188,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 102400,
+      "original": "4b0000d0"
+    },
+    {
+      "at": 62192,
+      "mnemonic": "adrp",
+      "register": "x12",
+      "target": 102400,
+      "original": "4c0000d0"
+    },
+    {
+      "at": 62196,
+      "mnemonic": "adrp",
+      "register": "x13",
+      "target": 86016,
+      "original": "2d0000d0"
+    },
+    {
+      "at": 62200,
+      "mnemonic": "adrp",
+      "register": "x15",
+      "target": 86016,
+      "original": "2f0000d0"
+    },
+    {
+      "at": 62440,
+      "mnemonic": "adrp",
+      "register": "x14",
+      "target": 102400,
+      "original": "4e0000d0"
+    },
+    {
+      "at": 62444,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "300000d0"
+    },
+    {
+      "at": 62448,
+      "mnemonic": "adrp",
+      "register": "x15",
+      "target": 102400,
+      "original": "4f0000d0"
+    },
+    {
+      "at": 62468,
+      "mnemonic": "adrp",
+      "register": "x15",
+      "target": 86016,
+      "original": "2f0000d0"
+    },
+    {
+      "at": 62472,
+      "mnemonic": "adrp",
+      "register": "x17",
+      "target": 86016,
+      "original": "310000d0"
+    },
+    {
+      "at": 62660,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 102400,
+      "original": "490000d0"
+    },
+    {
+      "at": 62664,
+      "mnemonic": "adrp",
+      "register": "x12",
+      "target": 86016,
+      "original": "2c0000d0"
+    },
+    {
+      "at": 62856,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000d0"
+    },
+    {
+      "at": 62928,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000d0"
+    },
+    {
+      "at": 62952,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000d0"
+    },
+    {
+      "at": 63044,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000d0"
+    },
+    {
+      "at": 63068,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000d0"
+    },
+    {
+      "at": 63276,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "a8ffffb0"
+    },
+    {
+      "at": 63436,
+      "mnemonic": "adrp",
+      "register": "x27",
+      "target": 86016,
+      "original": "3b0000d0"
+    },
+    {
+      "at": 63440,
+      "mnemonic": "adrp",
+      "register": "x28",
+      "target": 86016,
+      "original": "3c0000d0"
+    },
+    {
+      "at": 63476,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000d0"
+    },
+    {
+      "at": 63564,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000d0"
+    },
+    {
+      "at": 63820,
+      "mnemonic": "adrp",
+      "register": "x28",
+      "target": 86016,
+      "original": "3c0000d0"
+    },
+    {
+      "at": 63876,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000d0"
+    },
+    {
+      "at": 63900,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000d0"
+    },
+    {
+      "at": 63972,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000d0"
+    },
+    {
+      "at": 63992,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000d0"
+    },
+    {
+      "at": 64208,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000d0"
+    },
+    {
+      "at": 64212,
+      "mnemonic": "adrp",
+      "register": "x24",
+      "target": 86016,
+      "original": "380000d0"
+    },
+    {
+      "at": 64216,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 86016,
+      "original": "2b0000d0"
+    },
+    {
+      "at": 64232,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000d0"
+    },
+    {
+      "at": 64236,
+      "mnemonic": "adrp",
+      "register": "x27",
+      "target": 86016,
+      "original": "3b0000d0"
+    },
+    {
+      "at": 64240,
+      "mnemonic": "adrp",
+      "register": "x12",
+      "target": 86016,
+      "original": "2c0000d0"
+    },
+    {
+      "at": 64264,
+      "mnemonic": "adrp",
+      "register": "x13",
+      "target": 86016,
+      "original": "2d0000d0"
+    },
+    {
+      "at": 64416,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "a8ffffb0"
+    },
+    {
+      "at": 64520,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000d0"
+    },
+    {
+      "at": 64544,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000d0"
+    },
+    {
+      "at": 64600,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000d0"
+    },
+    {
+      "at": 64628,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000d0"
+    },
+    {
+      "at": 64728,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700d0"
+    },
+    {
+      "at": 64732,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000d0"
+    },
+    {
+      "at": 64764,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "a8ffffb0"
+    },
+    {
+      "at": 64768,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 16384,
+      "original": "a9ffffb0"
+    },
+    {
+      "at": 64804,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "a8ffffb0"
+    },
+    {
+      "at": 64812,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 16384,
+      "original": "aaffffb0"
+    },
+    {
+      "at": 64828,
+      "mnemonic": "adrp",
+      "register": "x20",
+      "target": 1091488,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 64832,
+      "mnemonic": "addlo",
+      "register": "x20",
+      "target": 1091488,
+      "original": "14537d10"
+    },
+    {
+      "at": 65448,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "a8ffffb0"
+    },
+    {
+      "at": 65464,
+      "mnemonic": "adrp",
+      "register": "x20",
+      "target": 1091808,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 65468,
+      "mnemonic": "addlo",
+      "register": "x20",
+      "target": 1091808,
+      "original": "34497d10"
+    },
+    {
+      "at": 65548,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 65568,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 65688,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 1089536,
+      "original": "ca0700d0"
+    },
+    {
+      "at": 65696,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1089536,
+      "original": "c80700d0"
+    },
+    {
+      "at": 65748,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 1089536,
+      "original": "ca0700d0"
+    },
+    {
+      "at": 65756,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 65768,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 1089536,
+      "original": "c90700d0"
+    },
+    {
+      "at": 65800,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "2a0000b0"
+    },
+    {
+      "at": 65968,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700b0"
+    },
+    {
+      "at": 65976,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 1085440,
+      "original": "ca0700b0"
+    },
+    {
+      "at": 65992,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 65996,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000b0"
+    },
+    {
+      "at": 66048,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "480000b0"
+    },
+    {
+      "at": 66072,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 102400,
+      "original": "490000b0"
+    },
+    {
+      "at": 66124,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700b0"
+    },
+    {
+      "at": 66128,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 1085440,
+      "original": "cb0700b0"
+    },
+    {
+      "at": 66132,
+      "mnemonic": "adrp",
+      "register": "x13",
+      "target": 1085440,
+      "original": "cd0700b0"
+    },
+    {
+      "at": 66152,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 1087348,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 66156,
+      "mnemonic": "addlo",
+      "register": "x9",
+      "target": 1087348,
+      "original": "49a87c10"
+    },
+    {
+      "at": 66168,
+      "mnemonic": "adrp",
+      "register": "x17",
+      "target": 1085440,
+      "original": "d10700b0"
+    },
+    {
+      "at": 66284,
+      "mnemonic": "adrp",
+      "register": "x6",
+      "target": 86016,
+      "original": "260000b0"
+    },
+    {
+      "at": 66292,
+      "mnemonic": "adrp",
+      "register": "x7",
+      "target": 1089536,
+      "original": "c70700d0"
+    },
+    {
+      "at": 66304,
+      "mnemonic": "adrp",
+      "register": "x30",
+      "target": 1089536,
+      "original": "de0700d0"
+    },
+    {
+      "at": 66308,
+      "mnemonic": "adrp",
+      "register": "x21",
+      "target": 1089536,
+      "original": "d50700d0"
+    },
+    {
+      "at": 66312,
+      "mnemonic": "adrp",
+      "register": "x13",
+      "target": 1085440,
+      "original": "cd0700b0"
+    },
+    {
+      "at": 66324,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 1089536,
+      "original": "ca0700d0"
+    },
+    {
+      "at": 66328,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 1089536,
+      "original": "cb0700d0"
+    },
+    {
+      "at": 66332,
+      "mnemonic": "adrp",
+      "register": "x12",
+      "target": 86016,
+      "original": "2c0000b0"
+    },
+    {
+      "at": 66364,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 1089536,
+      "original": "ca0700d0"
+    },
+    {
+      "at": 66380,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 1089536,
+      "original": "ca0700d0"
+    },
+    {
+      "at": 66388,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 1089536,
+      "original": "c90700d0"
+    },
+    {
+      "at": 66412,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 66508,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1089536,
+      "original": "c80700d0"
+    },
+    {
+      "at": 66512,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 1089536,
+      "original": "c90700d0"
+    },
+    {
+      "at": 66540,
+      "mnemonic": "adrp",
+      "register": "x22",
+      "target": 1091488,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 66544,
+      "mnemonic": "addlo",
+      "register": "x22",
+      "target": 1091488,
+      "original": "961d7d10"
+    },
+    {
+      "at": 66596,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000b0"
+    },
+    {
+      "at": 66612,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1091952,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 66616,
+      "mnemonic": "addlo",
+      "register": "x8",
+      "target": 1091952,
+      "original": "c8297d10"
+    },
+    {
+      "at": 66624,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1089536,
+      "original": "c80700d0"
+    },
+    {
+      "at": 66632,
+      "mnemonic": "adrp",
+      "register": "x21",
+      "target": 1089536,
+      "original": "d50700d0"
+    },
+    {
+      "at": 66904,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 1089536,
+      "original": "ca0700d0"
+    },
+    {
+      "at": 66984,
+      "mnemonic": "adrp",
+      "register": "x13",
+      "target": 1089536,
+      "original": "cd0700d0"
+    },
+    {
+      "at": 66988,
+      "mnemonic": "adrp",
+      "register": "x14",
+      "target": 1089536,
+      "original": "ce0700d0"
+    },
+    {
+      "at": 66996,
+      "mnemonic": "adrp",
+      "register": "x12",
+      "target": 1089536,
+      "original": "cc0700d0"
+    },
+    {
+      "at": 67036,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 1091808,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 67040,
+      "mnemonic": "addlo",
+      "register": "x10",
+      "target": 1091808,
+      "original": "0a187d10"
+    },
+    {
+      "at": 67128,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 67132,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 1089536,
+      "original": "c90700d0"
+    },
+    {
+      "at": 67136,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 1089536,
+      "original": "ca0700d0"
+    },
+    {
+      "at": 67168,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 67180,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 67216,
+      "mnemonic": "adrp",
+      "register": "x6",
+      "target": 86016,
+      "original": "260000b0"
+    },
+    {
+      "at": 67220,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 67224,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 1089536,
+      "original": "c90700d0"
+    },
+    {
+      "at": 67236,
+      "mnemonic": "adrp",
+      "register": "x30",
+      "target": 1089536,
+      "original": "de0700d0"
+    },
+    {
+      "at": 67240,
+      "mnemonic": "adrp",
+      "register": "x7",
+      "target": 1089536,
+      "original": "c70700d0"
+    },
+    {
+      "at": 67252,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1089536,
+      "original": "c80700d0"
+    },
+    {
+      "at": 67268,
+      "mnemonic": "adrp",
+      "register": "x6",
+      "target": 86016,
+      "original": "260000b0"
+    },
+    {
+      "at": 67272,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 1089536,
+      "original": "cb0700d0"
+    },
+    {
+      "at": 67276,
+      "mnemonic": "adrp",
+      "register": "x12",
+      "target": 1089536,
+      "original": "cc0700d0"
+    },
+    {
+      "at": 67292,
+      "mnemonic": "adrp",
+      "register": "x30",
+      "target": 1089536,
+      "original": "de0700d0"
+    },
+    {
+      "at": 67296,
+      "mnemonic": "adrp",
+      "register": "x7",
+      "target": 1089536,
+      "original": "c70700d0"
+    },
+    {
+      "at": 67300,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 1089536,
+      "original": "ca0700d0"
+    },
+    {
+      "at": 67332,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1089536,
+      "original": "c80700d0"
+    },
+    {
+      "at": 67336,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 1089536,
+      "original": "c90700d0"
+    },
+    {
+      "at": 67344,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 67360,
+      "mnemonic": "adrp",
+      "register": "x21",
+      "target": 86016,
+      "original": "350000b0"
+    },
+    {
+      "at": 67396,
+      "mnemonic": "adrp",
+      "register": "x6",
+      "target": 86016,
+      "original": "260000b0"
+    },
+    {
+      "at": 67400,
+      "mnemonic": "adrp",
+      "register": "x30",
+      "target": 1089536,
+      "original": "de0700d0"
+    },
+    {
+      "at": 67404,
+      "mnemonic": "adrp",
+      "register": "x7",
+      "target": 1089536,
+      "original": "c70700d0"
+    },
+    {
+      "at": 67420,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1089536,
+      "original": "c80700d0"
+    },
+    {
+      "at": 67428,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 1089536,
+      "original": "c90700d0"
+    },
+    {
+      "at": 67444,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 1091876,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 67448,
+      "mnemonic": "addlo",
+      "register": "x11",
+      "target": 1091876,
+      "original": "6b0d7d10"
+    },
+    {
+      "at": 67452,
+      "mnemonic": "adrp",
+      "register": "x15",
+      "target": 102400,
+      "original": "4f0000b0"
+    },
+    {
+      "at": 67488,
+      "mnemonic": "adrp",
+      "register": "x13",
+      "target": 1089536,
+      "original": "cd0700d0"
+    },
+    {
+      "at": 67492,
+      "mnemonic": "adrp",
+      "register": "x14",
+      "target": 102400,
+      "original": "4e0000b0"
+    },
+    {
+      "at": 67500,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 1089536,
+      "original": "d00700d0"
+    },
+    {
+      "at": 67628,
+      "mnemonic": "adrp",
+      "register": "x14",
+      "target": 86016,
+      "original": "2e0000b0"
+    },
+    {
+      "at": 67672,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 86016,
+      "original": "2b0000b0"
+    },
+    {
+      "at": 67692,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 67724,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 67728,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 1085440,
+      "original": "ca0700b0"
+    },
+    {
+      "at": 67780,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 67792,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1089536,
+      "original": "c80700d0"
+    },
+    {
+      "at": 67808,
+      "mnemonic": "adrp",
+      "register": "x20",
+      "target": 86016,
+      "original": "340000b0"
+    },
+    {
+      "at": 67888,
+      "mnemonic": "adrp",
+      "register": "x20",
+      "target": 86016,
+      "original": "340000b0"
+    },
+    {
+      "at": 67936,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 67980,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 67984,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000b0"
+    },
+    {
+      "at": 67988,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 86016,
+      "original": "2b0000b0"
+    },
+    {
+      "at": 68076,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 1085440,
+      "original": "c80700b0"
+    },
+    {
+      "at": 68136,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000b0"
+    },
+    {
+      "at": 68232,
+      "mnemonic": "adrp",
+      "register": "x23",
+      "target": 1091488,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 68236,
+      "mnemonic": "addlo",
+      "register": "x23",
+      "target": 1091488,
+      "original": "b7e87c10"
+    },
+    {
+      "at": 68240,
+      "mnemonic": "adrp",
+      "register": "x6",
+      "target": 1091808,
+      "original": "1f2003d5"
+    },
+    {
+      "at": 68244,
+      "mnemonic": "addlo",
+      "register": "x6",
+      "target": 1091808,
+      "original": "66f27c10"
+    },
+    {
+      "at": 68776,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 68844,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 68860,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "480000b0"
+    },
+    {
+      "at": 68868,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 102400,
+      "original": "480000b0"
+    },
+    {
+      "at": 68916,
+      "mnemonic": "adrp",
+      "register": "x20",
+      "target": 86016,
+      "original": "340000b0"
+    },
+    {
+      "at": 68920,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 68948,
+      "mnemonic": "adrp",
+      "register": "x21",
+      "target": 86016,
+      "original": "350000b0"
+    },
+    {
+      "at": 68996,
+      "mnemonic": "adrp",
+      "register": "x22",
+      "target": 86016,
+      "original": "360000b0"
+    },
+    {
+      "at": 69004,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000b0"
+    },
+    {
+      "at": 69052,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 1089536,
+      "original": "c90700d0"
+    },
+    {
+      "at": 69068,
+      "mnemonic": "adrp",
+      "register": "x23",
+      "target": 86016,
+      "original": "370000b0"
+    },
+    {
+      "at": 69100,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 69120,
+      "mnemonic": "adrp",
+      "register": "x25",
+      "target": 86016,
+      "original": "390000b0"
+    },
+    {
+      "at": 69340,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 69348,
+      "mnemonic": "adrp",
+      "register": "x10",
+      "target": 86016,
+      "original": "2a0000b0"
+    },
+    {
+      "at": 69360,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 86016,
+      "original": "2b0000b0"
+    },
+    {
+      "at": 69384,
+      "mnemonic": "adr",
+      "register": "x9",
+      "target": 25112,
+      "original": "8998fa10"
+    },
+    {
+      "at": 69420,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 69440,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 69444,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000b0"
+    },
+    {
+      "at": 69448,
+      "mnemonic": "adrp",
+      "register": "x11",
+      "target": 86016,
+      "original": "2b0000b0"
+    },
+    {
+      "at": 69468,
+      "mnemonic": "adrp",
+      "register": "x12",
+      "target": 86016,
+      "original": "2c0000b0"
+    },
+    {
+      "at": 69516,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 86016,
+      "original": "280000b0"
+    },
+    {
+      "at": 69528,
+      "mnemonic": "adrp",
+      "register": "x9",
+      "target": 86016,
+      "original": "290000b0"
+    },
+    {
+      "at": 69584,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "a8ffff90"
+    },
+    {
+      "at": 69628,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "a8ffff90"
+    },
+    {
+      "at": 69636,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "88fffff0"
+    },
+    {
+      "at": 69676,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "88fffff0"
+    },
+    {
+      "at": 69684,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "88fffff0"
+    },
+    {
+      "at": 69728,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "88fffff0"
+    },
+    {
+      "at": 69736,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "88fffff0"
+    },
+    {
+      "at": 69768,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "88fffff0"
+    },
+    {
+      "at": 69776,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "88fffff0"
+    },
+    {
+      "at": 69808,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "88fffff0"
+    },
+    {
+      "at": 69816,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "88fffff0"
+    },
+    {
+      "at": 69848,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "88fffff0"
+    },
+    {
+      "at": 69856,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "88fffff0"
+    },
+    {
+      "at": 69888,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "88fffff0"
+    },
+    {
+      "at": 69900,
+      "mnemonic": "adrp",
+      "register": "x8",
+      "target": 16384,
+      "original": "88fffff0"
+    },
+    {
+      "at": 69956,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 69984,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70000,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70016,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70032,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70048,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70064,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70080,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70096,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70112,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70128,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70144,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70160,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70176,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70192,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70208,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70224,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70240,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70256,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70272,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70288,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70304,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70320,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70336,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70352,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70368,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70384,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70400,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70416,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70432,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70448,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70464,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70480,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70496,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70512,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70528,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70544,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70560,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70576,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70592,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70608,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70624,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70640,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70656,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70672,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70688,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70704,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70720,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70736,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70752,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70768,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70784,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70800,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70816,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70832,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70848,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70864,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70880,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    },
+    {
+      "at": 70896,
+      "mnemonic": "adrp",
+      "register": "x16",
+      "target": 86016,
+      "original": "30000090"
+    }
+  ],
+  "relocations": [
+    {
+      "offset": 87296,
+      "type": 1027,
+      "addend": 87296,
+      "symbol": null
+    },
+    {
+      "offset": 87304,
+      "type": 1027,
+      "addend": 31044,
+      "symbol": null
+    },
+    {
+      "offset": 87312,
+      "type": 1027,
+      "addend": 31020,
+      "symbol": null
+    },
+    {
+      "offset": 105520,
+      "type": 1027,
+      "addend": 833228,
+      "symbol": null
+    },
+    {
+      "offset": 87832,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "bass3pindex",
+        "section": 22,
+        "value": 105316,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87808,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "desiredAutoNoteNumber",
+        "section": 22,
+        "value": 105308,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87984,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "wideTraces",
+        "section": 23,
+        "value": 105836,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88072,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "TrebleNoffset",
+        "section": 22,
+        "value": 105344,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87976,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "PhaseDisplayState",
+        "section": 23,
+        "value": 105832,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88192,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "fftAutoNoteComplex",
+        "section": 23,
+        "value": 1054444,
+        "size": 32768,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88320,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "CalculatedIHC",
+        "section": 23,
+        "value": 374136,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88136,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "adjustmentMode",
+        "section": 22,
+        "value": 105348,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87816,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "SpectrumZoom",
+        "section": 22,
+        "value": 105312,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87824,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "smartAdjust",
+        "section": 23,
+        "value": 105768,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88376,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "lineColor",
+        "section": 22,
+        "value": 105552,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88112,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "splitScaleBreak",
+        "section": 23,
+        "value": 107020,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88120,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "A4_minus_A0",
+        "section": 23,
+        "value": 106172,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88144,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "BassParLower",
+        "section": 22,
+        "value": 105340,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88232,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "TriggerCount",
+        "section": 23,
+        "value": 1091476,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88064,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "BassCoffset",
+        "section": 23,
+        "value": 106144,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87888,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "ErrorCentsSpectrum",
+        "section": 23,
+        "value": 105788,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88128,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "C8_minus_A4",
+        "section": 23,
+        "value": 106168,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88200,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "offsetForAutoNote",
+        "section": 23,
+        "value": 106260,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88352,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "PhaseDetectorResetPending",
+        "section": 23,
+        "value": 1091444,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88104,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "IHpts",
+        "section": 23,
+        "value": 107024,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87784,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "NominalFundamental",
+        "section": 22,
+        "value": 105296,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88288,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "IHOffsetValue",
+        "section": 23,
+        "value": 107744,
+        "size": 4224,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88040,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "BassNoffset",
+        "section": 22,
+        "value": 105332,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88264,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "splitScaleAllowed",
+        "section": 23,
+        "value": 1091472,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88336,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "SpectrumHzResolution",
+        "section": 22,
+        "value": 105532,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87960,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "OPmode",
+        "section": 23,
+        "value": 105824,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88360,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "LockRange100",
+        "section": 23,
+        "value": 1091468,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88080,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "TreblePosIHFactor",
+        "section": 23,
+        "value": 106160,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88296,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "MeasureState",
+        "section": 23,
+        "value": 111968,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87872,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "FFTpkfreq",
+        "section": 23,
+        "value": 105776,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87944,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "LockingEnabled",
+        "section": 23,
+        "value": 105816,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88048,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "BassPosIHFactor",
+        "section": 23,
+        "value": 106148,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87776,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "Freq",
+        "section": 22,
+        "value": 105292,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87912,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "CalMode",
+        "section": 23,
+        "value": 105800,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88008,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "mK1",
+        "section": 22,
+        "value": 105500,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87800,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "CurrentPartial",
+        "section": 22,
+        "value": 105304,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88256,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "useNewBeta",
+        "section": 23,
+        "value": 107740,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88304,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "MeasureNN",
+        "section": 23,
+        "value": 111972,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88000,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "mK4",
+        "section": 22,
+        "value": 105504,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88088,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "TrebleNegIHFactor",
+        "section": 23,
+        "value": 106164,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88152,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "BassParUpper",
+        "section": 22,
+        "value": 105336,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88224,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "anLogCount",
+        "section": 23,
+        "value": 106256,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87792,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "StretchedFreq",
+        "section": 22,
+        "value": 105300,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88096,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "TrebleCoffset",
+        "section": 23,
+        "value": 106156,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87848,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "treb3pindex",
+        "section": 22,
+        "value": 105324,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88056,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "BassNegIHFactor",
+        "section": 23,
+        "value": 106152,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88384,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "Parlowernote3p",
+        "section": 22,
+        "value": 105572,
+        "size": 64,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88408,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "thisMicLevel",
+        "section": 23,
+        "value": 1091484,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88392,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "Paruppernote3p",
+        "section": 22,
+        "value": 105636,
+        "size": 64,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87896,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "AutoNoteEnabled",
+        "section": 23,
+        "value": 105792,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87856,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "Middle3pLocStart",
+        "section": 22,
+        "value": 105328,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88184,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "RetryAutoNote",
+        "section": 23,
+        "value": 106252,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88216,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "TrigLogAuto",
+        "section": 23,
+        "value": 106184,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88344,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "aboveAutoNoteLevel",
+        "section": 23,
+        "value": 1091480,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87880,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "MicLevelForDisplay",
+        "section": 23,
+        "value": 105784,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88176,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "fftAutoNote",
+        "section": 23,
+        "value": 1038060,
+        "size": 16384,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88280,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "IHConExists",
+        "section": 23,
+        "value": 106668,
+        "size": 352,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88328,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "parData",
+        "section": 23,
+        "value": 832892,
+        "size": 336,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87840,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "mid3pindex",
+        "section": 22,
+        "value": 105320,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87904,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "AutoNoteType",
+        "section": 23,
+        "value": 105796,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87920,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "desiredBlush100",
+        "section": 23,
+        "value": 105804,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88272,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "IHConValue",
+        "section": 23,
+        "value": 106316,
+        "size": 352,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87768,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "ActualSampleRate",
+        "section": 22,
+        "value": 105288,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87864,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "mparModeNum",
+        "section": 23,
+        "value": 105772,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88240,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "autoNoteTrigOnly",
+        "section": 22,
+        "value": 105528,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88400,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "Noffset3p",
+        "section": 22,
+        "value": 105700,
+        "size": 64,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87968,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "pendingOps",
+        "section": 23,
+        "value": 105828,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88032,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "AtLim",
+        "section": 23,
+        "value": 106176,
+        "size": 8,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88168,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "AutoPartialNumLim",
+        "section": 22,
+        "value": 105356,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88368,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "spectrumPixels",
+        "section": 23,
+        "value": 1087304,
+        "size": 8,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87992,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "mparData",
+        "section": 23,
+        "value": 105840,
+        "size": 304,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88024,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "mB1",
+        "section": 23,
+        "value": 107736,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88160,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "AutoPartialBelow",
+        "section": 22,
+        "value": 105352,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87928,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "desiredNISTcode",
+        "section": 23,
+        "value": 105808,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88208,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "AutoNoteIsBusy",
+        "section": 23,
+        "value": 947924,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88248,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "PMstatus",
+        "section": 23,
+        "value": 915152,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87936,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "iErrorCentsPhase100",
+        "section": 23,
+        "value": 105812,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 87952,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "NoteNumber",
+        "section": 23,
+        "value": 105820,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88016,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "mB4",
+        "section": 23,
+        "value": 107732,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88312,
+      "type": 1025,
+      "addend": 0,
+      "symbol": {
+        "name": "MeasuredataN",
+        "section": 22,
+        "value": 105508,
+        "size": 4,
+        "kind": 1
+      }
+    },
+    {
+      "offset": 88440,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "__cxa_finalize",
+        "section": 0,
+        "value": 0,
+        "size": 0,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88448,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "__cxa_atexit",
+        "section": 0,
+        "value": 0,
+        "size": 0,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88456,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "_Z16EnforceAdjLimitsv",
+        "section": 14,
+        "value": 31644,
+        "size": 564,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88464,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "ModelCents",
+        "section": 14,
+        "value": 50728,
+        "size": 512,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88472,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "IHform",
+        "section": 14,
+        "value": 50168,
+        "size": 16,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88480,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "FullAutoAdjust",
+        "section": 14,
+        "value": 32484,
+        "size": 2500,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88488,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "Betam1",
+        "section": 14,
+        "value": 50460,
+        "size": 56,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88496,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "expf",
+        "section": 0,
+        "value": 0,
+        "size": 0,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88504,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "ihMultFunction",
+        "section": 14,
+        "value": 37892,
+        "size": 84,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88512,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "SetAutoNoteParms",
+        "section": 14,
+        "value": 37980,
+        "size": 704,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88520,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "CalculateAutoPartial",
+        "section": 14,
+        "value": 38684,
+        "size": 408,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88528,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "AutonoteAnalyzeFFT",
+        "section": 14,
+        "value": 39092,
+        "size": 4592,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88536,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "ComplexFFTInterpolation",
+        "section": 14,
+        "value": 51780,
+        "size": 328,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88544,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "log",
+        "section": 0,
+        "value": 0,
+        "size": 0,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88552,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "TStretchForPartial",
+        "section": 14,
+        "value": 51496,
+        "size": 140,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88560,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "Beta",
+        "section": 14,
+        "value": 50412,
+        "size": 48,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88568,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "__stack_chk_fail",
+        "section": 0,
+        "value": 0,
+        "size": 0,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88576,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "PendDoLocking",
+        "section": 14,
+        "value": 43728,
+        "size": 40,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88584,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "SetTemplateParmsToDefault",
+        "section": 14,
+        "value": 50184,
+        "size": 40,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88592,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "ResetSpecFifo",
+        "section": 14,
+        "value": 57880,
+        "size": 28,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88600,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "OverpullInitSiphon",
+        "section": 14,
+        "value": 55804,
+        "size": 96,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88608,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "SetTrigFactors",
+        "section": 14,
+        "value": 65992,
+        "size": 100,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88616,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "ResetTriggering",
+        "section": 14,
+        "value": 65968,
+        "size": 24,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88624,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "SetSpectrumUpdatesPerSecond",
+        "section": 14,
+        "value": 57908,
+        "size": 68,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88632,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "clock_gettime",
+        "section": 0,
+        "value": 0,
+        "size": 0,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88640,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "InitTrigTable",
+        "section": 14,
+        "value": 46732,
+        "size": 300,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88648,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "sin",
+        "section": 0,
+        "value": 0,
+        "size": 0,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88656,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "FastFourierTransform",
+        "section": 14,
+        "value": 47032,
+        "size": 1036,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88664,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "PowerSpectrum",
+        "section": 14,
+        "value": 48068,
+        "size": 232,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88672,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "sscanf",
+        "section": 0,
+        "value": 0,
+        "size": 0,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88680,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "__vsprintf_chk",
+        "section": 0,
+        "value": 0,
+        "size": 0,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88688,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "MakeIHform",
+        "section": 14,
+        "value": 48760,
+        "size": 1408,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88696,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "exp",
+        "section": 0,
+        "value": 0,
+        "size": 0,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88704,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "FillYtab",
+        "section": 14,
+        "value": 64176,
+        "size": 508,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88712,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "DoOverpullAnalysis",
+        "section": 14,
+        "value": 56652,
+        "size": 1228,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88720,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "IHMeasureSiphon",
+        "section": 14,
+        "value": 52108,
+        "size": 408,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88728,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "memcpy",
+        "section": 0,
+        "value": 0,
+        "size": 0,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88736,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "CalcComplexInharmonicity",
+        "section": 14,
+        "value": 53560,
+        "size": 2216,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88744,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "qsort",
+        "section": 0,
+        "value": 0,
+        "size": 0,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88752,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "OverpullSiphon",
+        "section": 14,
+        "value": 55900,
+        "size": 348,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88760,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "AdjustSpectrumForSampleRate",
+        "section": 14,
+        "value": 57976,
+        "size": 36,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88768,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "SpectrumSiphon",
+        "section": 14,
+        "value": 58012,
+        "size": 1588,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88776,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "logf",
+        "section": 0,
+        "value": 0,
+        "size": 0,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88784,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "InitSpectrumSize",
+        "section": 14,
+        "value": 59668,
+        "size": 88,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88792,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "PaintSpectrumGraph",
+        "section": 14,
+        "value": 59756,
+        "size": 1312,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88800,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "InitLineDraw",
+        "section": 14,
+        "value": 61960,
+        "size": 36,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88808,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "DrawRect",
+        "section": 14,
+        "value": 62652,
+        "size": 200,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88816,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "MoveLineTo",
+        "section": 14,
+        "value": 61996,
+        "size": 20,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88824,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "DrawLineTo",
+        "section": 14,
+        "value": 62016,
+        "size": 636,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88832,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "PreComputeForUpdatePeakFrequency",
+        "section": 14,
+        "value": 61068,
+        "size": 192,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88840,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "CalcDemodParms",
+        "section": 14,
+        "value": 65536,
+        "size": 432,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88848,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "AndroidBitmap_getInfo",
+        "section": 0,
+        "value": 0,
+        "size": 0,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88856,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "AndroidBitmap_lockPixels",
+        "section": 0,
+        "value": 0,
+        "size": 0,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88864,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "AndroidBitmap_unlockPixels",
+        "section": 0,
+        "value": 0,
+        "size": 0,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88872,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "CalcPhaseIncrement",
+        "section": 14,
+        "value": 68880,
+        "size": 452,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88880,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "tcalc_extend_down",
+        "section": 14,
+        "value": 63360,
+        "size": 384,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88888,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "tcalc_extend_up",
+        "section": 14,
+        "value": 63744,
+        "size": 432,
+        "kind": 2
+      }
+    },
+    {
+      "offset": 88896,
+      "type": 1026,
+      "addend": 0,
+      "symbol": {
+        "name": "atan",
+        "section": 0,
+        "value": 0,
+        "size": 0,
+        "kind": 2
+      }
+    }
+  ],
+  "symbols": {
+    "__cxa_finalize": {
+      "name": "__cxa_finalize",
+      "section": 0,
+      "value": 0,
+      "size": 0,
+      "kind": 2
+    },
+    "__cxa_atexit": {
+      "name": "__cxa_atexit",
+      "section": 0,
+      "value": 0,
+      "size": 0,
+      "kind": 2
+    },
+    "expf": {
+      "name": "expf",
+      "section": 0,
+      "value": 0,
+      "size": 0,
+      "kind": 2
+    },
+    "log": {
+      "name": "log",
+      "section": 0,
+      "value": 0,
+      "size": 0,
+      "kind": 2
+    },
+    "__stack_chk_fail": {
+      "name": "__stack_chk_fail",
+      "section": 0,
+      "value": 0,
+      "size": 0,
+      "kind": 2
+    },
+    "clock_gettime": {
+      "name": "clock_gettime",
+      "section": 0,
+      "value": 0,
+      "size": 0,
+      "kind": 2
+    },
+    "sin": {
+      "name": "sin",
+      "section": 0,
+      "value": 0,
+      "size": 0,
+      "kind": 2
+    },
+    "sscanf": {
+      "name": "sscanf",
+      "section": 0,
+      "value": 0,
+      "size": 0,
+      "kind": 2
+    },
+    "__vsprintf_chk": {
+      "name": "__vsprintf_chk",
+      "section": 0,
+      "value": 0,
+      "size": 0,
+      "kind": 2
+    },
+    "exp": {
+      "name": "exp",
+      "section": 0,
+      "value": 0,
+      "size": 0,
+      "kind": 2
+    },
+    "memcpy": {
+      "name": "memcpy",
+      "section": 0,
+      "value": 0,
+      "size": 0,
+      "kind": 2
+    },
+    "qsort": {
+      "name": "qsort",
+      "section": 0,
+      "value": 0,
+      "size": 0,
+      "kind": 2
+    },
+    "logf": {
+      "name": "logf",
+      "section": 0,
+      "value": 0,
+      "size": 0,
+      "kind": 2
+    },
+    "AndroidBitmap_getInfo": {
+      "name": "AndroidBitmap_getInfo",
+      "section": 0,
+      "value": 0,
+      "size": 0,
+      "kind": 2
+    },
+    "AndroidBitmap_lockPixels": {
+      "name": "AndroidBitmap_lockPixels",
+      "section": 0,
+      "value": 0,
+      "size": 0,
+      "kind": 2
+    },
+    "AndroidBitmap_unlockPixels": {
+      "name": "AndroidBitmap_unlockPixels",
+      "section": 0,
+      "value": 0,
+      "size": 0,
+      "kind": 2
+    },
+    "atan": {
+      "name": "atan",
+      "section": 0,
+      "value": 0,
+      "size": 0,
+      "kind": 2
+    },
+    "bass3pindex": {
+      "name": "bass3pindex",
+      "section": 22,
+      "value": 105316,
+      "size": 4,
+      "kind": 1
+    },
+    "_ZN10LinRegress5ResetEv": {
+      "name": "_ZN10LinRegress5ResetEv",
+      "section": 14,
+      "value": 31100,
+      "size": 16,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_GetPitch": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_GetPitch",
+      "section": 14,
+      "value": 43768,
+      "size": 504,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_CPcomm": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_CPcomm",
+      "section": 14,
+      "value": 44272,
+      "size": 1204,
+      "kind": 2
+    },
+    "desiredAutoNoteNumber": {
+      "name": "desiredAutoNoteNumber",
+      "section": 22,
+      "value": 105308,
+      "size": 4,
+      "kind": 1
+    },
+    "wideTraces": {
+      "name": "wideTraces",
+      "section": 23,
+      "value": 105836,
+      "size": 4,
+      "kind": 1
+    },
+    "_ZN17NumericalSolution17InitGainAndMinMaxEdddd": {
+      "name": "_ZN17NumericalSolution17InitGainAndMinMaxEdddd",
+      "section": 14,
+      "value": 31412,
+      "size": 12,
+      "kind": 2
+    },
+    "_Z16EnforceAdjLimitsv": {
+      "name": "_Z16EnforceAdjLimitsv",
+      "section": 14,
+      "value": 31644,
+      "size": 564,
+      "kind": 2
+    },
+    "TrebleNoffset": {
+      "name": "TrebleNoffset",
+      "section": 22,
+      "value": 105344,
+      "size": 4,
+      "kind": 1
+    },
+    "SetTrigFactors": {
+      "name": "SetTrigFactors",
+      "section": 14,
+      "value": 65992,
+      "size": 100,
+      "kind": 2
+    },
+    "PhaseDisplayState": {
+      "name": "PhaseDisplayState",
+      "section": 23,
+      "value": 105832,
+      "size": 4,
+      "kind": 1
+    },
+    "fftAutoNoteComplex": {
+      "name": "fftAutoNoteComplex",
+      "section": 23,
+      "value": 1054444,
+      "size": 32768,
+      "kind": 1
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_DeltaForPartialNative": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_DeltaForPartialNative",
+      "section": 14,
+      "value": 51320,
+      "size": 72,
+      "kind": 2
+    },
+    "CalculatedIHC": {
+      "name": "CalculatedIHC",
+      "section": 23,
+      "value": 374136,
+      "size": 4,
+      "kind": 1
+    },
+    "_Z15DevCurveTrebVali": {
+      "name": "_Z15DevCurveTrebVali",
+      "section": 14,
+      "value": 32348,
+      "size": 136,
+      "kind": 2
+    },
+    "adjustmentMode": {
+      "name": "adjustmentMode",
+      "section": 22,
+      "value": 105348,
+      "size": 4,
+      "kind": 1
+    },
+    "ResetSpecFifo": {
+      "name": "ResetSpecFifo",
+      "section": 14,
+      "value": 57880,
+      "size": 28,
+      "kind": 2
+    },
+    "SetSpectrumUpdatesPerSecond": {
+      "name": "SetSpectrumUpdatesPerSecond",
+      "section": 14,
+      "value": 57908,
+      "size": 68,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_GetIHConstantExists": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_GetIHConstantExists",
+      "section": 14,
+      "value": 53144,
+      "size": 16,
+      "kind": 2
+    },
+    "MoveLineTo": {
+      "name": "MoveLineTo",
+      "section": 14,
+      "value": 61996,
+      "size": 20,
+      "kind": 2
+    },
+    "SpectrumZoom": {
+      "name": "SpectrumZoom",
+      "section": 22,
+      "value": 105312,
+      "size": 4,
+      "kind": 1
+    },
+    "smartAdjust": {
+      "name": "smartAdjust",
+      "section": 23,
+      "value": 105768,
+      "size": 4,
+      "kind": 1
+    },
+    "_ZN17NumericalSolution10yOldAndNewEdd": {
+      "name": "_ZN17NumericalSolution10yOldAndNewEdd",
+      "section": 14,
+      "value": 31424,
+      "size": 140,
+      "kind": 2
+    },
+    "_ZN10LinRegress4AvgXEv": {
+      "name": "_ZN10LinRegress4AvgXEv",
+      "section": 14,
+      "value": 31288,
+      "size": 32,
+      "kind": 2
+    },
+    "lineColor": {
+      "name": "lineColor",
+      "section": 22,
+      "value": 105552,
+      "size": 4,
+      "kind": 1
+    },
+    "_ZN17NumericalSolution5ResetEv": {
+      "name": "_ZN17NumericalSolution5ResetEv",
+      "section": 14,
+      "value": 31392,
+      "size": 20,
+      "kind": 2
+    },
+    "_Z15DevCurveBassVali": {
+      "name": "_Z15DevCurveBassVali",
+      "section": 14,
+      "value": 32208,
+      "size": 140,
+      "kind": 2
+    },
+    "splitScaleBreak": {
+      "name": "splitScaleBreak",
+      "section": 23,
+      "value": 107020,
+      "size": 4,
+      "kind": 1
+    },
+    "Beta": {
+      "name": "Beta",
+      "section": 14,
+      "value": 50412,
+      "size": 48,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_GetIHOffset": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_GetIHOffset",
+      "section": 14,
+      "value": 53528,
+      "size": 32,
+      "kind": 2
+    },
+    "_ZN17NumericalSolution8calcNewXEd": {
+      "name": "_ZN17NumericalSolution8calcNewXEd",
+      "section": 14,
+      "value": 31564,
+      "size": 80,
+      "kind": 2
+    },
+    "A4_minus_A0": {
+      "name": "A4_minus_A0",
+      "section": 23,
+      "value": 106172,
+      "size": 4,
+      "kind": 1
+    },
+    "BassParLower": {
+      "name": "BassParLower",
+      "section": 22,
+      "value": 105340,
+      "size": 4,
+      "kind": 1
+    },
+    "TriggerCount": {
+      "name": "TriggerCount",
+      "section": 23,
+      "value": 1091476,
+      "size": 4,
+      "kind": 1
+    },
+    "FillYtab": {
+      "name": "FillYtab",
+      "section": 14,
+      "value": 64176,
+      "size": 508,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_GetIHConstantValue": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_GetIHConstantValue",
+      "section": 14,
+      "value": 53128,
+      "size": 16,
+      "kind": 2
+    },
+    "tcalc_extend_down": {
+      "name": "tcalc_extend_down",
+      "section": 14,
+      "value": 63360,
+      "size": 384,
+      "kind": 2
+    },
+    "BassCoffset": {
+      "name": "BassCoffset",
+      "section": 23,
+      "value": 106144,
+      "size": 4,
+      "kind": 1
+    },
+    "PowerSpectrum": {
+      "name": "PowerSpectrum",
+      "section": 14,
+      "value": 48068,
+      "size": 232,
+      "kind": 2
+    },
+    "TStretchForPartial0": {
+      "name": "TStretchForPartial0",
+      "section": 14,
+      "value": 51392,
+      "size": 104,
+      "kind": 2
+    },
+    "PaintSpectrumGraph": {
+      "name": "PaintSpectrumGraph",
+      "section": 14,
+      "value": 59756,
+      "size": 1312,
+      "kind": 2
+    },
+    "ErrorCentsSpectrum": {
+      "name": "ErrorCentsSpectrum",
+      "section": 23,
+      "value": 105788,
+      "size": 4,
+      "kind": 1
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_DoAdjust": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_DoAdjust",
+      "section": 14,
+      "value": 36132,
+      "size": 484,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_AnalyzeForIH": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_AnalyzeForIH",
+      "section": 14,
+      "value": 52516,
+      "size": 252,
+      "kind": 2
+    },
+    "InitLineDraw": {
+      "name": "InitLineDraw",
+      "section": 14,
+      "value": 61960,
+      "size": 36,
+      "kind": 2
+    },
+    "C8_minus_A4": {
+      "name": "C8_minus_A4",
+      "section": 23,
+      "value": 106168,
+      "size": 4,
+      "kind": 1
+    },
+    "FastFourierTransform": {
+      "name": "FastFourierTransform",
+      "section": 14,
+      "value": 47032,
+      "size": 1036,
+      "kind": 2
+    },
+    "SetSplitScaleBreak": {
+      "name": "SetSplitScaleBreak",
+      "section": 14,
+      "value": 48576,
+      "size": 184,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_flashTallyRect": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_flashTallyRect",
+      "section": 14,
+      "value": 61920,
+      "size": 20,
+      "kind": 2
+    },
+    "ModelCents": {
+      "name": "ModelCents",
+      "section": 14,
+      "value": 50728,
+      "size": 512,
+      "kind": 2
+    },
+    "offsetForAutoNote": {
+      "name": "offsetForAutoNote",
+      "section": 23,
+      "value": 106260,
+      "size": 4,
+      "kind": 1
+    },
+    "OverpullInitSiphon": {
+      "name": "OverpullInitSiphon",
+      "section": 14,
+      "value": 55804,
+      "size": 96,
+      "kind": 2
+    },
+    "DeltaForPartial": {
+      "name": "DeltaForPartial",
+      "section": 14,
+      "value": 51248,
+      "size": 72,
+      "kind": 2
+    },
+    "IHMeasureSiphon": {
+      "name": "IHMeasureSiphon",
+      "section": 14,
+      "value": 52108,
+      "size": 408,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_GetOneIHResultOffset": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_GetOneIHResultOffset",
+      "section": 14,
+      "value": 52768,
+      "size": 64,
+      "kind": 2
+    },
+    "FindPeaksForOverpull": {
+      "name": "FindPeaksForOverpull",
+      "section": 14,
+      "value": 56248,
+      "size": 404,
+      "kind": 2
+    },
+    "PhaseDetectorResetPending": {
+      "name": "PhaseDetectorResetPending",
+      "section": 23,
+      "value": 1091444,
+      "size": 4,
+      "kind": 1
+    },
+    "CalcDemodParms": {
+      "name": "CalcDemodParms",
+      "section": 14,
+      "value": 65536,
+      "size": 432,
+      "kind": 2
+    },
+    "IHpts": {
+      "name": "IHpts",
+      "section": 23,
+      "value": 107024,
+      "size": 4,
+      "kind": 1
+    },
+    "AutonoteAnalyzeFFT": {
+      "name": "AutonoteAnalyzeFFT",
+      "section": 14,
+      "value": 39092,
+      "size": 4592,
+      "kind": 2
+    },
+    "NominalFundamental": {
+      "name": "NominalFundamental",
+      "section": 22,
+      "value": 105296,
+      "size": 4,
+      "kind": 1
+    },
+    "_Z11CaptureA0C8v": {
+      "name": "_Z11CaptureA0C8v",
+      "section": 14,
+      "value": 35284,
+      "size": 96,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_BetaNative": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_BetaNative",
+      "section": 14,
+      "value": 50516,
+      "size": 48,
+      "kind": 2
+    },
+    "IHOffsetValue": {
+      "name": "IHOffsetValue",
+      "section": 23,
+      "value": 107744,
+      "size": 4224,
+      "kind": 1
+    },
+    "_ZN10LinRegress4AvgYEv": {
+      "name": "_ZN10LinRegress4AvgYEv",
+      "section": 14,
+      "value": 31256,
+      "size": 32,
+      "kind": 2
+    },
+    "BassNoffset": {
+      "name": "BassNoffset",
+      "section": 22,
+      "value": 105332,
+      "size": 4,
+      "kind": 1
+    },
+    "splitScaleAllowed": {
+      "name": "splitScaleAllowed",
+      "section": 23,
+      "value": 1091472,
+      "size": 4,
+      "kind": 1
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_ModelCents": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_ModelCents",
+      "section": 14,
+      "value": 51240,
+      "size": 8,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_CalcPhaseIncrement": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_CalcPhaseIncrement",
+      "section": 14,
+      "value": 61944,
+      "size": 16,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_SetMeasureState": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_SetMeasureState",
+      "section": 14,
+      "value": 68776,
+      "size": 104,
+      "kind": 2
+    },
+    "FFTpkfreqFrozen": {
+      "name": "FFTpkfreqFrozen",
+      "section": 23,
+      "value": 105780,
+      "size": 4,
+      "kind": 1
+    },
+    "_ZN10LinRegress7YLookupEd": {
+      "name": "_ZN10LinRegress7YLookupEd",
+      "section": 14,
+      "value": 31168,
+      "size": 88,
+      "kind": 2
+    },
+    "AdjustSpectrumForSampleRate": {
+      "name": "AdjustSpectrumForSampleRate",
+      "section": 14,
+      "value": 57976,
+      "size": 36,
+      "kind": 2
+    },
+    "SpectrumHzResolution": {
+      "name": "SpectrumHzResolution",
+      "section": 22,
+      "value": 105532,
+      "size": 4,
+      "kind": 1
+    },
+    "OPmode": {
+      "name": "OPmode",
+      "section": 23,
+      "value": 105824,
+      "size": 4,
+      "kind": 1
+    },
+    "LockRange100": {
+      "name": "LockRange100",
+      "section": 23,
+      "value": 1091468,
+      "size": 4,
+      "kind": 1
+    },
+    "_ZN10LinRegress5SlopeEv": {
+      "name": "_ZN10LinRegress5SlopeEv",
+      "section": 14,
+      "value": 31320,
+      "size": 72,
+      "kind": 2
+    },
+    "TreblePosIHFactor": {
+      "name": "TreblePosIHFactor",
+      "section": 23,
+      "value": 106160,
+      "size": 4,
+      "kind": 1
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_processAudioBuffer": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_processAudioBuffer",
+      "section": 14,
+      "value": 66092,
+      "size": 2076,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_SetNote": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_SetNote",
+      "section": 14,
+      "value": 69332,
+      "size": 108,
+      "kind": 2
+    },
+    "MeasureState": {
+      "name": "MeasureState",
+      "section": 23,
+      "value": 111968,
+      "size": 4,
+      "kind": 1
+    },
+    "FFTpkfreq": {
+      "name": "FFTpkfreq",
+      "section": 23,
+      "value": 105776,
+      "size": 4,
+      "kind": 1
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_SetAdjustmentParms": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_SetAdjustmentParms",
+      "section": 14,
+      "value": 35904,
+      "size": 228,
+      "kind": 2
+    },
+    "InitTrigTable": {
+      "name": "InitTrigTable",
+      "section": 14,
+      "value": 46732,
+      "size": 300,
+      "kind": 2
+    },
+    "LockingEnabled": {
+      "name": "LockingEnabled",
+      "section": 23,
+      "value": 105816,
+      "size": 4,
+      "kind": 1
+    },
+    "BassPosIHFactor": {
+      "name": "BassPosIHFactor",
+      "section": 23,
+      "value": 106148,
+      "size": 4,
+      "kind": 1
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_setFilesDir": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_setFilesDir",
+      "section": 14,
+      "value": 43684,
+      "size": 8,
+      "kind": 2
+    },
+    "SetTemplateParmsToDefault": {
+      "name": "SetTemplateParmsToDefault",
+      "section": 14,
+      "value": 50184,
+      "size": 40,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_IHform": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_IHform",
+      "section": 14,
+      "value": 50224,
+      "size": 188,
+      "kind": 2
+    },
+    "Freq": {
+      "name": "Freq",
+      "section": 22,
+      "value": 105292,
+      "size": 4,
+      "kind": 1
+    },
+    "CalMode": {
+      "name": "CalMode",
+      "section": 23,
+      "value": 105800,
+      "size": 4,
+      "kind": 1
+    },
+    "mK1": {
+      "name": "mK1",
+      "section": 22,
+      "value": 105500,
+      "size": 4,
+      "kind": 1
+    },
+    "CalcPhaseIncrement": {
+      "name": "CalcPhaseIncrement",
+      "section": 14,
+      "value": 68880,
+      "size": 452,
+      "kind": 2
+    },
+    "CurrentPartial": {
+      "name": "CurrentPartial",
+      "section": 22,
+      "value": 105304,
+      "size": 4,
+      "kind": 1
+    },
+    "_ZN10LinRegress7AddItemEdd": {
+      "name": "_ZN10LinRegress7AddItemEdd",
+      "section": 14,
+      "value": 31116,
+      "size": 52,
+      "kind": 2
+    },
+    "useNewBeta": {
+      "name": "useNewBeta",
+      "section": 23,
+      "value": 107740,
+      "size": 4,
+      "kind": 1
+    },
+    "MeasureNN": {
+      "name": "MeasureNN",
+      "section": 23,
+      "value": 111972,
+      "size": 4,
+      "kind": 1
+    },
+    "DrawRect": {
+      "name": "DrawRect",
+      "section": 14,
+      "value": 62652,
+      "size": 200,
+      "kind": 2
+    },
+    "mK4": {
+      "name": "mK4",
+      "section": 22,
+      "value": 105504,
+      "size": 4,
+      "kind": 1
+    },
+    "TrebleNegIHFactor": {
+      "name": "TrebleNegIHFactor",
+      "section": 23,
+      "value": 106164,
+      "size": 4,
+      "kind": 1
+    },
+    "BassParUpper": {
+      "name": "BassParUpper",
+      "section": 22,
+      "value": 105336,
+      "size": 4,
+      "kind": 1
+    },
+    "anLogCount": {
+      "name": "anLogCount",
+      "section": 23,
+      "value": 106256,
+      "size": 4,
+      "kind": 1
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_TStretchForPartial": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_TStretchForPartial",
+      "section": 14,
+      "value": 51636,
+      "size": 144,
+      "kind": 2
+    },
+    "StretchedFreq": {
+      "name": "StretchedFreq",
+      "section": 22,
+      "value": 105300,
+      "size": 4,
+      "kind": 1
+    },
+    "TrebleCoffset": {
+      "name": "TrebleCoffset",
+      "section": 23,
+      "value": 106156,
+      "size": 4,
+      "kind": 1
+    },
+    "SetLocking": {
+      "name": "SetLocking",
+      "section": 14,
+      "value": 43692,
+      "size": 36,
+      "kind": 2
+    },
+    "DoOverpullAnalysis": {
+      "name": "DoOverpullAnalysis",
+      "section": 14,
+      "value": 56652,
+      "size": 1228,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_setupSpectrumGraph": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_setupSpectrumGraph",
+      "section": 14,
+      "value": 61260,
+      "size": 356,
+      "kind": 2
+    },
+    "SetAutoNoteParms": {
+      "name": "SetAutoNoteParms",
+      "section": 14,
+      "value": 37980,
+      "size": 704,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_CalcDemodParms": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_CalcDemodParms",
+      "section": 14,
+      "value": 61940,
+      "size": 4,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_Set3partParms": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_Set3partParms",
+      "section": 14,
+      "value": 69440,
+      "size": 108,
+      "kind": 2
+    },
+    "treb3pindex": {
+      "name": "treb3pindex",
+      "section": 22,
+      "value": 105324,
+      "size": 4,
+      "kind": 1
+    },
+    "BassNegIHFactor": {
+      "name": "BassNegIHFactor",
+      "section": 23,
+      "value": 106152,
+      "size": 4,
+      "kind": 1
+    },
+    "CalcComplexInharmonicity": {
+      "name": "CalcComplexInharmonicity",
+      "section": 14,
+      "value": 53560,
+      "size": 2216,
+      "kind": 2
+    },
+    "OverpullSiphon": {
+      "name": "OverpullSiphon",
+      "section": 14,
+      "value": 55900,
+      "size": 348,
+      "kind": 2
+    },
+    "SpectrumSiphon": {
+      "name": "SpectrumSiphon",
+      "section": 14,
+      "value": 58012,
+      "size": 1588,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_mparVelQual": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_mparVelQual",
+      "section": 14,
+      "value": 62948,
+      "size": 96,
+      "kind": 2
+    },
+    "Parlowernote3p": {
+      "name": "Parlowernote3p",
+      "section": 22,
+      "value": 105572,
+      "size": 64,
+      "kind": 1
+    },
+    "thisMicLevel": {
+      "name": "thisMicLevel",
+      "section": 23,
+      "value": 1091484,
+      "size": 4,
+      "kind": 1
+    },
+    "_Z16HoldA0C8Constantv": {
+      "name": "_Z16HoldA0C8Constantv",
+      "section": 14,
+      "value": 35688,
+      "size": 216,
+      "kind": 2
+    },
+    "ModelCentsNormal": {
+      "name": "ModelCentsNormal",
+      "section": 14,
+      "value": 50564,
+      "size": 164,
+      "kind": 2
+    },
+    "InitSpectrumSize": {
+      "name": "InitSpectrumSize",
+      "section": 14,
+      "value": 59668,
+      "size": 88,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_mparAvgVelQual": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_mparAvgVelQual",
+      "section": 14,
+      "value": 63044,
+      "size": 196,
+      "kind": 2
+    },
+    "Paruppernote3p": {
+      "name": "Paruppernote3p",
+      "section": 22,
+      "value": 105636,
+      "size": 64,
+      "kind": 1
+    },
+    "AutoNoteEnabled": {
+      "name": "AutoNoteEnabled",
+      "section": 23,
+      "value": 105792,
+      "size": 4,
+      "kind": 1
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_SetAutoNoteParms": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_SetAutoNoteParms",
+      "section": 14,
+      "value": 37976,
+      "size": 4,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_ClearIHConstant": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_ClearIHConstant",
+      "section": 14,
+      "value": 52980,
+      "size": 80,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_processForAutoNote": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_processForAutoNote",
+      "section": 14,
+      "value": 59600,
+      "size": 68,
+      "kind": 2
+    },
+    "Middle3pLocStart": {
+      "name": "Middle3pLocStart",
+      "section": 22,
+      "value": 105328,
+      "size": 4,
+      "kind": 1
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_IncrBK": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_IncrBK",
+      "section": 14,
+      "value": 37200,
+      "size": 692,
+      "kind": 2
+    },
+    "CalculateAutoPartial": {
+      "name": "CalculateAutoPartial",
+      "section": 14,
+      "value": 38684,
+      "size": 408,
+      "kind": 2
+    },
+    "RetryAutoNote": {
+      "name": "RetryAutoNote",
+      "section": 23,
+      "value": 106252,
+      "size": 4,
+      "kind": 1
+    },
+    "TStretchForPartial": {
+      "name": "TStretchForPartial",
+      "section": 14,
+      "value": 51496,
+      "size": 140,
+      "kind": 2
+    },
+    "TrigLogAuto": {
+      "name": "TrigLogAuto",
+      "section": 23,
+      "value": 106184,
+      "size": 4,
+      "kind": 1
+    },
+    "aboveAutoNoteLevel": {
+      "name": "aboveAutoNoteLevel",
+      "section": 23,
+      "value": 1091480,
+      "size": 4,
+      "kind": 1
+    },
+    "DrawLineTo": {
+      "name": "DrawLineTo",
+      "section": 14,
+      "value": 62016,
+      "size": 636,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_setupPartials": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_setupPartials",
+      "section": 14,
+      "value": 62852,
+      "size": 96,
+      "kind": 2
+    },
+    "MicLevelForDisplay": {
+      "name": "MicLevelForDisplay",
+      "section": 23,
+      "value": 105784,
+      "size": 4,
+      "kind": 1
+    },
+    "fftAutoNote": {
+      "name": "fftAutoNote",
+      "section": 23,
+      "value": 1038060,
+      "size": 16384,
+      "kind": 1
+    },
+    "PendDoLocking": {
+      "name": "PendDoLocking",
+      "section": 14,
+      "value": 43728,
+      "size": 40,
+      "kind": 2
+    },
+    "IHConExists": {
+      "name": "IHConExists",
+      "section": 23,
+      "value": 106668,
+      "size": 352,
+      "kind": 1
+    },
+    "MakeIHform": {
+      "name": "MakeIHform",
+      "section": 14,
+      "value": 48760,
+      "size": 1408,
+      "kind": 2
+    },
+    "parData": {
+      "name": "parData",
+      "section": 23,
+      "value": 832892,
+      "size": 336,
+      "kind": 1
+    },
+    "mid3pindex": {
+      "name": "mid3pindex",
+      "section": 22,
+      "value": 105320,
+      "size": 4,
+      "kind": 1
+    },
+    "AutoNoteType": {
+      "name": "AutoNoteType",
+      "section": 23,
+      "value": 105796,
+      "size": 4,
+      "kind": 1
+    },
+    "desiredBlush100": {
+      "name": "desiredBlush100",
+      "section": 23,
+      "value": 105804,
+      "size": 4,
+      "kind": 1
+    },
+    "IHform": {
+      "name": "IHform",
+      "section": 14,
+      "value": 50168,
+      "size": 16,
+      "kind": 2
+    },
+    "Betam1": {
+      "name": "Betam1",
+      "section": 14,
+      "value": 50460,
+      "size": 56,
+      "kind": 2
+    },
+    "ihMultFunction": {
+      "name": "ihMultFunction",
+      "section": 14,
+      "value": 37892,
+      "size": 84,
+      "kind": 2
+    },
+    "IHConValue": {
+      "name": "IHConValue",
+      "section": 23,
+      "value": 106316,
+      "size": 352,
+      "kind": 1
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_drawSpectrumGraph": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_drawSpectrumGraph",
+      "section": 14,
+      "value": 61616,
+      "size": 304,
+      "kind": 2
+    },
+    "ActualSampleRate": {
+      "name": "ActualSampleRate",
+      "section": 22,
+      "value": 105288,
+      "size": 4,
+      "kind": 1
+    },
+    "mparModeNum": {
+      "name": "mparModeNum",
+      "section": 23,
+      "value": 105772,
+      "size": 4,
+      "kind": 1
+    },
+    "autoNoteTrigOnly": {
+      "name": "autoNoteTrigOnly",
+      "section": 22,
+      "value": 105528,
+      "size": 4,
+      "kind": 1
+    },
+    "IHConValueRounded3": {
+      "name": "IHConValueRounded3",
+      "section": 14,
+      "value": 48300,
+      "size": 112,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_AddIHOffsets": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_AddIHOffsets",
+      "section": 14,
+      "value": 53160,
+      "size": 256,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_AddThisIHOffset": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_AddThisIHOffset",
+      "section": 14,
+      "value": 53416,
+      "size": 64,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_ClearIHOffsets": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_ClearIHOffsets",
+      "section": 14,
+      "value": 53480,
+      "size": 48,
+      "kind": 2
+    },
+    "Noffset3p": {
+      "name": "Noffset3p",
+      "section": 22,
+      "value": 105700,
+      "size": 64,
+      "kind": 1
+    },
+    "pendingOps": {
+      "name": "pendingOps",
+      "section": 23,
+      "value": 105828,
+      "size": 4,
+      "kind": 1
+    },
+    "AtLim": {
+      "name": "AtLim",
+      "section": 23,
+      "value": 106176,
+      "size": 8,
+      "kind": 1
+    },
+    "AutoPartialNumLim": {
+      "name": "AutoPartialNumLim",
+      "section": 22,
+      "value": 105356,
+      "size": 4,
+      "kind": 1
+    },
+    "spectrumPixels": {
+      "name": "spectrumPixels",
+      "section": 23,
+      "value": 1087304,
+      "size": 8,
+      "kind": 1
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_setAudioBlockAddress": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_setAudioBlockAddress",
+      "section": 14,
+      "value": 64684,
+      "size": 852,
+      "kind": 2
+    },
+    "mparData": {
+      "name": "mparData",
+      "section": 23,
+      "value": 105840,
+      "size": 304,
+      "kind": 1
+    },
+    "mB1": {
+      "name": "mB1",
+      "section": 23,
+      "value": 107736,
+      "size": 4,
+      "kind": 1
+    },
+    "AutoPartialBelow": {
+      "name": "AutoPartialBelow",
+      "section": 22,
+      "value": 105352,
+      "size": 4,
+      "kind": 1
+    },
+    "ResetTriggering": {
+      "name": "ResetTriggering",
+      "section": 14,
+      "value": 65968,
+      "size": 24,
+      "kind": 2
+    },
+    "desiredNISTcode": {
+      "name": "desiredNISTcode",
+      "section": 23,
+      "value": 105808,
+      "size": 4,
+      "kind": 1
+    },
+    "FullAutoAdjust": {
+      "name": "FullAutoAdjust",
+      "section": 14,
+      "value": 32484,
+      "size": 2500,
+      "kind": 2
+    },
+    "ComplexFFTInterpolation": {
+      "name": "ComplexFFTInterpolation",
+      "section": 14,
+      "value": 51780,
+      "size": 328,
+      "kind": 2
+    },
+    "AutoNoteIsBusy": {
+      "name": "AutoNoteIsBusy",
+      "section": 23,
+      "value": 947924,
+      "size": 4,
+      "kind": 1
+    },
+    "PMstatus": {
+      "name": "PMstatus",
+      "section": 23,
+      "value": 915152,
+      "size": 4,
+      "kind": 1
+    },
+    "PreComputeForUpdatePeakFrequency": {
+      "name": "PreComputeForUpdatePeakFrequency",
+      "section": 14,
+      "value": 61068,
+      "size": 192,
+      "kind": 2
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_AddIHConstant": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_AddIHConstant",
+      "section": 14,
+      "value": 53060,
+      "size": 68,
+      "kind": 2
+    },
+    "tcalc_interpolate": {
+      "name": "tcalc_interpolate",
+      "section": 14,
+      "value": 63240,
+      "size": 120,
+      "kind": 2
+    },
+    "iErrorCentsPhase100": {
+      "name": "iErrorCentsPhase100",
+      "section": 23,
+      "value": 105812,
+      "size": 4,
+      "kind": 1
+    },
+    "NoteNumber": {
+      "name": "NoteNumber",
+      "section": 23,
+      "value": 105820,
+      "size": 4,
+      "kind": 1
+    },
+    "mB4": {
+      "name": "mB4",
+      "section": 23,
+      "value": 107732,
+      "size": 4,
+      "kind": 1
+    },
+    "tcalc_extend_up": {
+      "name": "tcalc_extend_up",
+      "section": 14,
+      "value": 63744,
+      "size": 432,
+      "kind": 2
+    },
+    "MeasuredataN": {
+      "name": "MeasuredataN",
+      "section": 22,
+      "value": 105508,
+      "size": 4,
+      "kind": 1
+    },
+    "Java_com_realtimespecialties_tunelab_FFTLib_GetOneIHResultAmp": {
+      "name": "Java_com_realtimespecialties_tunelab_FFTLib_GetOneIHResultAmp",
+      "section": 14,
+      "value": 52832,
+      "size": 148,
+      "kind": 2
+    }
+  },
+  "adaptation_scope": "ADRP/ADR platform relocations and stack-canary storage only; original mathematical and signal-processing instructions retained.",
+  "ios_runtime_verified": false
+}

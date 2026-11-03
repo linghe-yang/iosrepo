@@ -1,0 +1,59 @@
+Piano Tuner / TuneLab — iOS 16 安装候选包
+
+版本：0.2.0~alpha1；系统显示版本 0.2.0；构建号 2。
+原 Android 样本：AndroidTuneLab-3.2.apk，版本 3.2。
+
+安装文件（从本文件所在目录起）：
+../../debs/com.linghe.pianolab_0.2.0~alpha1_iphoneos-arm64.deb
+  用于 Rootless / Dopamine，应用路径 /var/jb/Applications/TuneLab.app。
+../../debs/com.linghe.pianolab.rootful_0.2.0~alpha1_iphoneos-arm.deb
+  用于 Rootful，应用路径 /Applications/TuneLab.app。
+两种选一种，不能混装。本次没有制作 RootHide 专用包。
+
+将对应 DEB 传到越狱设备，用 Sileo 或 Filza 打开安装。
+包安装后会注册桌面图标。应用桌面名称为原版 Piano Tuner，图标来自原 APK。
+首次启动允许麦克风。应用在前台监听，进入后台时停止录音和参考音。
+不需要输入授权码或联网激活。
+
+保留旧 com.linghe.pianolab 包标识，使 0.1.0~beta1 可以正常升级。
+升级安装会移除旧应用的包内文件并注销旧图标，安装新 TuneLab.app。
+原型目录 Documents/PianoLab 中的用户文件不会作为包文件删除；尚未自动转换旧原型 JSON。
+新版数据存储在应用用户目录 Documents/TuneLab，支持 .tun 文件导入/导出。
+旧 DEB 已移出有效 debs 目录和 Packages 索引，归档于 retired/PianoLab-0.1.0。
+
+本包已接入的主要路径：
+- iOS 原生启动入口、原始名称/图标/按钮图片/字体，按原主界面结构组织视图。
+- 麦克风输入转换为原核心要求的 44100 Hz、16 位 PCM，原核心内部执行降采样。
+- 原相位解调、质量判断、自动选音/泛音、锁定、IH 测量和原生频谱绘制。
+- 原 IH / 旧版与三段式拉伸模型、模板自动调整、目标频率和偏移。
+- 原文件预置、非平均律预置、IH 常数、泛音表、自定义偏移的读取与编辑。
+- 预测量与过拉补偿、单音参考音、手动校准偏移、原帮助文档、.tun 导入导出。
+
+尚未达到完整移植标准：
+- 所有页面、手势、对话框、Android Holo 控件和横竖屏/大屏排版尚未逐项复刻验收。
+- 当前设置子页采用可操作的列表/输入框连接功能，不等于原页面 UI 已精准移植。
+- PTG 考试工作流及评分、Dropbox 账户同步尚未接入；应用内相应入口会明确提示。
+- 原自动参考源校准流程、完整多泛音编辑/分行显示、测量序列自动推进、完整文件管理及高级选项仍有差距。
+- 尚未在物理 iOS 16 设备执行安装、启动、麦克风权限、设备采样率、蓝牙/耳机路由与中断测试。
+- 原算法对照在相同外部数学/时钟替身条件下执行，不能代替 Darwin 数学库和真实硬件验收。
+
+已执行的验证：
+- 真正编译并链接 ARM64 / iOS 16 可执行程序，检查入口、系统框架依赖及 ad-hoc 代码签名。
+- 核对 DEB 内版本/架构、完整载荷、图标原始字节、文件权限、安装/卸载脚本。
+- 使用 dpkg-deb 实际解包，在测试目录验证安装/卸载脚本的图标注册参数及升级版本顺序。
+- 原 Android ELF、静态适配镜像、最终应用链接镜像：11 段测量音频、704 次模型调用、168 个连续处理块对照。
+- 原频谱 JNI 与最终应用镜像：12 个位图场景逐字节相同，绘图缓冲区边界保护通过。
+- Packages 及所有压缩索引、Release 校验值一致。
+
+verification/installable_candidate.json 保存实际包大小、SHA256、签名和源码摘要。
+verification/fidelity_status.json 的全部 UI / 全算法验收标记仍为 false，不冒充正式完成版。
+
+重新构建（在配置好工具链的 Linux/WSL 环境）：
+  bash build.sh
+在工作区 Python 3.14 环境：
+  python package_candidate.py --activate
+再运行：
+  bash check_packages.sh
+
+本地文件和仓库索引已更新。没有自动提交或推送远程仓库，因此不会立即改变线上 Sileo 结果。
+release.py 仍保留完整移植验收门槛；package_candidate.py 只生成有明确 Alpha 标记的安装候选包。

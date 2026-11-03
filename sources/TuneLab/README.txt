@@ -3,7 +3,14 @@ TuneLab 3.2 原样移植工程
 当前 iOS 移植工程版本：0.2.0~alpha1（系统版本号 0.2.0，构建号 2）。
 上个 PianoLab 原型版本：0.1.0~beta1。
 原 Android 样本版本仍为 3.2，独立记录，不与 iOS 移植版本混用。
-本版本尚未生成 DEB；版本标记不表示完整精准移植已经完成。
+本版本已生成 Rootless、Rootful 两个真实 DEB；它们是可安装 Alpha，不表示完整精准移植已经完成。
+Sileo 读取 DEB 内的 Version 和线上 Packages，不读取本目录的 version.json。
+先前线上仍显示 0.1.0 的原因是当时 0.2.0 只有工程文件，没有实际发布新 DEB 和索引，不是缓存故障。
+用户已明确要求完整移植后发布可安装 DEB，0.1.0 不再保留为活动源中的可选版本。
+本次通过 package_candidate.py 生成有 Alpha 标记的安装候选，并更新本地索引；旧包已移出有效目录。
+release.py 继续保留“完整精准移植”发布门槛；没有修改全功能验收标记来绕过它。
+安装文件、操作方法和具体功能差距见 INSTALL_NOTES.txt。
+本地构建没有自动推送远程仓库，线上 Sileo 不会仅因本地文件变化而更新。
 
 用户要求：原软件名、图标、全部页面及菜单、交互和状态变化、软件功能及算法都按 APK 精准移植。
 此前 PianoLab 是独立界面/部分独立算法的原型，不满足这个要求。
@@ -33,13 +40,21 @@ Android 包名：com.realtimespecialties.tunelab。
    加上 Main，目前有 41 个不同页面的运行参考；DBXfer 在没有原 Dropbox 客户端状态时自行退出，仍缺认证状态参考。
    另保存原文件/帮助菜单，以及手机横屏、大屏横竖屏；大屏竖屏为 744dp×1133dp。
 9. 保存参考系统实际 Roboto 字体和对应声明；字体登记已加入工程资源，字形/行距仍需 iOS 排版对照。
+10. native/ 已将原 ARM64 数值和信号处理指令静态适配为 iOS Mach-O，全部 37 个原 JNI 入口保留。
+    原 ELF、地址适配后的指令、实际链接 Mach-O 三者比较：11 段音频和 132 项泛音诊断逐字节一致；
+    704 次模型调用、168 个实时处理数据块的输出一致。平台函数使用明确替身，仍须真机核验。
+11. 原相位速度/质量、自动选音、自动泛音及非谐性测量事件的原接口桥接已接入新应用。
+    实现原生麦克风、前后台停止/恢复、参考音、相位显示及原频谱绘制；完整应用已链接签名。
+12. 两种 DEB 已用真实 dpkg-deb 解包并验证安装/卸载脚本、载荷、原图标及升级版本顺序。
+    实际应用内的原频谱 JNI 通过 12 项位图逐字节对照，并检查缓冲区边界保护。
 
 当前状态
 
 尚未完成全部页面的原样 UI 与动态交互。
 尚未用原 Android 运行画面和 iOS 实机画面逐页做像素/状态对照。
-原实时解调、自动换音、自动泛音、锁定和多泛音状态机尚未全部移植。
-尚未生成满足本要求的新 DEB；之前的 PianoLab 包仍只属于实验原型。
+原实时解调、自动换音、自动泛音、锁定及多泛音原生接口已接线，但完整工作流和设备行为尚未全面核验。
+现有 0.2.0~alpha1 DEB 可供安装测试，尚不满足完整精准移植验收标准。
+PTG 考试、Dropbox、完整自动校准、多泛音分行显示和完整文件管理等仍需继续迁移。
 verification/original_assets.json 中的 assets 校验通过，只证明原始资源相同，不能解释为全部移植完成。
 
 验收规则
@@ -73,6 +88,8 @@ verification/algorithm_gaps.json：前期独立实现与原算法的具体差异
 先在原分析工作区运行 migration/scripts/extract_original_spec.py。
 再运行本目录 prepare_original_resources.py；这个步骤复制原资源并检查哈希。
 bash check_ui_compile.sh 只检查布局适配源码能否编译为 ARM64 iOS 16 对象文件。
+bash build.sh 构建并签名完整应用；python package_candidate.py --activate 生成 Alpha DEB 并更新本地索引。
+bash check_packages.sh 使用 dpkg-deb 解包、检查安装脚本；不在设备上执行安装。
 运行截图、控件外观和功能验收需要另外完成。
 
 此前的原算法对照资料仍在 tunelab_analysis/migration；C++ 数值原型在 sources/PianoLab。

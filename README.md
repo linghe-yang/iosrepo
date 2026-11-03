@@ -28,8 +28,8 @@ https://linghe-yang.github.io/iosrepo/
 | `com.vietanh.overlayiostool` | Rootless，`iphoneos-arm64` | `5.8.12+lang1`；保留 `5.8.12` |
 | `com.linghe.shadebar` | Rootless，iOS 16，A12+；桌面 App + 原生 arm64e 组件 | `0.6.0~beta1` |
 | `ai.akemi.appsyncunified` | 官方原版镜像，Rootless / `iphoneos-arm64` | `116.0` |
-| `com.linghe.pianolab` | iOS 16 Rootless 独立钢琴调律应用 | `0.1.0~beta1` |
-| `com.linghe.pianolab.rootful` | iOS 16 Rootful 独立钢琴调律应用 | `0.1.0~beta1` |
+| `com.linghe.pianolab` | Piano Tuner / TuneLab iOS 16 Rootless 移植测试版 | `0.2.0~alpha1` |
+| `com.linghe.pianolab.rootful` | Piano Tuner / TuneLab iOS 16 Rootful 移植测试版 | `0.2.0~alpha1` |
 
 上述 iGameGod 包基于官方 0.8.9.5 制作，是本地去广告测试包，并非官方发布。原作者信息和软件包依赖保留在 DEB 中。
 
@@ -45,17 +45,17 @@ OverlayIOSTOOL 来自本地提供的两个 5.8.12 DEB，作者标注为 Viet Anh
 
 安装 Rootless 双语版 `5.8.12+lang1` 后，重新加载 SpringBoard 并打开 Overlay Tool（简体中文下为“图片浮层”），选择图片测试悬浮显示、拖动和缩放。切换系统首选语言后，需要退出 App 并重新加载 SpringBoard，使 App 和悬浮插件重新读取语言。只有在设备启用越狱及插件注入后，跨应用浮层才有相应运行环境。
 
-## PianoLab 钢琴调律应用
+## Piano Tuner / TuneLab 钢琴调律应用
 
-**最新需求修正：PianoLab 是前期近似原型，不满足 TuneLab 原名称、图标、全部 UI 与行为精准移植的要求。** 原版移植工程及验收基准在 [sources/TuneLab](sources/TuneLab/README.txt)，当前工程版本为 **`0.2.0~alpha1`（构建号 2）**，区别于上个可安装原型 `0.1.0~beta1`；尚未发布符合完整精准移植要求的 DEB。下面安装包仅保留作为原型参考。
+现已生成 **`0.2.0~alpha1`（系统版本 0.2.0，构建号 2）** 的真实安装包。使用原版 Piano Tuner 名称、原图标和按钮资源，直接链接原 ARM64 声音核心；保留包标识供 `0.1.0~beta1` 升级。旧版已移至 `retired/`，不再出现在有效索引中。
 
-PianoLab 是本地实现的 iOS 16 桌面应用，包含麦克风拾音、音分和频谱显示、非谐性测量、三段式与旧版拉伸曲线、过拉补偿、历史律制、琴型管理及文件导入导出。数值核心直接编译为 C++，运行时不依赖 Android 库或模拟器。
+**这是可安装的开发测试版，完整精准移植仍未完成，也尚未经过 iOS 真机安装、声音和逐页画面对照验收。** PTG 考试、Dropbox 同步及完整校准流程等仍有缺口；各设置页面目前不能视为原 UI 的等价移植。不能把安装包存在或声音样本对照通过解释为全部功能完成。
 
-提供 [Rootless / Dopamine DEB](debs/com.linghe.pianolab_0.1.0~beta1_iphoneos-arm64.deb) 和 [Rootful DEB](debs/com.linghe.pianolab.rootful_0.1.0~beta1_iphoneos-arm.deb)，按越狱环境选择一种。安装后打开 PianoLab，点“开始监听”并允许麦克风。
+下载 [Rootless / Dopamine DEB](debs/com.linghe.pianolab_0.2.0~alpha1_iphoneos-arm64.deb) 或 [Rootful DEB](debs/com.linghe.pianolab.rootful_0.2.0~alpha1_iphoneos-arm.deb)，选择符合越狱类型的一种。安装后打开 **Piano Tuner** 并允许使用麦克风。具体范围、限制和构建步骤见 [安装说明](sources/TuneLab/INSTALL_NOTES.txt)。
 
-已通过原算法声音、曲线、过拉和旧版自动拟合回归，以及签名、隐私声明、安装路径和包索引检查。**尚未在真实 iPhone / iPad 安装验收**，当前为 beta。实时自动选音、多泛音合并和视觉反馈使用独立实现，未证明与原应用逐项等价；考试入口提供练习对比，云端文件使用系统文件/分享界面。
+最终应用镜像已通过 11 段测量音频、704 次模型调用、168 个连续处理块和 12 项原生频谱位图对照；签名、隐私声明、安装路径、安装脚本与包索引检查通过。对照使用相同的外部数学/时钟替身，物理设备验收仍待进行。
 
-[完整使用说明与真机验收](sources/PianoLab/README.txt) · [C++ 核心检查结果](sources/PianoLab/verification/core_results.json) · [安装包检查](sources/PianoLab/verification/install_checks.json)。源码及测试音频随源保存；本地构建不会自动推送 GitHub Pages。
+[工程说明](sources/TuneLab/README.txt) · [安装包与签名检查](sources/TuneLab/verification/installable_candidate.json) · [完整移植验收状态](sources/TuneLab/verification/fidelity_status.json)。本地打包和索引更新不会自动推送 GitHub Pages；Sileo 线上版本取决于实际发布的索引和 DEB。
 
 ## ShadeBar 桌面 App 与遮挡条测试版
 

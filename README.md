@@ -47,7 +47,7 @@ OverlayIOSTOOL 来自本地提供的两个 5.8.12 DEB，作者标注为 Viet Anh
 
 ## PianoLab 钢琴调律应用
 
-**最新需求修正：PianoLab 是前期近似原型，不满足 TuneLab 原名称、图标、全部 UI 与行为精准移植的要求。** 原版移植工程及验收基准在 [sources/TuneLab](sources/TuneLab/README.txt)，当前尚未发布符合完整精准移植要求的 DEB。下面安装包仅保留作为原型参考。
+**最新需求修正：PianoLab 是前期近似原型，不满足 TuneLab 原名称、图标、全部 UI 与行为精准移植的要求。** 原版移植工程及验收基准在 [sources/TuneLab](sources/TuneLab/README.txt)，当前工程版本为 **`0.2.0~alpha1`（构建号 2）**，区别于上个可安装原型 `0.1.0~beta1`；尚未发布符合完整精准移植要求的 DEB。下面安装包仅保留作为原型参考。
 
 PianoLab 是本地实现的 iOS 16 桌面应用，包含麦克风拾音、音分和频谱显示、非谐性测量、三段式与旧版拉伸曲线、过拉补偿、历史律制、琴型管理及文件导入导出。数值核心直接编译为 C++，运行时不依赖 Android 库或模拟器。
 

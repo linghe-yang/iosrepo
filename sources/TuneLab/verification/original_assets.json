@@ -6,5 +6,6 @@
   "text_and_images_regenerated": false,
   "all_ui_pixel_verified": false,
   "all_behaviors_ported": false,
-  "new_release_ready": false
+  "new_release_ready": false,
+  "ios_port_version": "0.2.0~alpha1"
 }

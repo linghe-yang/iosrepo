@@ -35,6 +35,23 @@
     [[UIBezierPath bezierPathWithRoundedRect:CGRectMake(10,y-2,travel,4) cornerRadius:2] fill];
     [UIColor.systemTealColor setFill];
     [[UIBezierPath bezierPathWithRoundedRect:CGRectMake(10,y-2,x-10,4) cornerRadius:2] fill];
+    if (region.first>=0) {
+        const CGFloat left=10+travel*region.first/durationSec;
+        const BOOL pair=region.complete();
+        UIColor *color=pair?UIColor.systemGreenColor:UIColor.systemRedColor;
+        const CGFloat right=pair?10+travel*region.second/durationSec:left;
+        if (pair) {
+            [[color colorWithAlphaComponent:.22] setFill];
+            UIRectFill(CGRectMake(left,2,right-left,self.bounds.size.height-4));
+        }
+        NSDictionary *attrs=@{NSForegroundColorAttributeName:color,NSFontAttributeName:[UIFont boldSystemFontOfSize:10]};
+        [color setFill]; UIRectFill(CGRectMake(left-1,4,2,24));
+        [@"1" drawAtPoint:CGPointMake(left-8,0) withAttributes:attrs];
+        if (pair) {
+            UIRectFill(CGRectMake(right-1,4,2,24));
+            [@"2" drawAtPoint:CGPointMake(right+2,0) withAttributes:attrs];
+        }
+    }
     if (dragging) {
         CGFloat goal=10+travel*aimSec/durationSec;
         [[UIColor colorWithWhite:1 alpha:.5] setFill];
@@ -56,6 +73,7 @@
     if (x<=3) aimSec=0;
     else if (x>=travel-3) aimSec=durationSec;
     else aimSec=durationSec*x/travel;
+    aimSec=region.constrain(aimSec);
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     UITouch *touch=touches.anyObject;

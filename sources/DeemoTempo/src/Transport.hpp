@@ -53,13 +53,37 @@ inline NoteWindow visibleNotes(const std::vector<Note>& notes, float time, float
     return {static_cast<size_t>(first-notes.begin()),static_cast<size_t>(end-notes.begin())};
 }
 
+struct LoopRange {
+    float first=-1, second=-1;
+    bool complete() const {return second>first && first>=0;}
+    void mark(float t) {
+        if (complete()) {*this={};return;}
+        if (first<0 || t<=first) first=t;
+        else second=t;
+    }
+    float constrain(float t) const {return complete()?std::clamp(t,first,second):t;}
+};
+// Compare the game's scaled and unscaled frame clocks during active play.
+// Discard isolated frame stalls (Unity caps scaled delta after a stall).
+struct RateObservation {
+    float elapsed=0;
+    bool changed(float scaled,float unscaled) {
+        if (!std::isfinite(scaled) || !(unscaled>0 && unscaled<.1f) ||
+            std::fabs(scaled-unscaled)<=.001f*unscaled+.00001f) {
+            elapsed=0;
+            return false;
+        }
+        elapsed+=unscaled;
+        return elapsed>=.5f;
+    }
+};
 inline double follow(double current,double target,double length,double dt) {
     if (!(length>0 && std::isfinite(target) && std::isfinite(dt) && dt>0)) return current;
     const double goal=std::clamp(target,0.,length);
     const double gap=goal-current;
-    constexpr double topSpeed=90; // original song seconds per real second
+    constexpr double topSpeed=36; // original song seconds per real second
     const bool endpoint=target<=0 || target>=length;
-    const double speed=endpoint ? topSpeed : std::min(topSpeed,.7+3.8*std::abs(gap));
+    const double speed=endpoint ? topSpeed : std::min(topSpeed,(.7+3.8*std::abs(gap))/2.5);
     const double step=speed*std::min(dt,.05);
     if (std::abs(gap)<=step) return goal;
     return current+std::copysign(step,gap);

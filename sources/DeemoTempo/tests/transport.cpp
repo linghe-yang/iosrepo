@@ -25,7 +25,8 @@ int main(){
     for(double hz : {15.,30.,60.,120.}){
         double near=follow(10,12,180,1/hz)-10;
         double far=follow(10,150,180,1/hz)-10;
-        assert(far>near && near>0 && far<=90/hz+.00001);
+        assert(far>near && near>0 && far<=36/hz+.00001);
+        assert(std::abs(near-(.7+3.8*2)/2.5*std::min(.05,1/hz))<1e-10);
         assert(follow(150,10,180,1/hz)<150);
         assert(follow(1,1,180,1/hz)==1);
         double position=1;
@@ -38,8 +39,30 @@ int main(){
         double a=follow(7.0,-50,length,dt);
         double b=follow(length-7,length+50,length,dt);
         assert(std::abs((7-a)-(b-(length-7)))<1e-10);
-        assert(std::abs((7-a)-90*dt)<1e-10);
+        assert(std::abs((7-a)-36*dt)<1e-10);
         assert(follow(.15,0,length,dt)==0 && follow(length-.15,length,length,dt)==length);
+    }
+    LoopRange loop;
+    RateObservation observation;
+    for(int i=0;i<240;i++) assert(!observation.changed(1.f/60,1.f/60));
+    for(int i=0;i<120;i++) assert(!observation.changed(.333f,1.f)); // capped frames
+    for(float rate : {0.f,.5f,1.5f,2.f}) {
+        observation={};
+        for(int i=0;i<20;i++) assert(!observation.changed(rate/60,1.f/60));
+        for(int i=0;i<20;i++) observation.changed(rate/60,1.f/60);
+        assert(observation.changed(rate/60,1.f/60));
+        assert(!observation.changed(1.f/60,1.f/60));
+    }
+    assert(!loop.complete() && loop.constrain(2)==2);
+    loop.mark(10);loop.mark(10);
+    assert(loop.first==10 && !loop.complete() && loop.constrain(0)==0);
+    loop.mark(4);assert(loop.first==4 && !loop.complete());
+    loop.mark(10);assert(loop.complete() && loop.constrain(1)==4 && loop.constrain(8)==8 && loop.constrain(12)==10);
+    loop.mark(7);assert(loop.first<0 && loop.second<0);
+    loop.mark(0);loop.mark(4);
+    for (int i=0;i<8;++i) {
+        j.move(loop.second,loop.first,chart);assert(j.decisions.empty());
+        j.move(loop.first,loop.second,chart);assert(j.decisions.size()==4);
     }
     auto window=visibleNotes(chart,2,3);
     assert(window.first==1 && window.end==5); // include both halves of chord
@@ -47,5 +70,5 @@ int main(){
     assert(window.first==window.end); // genuinely empty section
     window=visibleNotes(chart,1.99f,2.01f);
     assert(window.first==1 && window.end==3); // chord returns on backwards motion
-    puts("PASS: bidirectional follow, frame stalls, early/late judgements, chords, repeated seeks and skipped misses");
+    puts("PASS: 2.5x slower follow, endpoint speed, marker replacement/cancel, loop limits and repeated judgement rollback");
 }

@@ -42,8 +42,68 @@ template<class T> void writeField(Object object,size_t offset,T value) {
 }
 Object currentPlane() { return field<Object>(manager,managerPlane); }
 float songClock() { return field<float>(field<Object>(currentPlane(),planeParams),0x10); }
+practice::LoopRange region;
+practice::RateObservation externalRate;
+bool toolPaused,heldPreview,ratePending;
+uint32_t practiceResultHandle;
+Object practiceResult; // still rooted by game if GC handle allocation fails
+
+Step originalEndStep,originalLinkEndStep;
+Action originalResultInit,originalPlaneUpdate,originalClick;
+thread_local Object settlingOwner;
+using CountReset=void(*)(Object,int,Method);
+CountReset originalCountReset;
+
+void forgetPractice() {
+    if (practiceResultHandle) dropObject(practiceResultHandle);
+    practiceResultHandle=0;
+    practiceResult=nullptr;
+}
+void markPractice() {
+    Object result=field<Object>(manager,managerResult);
+    if (!result || result==practiceResult) return;
+    forgetPractice();
+    practiceResult=result;
+    practiceResultHandle=retainObject(result,false);
+}
+void allMissForSettlement(Object result) {
+    if (!result || result!=practiceResult) return;
+    const int total=field<int>(result,0x1c);
+    if (total<=0) return;
+    if (field<int>(result,0x3c)==total && field<int>(result,0x20)==total &&
+        field<int>(result,0x14)==0 && field<double>(result,0x28)==0) return;
+    at<Action>(Deemo::resetResult)(result,nullptr);
+    // Accumulate exactly what the game would have produced for a fully missed chart.
+    for (int i=0;i<total;++i) originalAddRatio(result,0,nullptr);
+}
+void newResult(Object result,int count,Method method) {
+    if (result==practiceResult) forgetPractice();
+    originalCountReset(result,count,method);
+}
+bool settleStep(Object e,Method m,Step original) {
+    // End can yield several times waiting for the native end animation.
+    Object previous=settlingOwner;
+    settlingOwner=field<Object>(e,Deemo::coroutineOwner);
+    bool more=original(e,m);
+    settlingOwner=previous;
+    return more;
+}
+bool settle(Object e,Method m) {return settleStep(e,m,originalEndStep);}
+bool settleLink(Object e,Method m) {return settleStep(e,m,originalLinkEndStep);}
+void resultScreen(Object owner,Method m) {
+    originalResultInit(owner,m);
+    allMissForSettlement(field<Object>(owner,0x90));
+    if (manager) endSong();
+}
 void setupNote(Object note,bool background,Method method) {
     if (!previewing) originalSetupNote(note,background,method);
+}
+void planeUpdate(Object plane,Method method) {
+    if ((toolPaused || previewing) && plane==currentPlane()) return;
+    originalPlaneUpdate(plane,method);
+}
+void clickNote(Object note,Method method) {
+    if (!toolPaused && !previewing) originalClick(note,method);
 }
 
 void releasePreviewNote(const PreviewNote& v) {
@@ -99,6 +159,7 @@ void abandonGesture() {
 }
 void resetTransport() {
     discardPreview();
+    region={}; externalRate={}; toolPaused=heldPreview=ratePending=false;
     ++transportID;++audioEpoch;
     abandonGesture();
     chartReady=false;historyOK=true;blockPast=false;
@@ -140,7 +201,7 @@ bool loadChart() {
 }
 
 void judge(Object note,bool hit,Method method) {
-    if (previewing) return;
+    if (previewing || toolPaused) return;
     if (!chartReady) {originalJudge(note,hit,method);return;}
     Object previous=judgingInfo;
     judgingInfo=field<Object>(note,0x60);
@@ -148,7 +209,7 @@ void judge(Object note,bool hit,Method method) {
     judgingInfo=previous;
 }
 void addRatio(Object result,float ratio,Method method) {
-    if (previewing) return;
+    if (previewing || toolPaused) return;
     if (manager && chartReady && result==field<Object>(manager,managerResult)) {
         auto id=reinterpret_cast<uintptr_t>(judgingInfo);
         if (noteIndices.find(id)==noteIndices.end() || !journal.record(id,songClock(),ratio))
@@ -168,7 +229,7 @@ Object spawn(Object plane,Object info,Method method) {
     return originalSpawn(plane,info,method);
 }
 void noteSound(Object note,Method method) {
-    if (previewing) return;
+    if (previewing || toolPaused) return;
     if (!chartReady) {originalNoteSound(note,method);return;}
     Object info=field<Object>(note,0x60);
     if (chartReady && field<float>(info,0x30)>2 && noteIndices.count(reinterpret_cast<uintptr_t>(info)))
@@ -176,7 +237,7 @@ void noteSound(Object note,Method method) {
     originalNoteSound(note,method);
 }
 void sendSound(Object owner,Object sound,Method method) {
-    if (previewing) return;
+    if (previewing || toolPaused) return;
     if (manager==owner && sound && chartReady && !rescheduling) soundLog.push_back({sound,songClock()});
     originalSendSound(owner,sound,method);
 }
@@ -259,23 +320,69 @@ void finishScrub() {
                 backingLog.push_back({info,std::nextafter(std::max(n.time,branch),target)});
         }
     }
-    discardPreview();
-    previewing=false;
     restoreScore();
-    rebuildPlane(target);
+    if (toolPaused) {
+        renderPreview(target);
+        heldPreview=true;
+    } else {
+        discardPreview();
+        previewing=false;
+        rebuildPlane(target);
+    }
     keyEpoch=originalTime(nullptr);
     soundLog.erase(std::remove_if(soundLog.begin(),soundLog.end(),
                   [&](const SoundEvent& e){return e.time>branch;}),soundLog.end());
-    recoverKeys(target);
     abandonGesture();
     progressSec=target;
-    if (!paused) {
+    if (!paused && !toolPaused) {
         transportSeek=true;
         onPlay(manager,nullptr);
         transportSeek=false;
+        recoverKeys(target);
     }
 }
+void replayHere() {
+    transportSeek=true;
+    onPlay(manager,nullptr);
+    transportSeek=false;
+}
+void releaseHeldPreview() {
+    if (!heldPreview) return;
+    heldPreview=false;
+    float time=songClock();
+    discardPreview();
+    rebuildPlane(time);
+}
+void toggleHold() {
+    if (!manager || paused || !chartReady || dragging || beginRequested) return;
+    markPractice();
+    if (toolPaused) {
+        toolPaused=false;
+        releaseHeldPreview();
+        keyEpoch=originalTime(nullptr);
+        replayHere();
+        recoverKeys(songClock());
+    } else {
+        toolPaused=true;
+        at<Action>(Deemo::pauseAudio)(source,nullptr);
+        stopKeyVoices();
+    }
+}
+void markRegion() {
+    if (!manager || !chartReady || paused || (!historyOK && !region.complete()) || dragging || beginRequested) return;
+    markPractice();
+    region.mark(std::clamp(songClock(),0.f,durationSec));
+}
+void loopToStart(float now) {
+    stopKeyVoices();
+    originSec=now;
+    positionSec=lowestSec=region.first;
+    cancelRequested=false;
+    finishScrub();
+}
+void applyLiveRate();
 void updateTransport(Object owner,Method method) {
+    if (owner==manager && ratePending && !paused && !dragging && !beginRequested) applyLiveRate();
     if (!manager || owner!=manager || !chartReady) {
         originalUpdate(owner,method);return;
     }
@@ -283,10 +390,12 @@ void updateTransport(Object owner,Method method) {
         beginRequested=false;
         if (historyOK && !paused && field<int>(field<Object>(manager,managerResult),0x20)==(int)journal.decisions.size()) {
             lowestSec=originSec=positionSec=std::clamp(songClock(),0.f,durationSec);
+            markPractice();
             dragging=previewing=true;
             at<Action>(Deemo::pauseAudio)(source,nullptr);
             stopKeyVoices();
-            at<Action>(Deemo::clearPlane)(currentPlane(),nullptr);
+            if (!heldPreview) at<Action>(Deemo::clearPlane)(currentPlane(),nullptr);
+            heldPreview=false;
             renderPreview(positionSec);
             previousTick=CACurrentMediaTime();
         } else {
@@ -295,7 +404,10 @@ void updateTransport(Object owner,Method method) {
     }
     if (dragging) {
         double now=CACurrentMediaTime();
-        float next=finishRequested ? positionSec : practice::follow(positionSec,aimSec,durationSec,now-previousTick);
+        float start=region.complete()?region.first:0;
+        float end=region.complete()?region.second:durationSec;
+        float next=finishRequested ? positionSec :
+            region.constrain(start+practice::follow(positionSec-start,aimSec-start,end-start,now-previousTick));
         previousTick=now;
         if (!cancelRequested && fabsf(next-positionSec)>1.e-6f) {
             positionSec=next;
@@ -306,10 +418,23 @@ void updateTransport(Object owner,Method method) {
         if (finishRequested || cancelRequested) finishScrub();
         return;
     }
+    if (toolPaused) return;
+    if (region.complete() && !paused && historyOK) {
+        float now=songClock();
+        if (now>=region.second) {
+            loopToStart(now);
+            return;
+        }
+    }
     originalUpdate(owner,method);
+    if (owner==manager && region.complete() && historyOK && !paused && songClock()>=region.second)
+        loopToStart(songClock());
     if (manager==owner && chartReady) progressSec=std::clamp(songClock(),0.f,durationSec);
 }
 void retrySong(Object owner,Method method) {
+    Object result=field<Object>(owner,managerResult);
     if (manager==owner) endSong();
     originalRetry(owner,method);
+    // The retry button uses the parameterless Reset on the same object.
+    if (result==practiceResult) forgetPractice();
 }

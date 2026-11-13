@@ -19,7 +19,9 @@ constexpr Entry mainStep{0xa6904,0x6dbb23e9}, playMusic{0xa58cc,0x6dbb23e9},
     removeDSP{0x2821224,0xd10083ff}, releaseDSP{0x28210d8,0xd10083ff},
     softwareFormat{0x28550c0,0xd10143ff};
 constexpr Entry managerUpdate{0xa4bb4,0xa9be4ff4};
+constexpr Entry unscaledDelta{0x1836694,0xa9be4ff4};
 constexpr Entry judgeNote{0xcb6c4,0x6dbb2beb};
+constexpr Entry clickNote{0xcb5f4,0xa9be4ff4};
 constexpr Entry addRatio{0xb12d4,0xb9402008};
 constexpr Entry activeNote{0xd14e4,0x6dbc23e9};
 constexpr Entry clearPlane{0xd0e40,0xa9bd57f6};
@@ -45,7 +47,9 @@ constexpr Entry positionStep{0xcca14,0xd101c3ff};
 constexpr Entry setNoteObjectActive{0xa3794,0xa9bf7bfd};
 constexpr Entry activeTime{0xa7e98,0xa9be4ff4};
 constexpr Entry setSongTime{0xa7e10,0xbd001000};
-constexpr Entry entries[]={mainStep,playMusic,leave,end,pause,stopSource,playDelayed,getDelta,getTime,noteStep,bankPlay,getSamples,setSamples,clipSamples,getClip,clipHz,setPitch,audioManager,ensureSourceGroups,createDSPByType,setDSPParameter,addDSP,removeDSP,releaseDSP,softwareFormat,managerUpdate,judgeNote,addRatio,activeNote,clearPlane,updatePlaneTime,stepPlane,resetResult,scoreValue,resetUI,comboUI,comboStatus,scoreUI,clearWorker,enableBehaviour,pauseAudio,noteSound,keyEnumerator,retry,sendSound,clipLength,setupNote,positionIterator,positionStep,setNoteObjectActive,activeTime,setSongTime};
+constexpr Entry endStep{0xa63ec,0xa9be4ff4},linkEndStep{0xa659c,0xa9be4ff4},
+    resultInit{0x134a04,0xa9be4ff4},resetCount{0xb121c,0x1e620020};
+constexpr Entry entries[]={mainStep,playMusic,leave,end,pause,stopSource,playDelayed,getDelta,getTime,noteStep,bankPlay,getSamples,setSamples,clipSamples,getClip,clipHz,setPitch,audioManager,ensureSourceGroups,createDSPByType,setDSPParameter,addDSP,removeDSP,releaseDSP,softwareFormat,managerUpdate,judgeNote,clickNote,addRatio,activeNote,clearPlane,updatePlaneTime,stepPlane,resetResult,scoreValue,resetUI,comboUI,comboStatus,scoreUI,clearWorker,enableBehaviour,pauseAudio,noteSound,keyEnumerator,retry,sendSound,clipLength,setupNote,positionIterator,positionStep,setNoteObjectActive,activeTime,setSongTime,endStep,linkEndStep,resultInit,resetCount,unscaledDelta};
 constexpr size_t coroutineOwner=0x20, managerSource=0x50, objectNative=0x10,
     systemSlot=0x178, sourceDryBus=0x380, sourcePitch=0x1f4;
 constexpr int pitchShifterType=11;

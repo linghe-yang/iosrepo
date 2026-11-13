@@ -6,7 +6,7 @@ sys.dont_write_bytecode=True
 sys.path.insert(0,str(repo/'sources/PianoLab'))
 from packaging_helpers import signature_check,archive
 package='com.linghe.deemotempo'
-version='0.3.1~beta1'
+version='0.4.0~beta1'
 binary=(root/'build/DeemoTempo.dylib').read_bytes()
 check=signature_check(binary,expected_subtype=0,expected_kind=6)
 assert check['code_pages_verified']>0
@@ -16,7 +16,7 @@ control=f"""Package: {package}
 Name: DEEMO Practice Tempo
 Version: {version}
 Architecture: iphoneos-arm64
-Description: Practice tempo and bidirectional song scrubbing with judgement rollback for DEEMO 5.0.8 (1001405).
+Description: Pitch-preserving tempo, pause, scrubbing and A/B loops with zero-score practice results for DEEMO 5.0.8 (1001405).
 Section: Tweaks
 Author: Local Build
 Maintainer: Local Build

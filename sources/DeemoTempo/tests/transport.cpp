@@ -33,5 +33,19 @@ int main(){
         assert(position==2);
     }
     assert(follow(0,999,10,50)<=10 && follow(1,0,10,50)>=0);
+    for(double length : {15.,180.,600.}) for(double fps : {30.,60.,120.}) {
+        double dt=1/fps;
+        double a=follow(7.0,-50,length,dt);
+        double b=follow(length-7,length+50,length,dt);
+        assert(std::abs((7-a)-(b-(length-7)))<1e-10);
+        assert(std::abs((7-a)-90*dt)<1e-10);
+        assert(follow(.15,0,length,dt)==0 && follow(length-.15,length,length,dt)==length);
+    }
+    auto window=visibleNotes(chart,2,3);
+    assert(window.first==1 && window.end==5); // include both halves of chord
+    window=visibleNotes(chart,3.1f,3.8f);
+    assert(window.first==window.end); // genuinely empty section
+    window=visibleNotes(chart,1.99f,2.01f);
+    assert(window.first==1 && window.end==3); // chord returns on backwards motion
     puts("PASS: bidirectional follow, frame stalls, early/late judgements, chords, repeated seeks and skipped misses");
 }

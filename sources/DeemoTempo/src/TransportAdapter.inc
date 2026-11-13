@@ -10,6 +10,13 @@ FloatAction originalAddRatio;
 PairAction originalSendSound;
 Spawn originalSpawn,originalMakeKey;
 JudgeCall originalJudge;
+JudgeCall originalSetupNote;
+struct PreviewNote {
+    Object pooledNote;
+    uint32_t positionHandle;
+};
+std::unordered_map<size_t,PreviewNote> previewNotes;
+
 struct SoundEvent { Object sound; float time; };
 struct DeferredKey { unsigned epoch; bool continuing; float remaining; };
 std::unordered_map<Object,DeferredKey> pendingKeys;
@@ -35,10 +42,63 @@ template<class T> void writeField(Object object,size_t offset,T value) {
 }
 Object currentPlane() { return field<Object>(manager,managerPlane); }
 float songClock() { return field<float>(field<Object>(currentPlane(),planeParams),0x10); }
+void setupNote(Object note,bool background,Method method) {
+    if (!previewing) originalSetupNote(note,background,method);
+}
+
+void releasePreviewNote(const PreviewNote& v) {
+    Object gameObject=field<Object>(v.pooledNote,0x40);
+    if (gameObject) at<JudgeCall>(Deemo::setNoteObjectActive)(gameObject,false,nullptr);
+    if (v.positionHandle) dropObject(v.positionHandle);
+}
+void discardPreview() {
+    for (const auto& item:previewNotes) releasePreviewNote(item.second);
+    previewNotes.clear();
+}
+
+// Run DEEMO's actual position coroutine independently of the gameplay Hit/Miss
+// scheduler. MoveNext #1 enables its renderer. MoveNext #2 writes localPosition
+// and opacity. Keep the iterator alive across frames, including backwards motion.
+void renderPreview(float time) {
+    Object plane=currentPlane();
+    Object params=field<Object>(plane,planeParams);
+    at<FloatAction>(Deemo::setSongTime)(params,time,nullptr);
+    float horizon=at<float(*)(Object,Method)>(Deemo::activeTime)(params,nullptr);
+    const auto range=practice::visibleNotes(chartNotes,time,std::max(time,horizon));
+    for (auto it=previewNotes.begin();it!=previewNotes.end();) {
+        if (it->first>=range.first && it->first<range.end) {++it;continue;}
+        releasePreviewNote(it->second);
+        it=previewNotes.erase(it);
+    }
+    const auto step=at<Step>(Deemo::positionStep);
+    for (size_t index=range.first;index<range.end;++index) {
+        const auto &note=chartNotes[index];
+        if (!note.scored) continue;
+        auto found=previewNotes.find(index);
+        Object iterator=nullptr;
+        if (found==previewNotes.end()) {
+            Object obj=originalSpawn(plane,reinterpret_cast<Object>(note.id),nullptr);
+            if (!obj) continue;
+            iterator=at<Object(*)(Object,Method)>(Deemo::positionIterator)(obj,nullptr);
+            PreviewNote entry{obj,iterator?retainObject(iterator,false):0};
+            if (!entry.positionHandle || !step(iterator,nullptr)) {releasePreviewNote(entry);continue;}
+            previewNotes.emplace(index,entry);
+        } else {
+            iterator=heldObject(found->second.positionHandle);
+        }
+        if (iterator) {
+            // During normal playback opacity ramps by .02 per animation tick.
+            // A seek needs the opacity at its destination, even on its first tick.
+            writeField<float>(iterator,0x2c,1.f);
+            step(iterator,nullptr);
+        }
+    }
+}
 void abandonGesture() {
     dragging=beginRequested=finishRequested=cancelRequested=previewing=false;
 }
 void resetTransport() {
+    discardPreview();
     ++transportID;++audioEpoch;
     abandonGesture();
     chartReady=false;historyOK=true;blockPast=false;
@@ -164,31 +224,22 @@ void restoreScore() {
     int score=at<Integer>(Deemo::scoreValue)(result,nullptr);
     at<FloatAction>(Deemo::scoreUI)(ui,floorf(score*.01f),nullptr);
 }
-void rebuildPlane(float target,bool preview) {
+void rebuildPlane(float target) {
     Object plane=currentPlane();
     at<Action>(Deemo::clearPlane)(plane,nullptr);
     rebuildSkip.clear();
-    if (!preview) {
-        rebuildSkip=journal.done;
-        for (auto e:backingLog) rebuildSkip.insert(reinterpret_cast<uintptr_t>(e.sound));
-    }
+    rebuildSkip=journal.done;
+    for (auto e:backingLog) rebuildSkip.insert(reinterpret_cast<uintptr_t>(e.sound));
     size_t i=0;
-    if (preview) {
-        auto first=std::lower_bound(chartNotes.begin(),chartNotes.end(),target,
-                    [](const practice::Note& n,float t){return n.time<t;});
-        i=static_cast<size_t>(first-chartNotes.begin());
-    } else {
-        for (;i<chartNotes.size();++i) {
-            const auto& n=chartNotes[i];
-            if (n.time>=target) break;
-            if (rebuildSkip.count(n.id) || field<float>(reinterpret_cast<Object>(n.id),0x30)<-2) continue;
-            break; // Overdue but still pending at the selected instant.
-        }
+    for (;i<chartNotes.size();++i) {
+        const auto& n=chartNotes[i];
+        if (n.time>=target) break;
+        if (rebuildSkip.count(n.id) || field<float>(reinterpret_cast<Object>(n.id),0x30)<-2) continue;
+        break; // Overdue but still pending at the selected instant.
     }
     writeField<int>(plane,0x60,(int)i);
     blockPast=true;
     at<FloatAction>(Deemo::updatePlaneTime)(plane,target,nullptr);
-    if (preview) at<Action>(Deemo::stepPlane)(plane,nullptr);
     // Keep the skip set in force for already-scored early hits not yet spawned.
 }
 void finishScrub() {
@@ -208,9 +259,10 @@ void finishScrub() {
                 backingLog.push_back({info,std::nextafter(std::max(n.time,branch),target)});
         }
     }
+    discardPreview();
     previewing=false;
     restoreScore();
-    rebuildPlane(target,false);
+    rebuildPlane(target);
     keyEpoch=originalTime(nullptr);
     soundLog.erase(std::remove_if(soundLog.begin(),soundLog.end(),
                   [&](const SoundEvent& e){return e.time>branch;}),soundLog.end());
@@ -234,6 +286,8 @@ void updateTransport(Object owner,Method method) {
             dragging=previewing=true;
             at<Action>(Deemo::pauseAudio)(source,nullptr);
             stopKeyVoices();
+            at<Action>(Deemo::clearPlane)(currentPlane(),nullptr);
+            renderPreview(positionSec);
             previousTick=CACurrentMediaTime();
         } else {
             abandonGesture();
@@ -244,16 +298,9 @@ void updateTransport(Object owner,Method method) {
         float next=finishRequested ? positionSec : practice::follow(positionSec,aimSec,durationSec,now-previousTick);
         previousTick=now;
         if (!cancelRequested && fabsf(next-positionSec)>1.e-6f) {
-            bool backward=next<positionSec;
             positionSec=next;
             lowestSec=std::min(lowestSec,next);
-            if (backward) rebuildPlane(next,true);
-            else {
-                // Reuse active pooled objects in the forward direction, allowing the
-                // actual game's position coroutines to scroll the chart every frame.
-                at<FloatAction>(Deemo::updatePlaneTime)(currentPlane(),next,nullptr);
-                at<Action>(Deemo::stepPlane)(currentPlane(),nullptr);
-            }
+            renderPreview(next);
         }
         if (paused) cancelRequested=true;
         if (finishRequested || cancelRequested) finishScrub();

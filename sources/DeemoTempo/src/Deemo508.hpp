@@ -39,7 +39,13 @@ constexpr Entry keyEnumerator{0x14e1f4,0xa9bd57f6};
 constexpr Entry retry{0xa5c50,0xa9be4ff4};
 constexpr Entry sendSound{0xa4ee8,0xa9bd57f6};
 constexpr Entry clipLength{0x180d9e4,0xa9be4ff4};
-constexpr Entry entries[]={mainStep,playMusic,leave,end,pause,stopSource,playDelayed,getDelta,getTime,noteStep,bankPlay,getSamples,setSamples,clipSamples,getClip,clipHz,setPitch,audioManager,ensureSourceGroups,createDSPByType,setDSPParameter,addDSP,removeDSP,releaseDSP,softwareFormat,managerUpdate,judgeNote,addRatio,activeNote,clearPlane,updatePlaneTime,stepPlane,resetResult,scoreValue,resetUI,comboUI,comboStatus,scoreUI,clearWorker,enableBehaviour,pauseAudio,noteSound,keyEnumerator,retry,sendSound,clipLength};
+constexpr Entry setupNote{0xcafc4,0xa9bd57f6};
+constexpr Entry positionIterator{0xcb394,0xa9be4ff4};
+constexpr Entry positionStep{0xcca14,0xd101c3ff};
+constexpr Entry setNoteObjectActive{0xa3794,0xa9bf7bfd};
+constexpr Entry activeTime{0xa7e98,0xa9be4ff4};
+constexpr Entry setSongTime{0xa7e10,0xbd001000};
+constexpr Entry entries[]={mainStep,playMusic,leave,end,pause,stopSource,playDelayed,getDelta,getTime,noteStep,bankPlay,getSamples,setSamples,clipSamples,getClip,clipHz,setPitch,audioManager,ensureSourceGroups,createDSPByType,setDSPParameter,addDSP,removeDSP,releaseDSP,softwareFormat,managerUpdate,judgeNote,addRatio,activeNote,clearPlane,updatePlaneTime,stepPlane,resetResult,scoreValue,resetUI,comboUI,comboStatus,scoreUI,clearWorker,enableBehaviour,pauseAudio,noteSound,keyEnumerator,retry,sendSound,clipLength,setupNote,positionIterator,positionStep,setNoteObjectActive,activeTime,setSongTime};
 constexpr size_t coroutineOwner=0x20, managerSource=0x50, objectNative=0x10,
     systemSlot=0x178, sourceDryBus=0x380, sourcePitch=0x1f4;
 constexpr int pitchShifterType=11;

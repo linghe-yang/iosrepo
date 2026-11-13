@@ -44,13 +44,24 @@ struct Journal {
     }
 };
 
+struct NoteWindow { size_t first, end; };
+inline NoteWindow visibleNotes(const std::vector<Note>& notes, float time, float horizon) {
+    const auto first=std::lower_bound(notes.begin(),notes.end(),time,
+        [](const Note& note,float t){return note.time<t;});
+    const auto end=std::upper_bound(first,notes.end(),horizon,
+        [](float t,const Note& note){return t<note.time;});
+    return {static_cast<size_t>(first-notes.begin()),static_cast<size_t>(end-notes.begin())};
+}
+
 inline double follow(double current,double target,double length,double dt) {
     if (!(length>0 && std::isfinite(target) && std::isfinite(dt) && dt>0)) return current;
-    target=std::clamp(target,0.,length);
-    double gap=target-current, distance=std::abs(gap);
-    double fraction=distance/length;
-    // Song seconds per real second. Close to thumb: precise, far away: accelerate.
-    double speed=std::min(90.,.35+length*(.18*fraction+6*fraction*fraction));
-    return current+std::copysign(std::min(distance,speed*std::min(dt,.05)),gap);
+    const double goal=std::clamp(target,0.,length);
+    const double gap=goal-current;
+    constexpr double topSpeed=90; // original song seconds per real second
+    const bool endpoint=target<=0 || target>=length;
+    const double speed=endpoint ? topSpeed : std::min(topSpeed,.7+3.8*std::abs(gap));
+    const double step=speed*std::min(dt,.05);
+    if (std::abs(gap)<=step) return goal;
+    return current+std::copysign(step,gap);
 }
 }

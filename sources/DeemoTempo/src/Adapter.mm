@@ -254,6 +254,7 @@ bool installAll(const mach_header_64 *header,const char *path) {
        && install(hook,Deemo::judgeNote,judge,originalJudge)
        && install(hook,Deemo::addRatio,addRatio,originalAddRatio)
        && install(hook,Deemo::activeNote,spawn,originalSpawn)
+       && install(hook,Deemo::setupNote,setupNote,originalSetupNote)
        && install(hook,Deemo::retry,retrySong,originalRetry)
        && install(hook,Deemo::noteSound,noteSound,originalNoteSound)
        && install(hook,Deemo::keyEnumerator,makeKey,originalMakeKey)

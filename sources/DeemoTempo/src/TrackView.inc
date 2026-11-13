@@ -50,8 +50,12 @@
     [self setNeedsDisplay];
 }
 - (void)aim:(UITouch *)touch {
-    CGFloat x=[touch locationInView:self].x;
-    aimSec=durationSec*std::clamp((x-10)/[self travel],CGFloat(0),CGFloat(1));
+    CGFloat travel=[self travel];
+    CGFloat x=[touch locationInView:self].x-10;
+    // A thumb centered on the physical end of the rail should select it reliably.
+    if (x<=3) aimSec=0;
+    else if (x>=travel-3) aimSec=durationSec;
+    else aimSec=durationSec*x/travel;
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     UITouch *touch=touches.anyObject;

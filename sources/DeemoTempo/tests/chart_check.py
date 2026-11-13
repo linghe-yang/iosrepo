@@ -6,7 +6,7 @@ from pathlib import Path
 if len(sys.argv)>2: sys.path.insert(0,str(Path(sys.argv[2]).resolve()))
 import UnityPy
 cases=('12thchance','mirrornight','yubikiri_genman')
-rates=(.5,.75,.9,1,1.1,1.25,1.5,2)
+rates=(.10,.1073,.125,.17,.251,.499,.5,.75,.9387,1,1.427,2)
 notes=events=charts=0
 with zipfile.ZipFile(sys.argv[1]) as ipa:
     for song in cases:
@@ -29,4 +29,4 @@ with zipfile.ZipFile(sys.argv[1]) as ipa:
                         assert abs((hit+wait/rate)*rate-(time+wait))<1e-6
                         assert abs(duration/rate*rate-duration)<1e-6
                 events+=len(row.get('sounds',[]))
-print(f'PASS: {charts} original charts, {notes} notes, {events} keysound events; 8 practice rates')
+print(f'PASS: {charts} original charts, {notes} notes, {events} keysound events; {len(rates)} practice rates')

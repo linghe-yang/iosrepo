@@ -26,7 +26,7 @@ https://linghe-yang.github.io/iosrepo/
 | `com.gamegod.igg.roothide` | Roothide，`iphoneos-arm64e` | `0.8.9.5+noads1` |
 | `com.vietanh.overlayiostool` | 传统越狱，`iphoneos-arm` | `5.8.12+lang1`；保留 `5.8.12` |
 | `com.vietanh.overlayiostool` | Rootless，`iphoneos-arm64` | `5.8.12+lang1`；保留 `5.8.12` |
-| [`com.linghe.deemotempo`](sources/DeemoTempo/README.md) | DEEMO 5.0.8 保调练习倍率，iOS 16 Rootless | `0.1.0~beta1` |
+| [`com.linghe.deemotempo`](sources/DeemoTempo/README.md) | DEEMO 5.0.8 0.10–2.00× 保调倍率滑条，iOS 16 Rootless | `0.2.0~beta1` |
 | `com.linghe.shadebar` | Rootless，iOS 16，A12+；桌面 App + 原生 arm64e 组件 | `0.6.0~beta1` |
 | `ai.akemi.appsyncunified` | 官方原版镜像，Rootless / `iphoneos-arm64` | `116.0` |
 | `com.linghe.pianolab` | Piano Tuner / TuneLab iOS 16 Rootless 移植测试版 | `0.2.2~alpha1` |

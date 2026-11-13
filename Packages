@@ -87,6 +87,22 @@ SHA1: 32fc925a6562ca9963afd1069cfd71fe82285926
 SHA256: efcd9893d0f285a867cdb3a6eaf05b592c0421f2844603ead6af9753465a26fe
 SHA512: 18ae60d340aab479e0703617a8fa9b502489ba440d20736be215d7836fe9650f799944526d6f76756261abdf5f5aadf887497bc839aa36268d3f021738ab3e9c
 
+Package: com.linghe.deemotempo
+Name: DEEMO Practice Tempo
+Version: 0.2.0~beta1
+Architecture: iphoneos-arm64
+Description: Pre-song practice tempo and pitch correction for DEEMO 5.0.8 (1001405).
+Section: Tweaks
+Author: Local Build
+Maintainer: Local Build
+Depends: mobilesubstrate, firmware (>= 16.0)
+Filename: ./debs/com.linghe.deemotempo_0.2.0~beta1_iphoneos-arm64.deb
+Size: 17052
+MD5sum: 7746e4438706f6aa7c4810f5f40bc139
+SHA1: fd1ef30b2d481bfd9c8e57d32a0cf0e6988cc138
+SHA256: 371eb5362aad4f84bb6f523d1f76423852b494aa1079e92ff183854be14683ce
+SHA512: 694b2dfeeb6ff66236bbe7900fc3788b14bae1d5e1956d5db9772755bbddddc66cee9fc7f62fc76cc438c89a3baab6e88c8c21b1a447e9793e37b30b8077d22f
+
 Package: com.linghe.pianolab.rootful
 Name: PianoLab (Rootful Beta)
 Version: 0.1.0~beta1

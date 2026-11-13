@@ -23,7 +23,8 @@ using EffectHook = void (*)(void *,void *,void **);
 uintptr_t base;
 bool ready;
 NSString *statusText;
-std::atomic<int> selection{100}, offsetMs{0};
+std::atomic<float> selection{1.0f};
+std::atomic<int> offsetMs{0};
 std::atomic<bool> playing{false};
 Tempo tempo;
 Object manager, source;
@@ -105,9 +106,9 @@ void prepareAudio(Object target) {
     }
     // Real-time FFT latency estimate (window minus hop), plus the user's
     // measured correction for this output route. Unity keeps its own calibration.
-    delaySeconds=(PitchSession::fftFrames*.75f)/outputHz+offsetMs.load()*.001f;
+    delaySeconds=pitchSession.latencySeconds(outputHz)+offsetMs.load()*.001f;
     setPitch(tempo.rate);
-    statusText=[NSString stringWithFormat:@"本曲 %.2f× · BGM 保调",tempo.rate];
+    statusText=[NSString stringWithFormat:@"本曲 %.3f× · BGM 保调",tempo.rate];
 }
 void onStop(Object object,Method method) {
     originalStop(object,method);
@@ -123,9 +124,9 @@ void onPlay(Object owner,Method method) {
     if (!target) {endSong();originalPlay(owner,method);return;}
     if (owner!=manager || target!=source) {
         endSong(); manager=owner;source=target;
-        tempo.rate=selection.load()*.01f;playing.store(true);
+        tempo.rate=selection.load();playing.store(true);
         keyEpoch=originalTime(nullptr);
-        statusText=[NSString stringWithFormat:@"本曲 %.2f×",tempo.rate];
+        statusText=[NSString stringWithFormat:@"本曲 %.3f×",tempo.rate];
     } else if (paused) {
         keyEpoch+=originalTime(nullptr)-pauseAt;
         paused=false;
@@ -236,6 +237,93 @@ bool installAll(const mach_header_64 *header,const char *path) {
 }
 } // namespace
 
+@interface DTRatePanel : UIViewController
+@property(nonatomic,strong) UILabel *readout;
+@property(nonatomic,strong) UISlider *slider;
+@end
+@implementation DTRatePanel
+- (void)applyRate:(UISlider *)slider {
+    if (playing.load()) return;
+    selection.store(slider.value);
+    [NSUserDefaults.standardUserDefaults setDouble:(double)slider.value*100 forKey:@"DTPracticeRate"];
+    self.readout.text=[NSString stringWithFormat:@"练习倍率   %.3f×",slider.value];
+    slider.accessibilityValue=[NSString stringWithFormat:@"%.3f×",slider.value];
+}
+- (void)reset {
+    [self.slider setValue:1 animated:YES];
+    [self applyRate:self.slider];
+}
+- (void)close { [self dismissViewControllerAnimated:YES completion:nil]; }
+- (void)editDelay {
+    UIAlertController *edit=[UIAlertController alertControllerWithTitle:@"声音延迟微调（毫秒）" message:@"正值将判定线向后移。对当前设备保存，默认 0。" preferredStyle:UIAlertControllerStyleAlert];
+    [edit addTextFieldWithConfigurationHandler:^(UITextField *f){f.text=[NSString stringWithFormat:@"%d",offsetMs.load()];f.keyboardType=UIKeyboardTypeNumbersAndPunctuation;}];
+    [edit addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    [edit addAction:[UIAlertAction actionWithTitle:@"保存" style:UIAlertActionStyleDefault handler:^(UIAlertAction *a){
+        NSScanner *scan=[NSScanner scannerWithString:edit.textFields.firstObject.text?:@""];
+        NSInteger ms=0;if ([scan scanInteger:&ms] && scan.isAtEnd && ms>=-200 && ms<=200) {
+            offsetMs.store((int)ms);[NSUserDefaults.standardUserDefaults setInteger:ms forKey:@"DTPracticeOffset"];
+        }
+    }]];
+    [self presentViewController:edit animated:YES completion:nil];
+}
+- (UIButton *)button:(NSString *)title action:(SEL)action {
+    UIButton *button=[UIButton buttonWithType:UIButtonTypeSystem];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+    return button;
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.view.backgroundColor=UIColor.systemBackgroundColor;
+    UIStackView *stack=[UIStackView new];
+    stack.axis=UILayoutConstraintAxisVertical;
+    stack.spacing=8;
+    stack.translatesAutoresizingMaskIntoConstraints=NO;
+    [self.view addSubview:stack];
+    UILayoutGuide *safe=self.view.safeAreaLayoutGuide;
+    [NSLayoutConstraint activateConstraints:@[
+        [stack.leadingAnchor constraintEqualToAnchor:safe.leadingAnchor constant:18],
+        [stack.trailingAnchor constraintEqualToAnchor:safe.trailingAnchor constant:-18],
+        [stack.topAnchor constraintEqualToAnchor:safe.topAnchor constant:14]
+    ]];
+    self.readout=[UILabel new];
+    self.readout.font=[UIFont monospacedDigitSystemFontOfSize:19 weight:UIFontWeightSemibold];
+    self.readout.text=[NSString stringWithFormat:@"练习倍率   %.3f×",selection.load()];
+    [stack addArrangedSubview:self.readout];
+    UILabel *status=[UILabel new];
+    status.font=[UIFont systemFontOfSize:13];
+    status.textColor=UIColor.secondaryLabelColor;
+    status.text=statusText;
+    [stack addArrangedSubview:status];
+    if (ready) {
+        self.slider=[UISlider new];
+        self.slider.minimumValue=.1f;
+        self.slider.maximumValue=2.f;
+        self.slider.value=selection.load();
+        self.slider.continuous=YES;
+        self.slider.accessibilityLabel=@"练习倍率";
+        self.slider.accessibilityValue=[NSString stringWithFormat:@"%.3f×",self.slider.value];
+        [self.slider addTarget:self action:@selector(applyRate:) forControlEvents:UIControlEventValueChanged];
+        [stack addArrangedSubview:self.slider];
+        UIStackView *limits=[UIStackView new];
+        limits.distribution=UIStackViewDistributionEqualSpacing;
+        for (NSString *value in @[@"0.10×",@"2.00×"]) {
+            UILabel *label=[UILabel new]; label.text=value; label.font=[UIFont systemFontOfSize:13];
+            [limits addArrangedSubview:label];
+        }
+        [stack addArrangedSubview:limits];
+    }
+    UIStackView *buttons=[UIStackView new];
+    buttons.distribution=UIStackViewDistributionEqualSpacing;
+    if (ready) {
+        [buttons addArrangedSubview:[self button:@"恢复 1×" action:@selector(reset)]];
+        [buttons addArrangedSubview:[self button:@"延迟微调" action:@selector(editDelay)]];
+    }
+    [buttons addArrangedSubview:[self button:@"完成" action:@selector(close)]];
+    [stack addArrangedSubview:buttons];
+}
+@end
+
 @interface DTMenu : NSObject
 @property(nonatomic,strong) UIButton *button;
 @property(nonatomic,strong) NSTimer *timer;
@@ -260,8 +348,8 @@ bool installAll(const mach_header_64 *header,const char *path) {
     if (self.button.superview!=window) {
         [self.button removeFromSuperview];[window addSubview:self.button];
     }
-    self.button.frame=CGRectMake(window.safeAreaInsets.left+10,window.safeAreaInsets.top+8,72,32);
-    [self.button setTitle:ready?[NSString stringWithFormat:@"♫ %.2f×",selection.load()*.01]:@"♫ 状态" forState:UIControlStateNormal];
+    self.button.frame=CGRectMake(window.safeAreaInsets.left+10,window.safeAreaInsets.top+8,84,32);
+    [self.button setTitle:ready?[NSString stringWithFormat:@"♫ %.3f×",selection.load()]:@"♫ 状态" forState:UIControlStateNormal];
     self.button.hidden=playing.load();
     if (!self.button.hidden) [window bringSubviewToFront:self.button];
 }
@@ -269,34 +357,17 @@ bool installAll(const mach_header_64 *header,const char *path) {
     UIViewController *vc=self.button.window.rootViewController;
     while(vc.presentedViewController) vc=vc.presentedViewController;
     if (!vc || playing.load()) return;
-    UIAlertController *menu=[UIAlertController alertControllerWithTitle:@"DEEMO 练习速度" message:statusText preferredStyle:UIAlertControllerStyleActionSheet];
-    if (ready) {
-        for (int percent : {50,75,90,100,110,125,150,200}) {
-            [menu addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"%.2f×%@",percent*.01,selection.load()==percent?@"  ✓":@""] style:UIAlertActionStyleDefault handler:^(UIAlertAction *a){
-                selection.store(percent);[NSUserDefaults.standardUserDefaults setInteger:percent forKey:@"DTPracticeRate"];
-            }]];
-        }
-        [menu addAction:[UIAlertAction actionWithTitle:@"声音延迟微调…" style:UIAlertActionStyleDefault handler:^(UIAlertAction *a){
-            UIAlertController *edit=[UIAlertController alertControllerWithTitle:@"声音延迟微调（毫秒）" message:@"正值将判定线向后移。对当前设备保存，默认 0。" preferredStyle:UIAlertControllerStyleAlert];
-            [edit addTextFieldWithConfigurationHandler:^(UITextField *f){f.text=[NSString stringWithFormat:@"%d",offsetMs.load()];f.keyboardType=UIKeyboardTypeNumbersAndPunctuation;}];
-            [edit addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
-            [edit addAction:[UIAlertAction actionWithTitle:@"保存" style:UIAlertActionStyleDefault handler:^(UIAlertAction *a){
-                NSScanner *scan=[NSScanner scannerWithString:edit.textFields.firstObject.text?:@""];
-                NSInteger ms=0;if ([scan scanInteger:&ms] && scan.isAtEnd && ms>=-200 && ms<=200) {
-                    offsetMs.store((int)ms);[NSUserDefaults.standardUserDefaults setInteger:ms forKey:@"DTPracticeOffset"];
-                }
-            }]];
-            [vc presentViewController:edit animated:YES completion:nil];
-        }]];
-    }
-    [menu addAction:[UIAlertAction actionWithTitle:@"关闭" style:UIAlertActionStyleCancel handler:nil]];
-    menu.popoverPresentationController.sourceView=self.button;
-    menu.popoverPresentationController.sourceRect=self.button.bounds;
-    [vc presentViewController:menu animated:YES completion:nil];
+    DTRatePanel *panel=[DTRatePanel new];
+    panel.modalPresentationStyle=UIModalPresentationPopover;
+    panel.preferredContentSize=CGSizeMake(320,ready?204:120);
+    panel.popoverPresentationController.sourceView=self.button;
+    panel.popoverPresentationController.sourceRect=self.button.bounds;
+    [vc presentViewController:panel animated:YES completion:nil];
 }
 - (void)start {
-    int saved=(int)[NSUserDefaults.standardUserDefaults integerForKey:@"DTPracticeRate"];
-    for (int p : {50,75,90,100,110,125,150,200}) if (p==saved) selection.store(p);
+    // Older versions also stored percentages, restricted to eight integer values.
+    double saved=[NSUserDefaults.standardUserDefaults doubleForKey:@"DTPracticeRate"]/100.0;
+    if (saved>=.1 && saved<=2) selection.store((float)saved);
     int ms=(int)[NSUserDefaults.standardUserDefaults integerForKey:@"DTPracticeOffset"];
     if (ms>=-200 && ms<=200) offsetMs.store(ms);
     self.button=[UIButton buttonWithType:UIButtonTypeSystem];

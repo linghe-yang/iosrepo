@@ -20,26 +20,48 @@ struct PitchBackend {
     int (*release)(void *effect);
 };
 class PitchSession {
-    void *effect_ = nullptr;
+    static constexpr int maxStages = 4; // 2^4 covers the 10x correction at 0.1x.
+    void *effects_[maxStages]{};
+    int count_ = 0;
+    int window_ = 512;
 public:
-    static constexpr int fftFrames = 512;
+    float latencySeconds(int outputHz) const {
+        return count_ * window_ * .75f / outputHz;
+    }
     int start(const PitchBackend &api, void *system, void *bus, int pitchType, Tempo tempo) {
-        if (effect_ || !system || !bus || !(tempo.rate >= .5f && tempo.rate <= 2)) return -1;
-        void *node = nullptr;
-        int rc = api.create(system, pitchType, &node);
-        if (rc || !node) return rc ? rc : -2;
-        rc = api.parameter(node, 1, fftFrames);
-        if (!rc) rc = api.parameter(node, 0, tempo.pitchCorrection());
-        if (!rc) rc = api.attach(bus, node, nullptr);
-        if (rc) { api.release(node); return rc; }
-        effect_ = node;
+        if (count_ || !system || !bus || !(tempo.rate >= .1f && tempo.rate <= 2)) return -1;
+        float factors[maxStages];
+        float remaining = tempo.pitchCorrection();
+        int needed = 0;
+        while (remaining > 2) {
+            factors[needed++] = 2;
+            remaining *= .5f;
+        }
+        factors[needed++] = remaining;
+        window_ = needed > 1 ? 4096 : 512;
+        // addDSP inserts at the head. Insert in reverse playback order.
+        while (needed) {
+            void *node = nullptr;
+            int rc = api.create(system, pitchType, &node);
+            if (rc || !node) { stop(api); return rc ? rc : -2; }
+            rc = api.parameter(node, 1, window_);
+            if (!rc) rc = api.parameter(node, 0, factors[--needed]);
+            if (!rc) rc = api.attach(bus, node, nullptr);
+            if (rc) {
+                api.release(node);
+                stop(api);
+                return rc;
+            }
+            effects_[count_++] = node;
+        }
         return 0;
     }
     void stop(const PitchBackend &api) {
-        if (effect_) {
-            api.remove(effect_);
-            api.release(effect_);
-            effect_ = nullptr;
+        while (count_) {
+            void *node = effects_[--count_];
+            api.remove(node);
+            api.release(node);
+            effects_[count_] = nullptr;
         }
     }
 };

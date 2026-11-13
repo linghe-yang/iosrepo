@@ -1,5 +1,7 @@
 #import <UIKit/UIKit.h>
 #include "Tempo.hpp"
+#include "Transport.hpp"
+#include <unordered_map>
 #include "Deemo508.hpp"
 #include <atomic>
 #include <dlfcn.h>
@@ -55,6 +57,9 @@ template<class T> T field(Object object,size_t offset) {
     if (object) memcpy(&value,static_cast<char *>(object)+offset,sizeof value);
     return value;
 }
+void onPlay(Object owner,Method method);
+void endSong();
+#include "TransportAdapter.inc"
 void setPitch(float value) { at<PlayDelay>(Deemo::setPitch)(source,value,nullptr); }
 void releaseAudio() {
     if (!sourceHandle) return;
@@ -69,6 +74,7 @@ void releaseAudio() {
     frequency=0;
 }
 void endSong() {
+    resetTransport();
     releaseAudio();
     source=nullptr; manager=nullptr; tempo={1};
     playing.store(false); paused=false;
@@ -124,6 +130,7 @@ void onPlay(Object owner,Method method) {
     if (!target) {endSong();originalPlay(owner,method);return;}
     if (owner!=manager || target!=source) {
         endSong(); manager=owner;source=target;
+        chartReady=loadChart();
         tempo.rate=selection.load();playing.store(true);
         keyEpoch=originalTime(nullptr);
         statusText=[NSString stringWithFormat:@"本曲 %.3f×",tempo.rate];
@@ -143,10 +150,10 @@ bool onFrame(Object enumerator,Method method) {
     return more;
 }
 void seek(Object obj,int frame,Method method) {
-    if (sourceHandle && obj==startingSource) {
+    if ((sourceHandle || transportSeek) && obj==startingSource) {
         Object clip=at<Object(*)(Object,Method)>(Deemo::getClip)(obj,nullptr);
         int length=clip?at<Integer>(Deemo::clipSamples)(clip,nullptr):0;
-        if (length>0) frame=(int)fmax(0,fmin(length-1.0,frame+tempo.audibleSampleDelay(delaySeconds,frequency)));
+        if (length>0) frame=(int)fmax(0,fmin(length-1.0,frame+(sourceHandle?tempo.audibleSampleDelay(delaySeconds,frequency):0)));
     }
     originalSeek(obj,frame,method);
 }
@@ -165,8 +172,19 @@ int samples(Object obj,Method method) {
     return static_cast<int>(fmax(0,fmin(INT_MAX,audible)));
 }
 bool onKeyStep(Object enumerator,Method method) {
+    auto pending=pendingKeys.find(enumerator);
+    if (pending!=pendingKeys.end()) {
+        if (pending->second.epoch!=audioEpoch) {pendingKeys.erase(pending);return false;}
+        if (pending->second.continuing) {
+            float now=originalTime(nullptr);
+            float deadline=(tempo.rate==1?now:(now-keyEpoch)*tempo.rate)+pending->second.remaining;
+            writeField<int>(enumerator,0x10,1);
+            writeField<float>(enumerator,0x30,deadline);
+            pending->second.continuing=false;
+        }
+    }
     bool prior=inKeys;inKeys=ready && manager && tempo.rate!=1;
-    bool more=originalKeyStep(enumerator,method);inKeys=prior;return more;
+    bool more=originalKeyStep(enumerator,method);inKeys=prior;if (!more) pendingKeys.erase(enumerator);return more;
 }
 float keyTime(Method method) {
     float time=originalTime(method);
@@ -231,7 +249,15 @@ bool installAll(const mach_header_64 *header,const char *path) {
        && install(hook,Deemo::end,end,originalEnd)
        && install(hook,Deemo::mainStep,onFrame,originalFrame)
        && install(hook,Deemo::stopSource,onStop,originalStop)
-       && install(hook,Deemo::playMusic,onPlay,originalPlay);
+       && install(hook,Deemo::playMusic,onPlay,originalPlay)
+       && install(hook,Deemo::managerUpdate,updateTransport,originalUpdate)
+       && install(hook,Deemo::judgeNote,judge,originalJudge)
+       && install(hook,Deemo::addRatio,addRatio,originalAddRatio)
+       && install(hook,Deemo::activeNote,spawn,originalSpawn)
+       && install(hook,Deemo::retry,retrySong,originalRetry)
+       && install(hook,Deemo::noteSound,noteSound,originalNoteSound)
+       && install(hook,Deemo::keyEnumerator,makeKey,originalMakeKey)
+       && install(hook,Deemo::sendSound,sendSound,originalSendSound);
     statusText=ready?@"开曲前选择练习倍率":@"适配未就绪";
     return ready;
 }
@@ -324,12 +350,32 @@ bool installAll(const mach_header_64 *header,const char *path) {
 }
 @end
 
+#include "TrackView.inc"
+
 @interface DTMenu : NSObject
+@property(nonatomic,strong) DTSongTrack *track;
+@property(nonatomic,strong) CADisplayLink *display;
 @property(nonatomic,strong) UIButton *button;
 @property(nonatomic,strong) NSTimer *timer;
 @property(nonatomic) BOOL attempted;
 @end
 @implementation DTMenu
+- (void)refreshTrack:(CADisplayLink *)sender {
+    UIWindow *window=self.track.window;
+    if (!window) return;
+    BOOL visible=playing.load() && chartReady && !paused;
+    self.track.hidden=!visible;
+    self.track.userInteractionEnabled=historyOK;
+    if (!visible) return;
+    UIEdgeInsets insets=window.safeAreaInsets;
+    CGFloat available=window.bounds.size.width-insets.left-insets.right;
+    CGFloat width=MIN(540,available*.72);
+    self.track.frame=CGRectMake(insets.left+(available-width)/2,insets.top+3,width,32);
+    [self.track refresh];
+}
+- (void)resign:(NSNotification *)note {
+    if (dragging||beginRequested) cancelRequested=true;
+}
 - (void)check:(NSTimer *)timer {
     UIApplication *app=UIApplication.sharedApplication;
     if (app.applicationState!=UIApplicationStateActive) return;
@@ -348,6 +394,10 @@ bool installAll(const mach_header_64 *header,const char *path) {
     if (self.button.superview!=window) {
         [self.button removeFromSuperview];[window addSubview:self.button];
     }
+    if (self.track.superview!=window) [window addSubview:self.track];
+    self.display.paused=!playing.load();
+    [self refreshTrack:self.display];
+    if (!self.track.hidden) [window bringSubviewToFront:self.track];
     self.button.frame=CGRectMake(window.safeAreaInsets.left+10,window.safeAreaInsets.top+8,84,32);
     [self.button setTitle:ready?[NSString stringWithFormat:@"♫ %.3f×",selection.load()]:@"♫ 状态" forState:UIControlStateNormal];
     self.button.hidden=playing.load();
@@ -374,6 +424,13 @@ bool installAll(const mach_header_64 *header,const char *path) {
     self.button.backgroundColor=[UIColor colorWithWhite:.08 alpha:.78];self.button.layer.cornerRadius=12;
     [self.button setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
     [self.button addTarget:self action:@selector(open) forControlEvents:UIControlEventTouchUpInside];
+    self.track=[[DTSongTrack alloc] initWithFrame:CGRectZero];
+    self.track.hidden=YES;
+    self.display=[CADisplayLink displayLinkWithTarget:self selector:@selector(refreshTrack:)];
+    self.display.preferredFramesPerSecond=30;
+    self.display.paused=YES;
+    [self.display addToRunLoop:NSRunLoop.mainRunLoop forMode:NSRunLoopCommonModes];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resign:) name:UIApplicationWillResignActiveNotification object:nil];
     self.timer=[NSTimer timerWithTimeInterval:.5 target:self selector:@selector(check:) userInfo:nil repeats:YES];
     [NSRunLoop.mainRunLoop addTimer:self.timer forMode:NSRunLoopCommonModes];[self check:nil];
 }

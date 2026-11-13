@@ -8,6 +8,8 @@ export LD_LIBRARY_PATH="$llvm/lib/x86_64-linux-gnu${LD_LIBRARY_PATH:+:$LD_LIBRAR
 mkdir -p build
 c++ -std=c++17 -include initializer_list -Wall -Werror tests/tempo.cpp -o build/test-tempo
 build/test-tempo
+c++ -std=c++17 -Wall -Werror tests/transport.cpp -o build/test-transport
+build/test-transport
 "$llvm/lib/llvm-23/bin/clang" -target arm64-apple-ios16.0 -isysroot "$sdk" -std=c++17 -include initializer_list -Os -fobjc-arc -fblocks -Wall -Wextra -Wno-unused-parameter -Wno-deprecated-declarations -c src/Adapter.mm -o build/Adapter.o
-"$tools/native/bin/aarch64-apple-darwin-ld" -arch arm64 -dylib -syslibroot "$sdk" -platform_version ios 16.0 16.5 -install_name @rpath/DeemoTempo.dylib -o build/DeemoTempo.dylib build/Adapter.o -lc++ -lSystem -lobjc -framework UIKit -framework Foundation -framework QuartzCore -adhoc_codesign
+"$tools/native/bin/aarch64-apple-darwin-ld" -arch arm64 -dylib -syslibroot "$sdk" -platform_version ios 16.0 16.5 -install_name @rpath/DeemoTempo.dylib -o build/DeemoTempo.dylib build/Adapter.o -lc++ -lSystem -lobjc -framework UIKit -framework Foundation -framework QuartzCore -framework CoreGraphics -adhoc_codesign
 "$tools/linux/iphone/bin/ldid" -S -Cadhoc build/DeemoTempo.dylib

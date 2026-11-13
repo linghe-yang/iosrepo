@@ -18,7 +18,9 @@ assert len(entries)>20
 for name,offset,word in entries:
     assert struct.unpack_from('<I',b,int(offset,16))[0]==int(word,16),name
 # Confirm all the gameplay paths whose timing the adapter depends upon.
-edges={0xa6458:0xa4e6c,0xa6608:0xa4e6c,0xa7540:0xb121c,0xa7100:0xa5fc4,
+edges={0xa5130:0x151280,0x1514b8:0x9d5e0,0x9cdec:0x9ce74,0xd1e40:0x9ce74,
+       0x7f9b8:0xb59c0,0x7f9c4:0x7fd00,0x803bc:0x1833b2c,
+       0xa6458:0xa4e6c,0xa6608:0xa4e6c,0xa7540:0xb121c,0xa7100:0xa5fc4,
        0xcb0d4:0xcb394,0xcaf84:0xcafc4,0xccc88:0x1829928,0xcceec:0x181468c,0xa6968:0xa58cc,0xa672c:0xa58cc,0xa5918:0x180f06c,0xa5b4c:0x180ef00,
        0xa5c1c:0x180eddc,0xa6a70:0x183662c,0xa6b38:0x183662c,0xa6b0c:0x180ed9c,
        0x14e31c:0x18365c4,0x14e344:0x18365c4,0x14e3b4:0x14d534,
@@ -32,4 +34,8 @@ assert struct.unpack_from('<I',b,0x2ef5c10)[0]==11
 # Ownership handoff from GamePlayManager to GameInfo, then ResultManager.
 assert struct.unpack_from('<II',b,0xa6484)==(0xf9402e88,0xf9001808)
 assert struct.unpack_from('<II',b,0x134a78)==(0xf9401808,0xf9004a68)
+# NotePool's two EffectPool references, piano visual pool, and Charming worker/renderer.
+for address,word in [(0xd1e58,0xa905f275),(0x1514ac,0xf9400a80),
+                     (0x7f9ac,0xf9405260),(0x802d4,0xf9001a60)]:
+    assert struct.unpack_from('<I',b,address)[0]==word
 print(f'PASS: {p["CFBundleShortVersionString"]} ({p["CFBundleVersion"]}), {uuid.UUID(bytes=image_uuid)}, {len(entries)} ABI entries and {len(edges)} branch targets')

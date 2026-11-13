@@ -77,14 +77,16 @@ struct RateObservation {
         return elapsed>=.5f;
     }
 };
-inline double follow(double current,double target,double length,double dt) {
+constexpr double minSensitivity=.25, maxSensitivity=2.5;
+inline double follow(double current,double target,double length,double dt,double sensitivity=1) {
     if (!(length>0 && std::isfinite(target) && std::isfinite(dt) && dt>0)) return current;
     const double goal=std::clamp(target,0.,length);
     const double gap=goal-current;
     constexpr double topSpeed=36; // original song seconds per real second
     const bool endpoint=target<=0 || target>=length;
     const double speed=endpoint ? topSpeed : std::min(topSpeed,(.7+3.8*std::abs(gap))/2.5);
-    const double step=speed*std::min(dt,.05);
+    const double gain=std::isfinite(sensitivity)?std::clamp(sensitivity,minSensitivity,maxSensitivity):1.;
+    const double step=speed*gain*std::min(dt,.05);
     if (std::abs(gap)<=step) return goal;
     return current+std::copysign(step,gap);
 }

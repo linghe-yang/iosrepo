@@ -47,9 +47,11 @@ constexpr Entry positionStep{0xcca14,0xd101c3ff};
 constexpr Entry setNoteObjectActive{0xa3794,0xa9bf7bfd};
 constexpr Entry activeTime{0xa7e98,0xa9be4ff4};
 constexpr Entry setSongTime{0xa7e10,0xbd001000};
+constexpr Entry cleanEffectPool{0xa3a6c,0xa9bd57f6}, charmingStep{0x801a0,0x6dbc23e9},
+    pianoEffect{0x151280,0xa9bd57f6}, pianoEffectStep{0x15132c,0xd10183ff};
 constexpr Entry endStep{0xa63ec,0xa9be4ff4},linkEndStep{0xa659c,0xa9be4ff4},
     resultInit{0x134a04,0xa9be4ff4},resetCount{0xb121c,0x1e620020};
-constexpr Entry entries[]={mainStep,playMusic,leave,end,pause,stopSource,playDelayed,getDelta,getTime,noteStep,bankPlay,getSamples,setSamples,clipSamples,getClip,clipHz,setPitch,audioManager,ensureSourceGroups,createDSPByType,setDSPParameter,addDSP,removeDSP,releaseDSP,softwareFormat,managerUpdate,judgeNote,clickNote,addRatio,activeNote,clearPlane,updatePlaneTime,stepPlane,resetResult,scoreValue,resetUI,comboUI,comboStatus,scoreUI,clearWorker,enableBehaviour,pauseAudio,noteSound,keyEnumerator,retry,sendSound,clipLength,setupNote,positionIterator,positionStep,setNoteObjectActive,activeTime,setSongTime,endStep,linkEndStep,resultInit,resetCount,unscaledDelta};
+constexpr Entry entries[]={mainStep,playMusic,leave,end,pause,stopSource,playDelayed,getDelta,getTime,noteStep,bankPlay,getSamples,setSamples,clipSamples,getClip,clipHz,setPitch,audioManager,ensureSourceGroups,createDSPByType,setDSPParameter,addDSP,removeDSP,releaseDSP,softwareFormat,managerUpdate,judgeNote,clickNote,addRatio,activeNote,clearPlane,updatePlaneTime,stepPlane,resetResult,scoreValue,resetUI,comboUI,comboStatus,scoreUI,clearWorker,enableBehaviour,pauseAudio,noteSound,keyEnumerator,retry,sendSound,clipLength,setupNote,positionIterator,positionStep,setNoteObjectActive,activeTime,setSongTime,endStep,linkEndStep,resultInit,resetCount,unscaledDelta,cleanEffectPool,charmingStep,pianoEffect,pianoEffectStep};
 constexpr size_t coroutineOwner=0x20, managerSource=0x50, objectNative=0x10,
     systemSlot=0x178, sourceDryBus=0x380, sourcePitch=0x1f4;
 constexpr int pitchShifterType=11;

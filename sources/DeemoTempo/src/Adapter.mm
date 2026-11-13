@@ -28,6 +28,7 @@ NSString *statusText;
 std::atomic<float> selection{1.0f};
 std::atomic<int> offsetMs{0};
 std::atomic<bool> playing{false};
+float scrubSensitivity=1;
 Tempo tempo;
 Object manager, source;
 uint32_t sourceHandle;
@@ -310,6 +311,9 @@ bool installAll(const mach_header_64 *header,const char *path) {
        && install(hook,Deemo::linkEndStep,settleLink,originalLinkEndStep)
        && install(hook,Deemo::resultInit,resultScreen,originalResultInit)
        && install(hook,Deemo::managerUpdate,updateTransport,originalUpdate)
+       && install(hook,Deemo::charmingStep,observeCharming,originalCharmingStep)
+       && install(hook,Deemo::pianoEffect,makePianoEffect,originalPianoEffect)
+       && install(hook,Deemo::pianoEffectStep,stepPianoEffect,originalPianoStep)
        && install(hook,Deemo::stepPlane,planeUpdate,originalPlaneUpdate)
        && install(hook,Deemo::judgeNote,judge,originalJudge)
        && install(hook,Deemo::clickNote,clickNote,originalClick)
@@ -436,17 +440,56 @@ bool installAll(const mach_header_64 *header,const char *path) {
 }
 @end
 
+#include "ToolbarSettings.inc"
 #include "TrackView.inc"
+
+@interface DTControlsRoot : UIViewController
+@property(nonatomic,weak) UIWindow *gameWindow;
+@end
+@implementation DTControlsRoot
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return self.gameWindow.rootViewController.supportedInterfaceOrientations ?: UIInterfaceOrientationMaskLandscape;
+}
+- (BOOL)prefersStatusBarHidden { return self.gameWindow.rootViewController.prefersStatusBarHidden; }
+@end
+
+@interface DTControlsWindow : UIWindow
+@property(nonatomic,weak) UIView *toolbar;
+@end
+@implementation DTControlsWindow
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    if (!self.rootViewController.presentedViewController) {
+        UIView *bar=self.toolbar;
+        if (!bar || bar.hidden || ![bar pointInside:[bar convertPoint:point fromView:self] withEvent:event]) return nil;
+    }
+    return [super hitTest:point withEvent:event];
+}
+@end
 
 @interface DTMenu : NSObject
 @property(nonatomic,strong) DTSongTrack *track;
-@property(nonatomic,strong) UIButton *holdButton,*regionButton;
+@property(nonatomic,strong) UIButton *holdButton,*regionButton,*settingsButton;
+@property(nonatomic,strong) UIView *bar;
+@property(nonatomic,strong) DTControlsWindow *controlsWindow;
+@property(nonatomic,weak) UIWindow *gameWindow;
 @property(nonatomic,strong) CADisplayLink *display;
 @property(nonatomic,strong) UIButton *button;
 @property(nonatomic,strong) NSTimer *timer;
 @property(nonatomic) BOOL attempted;
 @end
 @implementation DTMenu
+- (void)applyTheme {
+    const DTPalette &p=palettes[paletteIndex];
+    self.bar.backgroundColor=DTColor(p.surface);
+    self.bar.layer.borderColor=[DTColor(p.rail) colorWithAlphaComponent:.65].CGColor;
+    for (UIButton *b in @[self.button,self.holdButton,self.regionButton,self.settingsButton]) {
+        b.backgroundColor=DTColor(p.button);
+        b.tintColor=DTColor(p.text);
+        [b setTitleColor:b.tintColor forState:UIControlStateNormal];
+    }
+    self.track.timeLabel.textColor=DTColor(p.text);
+    [self.track setNeedsDisplay];
+}
 - (void)refreshTrack:(CADisplayLink *)sender {
     UIWindow *window=self.track.window;
     if (!window) return;
@@ -460,24 +503,29 @@ bool installAll(const mach_header_64 *header,const char *path) {
     self.holdButton.enabled=!dragging;
     UIEdgeInsets insets=window.safeAreaInsets;
     CGFloat available=window.bounds.size.width-insets.left-insets.right;
-    CGFloat y=insets.top+3;
+    CGFloat y=insets.top+2;
     self.button.hidden=NO;
     [self.button setTitle:ready?[NSString stringWithFormat:@"♫ %.3f×",selection.load()]:@"♫ 状态" forState:UIControlStateNormal];
     if (!visible) {
-        self.button.frame=CGRectMake(insets.left+10,insets.top+8,84,36);
+        self.bar.frame=CGRectMake(insets.left+8,y,148,52);
+        self.button.frame=CGRectMake(4,4,86,44);
+        self.settingsButton.frame=CGRectMake(100,4,44,44);
         return;
     }
-    CGFloat gap=available>=550?12:6;
-    CGFloat rateWidth=76, actionWidth=42;
-    CGFloat total=MIN(800,available-12);
-    CGFloat x=insets.left+(available-total)/2;
-    CGFloat rail=total-rateWidth-2*actionWidth-3*gap;
-    self.button.frame=CGRectMake(x,y,rateWidth,36);
+    CGFloat gap=available>=550?10:4;
+    CGFloat rateWidth=available>=550?80:69, actionWidth=44;
+    CGFloat total=MIN(860,available-8);
+    CGFloat x=5;
+    CGFloat rail=total-2*x-rateWidth-3*actionWidth-4*gap;
+    self.bar.frame=CGRectMake(insets.left+(available-total)/2,y,total,56);
+    self.button.frame=CGRectMake(x,4,rateWidth,48);
     x+=rateWidth+gap;
-    self.track.frame=CGRectMake(x,y,rail,36);
+    self.track.frame=CGRectMake(x,4,rail,48);
     x+=rail+gap;
-    self.holdButton.frame=CGRectMake(x,y,actionWidth,36);
-    self.regionButton.frame=CGRectMake(x+actionWidth+gap,y,actionWidth,36);
+    self.holdButton.frame=CGRectMake(x,4,actionWidth,48);
+    x+=actionWidth+gap;
+    self.regionButton.frame=CGRectMake(x,4,actionWidth,48);
+    self.settingsButton.frame=CGRectMake(x+actionWidth+gap,4,actionWidth,48);
     [self.holdButton setTitle:toolPaused?@"▶":@"Ⅱ" forState:UIControlStateNormal];
     self.holdButton.accessibilityLabel=toolPaused?@"继续练习":@"暂停练习";
     [self.regionButton setTitle:region.complete()?@"×":region.first<0?@"1":@"2" forState:UIControlStateNormal];
@@ -488,10 +536,8 @@ bool installAll(const mach_header_64 *header,const char *path) {
 - (void)mark {markRegion();[self refreshTrack:nil];}
 - (UIButton *)actionButton:(SEL)action {
     UIButton *button=[UIButton buttonWithType:UIButtonTypeSystem];
-    button.backgroundColor=[UIColor colorWithWhite:.08 alpha:.78];
     button.layer.cornerRadius=10;
     button.titleLabel.font=[UIFont boldSystemFontOfSize:16];
-    [button setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
     [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
     button.hidden=YES;
     return button;
@@ -529,27 +575,47 @@ bool installAll(const mach_header_64 *header,const char *path) {
         }
     }
     if (!window || !self.attempted) return;
-    for (UIView *control in @[self.track,self.button,self.holdButton,self.regionButton]) {
-        if (control.superview!=window) [window addSubview:control];
-        [window bringSubviewToFront:control];
+    if (self.gameWindow!=window || !self.controlsWindow) {
+        if (dragging || beginRequested) cancelRequested=true;
+        self.controlsWindow.hidden=YES;
+        DTControlsWindow *overlay=window.windowScene?[[DTControlsWindow alloc] initWithWindowScene:window.windowScene]:
+                                                    [[DTControlsWindow alloc] initWithFrame:window.frame];
+        DTControlsRoot *root=[DTControlsRoot new];
+        root.gameWindow=window;
+        overlay.backgroundColor=UIColor.clearColor;
+        overlay.rootViewController=root;
+        root.view.backgroundColor=UIColor.clearColor;
+        [root.view addSubview:self.bar];
+        overlay.toolbar=self.bar;
+        overlay.windowLevel=window.windowLevel+1;
+        overlay.frame=window.frame;
+        self.gameWindow=window;
+        self.controlsWindow=overlay;
+        overlay.hidden=NO;
     }
+    if (!CGRectEqualToRect(self.controlsWindow.frame,window.frame)) self.controlsWindow.frame=window.frame;
     self.display.paused=!playing.load();
     [self refreshTrack:self.display];
 }
+- (void)presentPanel:(UIViewController *)panel from:(UIButton *)button size:(CGSize)size {
+    UIViewController *vc=self.controlsWindow.rootViewController;
+    if (!vc || vc.presentedViewController || dragging || beginRequested) return;
+    panel.modalPresentationStyle=UIModalPresentationPopover;
+    panel.preferredContentSize=size;
+    panel.popoverPresentationController.sourceView=button;
+    panel.popoverPresentationController.sourceRect=button.bounds;
+    [vc presentViewController:panel animated:YES completion:nil];
+}
 - (void)open {
-    UIViewController *vc=self.button.window.rootViewController;
-    while(vc.presentedViewController) {
-        if ([vc isKindOfClass:DTRatePanel.class]) return;
-        vc=vc.presentedViewController;
-    }
-    if (!vc || dragging || beginRequested || [vc isKindOfClass:DTRatePanel.class]) return;
     DTRatePanel *panel=[DTRatePanel new];
     panel.openedSession=transportID;
-    panel.modalPresentationStyle=UIModalPresentationPopover;
-    panel.preferredContentSize=CGSizeMake(320,ready?204:120);
-    panel.popoverPresentationController.sourceView=self.button;
-    panel.popoverPresentationController.sourceRect=self.button.bounds;
-    [vc presentViewController:panel animated:YES completion:nil];
+    [self presentPanel:panel from:self.button size:CGSizeMake(320,ready?204:120)];
+}
+- (void)settings {
+    DTSettingsPanel *panel=[DTSettingsPanel new];
+    __weak DTMenu *menu=self;
+    panel.onChange=^{[menu applyTheme];};
+    [self presentPanel:panel from:self.settingsButton size:CGSizeMake(315,216)];
 }
 - (void)start {
     // Older versions also stored percentages, restricted to eight integer values.
@@ -557,14 +623,28 @@ bool installAll(const mach_header_64 *header,const char *path) {
     if (saved>=.1 && saved<=2) selection.store((float)saved);
     int ms=(int)[NSUserDefaults.standardUserDefaults integerForKey:@"DTPracticeOffset"];
     if (ms>=-200 && ms<=200) offsetMs.store(ms);
-    self.button=[UIButton buttonWithType:UIButtonTypeSystem];
-    self.button.backgroundColor=[UIColor colorWithWhite:.08 alpha:.78];self.button.layer.cornerRadius=12;
-    [self.button setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
-    [self.button addTarget:self action:@selector(open) forControlEvents:UIControlEventTouchUpInside];
+    NSInteger theme=[NSUserDefaults.standardUserDefaults integerForKey:@"DTToolbarTheme"];
+    if (theme>=0 && theme<(NSInteger)(sizeof(palettes)/sizeof(*palettes))) paletteIndex=theme;
+    float sensitivity=[NSUserDefaults.standardUserDefaults floatForKey:@"DTScrubSensitivity"];
+    if (sensitivity>=practice::minSensitivity && sensitivity<=practice::maxSensitivity) scrubSensitivity=sensitivity;
+    self.bar=[UIView new];
+    self.bar.layer.cornerRadius=14;
+    self.bar.layer.borderWidth=1;
+    self.bar.multipleTouchEnabled=YES;
+    self.button=[self actionButton:@selector(open)];
+    self.button.titleLabel.font=[UIFont monospacedDigitSystemFontOfSize:14 weight:UIFontWeightSemibold];
+    self.button.accessibilityLabel=@"歌曲倍率";
+    self.settingsButton=[self actionButton:@selector(settings)];
+    [self.settingsButton setImage:[UIImage systemImageNamed:@"gearshape"] forState:UIControlStateNormal];
+    self.settingsButton.accessibilityLabel=@"工具栏设置";
+    self.settingsButton.hidden=NO;
     self.holdButton=[self actionButton:@selector(hold)];
     self.regionButton=[self actionButton:@selector(mark)];
     self.track=[[DTSongTrack alloc] initWithFrame:CGRectZero];
     self.track.hidden=YES;
+    for (UIView *control in @[self.track,self.button,self.holdButton,self.regionButton,self.settingsButton])
+        [self.bar addSubview:control];
+    [self applyTheme];
     self.display=[CADisplayLink displayLinkWithTarget:self selector:@selector(refreshTrack:)];
     self.display.preferredFramesPerSecond=30;
     self.display.paused=YES;

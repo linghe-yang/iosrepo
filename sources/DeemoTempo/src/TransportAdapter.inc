@@ -41,6 +41,7 @@ template<class T> void writeField(Object object,size_t offset,T value) {
     memcpy(static_cast<char*>(object)+offset,&value,sizeof value);
 }
 Object currentPlane() { return field<Object>(manager,managerPlane); }
+#include "HitEffects.inc"
 float songClock() { return field<float>(field<Object>(currentPlane(),planeParams),0x10); }
 practice::LoopRange region;
 practice::RateObservation externalRate;
@@ -158,6 +159,8 @@ void abandonGesture() {
     dragging=beginRequested=finishRequested=cancelRequested=previewing=false;
 }
 void resetTransport() {
+    releaseCharming();
+    pianoEffects.clear();
     discardPreview();
     region={}; externalRate={}; toolPaused=heldPreview=ratePending=false;
     ++transportID;++audioEpoch;
@@ -279,8 +282,8 @@ void restoreScore() {
     for (auto event:journal.decisions) originalAddRatio(result,event.ratio,nullptr);
     at<Action>(Deemo::resetUI)(ui,nullptr);
     int combo=field<int>(result,0x18),count=field<int>(result,0x20);
-    float last=journal.decisions.empty()?0:journal.decisions.back().ratio;
-    at<void(*)(Object,int,float,Method)>(Deemo::comboUI)(ui,combo,last,nullptr);
+    // Restore the digits without synthesizing another perfect-hit animation.
+    at<void(*)(Object,int,float,Method)>(Deemo::comboUI)(ui,combo,0.f,nullptr);
     at<void(*)(Object,bool,bool,Method)>(Deemo::comboStatus)(ui,field<int>(result,0x10)==count,combo==count,nullptr);
     int score=at<Integer>(Deemo::scoreValue)(result,nullptr);
     at<FloatAction>(Deemo::scoreUI)(ui,floorf(score*.01f),nullptr);
@@ -374,6 +377,7 @@ void markRegion() {
     region.mark(std::clamp(songClock(),0.f,durationSec));
 }
 void loopToStart(float now) {
+    clearHitEffects();
     stopKeyVoices();
     originSec=now;
     positionSec=lowestSec=region.first;
@@ -392,6 +396,7 @@ void updateTransport(Object owner,Method method) {
             lowestSec=originSec=positionSec=std::clamp(songClock(),0.f,durationSec);
             markPractice();
             dragging=previewing=true;
+            clearHitEffects();
             at<Action>(Deemo::pauseAudio)(source,nullptr);
             stopKeyVoices();
             if (!heldPreview) at<Action>(Deemo::clearPlane)(currentPlane(),nullptr);
@@ -407,7 +412,7 @@ void updateTransport(Object owner,Method method) {
         float start=region.complete()?region.first:0;
         float end=region.complete()?region.second:durationSec;
         float next=finishRequested ? positionSec :
-            region.constrain(start+practice::follow(positionSec-start,aimSec-start,end-start,now-previousTick));
+            region.constrain(start+practice::follow(positionSec-start,aimSec-start,end-start,now-previousTick,scrubSensitivity));
         previousTick=now;
         if (!cancelRequested && fabsf(next-positionSec)>1.e-6f) {
             positionSec=next;

@@ -7,11 +7,10 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if ((self=[super initWithFrame:frame])) {
         self.opaque=NO;
-        self.backgroundColor=[UIColor colorWithWhite:.06 alpha:.72];
+        self.backgroundColor=UIColor.clearColor;
         self.layer.cornerRadius=14;
         self.multipleTouchEnabled=NO;
         self.timeLabel=[UILabel new];
-        self.timeLabel.textColor=UIColor.whiteColor;
         self.timeLabel.font=[UIFont monospacedDigitSystemFontOfSize:11 weight:UIFontWeightMedium];
         self.timeLabel.textAlignment=NSTextAlignmentCenter;
         [self addSubview:self.timeLabel];
@@ -23,41 +22,46 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     CGFloat w=CGRectGetWidth(self.bounds);
-    self.timeLabel.frame=CGRectMake(w-83,0,78,CGRectGetHeight(self.bounds));
+    self.timeLabel.hidden=w<185;
+    self.timeLabel.frame=CGRectMake(MAX(0,w-85),0,82,CGRectGetHeight(self.bounds));
     [self setNeedsDisplay];
 }
-- (CGFloat)travel { return MAX(1,CGRectGetWidth(self.bounds)-100); }
+- (CGFloat)travel {
+    CGFloat width=CGRectGetWidth(self.bounds);
+    return MAX(1,width-(width<185?20:100));
+}
 - (void)drawRect:(CGRect)rect {
     if (!(durationSec>0)) return;
     CGFloat y=CGRectGetMidY(self.bounds),travel=[self travel];
     CGFloat x=10+travel*std::clamp((dragging?positionSec:progressSec)/durationSec,0.f,1.f);
-    [UIColor.systemGrayColor setFill];
-    [[UIBezierPath bezierPathWithRoundedRect:CGRectMake(10,y-2,travel,4) cornerRadius:2] fill];
-    [UIColor.systemTealColor setFill];
-    [[UIBezierPath bezierPathWithRoundedRect:CGRectMake(10,y-2,x-10,4) cornerRadius:2] fill];
+    const DTPalette &p=palettes[paletteIndex];
+    CGFloat left=10+travel*region.first/durationSec;
+    CGFloat right=10+travel*region.second/durationSec;
+    if (region.complete()) {
+        [[DTColor(p.loop) colorWithAlphaComponent:.18] setFill];
+        [[UIBezierPath bezierPathWithRect:CGRectMake(left,3,right-left,2*y-6)] fill];
+    }
+    [DTColor(p.rail) setFill];
+    [[UIBezierPath bezierPathWithRoundedRect:CGRectMake(10,y-2.5,travel,5) cornerRadius:2.5] fill];
+    [DTColor(p.progress) setFill];
+    [[UIBezierPath bezierPathWithRoundedRect:CGRectMake(10,y-2.5,x-10,5) cornerRadius:2.5] fill];
     if (region.first>=0) {
-        const CGFloat left=10+travel*region.first/durationSec;
         const BOOL pair=region.complete();
-        UIColor *color=pair?UIColor.systemGreenColor:UIColor.systemRedColor;
-        const CGFloat right=pair?10+travel*region.second/durationSec:left;
-        if (pair) {
-            [[color colorWithAlphaComponent:.22] setFill];
-            UIRectFill(CGRectMake(left,2,right-left,self.bounds.size.height-4));
-        }
+        UIColor *color=DTColor(pair?p.loop:p.start);
         NSDictionary *attrs=@{NSForegroundColorAttributeName:color,NSFontAttributeName:[UIFont boldSystemFontOfSize:10]};
-        [color setFill]; UIRectFill(CGRectMake(left-1,4,2,24));
+        [color setFill]; UIRectFill(CGRectMake(left-1,7,2,2*y-14));
         [@"1" drawAtPoint:CGPointMake(left-8,0) withAttributes:attrs];
         if (pair) {
-            UIRectFill(CGRectMake(right-1,4,2,24));
+            UIRectFill(CGRectMake(right-1,7,2,2*y-14));
             [@"2" drawAtPoint:CGPointMake(right+2,0) withAttributes:attrs];
         }
     }
     if (dragging) {
         CGFloat goal=10+travel*aimSec/durationSec;
-        [[UIColor colorWithWhite:1 alpha:.5] setFill];
+        [[DTColor(p.text) colorWithAlphaComponent:.65] setFill];
         [[UIBezierPath bezierPathWithOvalInRect:CGRectMake(goal-3,y-3,6,6)] fill];
     }
-    [UIColor.whiteColor setFill];
+    [DTColor(p.text) setFill];
     [[UIBezierPath bezierPathWithOvalInRect:CGRectMake(x-6,y-6,12,12)] fill];
 }
 - (void)refresh {

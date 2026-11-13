@@ -6,7 +6,7 @@ sys.dont_write_bytecode=True
 sys.path.insert(0,str(repo/'sources/PianoLab'))
 from packaging_helpers import signature_check,archive
 package='com.linghe.deemotempo'
-version='0.4.0~beta1'
+version='0.4.1~beta1'
 binary=(root/'build/DeemoTempo.dylib').read_bytes()
 check=signature_check(binary,expected_subtype=0,expected_kind=6)
 assert check['code_pages_verified']>0

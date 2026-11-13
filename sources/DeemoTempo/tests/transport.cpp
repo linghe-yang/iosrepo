@@ -34,6 +34,14 @@ int main(){
         assert(position==2);
     }
     assert(follow(0,999,10,50)<=10 && follow(1,0,10,50)>=0);
+    for (double gain : {.25,.75,1.,1.5,2.5}) {
+        double dt=1./60;
+        double defaultStep=follow(40,45,180,dt)-40;
+        assert(std::abs(follow(40,45,180,dt,gain)-40-defaultStep*gain)<1e-10);
+        assert(std::abs(40-follow(40,35,180,dt,gain)-defaultStep*gain)<1e-10);
+        assert(std::abs(follow(40,180,180,dt,gain)-40-36*dt*gain)<1e-10);
+        assert(follow(.001,0,10,dt,gain)==0 && follow(9.999,10,10,dt,gain)==10);
+    }
     for(double length : {15.,180.,600.}) for(double fps : {30.,60.,120.}) {
         double dt=1/fps;
         double a=follow(7.0,-50,length,dt);
